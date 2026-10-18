@@ -51,16 +51,17 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 
 ## Entries
 
-| Date       | Entry                                                                                                   |
-| ---------- | ------------------------------------------------------------------------------------------------------- |
-| 2026-10-13 | [T-FND-01/02/03: monorepo scaffold](2026-10-13-T-FND-01-monorepo-scaffold.md)                           |
-| 2026-10-13 | [T-FND-04: tenant isolation with RLS](2026-10-13-T-FND-04-tenant-rls.md)                                |
-| 2026-10-14 | [T-ACC-01: login, sessions and CSRF](2026-10-14-T-ACC-01-login.md)                                      |
-| 2026-10-14 | [Day summary](2026-10-14-day-summary.md)                                                                |
-| 2026-10-15 | [T-UI-01 (decisions): UI foundation](2026-10-15-T-UI-01-ui-foundation-decisions.md)                     |
-| 2026-10-15 | [T-UI-01 S1: design tokens, themes and fonts](2026-10-15-T-UI-01-tokens.md)                             |
-| 2026-10-15 | [T-UI-01 S2 to S5: guardrails, hooks, primitives](2026-10-15-T-UI-01-primitives.md)                     |
-| 2026-10-15 | [T-I18N-01 and T-UI-02: catalogs, app shell, sign-in](2026-10-15-T-UI-02-app-shell.md)                  |
-| 2026-10-15 | [API status route and Swagger docs](2026-10-15-api-swagger-docs.md)                                     |
-| 2026-10-15 | [Swagger: dev and production servers in one doc](2026-10-15-swagger-dev-prod-servers.md)                |
-| 2026-10-15 | [Docs: staging deployment and the development boundary](2026-10-15-docs-staging-deployment-boundary.md) |
+| Date       | Entry                                                                                                       |
+| ---------- | ----------------------------------------------------------------------------------------------------------- |
+| 2026-10-13 | [T-FND-01/02/03: monorepo scaffold](2026-10-13-T-FND-01-monorepo-scaffold.md)                               |
+| 2026-10-13 | [T-FND-04: tenant isolation with RLS](2026-10-13-T-FND-04-tenant-rls.md)                                    |
+| 2026-10-14 | [T-ACC-01: login, sessions and CSRF](2026-10-14-T-ACC-01-login.md)                                          |
+| 2026-10-14 | [Day summary](2026-10-14-day-summary.md)                                                                    |
+| 2026-10-15 | [T-UI-01 (decisions): UI foundation](2026-10-15-T-UI-01-ui-foundation-decisions.md)                         |
+| 2026-10-15 | [T-UI-01 S1: design tokens, themes and fonts](2026-10-15-T-UI-01-tokens.md)                                 |
+| 2026-10-15 | [T-UI-01 S2 to S5: guardrails, hooks, primitives](2026-10-15-T-UI-01-primitives.md)                         |
+| 2026-10-15 | [T-I18N-01 and T-UI-02: catalogs, app shell, sign-in](2026-10-15-T-UI-02-app-shell.md)                      |
+| 2026-10-15 | [API status route and Swagger docs](2026-10-15-api-swagger-docs.md)                                         |
+| 2026-10-15 | [Swagger: dev and production servers in one doc](2026-10-15-swagger-dev-prod-servers.md)                    |
+| 2026-10-15 | [Docs: staging deployment and the development boundary](2026-10-15-docs-staging-deployment-boundary.md)     |
+| 2026-10-18 | [Plan: request pipeline, permission guard, response envelope](2026-10-18-T-PLT-07-request-pipeline-plan.md) |
