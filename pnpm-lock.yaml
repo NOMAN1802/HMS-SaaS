@@ -426,6 +426,9 @@ importers:
 
   packages/mod-identity-access:
     dependencies:
+      '@hms/authz':
+        specifier: workspace:*
+        version: link:../authz
       '@hms/contracts':
         specifier: workspace:*
         version: link:../contracts
