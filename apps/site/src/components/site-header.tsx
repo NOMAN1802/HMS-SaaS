@@ -42,12 +42,13 @@ export async function SiteHeader({ site, locale }: { site: Site; locale: Locale 
           </ul>
         </nav>
         <div className="flex items-center gap-2">
-          <Link
-            href={cta.href}
-            className={buttonClassName('primary', 'md', 'hidden md:inline-flex')}
-          >
-            {cta.label}
-          </Link>
+          {/* The wrapper hides the call to action on phones, where the bottom bar offers it;
+              a display class on the link itself would fight the button's inline-flex. */}
+          <div className="hidden md:block">
+            <Link href={cta.href} className={buttonClassName('primary', 'md')}>
+              {cta.label}
+            </Link>
+          </div>
           <div className="xl:hidden">
             <MobileMenu items={items} cta={cta} />
           </div>

@@ -1,16 +1,30 @@
-// Home page placeholder for the scaffold. The real home page (hero, quick actions, sections from
-// content data) replaces this in T-WEB-06. Implements: T-WEB-01.
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+// Home page: the sections stored in content/pages/home.json, in order, through the section
+// registry, so the CMS can edit, reorder or hide each part (C-072, FR-WEB-GEN-007).
+// Implements: T-WEB-06, FR-WEB-HOME-*.
+import { isLocale } from '@hms/i18n';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
+import { getPage, localize } from '../../src/content';
+import { SectionList } from '../../src/sections/registry';
 
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+interface HomeParams {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: HomeParams): Promise<Metadata> {
   const { locale } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations({ locale });
+  if (!isLocale(locale)) return {};
+  const { seo } = getPage('home');
+  return {
+    title: { absolute: localize(seo.title, locale) },
+    description: localize(seo.description, locale),
+  };
+}
 
-  return (
-    <div className="mx-auto flex min-h-[50vh] max-w-3xl flex-col justify-center gap-4 px-4">
-      <h1 className="text-4xl font-semibold">{t('placeholder.heading')}</h1>
-      <p className="text-lg text-text-muted">{t('placeholder.body')}</p>
-    </div>
-  );
+export default async function HomePage({ params }: HomeParams) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  setRequestLocale(locale);
+  return <SectionList sections={getPage('home').sections} locale={locale} />;
 }

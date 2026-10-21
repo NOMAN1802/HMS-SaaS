@@ -14,7 +14,7 @@ test('the English site renders in English', async ({ page }) => {
   await page.goto('/en');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(
-    page.getByRole('heading', { level: 1, name: 'Our new website is on its way' }),
+    page.getByRole('heading', { level: 1, name: 'Care that knows you by name' }),
   ).toBeVisible();
 });
 

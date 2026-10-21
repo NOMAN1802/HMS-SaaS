@@ -1,0 +1,63 @@
+// A named image slot (C-065). With `src` it shows the image; without it, a token-colored
+// placeholder with an icon, so pages look finished before photography or AI images exist
+// (F section 6). The alt text is always spoken. Implements: T-WEB-06, T-WEB-14.
+import type { ImageRef } from '@hms/contracts';
+import type { Locale } from '@hms/i18n';
+import { Icon, type IconName } from '@hms/ui';
+import Image from 'next/image';
+import { localize } from '../content/localize';
+
+const RATIOS = {
+  wide: 'aspect-[16/9]',
+  card: 'aspect-[4/3]',
+  portrait: 'aspect-[4/5]',
+  banner: 'aspect-[3/1]',
+  square: 'aspect-square',
+} as const;
+
+export interface ImageSlotProps {
+  image: ImageRef;
+  locale: Locale;
+  ratio?: keyof typeof RATIOS;
+  icon?: IconName;
+  className?: string;
+  priority?: boolean;
+  sizes?: string;
+}
+
+export function ImageSlot({
+  image,
+  locale,
+  ratio = 'card',
+  icon = 'hospital-building',
+  className,
+  priority = false,
+  sizes = '(min-width: 1024px) 33vw, 100vw',
+}: ImageSlotProps) {
+  const alt = localize(image.alt, locale);
+  const frame = `relative overflow-hidden ${RATIOS[ratio]} ${className ?? ''}`;
+  if (image.src) {
+    return (
+      <div className={frame}>
+        <Image
+          src={image.src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+  return (
+    <div
+      role="img"
+      aria-label={alt}
+      data-slot={image.slot}
+      className={`${frame} flex items-center justify-center bg-linear-to-br from-primary-soft via-surface to-accent-soft`}
+    >
+      <Icon name={icon} size={56} className="text-primary opacity-60" />
+    </div>
+  );
+}

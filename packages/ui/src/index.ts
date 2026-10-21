@@ -13,6 +13,8 @@ export {
 } from './primitives/Button.js';
 export { buttonClassName } from './primitives/button-styles.js';
 export { TextInput, type TextInputProps } from './primitives/TextInput.js';
+export { TextArea, type TextAreaProps } from './primitives/TextArea.js';
+export { Select, type SelectOption, type SelectProps } from './primitives/Select.js';
 export { Field, type FieldControlProps, type FieldProps } from './primitives/Field.js';
 export { StatusBadge, type StatusBadgeProps, type StatusKind } from './primitives/StatusBadge.js';
 export { Dialog, type DialogProps, type DialogSize } from './primitives/Dialog.js';

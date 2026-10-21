@@ -47,7 +47,8 @@ test.describe('on a phone', () => {
 
   test('call and book stay one tap away', async ({ page }) => {
     await page.goto('/en');
-    await expect(page.getByRole('link', { name: 'Call' })).toHaveAttribute('href', /^tel:/);
-    await expect(page.getByRole('link', { name: 'Book', exact: true })).toBeVisible();
+    const bar = page.getByTestId('phone-action-bar');
+    await expect(bar.getByRole('link', { name: 'Call' })).toHaveAttribute('href', /^tel:/);
+    await expect(bar.getByRole('link', { name: 'Book' })).toBeVisible();
   });
 });

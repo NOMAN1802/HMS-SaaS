@@ -17,8 +17,10 @@ import type {
   TestPrice,
 } from '@hms/contracts';
 import { content, type PageName } from './load';
+import { normalizeQuery } from './normalize';
 
 export { localize, localizeRich } from './localize';
+export { normalizeQuery, toLatinDigits } from './normalize';
 export { pageNames, type PageName } from './load';
 
 export const getSite = () => content.site;
@@ -40,17 +42,6 @@ export const listGuide = () => content.guide;
 export const getDoctor = (slug: string) => content.doctors.find((d) => d.slug === slug);
 export const listPackagesAll = (): HealthPackage[] => content.packages;
 export const getPackage = (slug: string) => content.packages.find((p) => p.slug === slug);
-
-const BANGLA_DIGITS = /[০-৯]/g;
-
-/** Lowercase, Latin digits and single spaces, so "Card", "card" and Bangla digits all match. */
-export function normalizeQuery(value: string): string {
-  return value
-    .replace(BANGLA_DIGITS, (digit) => String(digit.charCodeAt(0) - 0x09e6))
-    .toLowerCase()
-    .replace(/\s+/g, ' ')
-    .trim();
-}
 
 function matches(query: string, texts: (LocalizedText | string | undefined)[]): boolean {
   if (!query) return true;

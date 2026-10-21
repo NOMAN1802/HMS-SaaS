@@ -73,3 +73,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-21 | [T-WEB-02: shared UI additions](2026-10-21-T-WEB-02-shared-ui.md)                                           |
 | 2026-10-21 | [T-WEB-04: content layer and mock data](2026-10-21-T-WEB-04-content-layer.md)                               |
 | 2026-10-21 | [T-WEB-05: site shell](2026-10-21-T-WEB-05-site-shell.md)                                                   |
+| 2026-10-21 | [T-WEB-06: home page and section registry](2026-10-21-T-WEB-06-home.md)                                     |
