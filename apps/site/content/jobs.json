@@ -1,0 +1,74 @@
+[
+  {
+    "id": "staff-nurse-icu",
+    "title": {
+      "bn": "স্টাফ নার্স (আইসিইউ)",
+      "en": "Staff nurse (ICU)"
+    },
+    "department": {
+      "bn": "নার্সিং",
+      "en": "Nursing"
+    },
+    "type": "full-time",
+    "location": "gulshan",
+    "closingOn": "2026-11-30",
+    "summary": {
+      "bn": "বিএসসি নার্সিং ও আইসিইউতে ২ বছরের অভিজ্ঞতা।",
+      "en": "BSc Nursing and 2 years of ICU experience."
+    }
+  },
+  {
+    "id": "medical-technologist-lab",
+    "title": {
+      "bn": "মেডিকেল টেকনোলজিস্ট (ল্যাব)",
+      "en": "Medical technologist (laboratory)"
+    },
+    "department": {
+      "bn": "ল্যাবরেটরি",
+      "en": "Laboratory"
+    },
+    "type": "full-time",
+    "location": "dhanmondi",
+    "closingOn": "2026-11-20",
+    "summary": {
+      "bn": "ডিপ্লোমা ইন ল্যাবরেটরি মেডিসিন।",
+      "en": "Diploma in laboratory medicine."
+    }
+  },
+  {
+    "id": "front-desk-executive",
+    "title": {
+      "bn": "ফ্রন্ট ডেস্ক এক্সিকিউটিভ",
+      "en": "Front desk executive"
+    },
+    "department": {
+      "bn": "রোগী সেবা",
+      "en": "Patient services"
+    },
+    "type": "full-time",
+    "location": "uttara",
+    "closingOn": "2026-11-15",
+    "summary": {
+      "bn": "স্নাতক, বাংলা ও ইংরেজিতে সাবলীল।",
+      "en": "Graduate, fluent in Bangla and English."
+    }
+  },
+  {
+    "id": "physiotherapist-part-time",
+    "title": {
+      "bn": "ফিজিওথেরাপিস্ট (খণ্ডকালীন)",
+      "en": "Physiotherapist (part-time)"
+    },
+    "department": {
+      "bn": "ফিজিওথেরাপি",
+      "en": "Physiotherapy"
+    },
+    "type": "part-time",
+    "location": "gulshan",
+    "closingOn": "2026-12-05",
+    "summary": {
+      "bn": "বিপিটি ডিগ্রি, সন্ধ্যার শিফট।",
+      "en": "BPT degree, evening shift."
+    }
+  }
+]

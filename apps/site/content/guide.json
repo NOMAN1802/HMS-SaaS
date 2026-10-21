@@ -1,0 +1,119 @@
+[
+  {
+    "id": "patient-rights",
+    "title": {
+      "bn": "রোগীর অধিকার ও দায়িত্ব",
+      "en": "Patient rights and responsibilities"
+    },
+    "body": {
+      "bn": [
+        "আপনার রোগ ও চিকিৎসা সম্পর্কে বোধগম্য ভাষায় জানার অধিকার আপনার আছে।",
+        "যেকোনো চিকিৎসার আগে সম্মতি দেওয়া বা না দেওয়ার অধিকার আপনার।",
+        "আপনার তথ্য গোপন রাখা হয়। সঠিক তথ্য দেওয়া ও হাসপাতালের নিয়ম মানা আপনার দায়িত্ব।"
+      ],
+      "en": [
+        "You have the right to understand your illness and treatment in plain words.",
+        "You may give or refuse consent before any treatment.",
+        "Your information is kept confidential. Please give accurate information and follow hospital rules."
+      ]
+    }
+  },
+  {
+    "id": "admission-payment",
+    "title": {
+      "bn": "ভর্তি ও পেমেন্ট",
+      "en": "Admission and payment"
+    },
+    "body": {
+      "bn": [
+        "ভর্তির সময় জাতীয় পরিচয়পত্র বা জন্মনিবন্ধন এবং চিকিৎসকের ভর্তির পরামর্শপত্র আনুন।",
+        "ভর্তির সময় একটি অগ্রিম জমা নেওয়া হয়। বিল প্রতিদিন হালনাগাদ হয় এবং কাউন্টারে দেখা যায়।"
+      ],
+      "en": [
+        "Bring a national ID or birth certificate and the doctor's admission advice.",
+        "An advance deposit is taken at admission. The bill is updated daily and can be checked at the counter."
+      ]
+    }
+  },
+  {
+    "id": "discharge-checklist",
+    "title": {
+      "bn": "ছাড়পত্রের চেকলিস্ট",
+      "en": "Discharge checklist"
+    },
+    "body": {
+      "bn": [
+        "ছাড়পত্র, ওষুধের তালিকা ও ফলো-আপের তারিখ বুঝে নিন।",
+        "সব রিপোর্ট ও এক্স-রে ফিল্ম সংগ্রহ করুন।",
+        "বিল পরিশোধের রসিদ সংরক্ষণ করুন।"
+      ],
+      "en": [
+        "Make sure you understand the discharge summary, the medicine list and the follow-up date.",
+        "Collect all reports and X-ray films.",
+        "Keep the payment receipt."
+      ]
+    }
+  },
+  {
+    "id": "visiting-hours",
+    "title": {
+      "bn": "দর্শনার্থীর সময়",
+      "en": "Visiting hours"
+    },
+    "body": {
+      "bn": [
+        "সাধারণ ওয়ার্ড: বিকেল ৪টা থেকে সন্ধ্যা ৭টা। আইসিইউ: চিকিৎসকের অনুমতি সাপেক্ষে একজন।",
+        "শিশু ও অসুস্থ ব্যক্তিদের রোগী দেখতে না আসার অনুরোধ রইল।"
+      ],
+      "en": [
+        "General wards: 4 pm to 7 pm. ICU: one visitor with the doctor's permission.",
+        "Please do not bring children or people who are unwell when visiting."
+      ]
+    }
+  },
+  {
+    "id": "what-to-bring",
+    "title": {
+      "bn": "সঙ্গে যা আনবেন",
+      "en": "What to bring"
+    },
+    "body": {
+      "bn": [
+        "আগের প্রেসক্রিপশন, রিপোর্ট ও বর্তমান ওষুধ সঙ্গে আনুন।",
+        "ভর্তি হলে ব্যক্তিগত প্রয়োজনীয় জিনিস আনুন, তবে মূল্যবান জিনিস বাড়িতে রাখুন।"
+      ],
+      "en": [
+        "Bring earlier prescriptions, reports and your current medicines.",
+        "If you are being admitted, bring personal items but leave valuables at home."
+      ]
+    }
+  },
+  {
+    "id": "room-types",
+    "title": {
+      "bn": "ওয়ার্ড ও কেবিনের ধরন",
+      "en": "Ward and cabin types"
+    },
+    "body": {
+      "bn": [
+        "সাধারণ ওয়ার্ড, শেয়ার্ড কেবিন, সিঙ্গেল কেবিন ও ভিআইপি কেবিন রয়েছে। ভাড়ার জন্য ভর্তি কাউন্টারে যোগাযোগ করুন।"
+      ],
+      "en": [
+        "General wards, shared cabins, single cabins and VIP cabins are available. Ask the admission counter about charges."
+      ]
+    }
+  },
+  {
+    "id": "international-patients",
+    "title": {
+      "bn": "বিদেশি রোগী",
+      "en": "International patients"
+    },
+    "body": {
+      "bn": [
+        "বিদেশ থেকে আসা রোগীদের জন্য অ্যাপয়েন্টমেন্ট, ভিসা চিঠি ও দোভাষী সহায়তা দেওয়া হয়।"
+      ],
+      "en": ["Patients from abroad get help with appointments, visa letters and interpreters."]
+    }
+  }
+]

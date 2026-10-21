@@ -1,0 +1,279 @@
+[
+  {
+    "slug": "gulshan",
+    "name": {
+      "bn": "কেয়ারস্পেট গুলশান (প্রধান হাসপাতাল)",
+      "en": "CareSpate Gulshan (main hospital)"
+    },
+    "address": {
+      "bn": "বাড়ি ১২, সড়ক ৭, গুলশান ১, ঢাকা ১২১২ (নমুনা ঠিকানা)",
+      "en": "House 12, Road 7, Gulshan 1, Dhaka 1212 (sample address)"
+    },
+    "area": {
+      "bn": "গুলশান",
+      "en": "Gulshan"
+    },
+    "hours": {
+      "bn": "২৪ ঘণ্টা খোলা",
+      "en": "Open 24 hours"
+    },
+    "phone": {
+      "display": "09600-000100",
+      "tel": "+8809600000100"
+    },
+    "services": [
+      {
+        "bn": "২৪ ঘণ্টা জরুরি বিভাগ",
+        "en": "24-hour emergency"
+      },
+      {
+        "bn": "আইসিইউ ও সিসিইউ",
+        "en": "ICU and CCU"
+      },
+      {
+        "bn": "ভর্তি ও অপারেশন",
+        "en": "Admission and surgery"
+      },
+      {
+        "bn": "ল্যাব ও ইমেজিং",
+        "en": "Laboratory and imaging"
+      },
+      {
+        "bn": "সব বিভাগের আউটডোর",
+        "en": "Outpatient clinics for all departments"
+      }
+    ],
+    "emergency": true,
+    "image": {
+      "slot": "branch-gulshan",
+      "alt": {
+        "bn": "গুলশান শাখার ভবন (চিত্র)",
+        "en": "Gulshan branch building (illustration)"
+      }
+    },
+    "head": {
+      "name": {
+        "bn": "ডা. সেলিনা পারভীন",
+        "en": "Dr. Selina Parveen"
+      },
+      "title": {
+        "bn": "মেডিকেল ডিরেক্টর",
+        "en": "Medical Director"
+      }
+    },
+    "units": [
+      {
+        "name": {
+          "bn": "জরুরি বিভাগ",
+          "en": "Emergency"
+        },
+        "location": {
+          "bn": "নিচতলা, পূর্ব প্রবেশপথ",
+          "en": "Ground floor, east entrance"
+        }
+      },
+      {
+        "name": {
+          "bn": "আউটডোর (ওপিডি)",
+          "en": "Outpatient clinics (OPD)"
+        },
+        "location": {
+          "bn": "১ম থেকে ৩য় তলা",
+          "en": "Levels 1 to 3"
+        }
+      },
+      {
+        "name": {
+          "bn": "ল্যাব ও নমুনা সংগ্রহ",
+          "en": "Laboratory and sample collection"
+        },
+        "location": {
+          "bn": "২য় তলা",
+          "en": "Level 2"
+        }
+      },
+      {
+        "name": {
+          "bn": "আইসিইউ",
+          "en": "ICU"
+        },
+        "location": {
+          "bn": "৫ম তলা",
+          "en": "Level 5"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "dhanmondi",
+    "name": {
+      "bn": "কেয়ারস্পেট ধানমন্ডি",
+      "en": "CareSpate Dhanmondi"
+    },
+    "address": {
+      "bn": "বাড়ি ৪৫, সড়ক ২৭ (পুরাতন), ধানমন্ডি, ঢাকা ১২০৯ (নমুনা ঠিকানা)",
+      "en": "House 45, Road 27 (old), Dhanmondi, Dhaka 1209 (sample address)"
+    },
+    "area": {
+      "bn": "ধানমন্ডি",
+      "en": "Dhanmondi"
+    },
+    "hours": {
+      "bn": "শনি থেকে বৃহস্পতি, সকাল ৮টা থেকে রাত ১০টা",
+      "en": "Saturday to Thursday, 8 am to 10 pm"
+    },
+    "phone": {
+      "display": "09600-000200",
+      "tel": "+8809600000200"
+    },
+    "services": [
+      {
+        "bn": "বিশেষজ্ঞ আউটডোর",
+        "en": "Specialist outpatient clinics"
+      },
+      {
+        "bn": "ল্যাব ও নমুনা সংগ্রহ",
+        "en": "Laboratory and sample collection"
+      },
+      {
+        "bn": "আল্ট্রাসনোগ্রাম ও এক্স-রে",
+        "en": "Ultrasound and X-ray"
+      },
+      {
+        "bn": "হেলথ চেকআপ",
+        "en": "Health check-ups"
+      }
+    ],
+    "emergency": false,
+    "image": {
+      "slot": "branch-dhanmondi",
+      "alt": {
+        "bn": "ধানমন্ডি শাখার ভবন (চিত্র)",
+        "en": "Dhanmondi branch building (illustration)"
+      }
+    },
+    "head": {
+      "name": {
+        "bn": "ডা. আরিফুল হক",
+        "en": "Dr. Ariful Haque"
+      },
+      "title": {
+        "bn": "শাখা প্রধান",
+        "en": "Branch Head"
+      }
+    },
+    "units": [
+      {
+        "name": {
+          "bn": "আউটডোর (ওপিডি)",
+          "en": "Outpatient clinics (OPD)"
+        },
+        "location": {
+          "bn": "১ম ও ২য় তলা",
+          "en": "Levels 1 and 2"
+        }
+      },
+      {
+        "name": {
+          "bn": "ল্যাব ও নমুনা সংগ্রহ",
+          "en": "Laboratory and sample collection"
+        },
+        "location": {
+          "bn": "নিচতলা",
+          "en": "Ground floor"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "uttara",
+    "name": {
+      "bn": "কেয়ারস্পেট উত্তরা",
+      "en": "CareSpate Uttara"
+    },
+    "address": {
+      "bn": "প্লট ৮, সেক্টর ৭, উত্তরা, ঢাকা ১২৩০ (নমুনা ঠিকানা)",
+      "en": "Plot 8, Sector 7, Uttara, Dhaka 1230 (sample address)"
+    },
+    "area": {
+      "bn": "উত্তরা",
+      "en": "Uttara"
+    },
+    "hours": {
+      "bn": "প্রতিদিন সকাল ৮টা থেকে রাত ৯টা",
+      "en": "Every day, 8 am to 9 pm"
+    },
+    "phone": {
+      "display": "09600-000300",
+      "tel": "+8809600000300"
+    },
+    "services": [
+      {
+        "bn": "বিশেষজ্ঞ আউটডোর",
+        "en": "Specialist outpatient clinics"
+      },
+      {
+        "bn": "ল্যাব ও নমুনা সংগ্রহ",
+        "en": "Laboratory and sample collection"
+      },
+      {
+        "bn": "দাঁতের চিকিৎসা",
+        "en": "Dental care"
+      },
+      {
+        "bn": "শিশু টিকাদান",
+        "en": "Child vaccination"
+      }
+    ],
+    "emergency": false,
+    "image": {
+      "slot": "branch-uttara",
+      "alt": {
+        "bn": "উত্তরা শাখার ভবন (চিত্র)",
+        "en": "Uttara branch building (illustration)"
+      }
+    },
+    "head": {
+      "name": {
+        "bn": "ডা. নাসরিন সুলতানা",
+        "en": "Dr. Nasrin Sultana"
+      },
+      "title": {
+        "bn": "শাখা প্রধান",
+        "en": "Branch Head"
+      }
+    },
+    "units": [
+      {
+        "name": {
+          "bn": "আউটডোর (ওপিডি)",
+          "en": "Outpatient clinics (OPD)"
+        },
+        "location": {
+          "bn": "১ম তলা",
+          "en": "Level 1"
+        }
+      },
+      {
+        "name": {
+          "bn": "দাঁতের ক্লিনিক",
+          "en": "Dental clinic"
+        },
+        "location": {
+          "bn": "২য় তলা",
+          "en": "Level 2"
+        }
+      },
+      {
+        "name": {
+          "bn": "টিকাদান কেন্দ্র",
+          "en": "Vaccination point"
+        },
+        "location": {
+          "bn": "নিচতলা",
+          "en": "Ground floor"
+        }
+      }
+    ]
+  }
+]

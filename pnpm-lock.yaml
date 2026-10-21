@@ -281,6 +281,9 @@ importers:
 
   apps/site:
     dependencies:
+      '@hms/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@hms/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n

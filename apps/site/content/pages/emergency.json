@@ -1,0 +1,84 @@
+{
+  "path": "/emergency",
+  "title": {
+    "bn": "জরুরি সেবা",
+    "en": "Emergency"
+  },
+  "seo": {
+    "title": {
+      "bn": "জরুরি সেবা",
+      "en": "Emergency"
+    },
+    "description": {
+      "bn": "২৪ ঘণ্টা জরুরি বিভাগ ও অ্যাম্বুলেন্স।",
+      "en": "24-hour emergency department and ambulance."
+    }
+  },
+  "sections": [
+    {
+      "id": "steps",
+      "type": "richText",
+      "props": {
+        "heading": {
+          "bn": "জরুরি অবস্থায় কী করবেন",
+          "en": "What to do in an emergency"
+        },
+        "body": {
+          "bn": [
+            "১. জরুরি নম্বরে ফোন করুন বা অ্যাম্বুলেন্স ডাকুন।",
+            "২. রোগীর বর্তমান ওষুধ ও আগের রিপোর্ট সঙ্গে আনুন।",
+            "৩. গুলশান শাখার পূর্ব প্রবেশপথ দিয়ে জরুরি বিভাগে আসুন।"
+          ],
+          "en": [
+            "1. Call the emergency number or an ambulance.",
+            "2. Bring the patient's current medicines and earlier reports.",
+            "3. Come to the emergency department through the east entrance of the Gulshan branch."
+          ]
+        }
+      }
+    },
+    {
+      "id": "band",
+      "type": "emergencyBand",
+      "props": {
+        "heading": {
+          "bn": "২৪ ঘণ্টা খোলা",
+          "en": "Open 24 hours"
+        },
+        "text": {
+          "bn": "ট্রমা, হার্ট অ্যাটাক, স্ট্রোক ও শিশুদের জরুরি চিকিৎসা।",
+          "en": "Trauma, heart attack, stroke and children's emergencies."
+        },
+        "image": {
+          "slot": "emergency-band",
+          "alt": {
+            "bn": "অ্যাম্বুলেন্স (চিত্র)",
+            "en": "Ambulance (illustration)"
+          }
+        }
+      }
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "props": {
+        "heading": {
+          "bn": "জরুরি বিভাগ সম্পর্কে প্রশ্ন",
+          "en": "Questions about emergency care"
+        },
+        "items": [
+          {
+            "question": {
+              "bn": "জরুরি বিভাগে কি আগে টাকা দিতে হয়?",
+              "en": "Do I have to pay before emergency treatment?"
+            },
+            "answer": {
+              "bn": ["না। আগে চিকিৎসা শুরু হয়, পরে নিবন্ধন ও বিল।"],
+              "en": ["No. Treatment starts first; registration and billing follow."]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -13,6 +13,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@hms/contracts": "workspace:*",
     "@hms/i18n": "workspace:*",
     "@hms/ui": "workspace:*",
     "next": "16.4.0",

@@ -155,6 +155,11 @@ const ICONS = {
 
 export type IconName = keyof typeof ICONS;
 
+/** Lets content data (CMS, mock JSON) name an icon as a string and be checked at build time. */
+export function isIconName(value: string): value is IconName {
+  return Object.hasOwn(ICONS, value);
+}
+
 export interface IconProps {
   name: IconName;
   size?: number;

@@ -71,3 +71,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-21 | [T-WEB-00: public website planning pack](2026-10-21-T-WEB-00-site-planning.md)                              |
 | 2026-10-21 | [T-WEB-01: public site scaffold](2026-10-21-T-WEB-01-site-scaffold.md)                                      |
 | 2026-10-21 | [T-WEB-02: shared UI additions](2026-10-21-T-WEB-02-shared-ui.md)                                           |
+| 2026-10-21 | [T-WEB-04: content layer and mock data](2026-10-21-T-WEB-04-content-layer.md)                               |

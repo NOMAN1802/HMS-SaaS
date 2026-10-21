@@ -1,0 +1,586 @@
+[
+  {
+    "code": "LAB-CBC",
+    "name": {
+      "bn": "সিবিসি (কমপ্লিট ব্লাড কাউন্ট)",
+      "en": "Complete blood count (CBC)"
+    },
+    "category": "pathology",
+    "price": "400.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-ESR",
+    "name": {
+      "bn": "ইএসআর",
+      "en": "ESR"
+    },
+    "category": "pathology",
+    "price": "200.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-HB",
+    "name": {
+      "bn": "হিমোগ্লোবিন",
+      "en": "Haemoglobin"
+    },
+    "category": "pathology",
+    "price": "200.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-PLT",
+    "name": {
+      "bn": "প্লাটিলেট কাউন্ট",
+      "en": "Platelet count"
+    },
+    "category": "pathology",
+    "price": "250.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-BG",
+    "name": {
+      "bn": "ব্লাড গ্রুপ ও আরএইচ",
+      "en": "Blood group and Rh"
+    },
+    "category": "pathology",
+    "price": "200.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-URE",
+    "name": {
+      "bn": "প্রস্রাব পরীক্ষা (রুটিন)",
+      "en": "Urine routine examination"
+    },
+    "category": "pathology",
+    "price": "300.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"],
+    "preparation": {
+      "bn": "সকালের প্রথম প্রস্রাব আনুন",
+      "en": "Bring the first urine of the morning"
+    }
+  },
+  {
+    "code": "LAB-STL",
+    "name": {
+      "bn": "মল পরীক্ষা (রুটিন)",
+      "en": "Stool routine examination"
+    },
+    "category": "pathology",
+    "price": "300.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-DEN",
+    "name": {
+      "bn": "ডেঙ্গু এনএস১ অ্যান্টিজেন",
+      "en": "Dengue NS1 antigen"
+    },
+    "category": "pathology",
+    "price": "500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-MP",
+    "name": {
+      "bn": "ম্যালেরিয়া প্যারাসাইট",
+      "en": "Malaria parasite"
+    },
+    "category": "pathology",
+    "price": "350.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "LAB-WID",
+    "name": {
+      "bn": "টাইফয়েড (ওয়াইডাল)",
+      "en": "Typhoid (Widal test)"
+    },
+    "category": "pathology",
+    "price": "400.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-FBS",
+    "name": {
+      "bn": "ফাস্টিং ব্লাড সুগার",
+      "en": "Fasting blood sugar"
+    },
+    "category": "biochemistry",
+    "price": "150.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"],
+    "preparation": {
+      "bn": "৮ থেকে ১০ ঘণ্টা না খেয়ে আসুন",
+      "en": "Fast for 8 to 10 hours"
+    }
+  },
+  {
+    "code": "BIO-RBS",
+    "name": {
+      "bn": "র‍্যান্ডম ব্লাড সুগার",
+      "en": "Random blood sugar"
+    },
+    "category": "biochemistry",
+    "price": "150.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-HBA1C",
+    "name": {
+      "bn": "এইচবিএওয়ানসি",
+      "en": "HbA1c"
+    },
+    "category": "biochemistry",
+    "price": "1200.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-LIPID",
+    "name": {
+      "bn": "লিপিড প্রোফাইল",
+      "en": "Lipid profile"
+    },
+    "category": "biochemistry",
+    "price": "1500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"],
+    "preparation": {
+      "bn": "১২ ঘণ্টা না খেয়ে আসুন",
+      "en": "Fast for 12 hours"
+    }
+  },
+  {
+    "code": "BIO-CREAT",
+    "name": {
+      "bn": "সিরাম ক্রিয়েটিনিন",
+      "en": "Serum creatinine"
+    },
+    "category": "biochemistry",
+    "price": "400.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-UREA",
+    "name": {
+      "bn": "ব্লাড ইউরিয়া",
+      "en": "Blood urea"
+    },
+    "category": "biochemistry",
+    "price": "400.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-UA",
+    "name": {
+      "bn": "ইউরিক অ্যাসিড",
+      "en": "Uric acid"
+    },
+    "category": "biochemistry",
+    "price": "500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-SGPT",
+    "name": {
+      "bn": "এসজিপিটি (এএলটি)",
+      "en": "SGPT (ALT)"
+    },
+    "category": "biochemistry",
+    "price": "400.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-LFT",
+    "name": {
+      "bn": "লিভার ফাংশন টেস্ট",
+      "en": "Liver function test"
+    },
+    "category": "biochemistry",
+    "price": "1800.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-ELEC",
+    "name": {
+      "bn": "সিরাম ইলেক্ট্রোলাইট",
+      "en": "Serum electrolytes"
+    },
+    "category": "biochemistry",
+    "price": "900.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-TSH",
+    "name": {
+      "bn": "টিএসএইচ",
+      "en": "TSH"
+    },
+    "category": "biochemistry",
+    "price": "900.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-FT4",
+    "name": {
+      "bn": "এফটি৪",
+      "en": "Free T4"
+    },
+    "category": "biochemistry",
+    "price": "900.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-VITD",
+    "name": {
+      "bn": "ভিটামিন ডি",
+      "en": "Vitamin D"
+    },
+    "category": "biochemistry",
+    "price": "3000.00",
+    "reportTime": {
+      "bn": "২ দিনের মধ্যে",
+      "en": "Within 2 days"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-TROP",
+    "name": {
+      "bn": "ট্রপোনিন আই",
+      "en": "Troponin I"
+    },
+    "category": "biochemistry",
+    "price": "1500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-CRP",
+    "name": {
+      "bn": "সিআরপি",
+      "en": "C-reactive protein (CRP)"
+    },
+    "category": "biochemistry",
+    "price": "700.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "BIO-PSA",
+    "name": {
+      "bn": "পিএসএ",
+      "en": "PSA"
+    },
+    "category": "biochemistry",
+    "price": "1500.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan", "dhanmondi", "uttara"]
+  },
+  {
+    "code": "IMG-CXR",
+    "name": {
+      "bn": "বুকের এক্স-রে (পিএ ভিউ)",
+      "en": "Chest X-ray (PA view)"
+    },
+    "category": "imaging",
+    "price": "500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "IMG-USGWA",
+    "name": {
+      "bn": "আল্ট্রাসনোগ্রাম (সম্পূর্ণ পেট)",
+      "en": "Ultrasound (whole abdomen)"
+    },
+    "category": "imaging",
+    "price": "2000.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"],
+    "preparation": {
+      "bn": "পূর্ণ মূত্রথলি নিয়ে আসুন",
+      "en": "Come with a full bladder"
+    }
+  },
+  {
+    "code": "IMG-USGPR",
+    "name": {
+      "bn": "আল্ট্রাসনোগ্রাম (গর্ভাবস্থা)",
+      "en": "Ultrasound (pregnancy)"
+    },
+    "category": "imaging",
+    "price": "1800.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "IMG-CTB",
+    "name": {
+      "bn": "সিটি স্ক্যান (মস্তিষ্ক)",
+      "en": "CT scan (brain)"
+    },
+    "category": "imaging",
+    "price": "4500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan"]
+  },
+  {
+    "code": "IMG-MRIL",
+    "name": {
+      "bn": "এমআরআই (কোমর)",
+      "en": "MRI (lumbar spine)"
+    },
+    "category": "imaging",
+    "price": "9000.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan"],
+    "preparation": {
+      "bn": "ধাতব জিনিস সঙ্গে আনবেন না",
+      "en": "Do not bring metal objects"
+    }
+  },
+  {
+    "code": "IMG-MAMMO",
+    "name": {
+      "bn": "ম্যামোগ্রাম",
+      "en": "Mammogram"
+    },
+    "category": "imaging",
+    "price": "3500.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "IMG-BMD",
+    "name": {
+      "bn": "হাড়ের ঘনত্ব (বিএমডি)",
+      "en": "Bone density (BMD)"
+    },
+    "category": "imaging",
+    "price": "3000.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "CAR-ECG",
+    "name": {
+      "bn": "ইসিজি (১২ লিড)",
+      "en": "ECG (12 lead)"
+    },
+    "category": "cardiology",
+    "price": "400.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "CAR-ECHO",
+    "name": {
+      "bn": "ইকোকার্ডিওগ্রাম",
+      "en": "Echocardiogram"
+    },
+    "category": "cardiology",
+    "price": "2500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "CAR-ETT",
+    "name": {
+      "bn": "ইটিটি (ট্রেডমিল টেস্ট)",
+      "en": "Exercise tolerance test (ETT)"
+    },
+    "category": "cardiology",
+    "price": "3000.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"],
+    "preparation": {
+      "bn": "আরামদায়ক জুতা পরে আসুন",
+      "en": "Wear comfortable shoes"
+    }
+  },
+  {
+    "code": "CAR-HOLT",
+    "name": {
+      "bn": "হল্টার মনিটরিং (২৪ ঘণ্টা)",
+      "en": "Holter monitoring (24 hours)"
+    },
+    "category": "cardiology",
+    "price": "4000.00",
+    "reportTime": {
+      "bn": "২ দিনের মধ্যে",
+      "en": "Within 2 days"
+    },
+    "branches": ["gulshan"]
+  },
+  {
+    "code": "OTH-PAP",
+    "name": {
+      "bn": "প্যাপ স্মিয়ার",
+      "en": "Pap smear"
+    },
+    "category": "other",
+    "price": "1200.00",
+    "reportTime": {
+      "bn": "৩ দিনের মধ্যে",
+      "en": "Within 3 days"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "OTH-EEG",
+    "name": {
+      "bn": "ইইজি",
+      "en": "EEG"
+    },
+    "category": "other",
+    "price": "3000.00",
+    "reportTime": {
+      "bn": "পরের দিন",
+      "en": "Next day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  },
+  {
+    "code": "OTH-PFT",
+    "name": {
+      "bn": "ফুসফুসের কার্যক্ষমতা পরীক্ষা (স্পাইরোমেট্রি)",
+      "en": "Lung function test (spirometry)"
+    },
+    "category": "other",
+    "price": "1500.00",
+    "reportTime": {
+      "bn": "একই দিনে",
+      "en": "Same day"
+    },
+    "branches": ["gulshan", "dhanmondi"]
+  }
+]

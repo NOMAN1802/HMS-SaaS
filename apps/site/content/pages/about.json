@@ -1,0 +1,105 @@
+{
+  "path": "/about",
+  "title": {
+    "bn": "আমাদের সম্পর্কে",
+    "en": "About us"
+  },
+  "seo": {
+    "title": {
+      "bn": "আমাদের সম্পর্কে",
+      "en": "About us"
+    },
+    "description": {
+      "bn": "কেয়ারস্পেট হাসপাতালের পরিচিতি (ডেমো)।",
+      "en": "About CareSpate Hospital (demo)."
+    }
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "type": "richText",
+      "props": {
+        "heading": {
+          "bn": "কেয়ারস্পেট সম্পর্কে",
+          "en": "About CareSpate"
+        },
+        "body": {
+          "bn": [
+            "কেয়ারস্পেট একটি কাল্পনিক হাসপাতাল, যা বাইটস্পেট এইচএমএস-এর ওয়েবসাইট দেখানোর জন্য তৈরি।",
+            "এখানকার সব নাম, ছবি, মূল্য ও সময়সূচি নমুনা। কোনো আসল হাসপাতাল বা ব্যক্তির সঙ্গে মিল কাকতালীয়।"
+          ],
+          "en": [
+            "CareSpate is a fictional hospital created to show the Bytespate HMS website.",
+            "All names, images, prices and schedules here are samples. Any likeness to a real hospital or person is a coincidence."
+          ]
+        }
+      }
+    },
+    {
+      "id": "mission",
+      "type": "imageText",
+      "props": {
+        "heading": {
+          "bn": "আমাদের লক্ষ্য",
+          "en": "Our aim"
+        },
+        "body": {
+          "bn": ["সহজ ভাষায় তথ্য, সময়মতো চিকিৎসা ও সম্মানজনক আচরণ।"],
+          "en": ["Plain information, timely care and respectful treatment."]
+        },
+        "image": {
+          "slot": "about-team",
+          "alt": {
+            "bn": "চিকিৎসক ও নার্সদের দল (চিত্র)",
+            "en": "A team of doctors and nurses (illustration)"
+          }
+        },
+        "imageSide": "end"
+      }
+    },
+    {
+      "id": "stats",
+      "type": "stats",
+      "props": {
+        "items": [
+          {
+            "value": "12",
+            "label": {
+              "bn": "বিভাগ",
+              "en": "Departments"
+            }
+          },
+          {
+            "value": "3",
+            "label": {
+              "bn": "শাখা",
+              "en": "Branches"
+            }
+          }
+        ]
+      },
+      "hidden": true
+    },
+    {
+      "id": "cta",
+      "type": "callToAction",
+      "props": {
+        "heading": {
+          "bn": "চিকিৎসকের সঙ্গে কথা বলতে চান?",
+          "en": "Want to see a doctor?"
+        },
+        "text": {
+          "bn": "অনলাইনে অ্যাপয়েন্টমেন্ট নিন বা হটলাইনে ফোন করুন।",
+          "en": "Book online or call the hotline."
+        },
+        "button": {
+          "label": {
+            "bn": "অ্যাপয়েন্টমেন্ট নিন",
+            "en": "Book appointment"
+          },
+          "href": "/book-appointment"
+        }
+      }
+    }
+  ]
+}

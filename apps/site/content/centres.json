@@ -1,0 +1,233 @@
+[
+  {
+    "slug": "heart-centre",
+    "name": {
+      "bn": "হার্ট সেন্টার",
+      "en": "Heart Centre"
+    },
+    "summary": {
+      "bn": "হৃদ্‌রোগের পরীক্ষা থেকে সিসিইউ পর্যন্ত এক জায়গায়।",
+      "en": "From heart tests to coronary care in one place."
+    },
+    "overview": {
+      "bn": [
+        "হৃদ্‌রোগের পরীক্ষা থেকে সিসিইউ পর্যন্ত এক জায়গায়।",
+        "এখানে কার্ডিওলজি বিভাগের চিকিৎসকেরা একসঙ্গে কাজ করেন।"
+      ],
+      "en": [
+        "From heart tests to coronary care in one place.",
+        "Doctors from Cardiology work together here."
+      ]
+    },
+    "departments": ["cardiology"],
+    "highlights": [
+      {
+        "bn": "একই দিনে ইসিজি, ইকো ও চিকিৎসক",
+        "en": "ECG, echo and doctor on the same day"
+      },
+      {
+        "bn": "২৪ ঘণ্টা সিসিইউ",
+        "en": "24-hour coronary care"
+      }
+    ],
+    "image": {
+      "slot": "centre-heart-centre",
+      "alt": {
+        "bn": "হার্ট সেন্টার (চিত্র)",
+        "en": "Heart Centre (illustration)"
+      }
+    }
+  },
+  {
+    "slug": "neuro-centre",
+    "name": {
+      "bn": "নিউরো সেন্টার",
+      "en": "Neuro Centre"
+    },
+    "summary": {
+      "bn": "স্ট্রোক ও স্নায়ুরোগের সমন্বিত চিকিৎসা।",
+      "en": "Joined-up care for stroke and nerve diseases."
+    },
+    "overview": {
+      "bn": [
+        "স্ট্রোক ও স্নায়ুরোগের সমন্বিত চিকিৎসা।",
+        "এখানে নিউরোলজি বিভাগের চিকিৎসকেরা একসঙ্গে কাজ করেন।"
+      ],
+      "en": [
+        "Joined-up care for stroke and nerve diseases.",
+        "Doctors from Neurology work together here."
+      ]
+    },
+    "departments": ["neurology"],
+    "highlights": [
+      {
+        "bn": "স্ট্রোক ইউনিট",
+        "en": "Dedicated stroke unit"
+      },
+      {
+        "bn": "ইইজি ও নার্ভ পরীক্ষা",
+        "en": "EEG and nerve studies"
+      }
+    ],
+    "image": {
+      "slot": "centre-neuro-centre",
+      "alt": {
+        "bn": "নিউরো সেন্টার (চিত্র)",
+        "en": "Neuro Centre (illustration)"
+      }
+    }
+  },
+  {
+    "slug": "mother-child",
+    "name": {
+      "bn": "মা ও শিশু সেন্টার",
+      "en": "Mother and Child Centre"
+    },
+    "summary": {
+      "bn": "গর্ভকাল, প্রসব ও শিশুর প্রথম বছরগুলো।",
+      "en": "Pregnancy, birth and a child's first years."
+    },
+    "overview": {
+      "bn": [
+        "গর্ভকাল, প্রসব ও শিশুর প্রথম বছরগুলো।",
+        "এখানে স্ত্রীরোগ ও প্রসূতি, শিশু রোগ বিভাগের চিকিৎসকেরা একসঙ্গে কাজ করেন।"
+      ],
+      "en": [
+        "Pregnancy, birth and a child's first years.",
+        "Doctors from Gynaecology and obstetrics, Paediatrics work together here."
+      ]
+    },
+    "departments": ["gynaecology", "paediatrics"],
+    "highlights": [
+      {
+        "bn": "লেবার রুম ও এনআইসিইউ পাশাপাশি",
+        "en": "Labour suite next to the neonatal ICU"
+      },
+      {
+        "bn": "টিকাদান ও বৃদ্ধি পর্যবেক্ষণ",
+        "en": "Vaccination and growth checks"
+      }
+    ],
+    "image": {
+      "slot": "centre-mother-child",
+      "alt": {
+        "bn": "মা ও শিশু সেন্টার (চিত্র)",
+        "en": "Mother and Child Centre (illustration)"
+      }
+    }
+  },
+  {
+    "slug": "bone-joint",
+    "name": {
+      "bn": "বোন ও জয়েন্ট সেন্টার",
+      "en": "Bone and Joint Centre"
+    },
+    "summary": {
+      "bn": "হাড়, জোড়া ও আঘাতের চিকিৎসা এবং ফিজিওথেরাপি।",
+      "en": "Bone, joint and injury care with physiotherapy."
+    },
+    "overview": {
+      "bn": [
+        "হাড়, জোড়া ও আঘাতের চিকিৎসা এবং ফিজিওথেরাপি।",
+        "এখানে অর্থোপেডিক্স বিভাগের চিকিৎসকেরা একসঙ্গে কাজ করেন।"
+      ],
+      "en": [
+        "Bone, joint and injury care with physiotherapy.",
+        "Doctors from Orthopaedics work together here."
+      ]
+    },
+    "departments": ["orthopaedics"],
+    "highlights": [
+      {
+        "bn": "জোড়া প্রতিস্থাপন",
+        "en": "Joint replacement"
+      },
+      {
+        "bn": "অপারেশনের পর ফিজিওথেরাপি",
+        "en": "Physiotherapy after surgery"
+      }
+    ],
+    "image": {
+      "slot": "centre-bone-joint",
+      "alt": {
+        "bn": "বোন ও জয়েন্ট সেন্টার (চিত্র)",
+        "en": "Bone and Joint Centre (illustration)"
+      }
+    }
+  },
+  {
+    "slug": "kidney-centre",
+    "name": {
+      "bn": "কিডনি সেন্টার",
+      "en": "Kidney Centre"
+    },
+    "summary": {
+      "bn": "কিডনি রোগ ও ডায়ালাইসিস সেবা।",
+      "en": "Kidney disease and dialysis care."
+    },
+    "overview": {
+      "bn": [
+        "কিডনি রোগ ও ডায়ালাইসিস সেবা।",
+        "এখানে কিডনি রোগ বিভাগের চিকিৎসকেরা একসঙ্গে কাজ করেন।"
+      ],
+      "en": ["Kidney disease and dialysis care.", "Doctors from Nephrology work together here."]
+    },
+    "departments": ["nephrology"],
+    "highlights": [
+      {
+        "bn": "নির্দিষ্ট ডায়ালাইসিস সময়সূচি",
+        "en": "Fixed dialysis schedules"
+      },
+      {
+        "bn": "কিডনি ক্লিনিক",
+        "en": "Kidney clinic"
+      }
+    ],
+    "image": {
+      "slot": "centre-kidney-centre",
+      "alt": {
+        "bn": "কিডনি সেন্টার (চিত্র)",
+        "en": "Kidney Centre (illustration)"
+      }
+    }
+  },
+  {
+    "slug": "cancer-care",
+    "name": {
+      "bn": "ক্যানসার কেয়ার সেন্টার",
+      "en": "Cancer Care Centre"
+    },
+    "summary": {
+      "bn": "ক্যানসার চিকিৎসা ও সহায়তা এক ছাদের নিচে।",
+      "en": "Cancer treatment and support under one roof."
+    },
+    "overview": {
+      "bn": [
+        "ক্যানসার চিকিৎসা ও সহায়তা এক ছাদের নিচে।",
+        "এখানে ক্যানসার চিকিৎসা বিভাগের চিকিৎসকেরা একসঙ্গে কাজ করেন।"
+      ],
+      "en": [
+        "Cancer treatment and support under one roof.",
+        "Doctors from Oncology work together here."
+      ]
+    },
+    "departments": ["oncology"],
+    "highlights": [
+      {
+        "bn": "ডে-কেয়ার কেমোথেরাপি",
+        "en": "Day-care chemotherapy"
+      },
+      {
+        "bn": "কাউন্সেলিং ও প্যালিয়েটিভ কেয়ার",
+        "en": "Counselling and palliative care"
+      }
+    ],
+    "image": {
+      "slot": "centre-cancer-care",
+      "alt": {
+        "bn": "ক্যানসার কেয়ার সেন্টার (চিত্র)",
+        "en": "Cancer Care Centre (illustration)"
+      }
+    }
+  }
+]

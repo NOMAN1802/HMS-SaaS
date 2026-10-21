@@ -1,0 +1,1369 @@
+[
+  {
+    "slug": "cardiology",
+    "name": {
+      "bn": "কার্ডিওলজি",
+      "en": "Cardiology"
+    },
+    "icon": "heartbeat",
+    "summary": {
+      "bn": "হৃদ্‌রোগ নির্ণয়, চিকিৎসা ও প্রতিরোধ।",
+      "en": "Diagnosis, treatment and prevention of heart disease."
+    },
+    "overview": {
+      "bn": [
+        "কার্ডিওলজি বিভাগ বুকে ব্যথা, উচ্চ রক্তচাপ, হার্ট ফেইলিওর ও হৃৎস্পন্দনের সমস্যার চিকিৎসা করে।",
+        "ইসিজি, ইকো ও ইটিটি একই জায়গায় হয়, তাই রিপোর্ট নিয়ে একই দিনে চিকিৎসকের সঙ্গে কথা বলা যায়।"
+      ],
+      "en": [
+        "The cardiology department treats chest pain, high blood pressure, heart failure and heart rhythm problems.",
+        "ECG, echocardiography and exercise tests are done in one place, so most patients can see their doctor with the results on the same day."
+      ]
+    },
+    "services": [
+      {
+        "bn": "ইসিজি ও ইকোকার্ডিওগ্রাফি",
+        "en": "ECG and echocardiography"
+      },
+      {
+        "bn": "ইটিটি (ট্রেডমিল টেস্ট)",
+        "en": "Exercise tolerance test"
+      },
+      {
+        "bn": "হল্টার মনিটরিং",
+        "en": "Holter monitoring"
+      },
+      {
+        "bn": "উচ্চ রক্তচাপ ক্লিনিক",
+        "en": "Hypertension clinic"
+      },
+      {
+        "bn": "হার্ট ফেইলিওর ফলো-আপ",
+        "en": "Heart failure follow-up"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "সিসিইউ",
+        "en": "Coronary care unit"
+      },
+      {
+        "bn": "কার্ডিয়াক ল্যাব",
+        "en": "Cardiac laboratory"
+      }
+    ],
+    "image": {
+      "slot": "department-cardiology",
+      "alt": {
+        "bn": "কার্ডিওলজি বিভাগের চিত্র",
+        "en": "Cardiology department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "৩য় তলা, ওপিডি ২",
+      "en": "Level 3, OPD 2"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      }
+    ],
+    "centre": "heart-centre"
+  },
+  {
+    "slug": "neurology",
+    "name": {
+      "bn": "নিউরোলজি",
+      "en": "Neurology"
+    },
+    "icon": "brain",
+    "summary": {
+      "bn": "মস্তিষ্ক, স্নায়ু ও মেরুদণ্ডের রোগের চিকিৎসা।",
+      "en": "Care for diseases of the brain, nerves and spine."
+    },
+    "overview": {
+      "bn": [
+        "স্ট্রোক, মাথাব্যথা, খিঁচুনি, পারকিনসন্স ও স্নায়ুর দুর্বলতার রোগীরা এখানে চিকিৎসা পান।",
+        "স্ট্রোকের লক্ষণ দেখা দিলে দেরি না করে জরুরি বিভাগে আসুন।"
+      ],
+      "en": [
+        "Patients with stroke, headache, epilepsy, Parkinson's disease and nerve weakness are treated here.",
+        "If you notice signs of a stroke, come to the emergency department without delay."
+      ]
+    },
+    "services": [
+      {
+        "bn": "স্ট্রোক কেয়ার",
+        "en": "Stroke care"
+      },
+      {
+        "bn": "ইইজি",
+        "en": "EEG"
+      },
+      {
+        "bn": "নার্ভ কন্ডাকশন স্টাডি",
+        "en": "Nerve conduction study"
+      },
+      {
+        "bn": "মাথাব্যথা ক্লিনিক",
+        "en": "Headache clinic"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "স্ট্রোক ইউনিট",
+        "en": "Stroke unit"
+      }
+    ],
+    "image": {
+      "slot": "department-neurology",
+      "alt": {
+        "bn": "নিউরোলজি বিভাগের চিত্র",
+        "en": "Neurology department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "৪র্থ তলা, ওপিডি ৩",
+      "en": "Level 4, OPD 3"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "16:00"
+          }
+        ]
+      }
+    ],
+    "centre": "neuro-centre"
+  },
+  {
+    "slug": "orthopaedics",
+    "name": {
+      "bn": "অর্থোপেডিক্স",
+      "en": "Orthopaedics"
+    },
+    "icon": "bone",
+    "summary": {
+      "bn": "হাড়, জোড়া, পেশি ও আঘাতের চিকিৎসা।",
+      "en": "Treatment of bones, joints, muscles and injuries."
+    },
+    "overview": {
+      "bn": [
+        "হাড় ভাঙা, হাঁটু ও কোমরের ব্যথা, খেলাধুলার আঘাত ও মেরুদণ্ডের সমস্যার চিকিৎসা হয়।",
+        "ফিজিওথেরাপি দলের সঙ্গে মিলে অপারেশনের পর দ্রুত চলাফেরায় ফিরতে সাহায্য করা হয়।"
+      ],
+      "en": [
+        "We treat fractures, knee and hip pain, sports injuries and spine problems.",
+        "Together with the physiotherapy team we help patients move again quickly after surgery."
+      ]
+    },
+    "services": [
+      {
+        "bn": "জোড়া প্রতিস্থাপন",
+        "en": "Joint replacement"
+      },
+      {
+        "bn": "আর্থ্রোস্কোপি",
+        "en": "Arthroscopy"
+      },
+      {
+        "bn": "হাড় ভাঙার চিকিৎসা",
+        "en": "Fracture care"
+      },
+      {
+        "bn": "ফিজিওথেরাপি",
+        "en": "Physiotherapy"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "অপারেশন থিয়েটার",
+        "en": "Operating theatres"
+      },
+      {
+        "bn": "ফিজিওথেরাপি কক্ষ",
+        "en": "Physiotherapy room"
+      }
+    ],
+    "image": {
+      "slot": "department-orthopaedics",
+      "alt": {
+        "bn": "অর্থোপেডিক্স বিভাগের চিত্র",
+        "en": "Orthopaedics department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "২য় তলা, ওপিডি ১",
+      "en": "Level 2, OPD 1"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      }
+    ],
+    "centre": "bone-joint"
+  },
+  {
+    "slug": "paediatrics",
+    "name": {
+      "bn": "শিশু রোগ",
+      "en": "Paediatrics"
+    },
+    "icon": "baby",
+    "summary": {
+      "bn": "নবজাতক থেকে কিশোর বয়স পর্যন্ত শিশুদের চিকিৎসা।",
+      "en": "Care for children from newborns to teenagers."
+    },
+    "overview": {
+      "bn": [
+        "জ্বর, শ্বাসকষ্ট, ডায়রিয়া, বৃদ্ধি ও পুষ্টির সমস্যায় শিশু বিশেষজ্ঞরা পরামর্শ দেন।",
+        "নিয়মিত টিকাদান ও বৃদ্ধি পর্যবেক্ষণের জন্য আলাদা সময় রাখা আছে।"
+      ],
+      "en": [
+        "Paediatricians advise on fever, breathing problems, diarrhoea, growth and nutrition.",
+        "Separate hours are set aside for routine vaccination and growth checks."
+      ]
+    },
+    "services": [
+      {
+        "bn": "নবজাতক পরিচর্যা",
+        "en": "Newborn care"
+      },
+      {
+        "bn": "শিশু টিকাদান",
+        "en": "Child vaccination"
+      },
+      {
+        "bn": "বৃদ্ধি ও পুষ্টি ক্লিনিক",
+        "en": "Growth and nutrition clinic"
+      },
+      {
+        "bn": "শিশু অ্যাজমা ক্লিনিক",
+        "en": "Childhood asthma clinic"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "এনআইসিইউ",
+        "en": "Neonatal ICU"
+      },
+      {
+        "bn": "শিশু ওয়ার্ড",
+        "en": "Children's ward"
+      }
+    ],
+    "image": {
+      "slot": "department-paediatrics",
+      "alt": {
+        "bn": "শিশু রোগ বিভাগের চিত্র",
+        "en": "Paediatrics department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "১ম তলা, ওপিডি ৪",
+      "en": "Level 1, OPD 4"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "20:00"
+          }
+        ]
+      }
+    ],
+    "centre": "mother-child"
+  },
+  {
+    "slug": "gynaecology",
+    "name": {
+      "bn": "স্ত্রীরোগ ও প্রসূতি",
+      "en": "Gynaecology and obstetrics"
+    },
+    "icon": "gender-female",
+    "summary": {
+      "bn": "গর্ভকালীন সেবা, প্রসব ও নারীস্বাস্থ্য।",
+      "en": "Pregnancy care, childbirth and women's health."
+    },
+    "overview": {
+      "bn": [
+        "গর্ভধারণের আগে থেকে প্রসবের পর পর্যন্ত মা ও শিশুর যত্ন নেওয়া হয়।",
+        "মাসিকের সমস্যা, বন্ধ্যাত্ব ও মেনোপজ নিয়েও পরামর্শ দেওয়া হয়।"
+      ],
+      "en": [
+        "We care for mother and baby from before pregnancy until after birth.",
+        "Advice is also available for menstrual problems, fertility and menopause."
+      ]
+    },
+    "services": [
+      {
+        "bn": "গর্ভকালীন চেকআপ",
+        "en": "Antenatal check-ups"
+      },
+      {
+        "bn": "স্বাভাবিক ও সিজারিয়ান প্রসব",
+        "en": "Normal and caesarean delivery"
+      },
+      {
+        "bn": "বন্ধ্যাত্ব পরামর্শ",
+        "en": "Fertility advice"
+      },
+      {
+        "bn": "জরায়ুমুখ ক্যানসার স্ক্রিনিং",
+        "en": "Cervical cancer screening"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "লেবার রুম",
+        "en": "Labour suite"
+      },
+      {
+        "bn": "মাতৃ ওয়ার্ড",
+        "en": "Maternity ward"
+      }
+    ],
+    "image": {
+      "slot": "department-gynaecology",
+      "alt": {
+        "bn": "স্ত্রীরোগ ও প্রসূতি বিভাগের চিত্র",
+        "en": "Gynaecology and obstetrics department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "৩য় তলা, ওপিডি ৫",
+      "en": "Level 3, OPD 5"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "18:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "18:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "18:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "18:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "18:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "18:00"
+          }
+        ]
+      }
+    ],
+    "centre": "mother-child"
+  },
+  {
+    "slug": "medicine",
+    "name": {
+      "bn": "মেডিসিন",
+      "en": "Internal medicine"
+    },
+    "icon": "stethoscope",
+    "summary": {
+      "bn": "জ্বর, ডায়াবেটিস ও দীর্ঘমেয়াদি রোগের চিকিৎসা।",
+      "en": "Fever, diabetes and long-term conditions."
+    },
+    "overview": {
+      "bn": [
+        "কোন বিভাগে যাবেন বুঝতে না পারলে মেডিসিন বিশেষজ্ঞ দিয়ে শুরু করুন।",
+        "ডায়াবেটিস, থাইরয়েড, উচ্চ রক্তচাপ ও সংক্রমণের নিয়মিত চিকিৎসা ও ফলো-আপ হয়।"
+      ],
+      "en": [
+        "If you are not sure which department you need, start with an internal medicine specialist.",
+        "Diabetes, thyroid problems, high blood pressure and infections are treated and followed up here."
+      ]
+    },
+    "services": [
+      {
+        "bn": "ডায়াবেটিস ক্লিনিক",
+        "en": "Diabetes clinic"
+      },
+      {
+        "bn": "থাইরয়েড ক্লিনিক",
+        "en": "Thyroid clinic"
+      },
+      {
+        "bn": "জ্বর ও সংক্রমণ",
+        "en": "Fever and infections"
+      },
+      {
+        "bn": "প্রবীণদের স্বাস্থ্য",
+        "en": "Older adult care"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "মেডিসিন ওয়ার্ড",
+        "en": "Medical ward"
+      }
+    ],
+    "image": {
+      "slot": "department-medicine",
+      "alt": {
+        "bn": "মেডিসিন বিভাগের চিত্র",
+        "en": "Internal medicine department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "১ম তলা, ওপিডি ১",
+      "en": "Level 1, OPD 1"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "08:00",
+            "end": "21:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "08:00",
+            "end": "21:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "08:00",
+            "end": "21:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "08:00",
+            "end": "21:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "08:00",
+            "end": "21:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "08:00",
+            "end": "21:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ent",
+    "name": {
+      "bn": "নাক, কান ও গলা",
+      "en": "Ear, nose and throat"
+    },
+    "icon": "ear",
+    "summary": {
+      "bn": "কান, নাক, গলা ও শ্রবণের সমস্যার চিকিৎসা।",
+      "en": "Care for ear, nose, throat and hearing problems."
+    },
+    "overview": {
+      "bn": [
+        "সাইনাস, টনসিল, কানে কম শোনা ও কণ্ঠস্বরের সমস্যার চিকিৎসা হয়।",
+        "শ্রবণ পরীক্ষা ও এন্ডোস্কপি আউটডোরেই করা যায়।"
+      ],
+      "en": [
+        "We treat sinus problems, tonsils, hearing loss and voice problems.",
+        "Hearing tests and endoscopy can be done in the outpatient clinic."
+      ]
+    },
+    "services": [
+      {
+        "bn": "শ্রবণ পরীক্ষা",
+        "en": "Hearing tests"
+      },
+      {
+        "bn": "নাকের এন্ডোস্কপি",
+        "en": "Nasal endoscopy"
+      },
+      {
+        "bn": "টনসিল ও সাইনাস সার্জারি",
+        "en": "Tonsil and sinus surgery"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "অডিওমেট্রি কক্ষ",
+        "en": "Audiometry room"
+      }
+    ],
+    "image": {
+      "slot": "department-ent",
+      "alt": {
+        "bn": "নাক, কান ও গলা বিভাগের চিত্র",
+        "en": "Ear, nose and throat department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "২য় তলা, ওপিডি ৩",
+      "en": "Level 2, OPD 3"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "17:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ophthalmology",
+    "name": {
+      "bn": "চক্ষু",
+      "en": "Eye care"
+    },
+    "icon": "eye",
+    "summary": {
+      "bn": "চোখের পরীক্ষা, ছানি ও গ্লুকোমার চিকিৎসা।",
+      "en": "Eye tests, cataract and glaucoma care."
+    },
+    "overview": {
+      "bn": [
+        "চোখের পাওয়ার পরীক্ষা থেকে ছানি অপারেশন পর্যন্ত সেবা পাওয়া যায়।",
+        "ডায়াবেটিস থাকলে বছরে অন্তত একবার রেটিনা পরীক্ষা করান।"
+      ],
+      "en": [
+        "Services range from vision tests to cataract surgery.",
+        "If you have diabetes, have your retina checked at least once a year."
+      ]
+    },
+    "services": [
+      {
+        "bn": "চোখের পাওয়ার পরীক্ষা",
+        "en": "Vision tests"
+      },
+      {
+        "bn": "ছানি অপারেশন",
+        "en": "Cataract surgery"
+      },
+      {
+        "bn": "গ্লুকোমা ক্লিনিক",
+        "en": "Glaucoma clinic"
+      },
+      {
+        "bn": "ডায়াবেটিক রেটিনা পরীক্ষা",
+        "en": "Diabetic retina checks"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "চক্ষু অপারেশন থিয়েটার",
+        "en": "Eye theatre"
+      }
+    ],
+    "image": {
+      "slot": "department-ophthalmology",
+      "alt": {
+        "bn": "চক্ষু বিভাগের চিত্র",
+        "en": "Eye care department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "২য় তলা, ওপিডি ৪",
+      "en": "Level 2, OPD 4"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "dental",
+    "name": {
+      "bn": "দন্ত",
+      "en": "Dental care"
+    },
+    "icon": "tooth",
+    "summary": {
+      "bn": "দাঁত ও মাড়ির চিকিৎসা, শিশু ও বড়দের জন্য।",
+      "en": "Teeth and gum care for children and adults."
+    },
+    "overview": {
+      "bn": [
+        "দাঁত পরিষ্কার, ফিলিং, রুট ক্যানেল ও দাঁত তোলার সেবা দেওয়া হয়।",
+        "শিশুদের প্রথম দাঁতের চেকআপ এক বছর বয়সের মধ্যে করানো ভালো।"
+      ],
+      "en": [
+        "Cleaning, fillings, root canal treatment and extractions are offered.",
+        "A child's first dental check-up is best done by the age of one."
+      ]
+    },
+    "services": [
+      {
+        "bn": "দাঁত পরিষ্কার (স্কেলিং)",
+        "en": "Scaling and cleaning"
+      },
+      {
+        "bn": "রুট ক্যানেল",
+        "en": "Root canal treatment"
+      },
+      {
+        "bn": "ফিলিং",
+        "en": "Fillings"
+      },
+      {
+        "bn": "শিশু দন্ত চিকিৎসা",
+        "en": "Children's dentistry"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "ডেন্টাল চেয়ার ও এক্স-রে",
+        "en": "Dental chairs and X-ray"
+      }
+    ],
+    "image": {
+      "slot": "department-dental",
+      "alt": {
+        "bn": "দন্ত বিভাগের চিত্র",
+        "en": "Dental care department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "উত্তরা শাখা, ২য় তলা",
+      "en": "Uttara branch, Level 2"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "20:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "10:00",
+            "end": "20:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "nephrology",
+    "name": {
+      "bn": "কিডনি রোগ",
+      "en": "Nephrology"
+    },
+    "icon": "drop",
+    "summary": {
+      "bn": "কিডনি রোগ, ডায়ালাইসিস ও প্রস্রাবের সমস্যা।",
+      "en": "Kidney disease, dialysis and urinary problems."
+    },
+    "overview": {
+      "bn": [
+        "দীর্ঘমেয়াদি কিডনি রোগ, কিডনিতে পাথর ও উচ্চ রক্তচাপজনিত কিডনি সমস্যার চিকিৎসা হয়।",
+        "ডায়ালাইসিস রোগীদের জন্য নির্দিষ্ট সময়সূচি ও ফলো-আপ রয়েছে।"
+      ],
+      "en": [
+        "We treat chronic kidney disease, kidney stones and kidney problems caused by high blood pressure.",
+        "Dialysis patients have fixed session times and regular follow-up."
+      ]
+    },
+    "services": [
+      {
+        "bn": "হিমোডায়ালাইসিস",
+        "en": "Haemodialysis"
+      },
+      {
+        "bn": "কিডনি ক্লিনিক",
+        "en": "Kidney clinic"
+      },
+      {
+        "bn": "কিডনির পাথর পরামর্শ",
+        "en": "Kidney stone advice"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "ডায়ালাইসিস ইউনিট",
+        "en": "Dialysis unit"
+      }
+    ],
+    "image": {
+      "slot": "department-nephrology",
+      "alt": {
+        "bn": "কিডনি রোগ বিভাগের চিত্র",
+        "en": "Nephrology department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "৪র্থ তলা, ওপিডি ১",
+      "en": "Level 4, OPD 1"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "17:00"
+          }
+        ]
+      }
+    ],
+    "centre": "kidney-centre"
+  },
+  {
+    "slug": "gastroenterology",
+    "name": {
+      "bn": "গ্যাস্ট্রোএন্টারোলজি",
+      "en": "Gastroenterology"
+    },
+    "icon": "pill",
+    "summary": {
+      "bn": "পেট, লিভার ও পরিপাকতন্ত্রের রোগ।",
+      "en": "Stomach, liver and digestive diseases."
+    },
+    "overview": {
+      "bn": [
+        "গ্যাস্ট্রিক, আলসার, লিভারের রোগ, জন্ডিস ও অন্ত্রের সমস্যার চিকিৎসা হয়।",
+        "এন্ডোস্কপি ও কোলনোস্কপির আগে কীভাবে প্রস্তুতি নেবেন তা বিভাগ থেকে জানিয়ে দেওয়া হয়।"
+      ],
+      "en": [
+        "We treat acidity, ulcers, liver disease, jaundice and bowel problems.",
+        "The department tells you how to prepare before an endoscopy or colonoscopy."
+      ]
+    },
+    "services": [
+      {
+        "bn": "এন্ডোস্কপি",
+        "en": "Endoscopy"
+      },
+      {
+        "bn": "কোলনোস্কপি",
+        "en": "Colonoscopy"
+      },
+      {
+        "bn": "লিভার ক্লিনিক",
+        "en": "Liver clinic"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "এন্ডোস্কপি স্যুট",
+        "en": "Endoscopy suite"
+      }
+    ],
+    "image": {
+      "slot": "department-gastroenterology",
+      "alt": {
+        "bn": "গ্যাস্ট্রোএন্টারোলজি বিভাগের চিত্র",
+        "en": "Gastroenterology department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "৩য় তলা, ওপিডি ৩",
+      "en": "Level 3, OPD 3"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "16:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "oncology",
+    "name": {
+      "bn": "ক্যানসার চিকিৎসা",
+      "en": "Oncology"
+    },
+    "icon": "microscope",
+    "summary": {
+      "bn": "ক্যানসার নির্ণয়, কেমোথেরাপি ও পরবর্তী যত্ন।",
+      "en": "Cancer diagnosis, chemotherapy and follow-up care."
+    },
+    "overview": {
+      "bn": [
+        "ক্যানসার নির্ণয়ের পর বিভিন্ন বিভাগের চিকিৎসকেরা একসঙ্গে চিকিৎসা পরিকল্পনা করেন।",
+        "ডে-কেয়ার কেমোথেরাপি ও কাউন্সেলিং সেবা রয়েছে।"
+      ],
+      "en": [
+        "After a cancer diagnosis, doctors from several departments plan treatment together.",
+        "Day-care chemotherapy and counselling are available."
+      ]
+    },
+    "services": [
+      {
+        "bn": "কেমোথেরাপি (ডে-কেয়ার)",
+        "en": "Day-care chemotherapy"
+      },
+      {
+        "bn": "টিউমার বোর্ড",
+        "en": "Tumour board"
+      },
+      {
+        "bn": "ব্যথা ও প্যালিয়েটিভ কেয়ার",
+        "en": "Pain and palliative care"
+      }
+    ],
+    "facilities": [
+      {
+        "bn": "কেমোথেরাপি ডে-কেয়ার",
+        "en": "Chemotherapy day-care"
+      }
+    ],
+    "image": {
+      "slot": "department-oncology",
+      "alt": {
+        "bn": "ক্যানসার চিকিৎসা বিভাগের চিত্র",
+        "en": "Oncology department (illustration)"
+      }
+    },
+    "floor": {
+      "bn": "৫ম তলা, ওপিডি ২",
+      "en": "Level 5, OPD 2"
+    },
+    "opdHours": [
+      {
+        "day": "sat",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "sun",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "mon",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "sessions": [
+          {
+            "start": "09:00",
+            "end": "15:00"
+          }
+        ]
+      }
+    ],
+    "centre": "cancer-care"
+  }
+]

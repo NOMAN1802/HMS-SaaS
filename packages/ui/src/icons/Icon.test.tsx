@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Icon, type IconName } from './Icon.js';
+import { Icon, isIconName, type IconName } from './Icon.js';
 
 describe('Icon', () => {
   it('renders a decorative svg hidden from assistive technology', () => {
@@ -23,5 +23,11 @@ describe('Icon', () => {
     const svg = container.querySelector('svg');
     expect(svg?.getAttribute('width')).toBe('24');
     expect(svg?.getAttribute('aria-hidden')).toBe('true');
+  });
+
+  it('checks icon names coming from content data', () => {
+    expect(isIconName('heartbeat')).toBe(true);
+    expect(isIconName('toString')).toBe(false);
+    expect(isIconName('no-such-icon')).toBe(false);
   });
 });
