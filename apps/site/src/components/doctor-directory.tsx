@@ -77,7 +77,9 @@ export function DoctorDirectory({ doctors, departments, branches }: DoctorDirect
       <form
         role="search"
         onSubmit={(event) => event.preventDefault()}
-        className="grid gap-4 rounded-panel border border-border bg-surface p-4 md:grid-cols-[2fr_1fr_1fr]"
+        className={`grid gap-4 rounded-panel border border-border bg-surface p-4 ${
+          branches.length > 0 ? 'md:grid-cols-[2fr_1fr_1fr]' : 'md:grid-cols-[2fr_1fr]'
+        }`}
       >
         <Field label={t('doctors.searchLabel')}>
           {(control) => (
@@ -99,16 +101,19 @@ export function DoctorDirectory({ doctors, departments, branches }: DoctorDirect
             />
           )}
         </Field>
-        <Field label={t('doctors.branch')}>
-          {(control) => (
-            <Select
-              {...control}
-              options={[{ value: '', label: t('doctors.allBranches') }, ...branches]}
-              value={branch}
-              onChange={(event) => update({ ...filters, branch: event.target.value })}
-            />
-          )}
-        </Field>
+        {/* A branch page passes its own doctors and no branch options (X21). */}
+        {branches.length > 0 ? (
+          <Field label={t('doctors.branch')}>
+            {(control) => (
+              <Select
+                {...control}
+                options={[{ value: '', label: t('doctors.allBranches') }, ...branches]}
+                value={branch}
+                onChange={(event) => update({ ...filters, branch: event.target.value })}
+              />
+            )}
+          </Field>
+        ) : null}
       </form>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p aria-live="polite" className="font-ui font-medium" data-testid="doctor-count">

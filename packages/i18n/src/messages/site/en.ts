@@ -71,6 +71,11 @@ export const siteEn = {
     kindDepartment: 'Department',
   },
   form: {
+    email: 'Email (optional)',
+    branch: 'Branch',
+    anyBranch: 'Any branch',
+    message: 'Message',
+    send: 'Send message',
     name: 'Your name',
     phone: 'Mobile number',
     phoneHint: 'For example 01712345678',
@@ -186,6 +191,52 @@ export const siteEn = {
       cardiology: 'Heart tests',
       other: 'Other',
     },
+  },
+  branches: {
+    title: 'Branches',
+    intro: 'Three branches in Dhaka. Emergency care is open around the clock at Gulshan.',
+  },
+  branch: {
+    units: 'Units and where to find them',
+    services: 'Services at this branch',
+    contact: 'Hours and contact',
+    head: 'Branch head',
+    mapPlaceholder: 'Map will be shown here',
+    doctors: 'Doctors at this branch',
+  },
+  contact: {
+    title: 'Contact us',
+    intro: 'Call, email or send us a message. For an emergency, call the emergency number.',
+    ambulance: 'Ambulance',
+    phones: 'Phone numbers',
+    formHeading: 'Send us a message',
+  },
+  articles: {
+    title: 'Health articles',
+    intro: 'Plain advice from our doctors.',
+    by: 'By',
+    disclaimer: 'This article is general information and does not replace advice from your doctor.',
+  },
+  notices: {
+    title: 'Notices',
+    intro: 'News and changes to services and hours.',
+  },
+  careers: {
+    title: 'Careers',
+    intro: 'Join the team.',
+    demoNote: 'This is a demo website. Applications are not accepted here.',
+    closing: 'Apply by {date}',
+    type: {
+      fullTime: 'Full time',
+      partTime: 'Part time',
+      contract: 'Contract',
+    },
+  },
+  notFound: {
+    title: 'Page not found',
+    body: 'The page you are looking for does not exist or has moved.',
+    home: 'Go to the home page',
+    helpful: 'Helpful links',
   },
 } as const;
 
