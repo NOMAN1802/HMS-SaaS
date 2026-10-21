@@ -4,6 +4,7 @@ import { isLocale } from '@hms/i18n';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Suspense } from 'react';
 import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { TestPriceList, type TestRow } from '../../../src/components/test-price-list';
@@ -47,7 +48,9 @@ export default async function TestsPage({ params }: Params) {
       <PageHeader title={t('tests.title')} intro={t('tests.intro')} />
       <Container className="py-10">
         <h2 className="sr-only">{t('tests.title')}</h2>
-        <TestPriceList rows={rows} categories={categories} />
+        <Suspense>
+          <TestPriceList rows={rows} categories={categories} />
+        </Suspense>
       </Container>
     </>
   );

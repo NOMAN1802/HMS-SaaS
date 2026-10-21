@@ -80,3 +80,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-21 | [T-WEB-12: information pages](2026-10-21-T-WEB-12-info-pages.md)                                            |
 | 2026-10-21 | [T-WEB-10: booking wizard (mock)](2026-10-21-T-WEB-10-booking.md)                                           |
 | 2026-10-21 | [T-WEB-11: patient service forms (mock)](2026-10-21-T-WEB-11-patient-services.md)                           |
+| 2026-10-21 | [T-WEB-17: site-wide search](2026-10-21-T-WEB-17-site-search.md)                                            |

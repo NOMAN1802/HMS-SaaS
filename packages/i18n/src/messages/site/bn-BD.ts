@@ -62,6 +62,18 @@ export const siteBnBD: SiteMessages = {
     contents: 'সূচি',
   },
   search: {
+    title: 'খুঁজুন',
+    headerLink: 'সাইটে খুঁজুন',
+    placeholderAll: 'চিকিৎসক, বিভাগ, প্যাকেজ, পরীক্ষা বা বিষয়',
+    hint: 'অন্তত দুটি অক্ষর লিখুন।',
+    group: {
+      doctor: 'চিকিৎসক',
+      department: 'বিভাগ',
+      centre: 'সেন্টার',
+      package: 'হেলথ প্যাকেজ',
+      test: 'পরীক্ষা',
+      article: 'লেখা',
+    },
     label: 'চিকিৎসক ও বিভাগ খুঁজুন',
     placeholder: 'চিকিৎসকের নাম, বিশেষত্ব বা বিভাগ',
     submit: 'খুঁজুন',

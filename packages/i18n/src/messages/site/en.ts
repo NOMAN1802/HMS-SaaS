@@ -62,6 +62,18 @@ export const siteEn = {
     contents: 'Contents',
   },
   search: {
+    title: 'Search',
+    headerLink: 'Search the site',
+    placeholderAll: 'Doctor, department, package, test or topic',
+    hint: 'Type at least two letters.',
+    group: {
+      doctor: 'Doctors',
+      department: 'Departments',
+      centre: 'Centres',
+      package: 'Health packages',
+      test: 'Tests',
+      article: 'Articles',
+    },
     label: 'Search doctors and departments',
     placeholder: 'Doctor name, speciality or department',
     submit: 'Search',

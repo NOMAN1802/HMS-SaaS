@@ -11,7 +11,7 @@ export {
   type ButtonVariant,
   type IconButtonProps,
 } from './primitives/Button.js';
-export { buttonClassName } from './primitives/button-styles.js';
+export { buttonClassName, iconButtonClassName } from './primitives/button-styles.js';
 export { TextInput, type TextInputProps } from './primitives/TextInput.js';
 export { TextArea, type TextAreaProps } from './primitives/TextArea.js';
 export { Select, type SelectOption, type SelectProps } from './primitives/Select.js';

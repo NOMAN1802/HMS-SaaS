@@ -3,6 +3,7 @@
 // a table on wide screens, stacked rows on phones (FR-WEB-TST-001, AT-WEB-022). Rows arrive from
 // the server already formatted. Implements: T-WEB-09.
 import { Field, Select, TextInput } from '@hms/ui';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
 import { normalizeQuery } from '../content/normalize';
@@ -27,7 +28,8 @@ export function TestPriceList({
   categories: { value: string; label: string }[];
 }) {
   const t = useTranslations();
-  const [query, setQuery] = useState('');
+  // A link from the site search opens the list already filtered (?q=<code>).
+  const [query, setQuery] = useState(useSearchParams().get('q') ?? '');
   const [category, setCategory] = useState('');
   const results = useMemo(() => {
     const normalized = normalizeQuery(query);

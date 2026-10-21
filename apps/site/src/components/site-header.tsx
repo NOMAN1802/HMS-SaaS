@@ -3,7 +3,7 @@
 // (F section 3). Implements: T-WEB-05, FR-WEB-NAV-*.
 import type { Site } from '@hms/contracts';
 import type { Locale } from '@hms/i18n';
-import { buttonClassName } from '@hms/ui';
+import { buttonClassName, Icon, iconButtonClassName } from '@hms/ui';
 import { getTranslations } from 'next-intl/server';
 import { localize } from '../content';
 import { Link } from '../i18n/navigation';
@@ -42,6 +42,14 @@ export async function SiteHeader({ site, locale }: { site: Site; locale: Locale 
           </ul>
         </nav>
         <div className="flex items-center gap-2">
+          <Link
+            href="/search"
+            aria-label={t('search.headerLink')}
+            title={t('search.headerLink')}
+            className={iconButtonClassName('secondary')}
+          >
+            <Icon name="search" />
+          </Link>
           {/* The wrapper hides the call to action on phones, where the bottom bar offers it;
               a display class on the link itself would fight the button's inline-flex. */}
           <div className="hidden md:block">
