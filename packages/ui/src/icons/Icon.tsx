@@ -77,6 +77,10 @@ import { Translate } from '@phosphor-icons/react/dist/csr/Translate';
 import { WhatsappLogo } from '@phosphor-icons/react/dist/csr/WhatsappLogo';
 import { YoutubeLogo } from '@phosphor-icons/react/dist/csr/YoutubeLogo';
 
+import type { IconName } from './icon-names.js';
+
+export type { IconName } from './icon-names.js';
+
 const ICONS = {
   check: Check,
   'caret-down': CaretDown,
@@ -151,14 +155,7 @@ const ICONS = {
   translate: Translate,
   whatsapp: WhatsappLogo,
   youtube: YoutubeLogo,
-} as const;
-
-export type IconName = keyof typeof ICONS;
-
-/** Lets content data (CMS, mock JSON) name an icon as a string and be checked at build time. */
-export function isIconName(value: string): value is IconName {
-  return Object.hasOwn(ICONS, value);
-}
+} satisfies Record<IconName, unknown>;
 
 export interface IconProps {
   name: IconName;

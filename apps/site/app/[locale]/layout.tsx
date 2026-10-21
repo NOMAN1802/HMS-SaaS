@@ -1,12 +1,19 @@
 // Root layout of the public website, one per locale (`/bn`, `/en`). Sets the document language,
 // loads the design tokens and fonts, and provides the site catalog to client components.
-// Implements: T-WEB-01, FR-WEB-GEN-001, FR-WEB-NAV-005 (skip link), P-023, P-028.
+// Every page gets the shell: top bar, header, demo notice, footer and the phone action bar.
+// Implements: T-WEB-01, T-WEB-05, FR-WEB-GEN-001, FR-WEB-NAV-005 (skip link), P-023, P-028.
 import { htmlLang } from '@hms/i18n';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { ReactNode } from 'react';
+import { DemoNotice } from '../../src/components/demo-notice';
+import { PhoneActionBar } from '../../src/components/phone-action-bar';
+import { SiteFooter } from '../../src/components/site-footer';
+import { SiteHeader } from '../../src/components/site-header';
+import { TopBar } from '../../src/components/top-bar';
+import { getSite, localize } from '../../src/content';
 import { routing } from '../../src/i18n/routing';
 import '../globals.css';
 
@@ -22,7 +29,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('meta.title'), description: t('meta.description') };
+  const site = getSite();
+  const name = hasLocale(routing.locales, locale)
+    ? localize(site.settings.hospitalName, locale)
+    : '';
+  return {
+    title: { default: name || t('meta.title'), template: `%s | ${name}` },
+    description: t('meta.description'),
+  };
 }
 
 export default async function LocaleLayout({
@@ -34,6 +48,7 @@ export default async function LocaleLayout({
   // Keeps the page static: next-intl reads the locale from here instead of request headers.
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
+  const site = getSite();
 
   return (
     <html lang={htmlLang(locale)}>
@@ -44,7 +59,16 @@ export default async function LocaleLayout({
         >
           {t('shell.skipToContent')}
         </a>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <TopBar site={site} locale={locale} />
+          <SiteHeader site={site} locale={locale} />
+          {site.notice.enabled ? <DemoNotice text={localize(site.notice.text, locale)} /> : null}
+          <main id="main" tabIndex={-1} className="focus:outline-none">
+            {children}
+          </main>
+          <SiteFooter site={site} locale={locale} />
+          <PhoneActionBar site={site} />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
+import { isIconName } from './icon-names.js';
 import { describe, expect, it } from 'vitest';
-import { Icon, isIconName, type IconName } from './Icon.js';
+import { Icon, type IconName } from './Icon.js';
 
 describe('Icon', () => {
   it('renders a decorative svg hidden from assistive technology', () => {

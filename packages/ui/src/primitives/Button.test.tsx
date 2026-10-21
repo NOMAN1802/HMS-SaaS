@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { Button, buttonClassName, IconButton } from './Button.js';
+import { Button, IconButton } from './Button.js';
+import { buttonClassName } from './button-styles.js';
 
 describe('Button', () => {
   it('defaults to type=button so it never submits a form by accident', () => {

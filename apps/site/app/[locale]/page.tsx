@@ -8,12 +8,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale });
 
   return (
-    <main
-      id="main"
-      className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center gap-4 px-4"
-    >
+    <div className="mx-auto flex min-h-[50vh] max-w-3xl flex-col justify-center gap-4 px-4">
       <h1 className="text-4xl font-semibold">{t('placeholder.heading')}</h1>
       <p className="text-lg text-text-muted">{t('placeholder.body')}</p>
-    </main>
+    </div>
   );
 }

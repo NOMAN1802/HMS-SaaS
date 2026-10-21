@@ -1,16 +1,17 @@
 // Design-system components, built in-house on semantic HTML (ADR-022). Design tokens and base
 // styles are exported as `@hms/ui/styles.css`. Feature screens import everything from here
 // (T-UI-01, ADR-022 section 9: raw widgets, color literals and formatting stay out of apps).
-export { Icon, isIconName, type IconName, type IconProps } from './icons/Icon.js';
+export { Icon, type IconProps } from './icons/Icon.js';
+export { iconNames, isIconName, type IconName } from './icons/icon-names.js';
 export {
   Button,
-  buttonClassName,
   IconButton,
   type ButtonProps,
   type ButtonSize,
   type ButtonVariant,
   type IconButtonProps,
 } from './primitives/Button.js';
+export { buttonClassName } from './primitives/button-styles.js';
 export { TextInput, type TextInputProps } from './primitives/TextInput.js';
 export { Field, type FieldControlProps, type FieldProps } from './primitives/Field.js';
 export { StatusBadge, type StatusBadgeProps, type StatusKind } from './primitives/StatusBadge.js';
