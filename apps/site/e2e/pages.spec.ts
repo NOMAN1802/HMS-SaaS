@@ -66,7 +66,7 @@ test('an unknown path shows the localized not-found page with 404 (AT-WEB-042)',
   const response = await page.goto('/bn/no-such-page');
   expect(response?.status()).toBe(404);
   await expect(page.locator('html')).toHaveAttribute('lang', 'bn-BD');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('পাতাটি পাওয়া যায়নি');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('পেজটি পাওয়া যায়নি');
 });
 
 for (const path of [

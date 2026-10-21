@@ -1,12 +1,12 @@
 {
   "path": "/patients-and-visitors",
   "title": {
-    "bn": "রোগী ও দর্শনার্থী",
+    "bn": "পেশেন্ট ও ভিজিটর",
     "en": "Patients and visitors"
   },
   "seo": {
     "title": {
-      "bn": "রোগী ও দর্শনার্থী",
+      "bn": "পেশেন্ট ও ভিজিটর",
       "en": "Patients and visitors"
     },
     "description": {
@@ -41,7 +41,7 @@
         "items": [
           {
             "question": {
-              "bn": "অ্যাপয়েন্টমেন্ট ছাড়া কি চিকিৎসক দেখানো যায়?",
+              "bn": "অ্যাপয়েন্টমেন্ট ছাড়া কি ডাক্তার দেখানো যায়?",
               "en": "Can I see a doctor without an appointment?"
             },
             "answer": {

@@ -9,7 +9,7 @@
       "en": "CareSpate"
     },
     "tagline": {
-      "bn": "যে সেবা আপনাকে নামে চেনে",
+      "bn": "আপনজনের মতো যত্ন",
       "en": "Care that knows you by name"
     },
     "contacts": {
@@ -84,14 +84,14 @@
     "header": [
       {
         "label": {
-          "bn": "চিকিৎসক",
+          "bn": "ডাক্তার",
           "en": "Doctors"
         },
         "href": "/doctors"
       },
       {
         "label": {
-          "bn": "বিভাগসমূহ",
+          "bn": "ডিপার্টমেন্ট",
           "en": "Departments"
         },
         "href": "/departments",
@@ -119,14 +119,14 @@
           },
           {
             "label": {
-              "bn": "শিশু রোগ",
+              "bn": "শিশু (পেডিয়াট্রিক্স)",
               "en": "Paediatrics"
             },
             "href": "/departments/paediatrics"
           },
           {
             "label": {
-              "bn": "স্ত্রীরোগ ও প্রসূতি",
+              "bn": "গাইনি ও অবস",
               "en": "Gynaecology and obstetrics"
             },
             "href": "/departments/gynaecology"
@@ -140,7 +140,7 @@
           },
           {
             "label": {
-              "bn": "নাক, কান ও গলা",
+              "bn": "নাক, কান ও গলা (ENT)",
               "en": "Ear, nose and throat"
             },
             "href": "/departments/ent"
@@ -161,7 +161,7 @@
           },
           {
             "label": {
-              "bn": "কিডনি রোগ",
+              "bn": "কিডনি (নেফ্রোলজি)",
               "en": "Nephrology"
             },
             "href": "/departments/nephrology"
@@ -175,7 +175,7 @@
           },
           {
             "label": {
-              "bn": "ক্যানসার চিকিৎসা",
+              "bn": "ক্যানসার (অনকোলজি)",
               "en": "Oncology"
             },
             "href": "/departments/oncology"
@@ -198,21 +198,21 @@
       },
       {
         "label": {
-          "bn": "পরীক্ষার মূল্য",
+          "bn": "টেস্টের দাম",
           "en": "Test prices"
         },
         "href": "/tests"
       },
       {
         "label": {
-          "bn": "রোগী ও দর্শনার্থী",
+          "bn": "পেশেন্ট ও ভিজিটর",
           "en": "Patients and visitors"
         },
         "href": "/patients-and-visitors"
       },
       {
         "label": {
-          "bn": "শাখা",
+          "bn": "ব্রাঞ্চ",
           "en": "Branches"
         },
         "href": "/branches"
@@ -243,7 +243,7 @@
         "links": [
           {
             "label": {
-              "bn": "চিকিৎসক খুঁজুন",
+              "bn": "ডাক্তার খুঁজুন",
               "en": "Find a doctor"
             },
             "href": "/doctors"
@@ -264,7 +264,7 @@
           },
           {
             "label": {
-              "bn": "পরীক্ষার মূল্য",
+              "bn": "টেস্টের দাম",
               "en": "Test prices"
             },
             "href": "/tests"
@@ -278,7 +278,7 @@
           },
           {
             "label": {
-              "bn": "বাসা থেকে নমুনা সংগ্রহ",
+              "bn": "বাসা থেকে স্যাম্পল কালেকশন",
               "en": "Home sample collection"
             },
             "href": "/sample-collection"
@@ -293,14 +293,14 @@
         "links": [
           {
             "label": {
-              "bn": "আমাদের সম্পর্কে",
+              "bn": "আমাদের কথা",
               "en": "About us"
             },
             "href": "/about"
           },
           {
             "label": {
-              "bn": "শাখা",
+              "bn": "ব্রাঞ্চ",
               "en": "Branches"
             },
             "href": "/branches"
@@ -314,7 +314,7 @@
           },
           {
             "label": {
-              "bn": "স্বাস্থ্য বিষয়ক লেখা",
+              "bn": "হেলথ টিপস",
               "en": "Health articles"
             },
             "href": "/articles"
@@ -343,21 +343,21 @@
         "links": [
           {
             "label": {
-              "bn": "রোগী ও দর্শনার্থী নির্দেশিকা",
+              "bn": "পেশেন্ট ও ভিজিটর গাইড",
               "en": "Patient and visitor guide"
             },
             "href": "/patients-and-visitors"
           },
           {
             "label": {
-              "bn": "জরুরি সেবা",
+              "bn": "ইমার্জেন্সি সার্ভিস",
               "en": "Emergency"
             },
             "href": "/emergency"
           },
           {
             "label": {
-              "bn": "মতামত দিন",
+              "bn": "ফিডব্যাক দিন",
               "en": "Feedback"
             },
             "href": "/feedback"
@@ -373,7 +373,7 @@
       }
     ],
     "note": {
-      "bn": "© ২০২৬ কেয়ারস্পেট হাসপাতাল (ডেমো)। বাইটস্পেট এইচএমএস দ্বারা পরিচালিত।",
+      "bn": "© ২০২৬ কেয়ারস্পেট হাসপাতাল (ডেমো)। বাইটস্পেট HMS দ্বারা পরিচালিত।",
       "en": "© 2026 CareSpate Hospital (demo). Powered by Bytespate HMS."
     }
   },

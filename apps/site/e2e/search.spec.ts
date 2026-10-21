@@ -10,7 +10,7 @@ test('"card" finds doctors and departments, grouped (AT-WEB-058)', async ({ page
 
 test('the Bangla word finds the same department', async ({ page }) => {
   await page.goto('/bn/search');
-  await page.getByLabel('চিকিৎসক ও বিভাগ খুঁজুন').fill('কার্ড');
+  await page.getByLabel('ডাক্তার বা ডিপার্টমেন্ট খুঁজুন').fill('কার্ড');
   await expect(page.getByTestId('search-group-department')).toContainText('কার্ডিওলজি');
   await expect(page).toHaveURL(/q=/);
 });
@@ -20,9 +20,9 @@ test('"ecg" finds packages and tests; a Bangla-digit code finds the test', async
   await expect(page.getByTestId('search-group-package')).toBeVisible();
   await expect(page.getByTestId('search-group-test')).toContainText('ECG (12 lead)');
   await page.goto('/bn/search?q=ft৪');
-  await expect(page.getByTestId('search-group-test')).toContainText('এফটি৪');
+  await expect(page.getByTestId('search-group-test')).toContainText('FT4');
   await page.getByTestId('search-group-test').getByRole('link').first().click();
-  await expect(page.getByTestId('test-count')).toHaveText('১টি পরীক্ষা');
+  await expect(page.getByTestId('test-count')).toHaveText('১টি টেস্ট');
 });
 
 test('the header search link opens the search page', async ({ page }) => {

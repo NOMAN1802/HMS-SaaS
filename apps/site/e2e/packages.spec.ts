@@ -35,7 +35,7 @@ test('test search works by code, Bangla name and Bangla digits (AT-WEB-022)', as
   await page.getByLabel('Test name or code').fill('lab-cbc');
   await expect(page.getByTestId('test-count')).toHaveText('1 test');
   await page.goto('/bn/tests');
-  await page.getByLabel('পরীক্ষার নাম বা কোড').fill('এফটি৪');
+  await page.getByLabel('টেস্টের নাম বা কোড').fill('ft৪');
   await expect(page.getByTestId('test-table')).toContainText('BIO-FT');
 });
 

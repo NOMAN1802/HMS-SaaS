@@ -10,7 +10,7 @@
       "en": "CareSpate Hospital"
     },
     "description": {
-      "bn": "চিকিৎসক খুঁজুন, অ্যাপয়েন্টমেন্ট নিন, পরীক্ষার মূল্য ও হেলথ প্যাকেজ দেখুন।",
+      "bn": "ডাক্তার খুঁজুন, অ্যাপয়েন্টমেন্ট নিন, টেস্টের দাম ও হেলথ প্যাকেজ দেখুন।",
       "en": "Find a doctor, book an appointment, and see test prices and health packages."
     }
   },
@@ -20,17 +20,17 @@
       "type": "hero",
       "props": {
         "heading": {
-          "bn": "যে সেবা আপনাকে নামে চেনে",
+          "bn": "আপনজনের মতো যত্ন",
           "en": "Care that knows you by name"
         },
         "text": {
-          "bn": "৩টি শাখায় ১২টি বিভাগের বিশেষজ্ঞ চিকিৎসক। আজই আপনার চিকিৎসক খুঁজে নিন।",
+          "bn": "৩টি ব্রাঞ্চে ১২টি ডিপার্টমেন্টের স্পেশালিস্ট ডাক্তার। আজই আপনার ডাক্তার খুঁজে নিন।",
           "en": "Specialists in 12 departments across 3 branches. Find your doctor today."
         },
         "image": {
           "slot": "hero-main",
           "alt": {
-            "bn": "চিকিৎসক রোগীর সঙ্গে কথা বলছেন (চিত্র)",
+            "bn": "ডাক্তার রোগীর সঙ্গে কথা বলছেন (চিত্র)",
             "en": "A doctor talking with a patient (illustration)"
           }
         },
@@ -45,7 +45,7 @@
           },
           {
             "label": {
-              "bn": "শিশু রোগ",
+              "bn": "শিশু (পেডিয়াট্রিক্স)",
               "en": "Paediatrics"
             },
             "href": "/departments/paediatrics"
@@ -75,7 +75,7 @@
           {
             "icon": "stethoscope",
             "label": {
-              "bn": "চিকিৎসক খুঁজুন",
+              "bn": "ডাক্তার খুঁজুন",
               "en": "Find a doctor"
             },
             "href": "/doctors"
@@ -107,7 +107,7 @@
           {
             "icon": "test-tube",
             "label": {
-              "bn": "পরীক্ষার মূল্য",
+              "bn": "টেস্টের দাম",
               "en": "Test prices"
             },
             "href": "/tests"
@@ -115,7 +115,7 @@
           {
             "icon": "siren",
             "label": {
-              "bn": "জরুরি সেবা",
+              "bn": "ইমার্জেন্সি সার্ভিস",
               "en": "Emergency"
             },
             "href": "/emergency"
@@ -128,17 +128,17 @@
       "type": "departmentGrid",
       "props": {
         "heading": {
-          "bn": "আমাদের বিভাগসমূহ",
+          "bn": "আমাদের ডিপার্টমেন্ট",
           "en": "Our departments"
         },
         "text": {
-          "bn": "প্রতিটি বিভাগে অভিজ্ঞ বিশেষজ্ঞ ও আধুনিক সুবিধা।",
+          "bn": "প্রতিটি ডিপার্টমেন্টে অভিজ্ঞ স্পেশালিস্ট আর আধুনিক সুবিধা।",
           "en": "Experienced specialists and modern facilities in every department."
         },
         "count": 12,
         "viewAll": {
           "label": {
-            "bn": "সব বিভাগ",
+            "bn": "সব ডিপার্টমেন্ট",
             "en": "All departments"
           },
           "href": "/departments"
@@ -161,13 +161,13 @@
       "type": "featuredDoctors",
       "props": {
         "heading": {
-          "bn": "আমাদের বিশেষজ্ঞ চিকিৎসক",
+          "bn": "আমাদের স্পেশালিস্ট ডাক্তার",
           "en": "Meet our specialists"
         },
         "doctors": "featured",
         "viewAll": {
           "label": {
-            "bn": "সব চিকিৎসক",
+            "bn": "সব ডাক্তার",
             "en": "All doctors"
           },
           "href": "/doctors"
@@ -183,7 +183,7 @@
           "en": "Health packages"
         },
         "text": {
-          "bn": "আলাদা আলাদা পরীক্ষার চেয়ে কম খরচে।",
+          "bn": "আলাদা আলাদা টেস্টের চেয়ে কম খরচে।",
           "en": "Costs less than buying the tests one by one."
         },
         "count": 6,
@@ -201,7 +201,7 @@
       "type": "branchCards",
       "props": {
         "heading": {
-          "bn": "আমাদের শাখা",
+          "bn": "আমাদের ব্রাঞ্চ",
           "en": "Our branches"
         }
       }
@@ -211,7 +211,7 @@
       "type": "imageText",
       "props": {
         "heading": {
-          "bn": "রোগী ও দর্শনার্থী নির্দেশিকা",
+          "bn": "পেশেন্ট ও ভিজিটর গাইড",
           "en": "Patient and visitor guide"
         },
         "body": {
@@ -221,14 +221,14 @@
         "image": {
           "slot": "guide-teaser",
           "alt": {
-            "bn": "হাসপাতালের অভ্যর্থনা কক্ষ (চিত্র)",
+            "bn": "হাসপাতালের রিসেপশন (চিত্র)",
             "en": "Hospital reception (illustration)"
           }
         },
         "imageSide": "start",
         "link": {
           "label": {
-            "bn": "নির্দেশিকা পড়ুন",
+            "bn": "গাইড পড়ুন",
             "en": "Read the guide"
           },
           "href": "/patients-and-visitors"
@@ -240,13 +240,13 @@
       "type": "articleList",
       "props": {
         "heading": {
-          "bn": "স্বাস্থ্য বিষয়ক লেখা",
+          "bn": "হেলথ টিপস",
           "en": "Health articles"
         },
         "count": 3,
         "viewAll": {
           "label": {
-            "bn": "সব লেখা",
+            "bn": "সব টিপস",
             "en": "All articles"
           },
           "href": "/articles"
@@ -258,11 +258,11 @@
       "type": "emergencyBand",
       "props": {
         "heading": {
-          "bn": "২৪ ঘণ্টা জরুরি সেবা",
+          "bn": "২৪ ঘণ্টা ইমার্জেন্সি সার্ভিস",
           "en": "24-hour emergency care"
         },
         "text": {
-          "bn": "গুলশান শাখার জরুরি বিভাগ সারা বছর দিনরাত খোলা।",
+          "bn": "গুলশান ব্রাঞ্চের ইমার্জেন্সি সারা বছর দিনরাত খোলা।",
           "en": "The emergency department at our Gulshan branch is open day and night, all year."
         },
         "image": {

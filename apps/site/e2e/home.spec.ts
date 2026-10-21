@@ -13,7 +13,7 @@ test('searching "card" suggests Cardiology and its doctors', async ({ page }) =>
 
 test('the Bangla search matches Bangla text', async ({ page }) => {
   await page.goto('/bn');
-  await page.getByLabel('চিকিৎসক ও বিভাগ খুঁজুন').fill('কার্ডিও');
+  await page.getByLabel('ডাক্তার বা ডিপার্টমেন্ট খুঁজুন').fill('কার্ডিও');
   await expect(
     page
       .getByRole('search')

@@ -2,7 +2,7 @@
   {
     "id": "staff-nurse-icu",
     "title": {
-      "bn": "স্টাফ নার্স (আইসিইউ)",
+      "bn": "স্টাফ নার্স (ICU)",
       "en": "Staff nurse (ICU)"
     },
     "department": {
@@ -13,7 +13,7 @@
     "location": "gulshan",
     "closingOn": "2026-11-30",
     "summary": {
-      "bn": "বিএসসি নার্সিং ও আইসিইউতে ২ বছরের অভিজ্ঞতা।",
+      "bn": "BSc নার্সিং ও ICUতে ২ বছরের অভিজ্ঞতা।",
       "en": "BSc Nursing and 2 years of ICU experience."
     }
   },
@@ -67,7 +67,7 @@
     "location": "gulshan",
     "closingOn": "2026-12-05",
     "summary": {
-      "bn": "বিপিটি ডিগ্রি, সন্ধ্যার শিফট।",
+      "bn": "BPT ডিগ্রি, সন্ধ্যার শিফট।",
       "en": "BPT degree, evening shift."
     }
   }

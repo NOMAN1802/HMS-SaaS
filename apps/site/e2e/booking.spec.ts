@@ -39,11 +39,11 @@ test('a doctor from the profile is preselected and the booking sends nothing', a
 
 test('without a doctor the wizard starts at step 1 and requires a choice', async ({ page }) => {
   await page.goto('/bn/book-appointment');
-  await page.getByRole('button', { name: 'এগিয়ে যান' }).click();
-  await expect(page.locator('p', { hasText: 'একজন চিকিৎসক বেছে নিন' })).toBeVisible();
-  await page.getByLabel('বিভাগ').selectOption('neurology');
-  await page.getByLabel('চিকিৎসক').selectOption('nusrat-jahan');
-  await page.getByRole('button', { name: 'এগিয়ে যান' }).click();
+  await page.getByRole('button', { name: 'পরের ধাপ' }).click();
+  await expect(page.locator('p', { hasText: 'একজন ডাক্তার বেছে নিন' })).toBeVisible();
+  await page.getByLabel('ডিপার্টমেন্ট', { exact: true }).selectOption('neurology');
+  await page.getByRole('combobox', { name: /^ডাক্তার/ }).selectOption('nusrat-jahan');
+  await page.getByRole('button', { name: 'পরের ধাপ' }).click();
   await expect(page.getByTestId('booking-dates')).toBeVisible();
 });
 

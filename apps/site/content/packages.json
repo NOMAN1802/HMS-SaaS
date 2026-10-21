@@ -12,18 +12,18 @@
       "en": "Adults over 18"
     },
     "summary": {
-      "bn": "রক্ত, প্রস্রাব ও বুকের এক্স-রে দিয়ে সাধারণ স্বাস্থ্য পরীক্ষা।",
+      "bn": "রক্ত, প্রস্রাব ও বুকের এক্স-রে দিয়ে সাধারণ স্বাস্থ্য টেস্ট।",
       "en": "A general check with blood, urine and a chest X-ray."
     },
     "groups": [
       {
         "title": {
-          "bn": "রক্ত পরীক্ষা",
+          "bn": "ব্লাড টেস্ট",
           "en": "Blood tests"
         },
         "tests": [
           {
-            "bn": "সিবিসি",
+            "bn": "CBC",
             "en": "Complete blood count"
           },
           {
@@ -43,7 +43,7 @@
         },
         "tests": [
           {
-            "bn": "প্রস্রাব পরীক্ষা",
+            "bn": "ইউরিন টেস্ট",
             "en": "Urine test"
           },
           {
@@ -51,7 +51,7 @@
             "en": "Chest X-ray"
           },
           {
-            "bn": "ইসিজি",
+            "bn": "ECG",
             "en": "ECG"
           }
         ]
@@ -59,7 +59,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -77,7 +77,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   },
@@ -94,18 +94,18 @@
       "en": "Adults over 35"
     },
     "summary": {
-      "bn": "হৃদ্‌যন্ত্র, লিভার, কিডনি ও কোলেস্টেরলসহ বিস্তারিত পরীক্ষা।",
+      "bn": "হৃদ্‌যন্ত্র, লিভার, কিডনি ও কোলেস্টেরলসহ বিস্তারিত টেস্ট।",
       "en": "A detailed check including heart, liver, kidney and cholesterol."
     },
     "groups": [
       {
         "title": {
-          "bn": "রক্ত পরীক্ষা",
+          "bn": "ব্লাড টেস্ট",
           "en": "Blood tests"
         },
         "tests": [
           {
-            "bn": "সিবিসি",
+            "bn": "CBC",
             "en": "Complete blood count"
           },
           {
@@ -113,7 +113,7 @@
             "en": "Lipid profile"
           },
           {
-            "bn": "এইচবিএওয়ানসি",
+            "bn": "HbA1c",
             "en": "HbA1c"
           },
           {
@@ -133,7 +133,7 @@
         },
         "tests": [
           {
-            "bn": "ইসিজি",
+            "bn": "ECG",
             "en": "ECG"
           },
           {
@@ -149,7 +149,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -167,7 +167,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   },
@@ -190,16 +190,16 @@
     "groups": [
       {
         "title": {
-          "bn": "রক্ত পরীক্ষা",
+          "bn": "ব্লাড টেস্ট",
           "en": "Blood tests"
         },
         "tests": [
           {
-            "bn": "সিবিসি",
+            "bn": "CBC",
             "en": "Complete blood count"
           },
           {
-            "bn": "টিএসএইচ",
+            "bn": "TSH",
             "en": "TSH"
           },
           {
@@ -227,7 +227,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -245,7 +245,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   },
@@ -268,7 +268,7 @@
     "groups": [
       {
         "title": {
-          "bn": "রক্ত পরীক্ষা",
+          "bn": "ব্লাড টেস্ট",
           "en": "Blood tests"
         },
         "tests": [
@@ -277,11 +277,11 @@
             "en": "Lipid profile"
           },
           {
-            "bn": "এইচবিএওয়ানসি",
+            "bn": "HbA1c",
             "en": "HbA1c"
           },
           {
-            "bn": "পিএসএ",
+            "bn": "PSA",
             "en": "PSA"
           }
         ]
@@ -293,11 +293,11 @@
         },
         "tests": [
           {
-            "bn": "ইসিজি",
+            "bn": "ECG",
             "en": "ECG"
           },
           {
-            "bn": "ইটিটি",
+            "bn": "ETT",
             "en": "Exercise tolerance test"
           }
         ]
@@ -305,7 +305,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -323,7 +323,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   },
@@ -340,18 +340,18 @@
       "en": "Adults over 60"
     },
     "summary": {
-      "bn": "হাড়ের ঘনত্ব, চোখ, হৃদ্‌যন্ত্র ও কিডনির পরীক্ষা।",
+      "bn": "হাড়ের ঘনত্ব, চোখ, হৃদ্‌যন্ত্র ও কিডনির টেস্ট।",
       "en": "Bone density, eyes, heart and kidney checks."
     },
     "groups": [
       {
         "title": {
-          "bn": "রক্ত পরীক্ষা",
+          "bn": "ব্লাড টেস্ট",
           "en": "Blood tests"
         },
         "tests": [
           {
-            "bn": "সিবিসি",
+            "bn": "CBC",
             "en": "Complete blood count"
           },
           {
@@ -359,7 +359,7 @@
             "en": "Serum creatinine"
           },
           {
-            "bn": "এইচবিএওয়ানসি",
+            "bn": "HbA1c",
             "en": "HbA1c"
           }
         ]
@@ -371,15 +371,15 @@
         },
         "tests": [
           {
-            "bn": "হাড়ের ঘনত্ব (বিএমডি)",
+            "bn": "হাড়ের ঘনত্ব (BMD)",
             "en": "Bone density (BMD)"
           },
           {
-            "bn": "চোখ পরীক্ষা",
+            "bn": "আই টেস্ট",
             "en": "Eye test"
           },
           {
-            "bn": "ইসিজি",
+            "bn": "ECG",
             "en": "ECG"
           }
         ]
@@ -387,7 +387,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -405,7 +405,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   },
@@ -422,26 +422,26 @@
       "en": "Children aged 1 to 12"
     },
     "summary": {
-      "bn": "বৃদ্ধি, রক্তশূন্যতা ও কৃমির পরীক্ষা এবং শিশু বিশেষজ্ঞের পরামর্শ।",
+      "bn": "বৃদ্ধি, রক্তশূন্যতা ও কৃমির টেস্ট এবং শিশু স্পেশালিস্টের পরামর্শ।",
       "en": "Growth, anaemia and worm tests with a paediatrician visit."
     },
     "groups": [
       {
         "title": {
-          "bn": "পরীক্ষা",
+          "bn": "টেস্ট",
           "en": "Tests"
         },
         "tests": [
           {
-            "bn": "সিবিসি",
+            "bn": "CBC",
             "en": "Complete blood count"
           },
           {
-            "bn": "মল পরীক্ষা",
+            "bn": "স্টুল টেস্ট",
             "en": "Stool test"
           },
           {
-            "bn": "প্রস্রাব পরীক্ষা",
+            "bn": "ইউরিন টেস্ট",
             "en": "Urine test"
           }
         ]
@@ -453,7 +453,7 @@
         },
         "tests": [
           {
-            "bn": "শিশু বিশেষজ্ঞের পরামর্শ",
+            "bn": "শিশু স্পেশালিস্টের পরামর্শ",
             "en": "Paediatrician consultation"
           },
           {
@@ -465,7 +465,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -545,7 +545,7 @@
       "en": "People with or at risk of diabetes"
     },
     "summary": {
-      "bn": "সুগার নিয়ন্ত্রণ, কিডনি, চোখ ও পায়ের পরীক্ষা।",
+      "bn": "সুগার নিয়ন্ত্রণ, কিডনি, চোখ ও ফুট চেক।",
       "en": "Sugar control, kidney, eye and foot checks."
     },
     "groups": [
@@ -556,7 +556,7 @@
         },
         "tests": [
           {
-            "bn": "এইচবিএওয়ানসি",
+            "bn": "HbA1c",
             "en": "HbA1c"
           },
           {
@@ -576,11 +576,11 @@
         },
         "tests": [
           {
-            "bn": "রেটিনা পরীক্ষা",
+            "bn": "রেটিনা চেক",
             "en": "Retina check"
           },
           {
-            "bn": "পায়ের পরীক্ষা",
+            "bn": "ফুট চেক",
             "en": "Foot check"
           }
         ]
@@ -588,7 +588,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -606,7 +606,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   },
@@ -623,7 +623,7 @@
       "en": "Adults over 40 or with a history of chest pain"
     },
     "summary": {
-      "bn": "ইসিজি, ইকো, ইটিটি ও কোলেস্টেরল পরীক্ষা।",
+      "bn": "ECG, ইকো, ETT ও কোলেস্টেরল টেস্ট।",
       "en": "ECG, echo, exercise test and cholesterol."
     },
     "groups": [
@@ -634,7 +634,7 @@
         },
         "tests": [
           {
-            "bn": "ইসিজি",
+            "bn": "ECG",
             "en": "ECG"
           },
           {
@@ -642,14 +642,14 @@
             "en": "Echocardiogram"
           },
           {
-            "bn": "ইটিটি",
+            "bn": "ETT",
             "en": "Exercise tolerance test"
           }
         ]
       },
       {
         "title": {
-          "bn": "রক্ত পরীক্ষা",
+          "bn": "ব্লাড টেস্ট",
           "en": "Blood tests"
         },
         "tests": [
@@ -666,7 +666,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -684,7 +684,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   },
@@ -701,18 +701,18 @@
       "en": "Company staff (minimum 20 people)"
     },
     "summary": {
-      "bn": "কর্মস্থলে বা হাসপাতালে কর্মীদের বার্ষিক স্বাস্থ্য পরীক্ষা।",
+      "bn": "কর্মস্থলে বা হাসপাতালে কর্মীদের বার্ষিক স্বাস্থ্য টেস্ট।",
       "en": "Annual staff check-ups at your office or at the hospital."
     },
     "groups": [
       {
         "title": {
-          "bn": "পরীক্ষা",
+          "bn": "টেস্ট",
           "en": "Tests"
         },
         "tests": [
           {
-            "bn": "সিবিসি",
+            "bn": "CBC",
             "en": "Complete blood count"
           },
           {
@@ -724,7 +724,7 @@
             "en": "Chest X-ray"
           },
           {
-            "bn": "ইসিজি",
+            "bn": "ECG",
             "en": "ECG"
           }
         ]
@@ -732,7 +732,7 @@
     ],
     "preparation": [
       {
-        "bn": "পরীক্ষার আগের রাত ১০টার পর কিছু খাবেন না",
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
         "en": "Do not eat after 10 pm the night before"
       },
       {
@@ -750,7 +750,7 @@
       }
     },
     "doctorFeeNote": {
-      "bn": "ফলাফল দেখাতে একজন চিকিৎসকের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
       "en": "Includes one doctor consultation to review the results."
     }
   }

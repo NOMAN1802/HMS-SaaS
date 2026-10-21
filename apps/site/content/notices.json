@@ -6,7 +6,7 @@
       "en": "Outpatient hours during the Eid holidays"
     },
     "body": {
-      "bn": ["ঈদের ছুটিতে আউটডোর সীমিত সময়ে খোলা থাকবে। জরুরি বিভাগ ২৪ ঘণ্টা খোলা।"],
+      "bn": ["ঈদের ছুটিতে আউটডোর সীমিত সময়ে খোলা থাকবে। ইমার্জেন্সি ২৪ ঘণ্টা খোলা।"],
       "en": [
         "Outpatient clinics keep shorter hours during the Eid holidays. Emergency stays open 24 hours."
       ]
@@ -20,7 +20,7 @@
       "en": "New evening dialysis shift"
     },
     "body": {
-      "bn": ["গুলশান শাখায় সন্ধ্যা ৬টা থেকে নতুন ডায়ালাইসিস শিফট চালু হয়েছে।"],
+      "bn": ["গুলশান ব্রাঞ্চে সন্ধ্যা ৬টা থেকে নতুন ডায়ালাইসিস শিফট চালু হয়েছে।"],
       "en": ["A new dialysis shift from 6 pm has started at the Gulshan branch."]
     },
     "publishedOn": "2026-10-01"
@@ -32,7 +32,7 @@
       "en": "Free diabetes screening camp (sample)"
     },
     "body": {
-      "bn": ["উত্তরা শাখায় শুক্রবার সকাল ৯টা থেকে দুপুর ১টা পর্যন্ত।"],
+      "bn": ["উত্তরা ব্রাঞ্চে শুক্রবার সকাল ৯টা থেকে দুপুর ১টা পর্যন্ত।"],
       "en": ["At the Uttara branch on Friday from 9 am to 1 pm."]
     },
     "publishedOn": "2026-09-20"
@@ -40,7 +40,7 @@
   {
     "id": "parking-update",
     "title": {
-      "bn": "গুলশান শাখায় পার্কিং",
+      "bn": "গুলশান ব্রাঞ্চে পার্কিং",
       "en": "Parking at the Gulshan branch"
     },
     "body": {

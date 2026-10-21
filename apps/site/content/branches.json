@@ -23,11 +23,11 @@
     },
     "services": [
       {
-        "bn": "২৪ ঘণ্টা জরুরি বিভাগ",
+        "bn": "২৪ ঘণ্টা ইমার্জেন্সি",
         "en": "24-hour emergency"
       },
       {
-        "bn": "আইসিইউ ও সিসিইউ",
+        "bn": "ICU ও CCU",
         "en": "ICU and CCU"
       },
       {
@@ -39,7 +39,7 @@
         "en": "Laboratory and imaging"
       },
       {
-        "bn": "সব বিভাগের আউটডোর",
+        "bn": "সব ডিপার্টমেন্টের আউটডোর",
         "en": "Outpatient clinics for all departments"
       }
     ],
@@ -47,7 +47,7 @@
     "image": {
       "slot": "branch-gulshan",
       "alt": {
-        "bn": "গুলশান শাখার ভবন (চিত্র)",
+        "bn": "গুলশান ব্রাঞ্চের ভবন (চিত্র)",
         "en": "Gulshan branch building (illustration)"
       }
     },
@@ -64,7 +64,7 @@
     "units": [
       {
         "name": {
-          "bn": "জরুরি বিভাগ",
+          "bn": "ইমার্জেন্সি",
           "en": "Emergency"
         },
         "location": {
@@ -74,7 +74,7 @@
       },
       {
         "name": {
-          "bn": "আউটডোর (ওপিডি)",
+          "bn": "আউটডোর (OPD)",
           "en": "Outpatient clinics (OPD)"
         },
         "location": {
@@ -84,7 +84,7 @@
       },
       {
         "name": {
-          "bn": "ল্যাব ও নমুনা সংগ্রহ",
+          "bn": "ল্যাব ও স্যাম্পল কালেকশন",
           "en": "Laboratory and sample collection"
         },
         "location": {
@@ -94,7 +94,7 @@
       },
       {
         "name": {
-          "bn": "আইসিইউ",
+          "bn": "ICU",
           "en": "ICU"
         },
         "location": {
@@ -132,7 +132,7 @@
         "en": "Specialist outpatient clinics"
       },
       {
-        "bn": "ল্যাব ও নমুনা সংগ্রহ",
+        "bn": "ল্যাব ও স্যাম্পল কালেকশন",
         "en": "Laboratory and sample collection"
       },
       {
@@ -148,7 +148,7 @@
     "image": {
       "slot": "branch-dhanmondi",
       "alt": {
-        "bn": "ধানমন্ডি শাখার ভবন (চিত্র)",
+        "bn": "ধানমন্ডি ব্রাঞ্চের ভবন (চিত্র)",
         "en": "Dhanmondi branch building (illustration)"
       }
     },
@@ -158,14 +158,14 @@
         "en": "Dr. Ariful Haque"
       },
       "title": {
-        "bn": "শাখা প্রধান",
+        "bn": "ব্রাঞ্চ প্রধান",
         "en": "Branch Head"
       }
     },
     "units": [
       {
         "name": {
-          "bn": "আউটডোর (ওপিডি)",
+          "bn": "আউটডোর (OPD)",
           "en": "Outpatient clinics (OPD)"
         },
         "location": {
@@ -175,7 +175,7 @@
       },
       {
         "name": {
-          "bn": "ল্যাব ও নমুনা সংগ্রহ",
+          "bn": "ল্যাব ও স্যাম্পল কালেকশন",
           "en": "Laboratory and sample collection"
         },
         "location": {
@@ -213,7 +213,7 @@
         "en": "Specialist outpatient clinics"
       },
       {
-        "bn": "ল্যাব ও নমুনা সংগ্রহ",
+        "bn": "ল্যাব ও স্যাম্পল কালেকশন",
         "en": "Laboratory and sample collection"
       },
       {
@@ -229,7 +229,7 @@
     "image": {
       "slot": "branch-uttara",
       "alt": {
-        "bn": "উত্তরা শাখার ভবন (চিত্র)",
+        "bn": "উত্তরা ব্রাঞ্চের ভবন (চিত্র)",
         "en": "Uttara branch building (illustration)"
       }
     },
@@ -239,14 +239,14 @@
         "en": "Dr. Nasrin Sultana"
       },
       "title": {
-        "bn": "শাখা প্রধান",
+        "bn": "ব্রাঞ্চ প্রধান",
         "en": "Branch Head"
       }
     },
     "units": [
       {
         "name": {
-          "bn": "আউটডোর (ওপিডি)",
+          "bn": "আউটডোর (OPD)",
           "en": "Outpatient clinics (OPD)"
         },
         "location": {
@@ -266,7 +266,7 @@
       },
       {
         "name": {
-          "bn": "টিকাদান কেন্দ্র",
+          "bn": "ভ্যাকসিনেশন পয়েন্ট",
           "en": "Vaccination point"
         },
         "location": {

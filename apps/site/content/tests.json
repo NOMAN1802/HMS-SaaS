@@ -2,7 +2,7 @@
   {
     "code": "LAB-CBC",
     "name": {
-      "bn": "সিবিসি (কমপ্লিট ব্লাড কাউন্ট)",
+      "bn": "CBC (কমপ্লিট ব্লাড কাউন্ট)",
       "en": "Complete blood count (CBC)"
     },
     "category": "pathology",
@@ -16,7 +16,7 @@
   {
     "code": "LAB-ESR",
     "name": {
-      "bn": "ইএসআর",
+      "bn": "ESR",
       "en": "ESR"
     },
     "category": "pathology",
@@ -72,7 +72,7 @@
   {
     "code": "LAB-URE",
     "name": {
-      "bn": "প্রস্রাব পরীক্ষা (রুটিন)",
+      "bn": "ইউরিন টেস্ট (রুটিন)",
       "en": "Urine routine examination"
     },
     "category": "pathology",
@@ -90,7 +90,7 @@
   {
     "code": "LAB-STL",
     "name": {
-      "bn": "মল পরীক্ষা (রুটিন)",
+      "bn": "স্টুল টেস্ট (রুটিন)",
       "en": "Stool routine examination"
     },
     "category": "pathology",
@@ -104,7 +104,7 @@
   {
     "code": "LAB-DEN",
     "name": {
-      "bn": "ডেঙ্গু এনএস১ অ্যান্টিজেন",
+      "bn": "ডেঙ্গু NS1 অ্যান্টিজেন",
       "en": "Dengue NS1 antigen"
     },
     "category": "pathology",
@@ -178,7 +178,7 @@
   {
     "code": "BIO-HBA1C",
     "name": {
-      "bn": "এইচবিএওয়ানসি",
+      "bn": "HbA1c",
       "en": "HbA1c"
     },
     "category": "biochemistry",
@@ -252,7 +252,7 @@
   {
     "code": "BIO-SGPT",
     "name": {
-      "bn": "এসজিপিটি (এএলটি)",
+      "bn": "SGPT (ALT)",
       "en": "SGPT (ALT)"
     },
     "category": "biochemistry",
@@ -294,7 +294,7 @@
   {
     "code": "BIO-TSH",
     "name": {
-      "bn": "টিএসএইচ",
+      "bn": "TSH",
       "en": "TSH"
     },
     "category": "biochemistry",
@@ -308,7 +308,7 @@
   {
     "code": "BIO-FT4",
     "name": {
-      "bn": "এফটি৪",
+      "bn": "FT4",
       "en": "Free T4"
     },
     "category": "biochemistry",
@@ -350,7 +350,7 @@
   {
     "code": "BIO-CRP",
     "name": {
-      "bn": "সিআরপি",
+      "bn": "CRP",
       "en": "C-reactive protein (CRP)"
     },
     "category": "biochemistry",
@@ -364,7 +364,7 @@
   {
     "code": "BIO-PSA",
     "name": {
-      "bn": "পিএসএ",
+      "bn": "PSA",
       "en": "PSA"
     },
     "category": "biochemistry",
@@ -438,7 +438,7 @@
   {
     "code": "IMG-MRIL",
     "name": {
-      "bn": "এমআরআই (কোমর)",
+      "bn": "MRI (কোমর)",
       "en": "MRI (lumbar spine)"
     },
     "category": "imaging",
@@ -470,7 +470,7 @@
   {
     "code": "IMG-BMD",
     "name": {
-      "bn": "হাড়ের ঘনত্ব (বিএমডি)",
+      "bn": "হাড়ের ঘনত্ব (BMD)",
       "en": "Bone density (BMD)"
     },
     "category": "imaging",
@@ -484,7 +484,7 @@
   {
     "code": "CAR-ECG",
     "name": {
-      "bn": "ইসিজি (১২ লিড)",
+      "bn": "ECG (১২ লিড)",
       "en": "ECG (12 lead)"
     },
     "category": "cardiology",
@@ -512,7 +512,7 @@
   {
     "code": "CAR-ETT",
     "name": {
-      "bn": "ইটিটি (ট্রেডমিল টেস্ট)",
+      "bn": "ETT (ট্রেডমিল টেস্ট)",
       "en": "Exercise tolerance test (ETT)"
     },
     "category": "cardiology",
@@ -558,7 +558,7 @@
   {
     "code": "OTH-EEG",
     "name": {
-      "bn": "ইইজি",
+      "bn": "EEG",
       "en": "EEG"
     },
     "category": "other",
@@ -572,7 +572,7 @@
   {
     "code": "OTH-PFT",
     "name": {
-      "bn": "ফুসফুসের কার্যক্ষমতা পরীক্ষা (স্পাইরোমেট্রি)",
+      "bn": "ফুসফুসের কার্যক্ষমতা টেস্ট (স্পাইরোমেট্রি)",
       "en": "Lung function test (spirometry)"
     },
     "category": "other",

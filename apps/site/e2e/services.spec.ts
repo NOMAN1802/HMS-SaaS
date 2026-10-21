@@ -28,11 +28,11 @@ test('home sample collection needs an address and a date', async ({ page }) => {
   const requests = watchRequests(page);
   await page.getByLabel('আপনার নাম').fill('রহিম উদ্দিন');
   await page.getByLabel('মোবাইল নম্বর').fill('০১৯১২৩৪৫৬৭৮');
-  await page.getByLabel('পছন্দের তারিখ').fill('2026-11-02');
-  await page.getByRole('button', { name: 'অনুরোধ পাঠান' }).click();
+  await page.getByLabel('কোন দিন আসতে চান').fill('2026-11-02');
+  await page.getByRole('button', { name: 'রিকোয়েস্ট পাঠান' }).click();
   await expect(page.locator('p', { hasText: 'এই ঘরটি পূরণ করুন।' })).toHaveCount(1);
   await page.getByRole('textbox', { name: 'ঠিকানা' }).fill('বাড়ি ১, সড়ক ২, উত্তরা');
-  await page.getByRole('button', { name: 'অনুরোধ পাঠান' }).click();
+  await page.getByRole('button', { name: 'রিকোয়েস্ট পাঠান' }).click();
   await expect(page.getByTestId('demo-confirmation')).toBeVisible();
   expect(requests).toEqual([]);
 });

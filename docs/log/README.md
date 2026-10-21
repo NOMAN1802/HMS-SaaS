@@ -84,3 +84,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-21 | [T-WEB-13: search engine signals](2026-10-21-T-WEB-13-seo.md)                                               |
 | 2026-10-21 | [T-WEB-14: image slots and AI prompt list](2026-10-21-T-WEB-14-image-prompts.md)                            |
 | 2026-10-21 | [T-WEB-15: WEB-A quality pass](2026-10-21-T-WEB-15-quality-pass.md)                                         |
+| 2026-10-21 | [T-WEB-03: natural Bangla copy](2026-10-21-T-WEB-03-bangla-copy.md)                                         |
