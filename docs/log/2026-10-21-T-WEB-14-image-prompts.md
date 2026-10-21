@@ -24,7 +24,7 @@
 
 | Command                                                 | Result                               |
 | ------------------------------------------------------- | ------------------------------------ |
-| `pnpm turbo run lint typecheck test --filter=@hms/site` | All tasks successful (25 unit tests) |
+| `pnpm turbo run lint typecheck test --filter=@hms/site` | All tasks successful (26 unit tests) |
 
 ## Known limitations
 

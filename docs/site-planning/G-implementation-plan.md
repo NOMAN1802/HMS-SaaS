@@ -139,3 +139,15 @@ Give the agent: this pack's README, A, the task row above, the relevant C requir
 **RG-W1 (WEB-A review):** all T-WEB-01..15 done; H section 2 green; product owner signs UAT-WEB-001 (layout parity with continental.health in HMS style, Bangla first); demo notice present; nothing deployed.
 
 **RG-W2 (site public on the shared host):** T-WEB-18 done and merged with the project lead's agreement (Q-087); login rate limiting and lockout live (T-ACC-03, C-081); staff app security headers in place (P-047); the project lead has applied the nginx rules and checked AT-WEB-060 on staging. Before the CMS opens to hospital editors, T-CMS-10 and T-CMS-11 are also done.
+
+## 8. Status (2026-10-21)
+
+Built and pushed as stacked branches `feat/T-WEB-01-site-scaffold` .. `feat/T-WEB-15-quality-pass` (each on top of the previous, none merged to `dev` yet). Details per task in `docs/log/`.
+
+| Task                                                                                                 | Status                                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| T-WEB-00, -01, -02, -04, -05 (with -03 shell keys), -06, -07, -08, -09, -10, -11, -12, -13, -14, -15 | Done                                                                                                                                           |
+| T-WEB-17                                                                                             | Done: X19, X20 (T-WEB-07), X33, X23 (T-WEB-08), X26 (T-WEB-09), X21, X25 (T-WEB-12), X28 (site search), X30 (shell)                            |
+| T-WEB-16 body map                                                                                    | Not started (stretch, Q-074)                                                                                                                   |
+| RG-W1                                                                                                | Waiting for the product owner: UAT-WEB-001..006 (Bangla copy review Q-079, phone walk-through, screen reader pass) and a Lighthouse mobile run |
+| T-WEB-18, T-CMS-*                                                                                    | Not started                                                                                                                                    |
