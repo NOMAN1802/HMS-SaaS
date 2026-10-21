@@ -24,6 +24,19 @@ const SIZES: Record<ButtonSize, string> = {
   lg: 'h-11 px-5 text-base',
 };
 
+/**
+ * Button styling for an element that is not a button, such as a navigation link that should
+ * look like a call to action. Navigation stays a link so it works without JavaScript and keeps
+ * link semantics for screen readers (EP-31 public site, T-WEB-02, P-031).
+ */
+export function buttonClassName(
+  variant: ButtonVariant = 'primary',
+  size: ButtonSize = 'md',
+  className?: string,
+): string {
+  return cx(BASE, VARIANTS[variant], SIZES[size], className);
+}
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
@@ -49,7 +62,7 @@ export function Button({
       type={type}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
-      className={cx(BASE, VARIANTS[variant], SIZES[size], className)}
+      className={buttonClassName(variant, size, className)}
       {...rest}
     >
       {loading ? <Icon name="spinner" size={18} className="motion-safe:animate-spin" /> : null}

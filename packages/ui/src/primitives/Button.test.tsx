@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { Button, IconButton } from './Button.js';
+import { Button, buttonClassName, IconButton } from './Button.js';
 
 describe('Button', () => {
   it('defaults to type=button so it never submits a form by accident', () => {
@@ -38,5 +38,29 @@ describe('IconButton', () => {
   it('has an accessible name from its label', () => {
     render(<IconButton icon="close" label="Close" />);
     expect(screen.getByRole('button', { name: 'Close' })).toBeTruthy();
+  });
+});
+
+describe('buttonClassName', () => {
+  it('gives a link the same classes as the matching button', () => {
+    render(
+      <>
+        <Button variant="secondary" size="lg">
+          Book
+        </Button>
+        <a href="/book" className={buttonClassName('secondary', 'lg')}>
+          Book link
+        </a>
+      </>,
+    );
+    const button = screen.getByRole('button', { name: 'Book' });
+    const link = screen.getByRole('link', { name: 'Book link' });
+    expect(link.className).toBe(button.className);
+  });
+
+  it('defaults to primary and medium and appends extra classes', () => {
+    expect(buttonClassName()).toContain('bg-primary');
+    expect(buttonClassName()).toContain('h-10');
+    expect(buttonClassName('ghost', 'md', 'w-full')).toMatch(/w-full$/);
   });
 });

@@ -4,6 +4,7 @@
 export { Icon, type IconName, type IconProps } from './icons/Icon.js';
 export {
   Button,
+  buttonClassName,
   IconButton,
   type ButtonProps,
   type ButtonSize,
