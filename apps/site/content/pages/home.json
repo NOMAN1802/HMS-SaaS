@@ -10,7 +10,7 @@
       "en": "CareSpate Hospital"
     },
     "description": {
-      "bn": "ডাক্তার খুঁজুন, অ্যাপয়েন্টমেন্ট নিন, টেস্টের দাম ও হেলথ প্যাকেজ দেখুন।",
+      "bn": "ডাক্তার খুঁজুন, সিরিয়াল নিন, টেস্টের দাম ও হেলথ প্যাকেজ দেখুন।",
       "en": "Find a doctor, book an appointment, and see test prices and health packages."
     }
   },
@@ -45,7 +45,7 @@
           },
           {
             "label": {
-              "bn": "শিশু (পেডিয়াট্রিক্স)",
+              "bn": "শিশু",
               "en": "Paediatrics"
             },
             "href": "/departments/paediatrics"
@@ -83,7 +83,7 @@
           {
             "icon": "calendar",
             "label": {
-              "bn": "অ্যাপয়েন্টমেন্ট",
+              "bn": "সিরিয়াল",
               "en": "Book appointment"
             },
             "href": "/book-appointment"

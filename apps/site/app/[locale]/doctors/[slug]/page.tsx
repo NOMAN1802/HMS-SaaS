@@ -23,7 +23,8 @@ import {
   relatedDoctors,
 } from '../../../../src/content';
 import { toDoctorSummary } from '../../../../src/content/doctor-summary';
-import { calendarDate, digits, money, todayInDhaka } from '../../../../src/format';
+import { digits, money, todayInDhaka } from '../../../../src/format';
+import { formatLongDate } from '../../../../src/i18n/clock';
 import { Link } from '../../../../src/i18n/navigation';
 import { languageKey } from '../../../../src/i18n/labels';
 import { withAlternates } from '../../../../src/seo';
@@ -126,8 +127,8 @@ export default async function DoctorPage({ params }: Params) {
                 {leave.message
                   ? localize(leave.message, locale)
                   : t('doctor.leaveDates', {
-                      from: calendarDate(leave.from, locale),
-                      to: calendarDate(leave.to, locale),
+                      from: formatLongDate(t, leave.from, locale),
+                      to: formatLongDate(t, leave.to, locale),
                     })}
               </Alert>
             </div>
@@ -148,7 +149,7 @@ export default async function DoctorPage({ params }: Params) {
                 id: 'about',
                 label: t('doctor.about'),
                 content: (
-                  <div className="flex flex-col gap-4 py-4">
+                  <div className="flex max-w-prose flex-col gap-4 py-4">
                     {localizeRich(doctor.about, locale).map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}

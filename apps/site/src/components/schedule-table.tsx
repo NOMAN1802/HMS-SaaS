@@ -5,7 +5,7 @@ import type { Doctor } from '@hms/contracts';
 import type { Locale } from '@hms/i18n';
 import { useTranslations } from 'next-intl';
 import { getBranch, localize } from '../content';
-import { digits } from '../format';
+import { formatClockRange } from '../i18n/clock';
 import { weekdayKey } from '../i18n/labels';
 
 export function ScheduleTable({ doctor, locale }: { doctor: Doctor; locale: Locale }) {
@@ -37,9 +37,7 @@ export function ScheduleTable({ doctor, locale }: { doctor: Doctor; locale: Loca
               <th scope="row" className="text-start font-medium sm:py-3">
                 {t(weekdayKey[row.day])}
               </th>
-              <td className="sm:py-3">
-                <span dir="ltr">{digits(`${row.start}-${row.end}`, locale)}</span>
-              </td>
+              <td className="sm:py-3">{formatClockRange(t, row.start, row.end, locale)}</td>
               <td className="col-span-2 text-text-muted sm:py-3">
                 {branch ? `${localize(branch.name, locale)}, ` : ''}
                 {localize(row.room, locale)}

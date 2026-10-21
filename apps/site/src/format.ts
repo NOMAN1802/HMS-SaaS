@@ -2,9 +2,11 @@
 // lakh grouping and the taka sign (FR-WEB-GEN-003, C-057, C-059). Implements: T-WEB-06.
 import { formatDate, formatMoney, toLocaleDigits, type Locale } from '@hms/i18n';
 
-/** A taka amount with the sign, for example "৳ 40,700.00" in the page's digits. */
+/** A taka amount with the sign in the page's digits; whole-taka prices drop the zero paisa, as
+ * hospital price lists do ("Tk 3,500" rather than "Tk 3,500.00"). */
 export function money(amount: string, locale: Locale): string {
-  return formatMoney(amount, locale, { symbol: 'sign' });
+  const text = formatMoney(amount, locale, { symbol: 'sign' });
+  return amount.endsWith('.00') ? text.replace(/[.][0\u09e6]{2}$/, '') : text;
 }
 
 /** A calendar date (YYYY-MM-DD) as DD-MM-YYYY in the page's digits, read in Dhaka time. */

@@ -23,6 +23,9 @@ export interface ImageSlotProps {
   className?: string;
   priority?: boolean;
   sizes?: string;
+  iconSize?: number;
+  /** A dark band needs a placeholder that does not glare (critique 2026-10-21). */
+  tone?: 'light' | 'dark';
 }
 
 export function ImageSlot({
@@ -33,6 +36,8 @@ export function ImageSlot({
   className,
   priority = false,
   sizes = '(min-width: 1024px) 33vw, 100vw',
+  iconSize = 56,
+  tone = 'light',
 }: ImageSlotProps) {
   const alt = localize(image.alt, locale);
   const frame = `relative overflow-hidden ${RATIOS[ratio]} ${className ?? ''}`;
@@ -55,9 +60,13 @@ export function ImageSlot({
       role="img"
       aria-label={alt}
       data-slot={image.slot}
-      className={`${frame} flex items-center justify-center bg-linear-to-br from-primary-soft via-surface to-accent-soft`}
+      className={`${frame} flex items-center justify-center bg-linear-to-br ${
+        tone === 'dark'
+          ? 'from-primary-strong to-heading text-on-primary'
+          : 'from-primary-soft via-surface to-accent-soft text-primary'
+      }`}
     >
-      <Icon name={icon} size={56} className="text-primary opacity-60" />
+      <Icon name={icon} size={iconSize} className="opacity-60" />
     </div>
   );
 }

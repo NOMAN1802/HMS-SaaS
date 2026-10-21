@@ -17,7 +17,7 @@ import {
   localize,
   localizeRich,
 } from '../../../../src/content';
-import { calendarDate } from '../../../../src/format';
+import { formatLongDate } from '../../../../src/i18n/clock';
 import { Link } from '../../../../src/i18n/navigation';
 import { withAlternates } from '../../../../src/seo';
 
@@ -60,7 +60,9 @@ export default async function ArticlePage({ params }: Params) {
       >
         <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-text-muted">
           <span>{localize(article.category, locale)}</span>
-          <time dateTime={article.publishedOn}>{calendarDate(article.publishedOn, locale)}</time>
+          <time dateTime={article.publishedOn}>
+            {formatLongDate(t, article.publishedOn, locale)}
+          </time>
           {author ? (
             <span>
               {t('articles.by')}{' '}

@@ -16,7 +16,8 @@ import {
   type Slot,
 } from '../booking/slots';
 import { contactErrors, type FieldError } from '../forms/validation';
-import { calendarDate, digits, todayInDhaka } from '../format';
+import { digits, todayInDhaka } from '../format';
+import { formatClock, formatDayMonth } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
 import { weekdayKey } from '../i18n/labels';
 
@@ -63,7 +64,7 @@ function useDateLabel() {
   const t = useTranslations();
   const locale = useSiteLocale();
   return (isoDate: string) =>
-    `${t(weekdayKey[weekdayOf(isoDate)])}, ${calendarDate(isoDate, locale)}`;
+    `${t(weekdayKey[weekdayOf(isoDate)])}, ${formatDayMonth(t, isoDate, locale)}`;
 }
 
 function StepIndicator({ step }: { step: Step }) {
@@ -185,7 +186,7 @@ function DateTimeStep(props: {
                   aria-pressed={item.time === props.time}
                   onClick={() => props.onTime(item.time)}
                 >
-                  <span dir="ltr">{digits(item.time, locale)}</span>
+                  {formatClock(t, item.time, locale)}
                 </Button>
               </li>
             ))}
@@ -279,7 +280,7 @@ function ReviewStep(props: {
       </dd>
       <dt className="text-text-muted">{t('booking.date')}</dt>
       <dd className="font-medium">
-        {dateLabel(props.date)}, <span dir="ltr">{digits(props.slot.time, props.locale)}</span>
+        {dateLabel(props.date)}, {formatClock(t, props.slot.time, props.locale)}
       </dd>
       <dt className="text-text-muted">{t('booking.place')}</dt>
       <dd className="font-medium">{props.slot.place}</dd>

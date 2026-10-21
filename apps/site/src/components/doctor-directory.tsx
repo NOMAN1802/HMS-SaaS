@@ -3,13 +3,14 @@
 // the filters kept in the URL so a shared link restores them (FR-WEB-DOC-001..003, AT-WEB-010,
 // AT-WEB-011, AT-WEB-014). The full list is rendered on the server as the no-JavaScript fallback.
 // Implements: T-WEB-07.
-import { Button, Field, Select, TextInput } from '@hms/ui';
+import type { Phone } from '@hms/contracts';
+import { Button, buttonClassName, Field, Icon, Select, TextInput } from '@hms/ui';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
 import type { DoctorSummary } from '../content/doctor-summary';
 import { normalizeQuery } from '../content/normalize';
-import { usePathname, useRouter } from '../i18n/navigation';
+import { Link, usePathname, useRouter } from '../i18n/navigation';
 import { useSiteLocale } from '../i18n/locale';
 import { DoctorCard } from './doctor-card';
 
@@ -22,13 +23,15 @@ export interface DoctorDirectoryProps {
   doctors: DoctorSummary[];
   departments: Option[];
   branches: Option[];
+  /** Numbers offered when a search finds nobody, so a symptom search never dead-ends. */
+  help: { emergency: Phone; hotline: Phone };
 }
 
 export function DoctorGrid({ doctors }: { doctors: DoctorSummary[] }) {
   const locale = useSiteLocale();
   return (
     <ul
-      className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       data-testid="doctor-results"
     >
       {doctors.map((doctor) => (
@@ -40,7 +43,7 @@ export function DoctorGrid({ doctors }: { doctors: DoctorSummary[] }) {
   );
 }
 
-export function DoctorDirectory({ doctors, departments, branches }: DoctorDirectoryProps) {
+export function DoctorDirectory({ doctors, departments, branches, help }: DoctorDirectoryProps) {
   const t = useTranslations();
   const params = useSearchParams();
   const router = useRouter();
@@ -128,9 +131,26 @@ export function DoctorDirectory({ doctors, departments, branches }: DoctorDirect
       {results.length > 0 ? (
         <DoctorGrid doctors={results} />
       ) : (
-        <p className="rounded-panel border border-dashed border-border-strong p-10 text-center text-text-muted">
-          {t('doctors.empty')}
-        </p>
+        <div
+          className="flex flex-col items-start gap-4 rounded-panel border border-dashed border-border-strong p-8"
+          data-testid="doctor-empty"
+        >
+          <p className="text-lg font-medium text-heading">{t('doctors.empty')}</p>
+          <p className="text-text-muted">{t('doctors.emptyHelp')}</p>
+          <div className="flex flex-wrap gap-3">
+            <a href={`tel:${help.emergency.tel}`} className={buttonClassName('danger', 'md')}>
+              <Icon name="siren" size={18} />
+              {t('shell.emergency')} {help.emergency.display}
+            </a>
+            <a href={`tel:${help.hotline.tel}`} className={buttonClassName('secondary', 'md')}>
+              <Icon name="phone" size={18} />
+              {t('shell.callHotline')} {help.hotline.display}
+            </a>
+            <Link href="/departments" className={buttonClassName('ghost', 'md')}>
+              {t('doctors.seeDepartments')}
+            </Link>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -34,9 +34,9 @@ test('searches by interest and shows the empty state (AT-WEB-010, AT-WEB-014)', 
 test('the profile shows the schedule with Bangla digits on /bn (AT-WEB-012)', async ({ page }) => {
   await page.goto('/bn/doctors/farhana-rahman');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('ডা. ফারহানা রহমান');
-  await expect(page.getByTestId('schedule')).toContainText('০৯:০০');
+  await expect(page.getByTestId('schedule')).toContainText('সকাল ৯টা');
   await page.goto('/en/doctors/farhana-rahman');
-  await expect(page.getByTestId('schedule')).toContainText('09:00');
+  await expect(page.getByTestId('schedule')).toContainText('9 am');
 });
 
 test('a doctor on leave shows the leave notice (AT-WEB-050)', async ({ page }) => {
@@ -62,3 +62,25 @@ for (const path of ['/bn/doctors', '/en/doctors/farhana-rahman']) {
     expect(results.violations).toEqual([]);
   });
 }
+
+test('a symptom search finds the right doctors and an empty search offers help (critique P1)', async ({
+  page,
+}) => {
+  await page.goto('/bn/doctors');
+  await page.getByLabel('নাম, স্পেশালিটি বা রোগ').fill('বুকে ব্যথা');
+  await expect(page.getByTestId('doctor-results')).toContainText('কার্ডিওলজি');
+  await page.getByLabel('নাম, স্পেশালিটি বা রোগ').fill('zzzz');
+  await expect(
+    page.getByTestId('doctor-empty').getByRole('link', { name: /ইমার্জেন্সি/ }),
+  ).toHaveAttribute('href', /^tel:/);
+});
+
+test('cards show the next chamber and fee, and a doctor on leave shows the return day', async ({
+  page,
+}) => {
+  await page.goto('/en/doctors?department=cardiology');
+  const card = page.getByTestId('doctor-results').getByRole('article').first();
+  await expect(card).toContainText('Fee');
+  await expect(card).toContainText(/am|pm/);
+  await expect(page.getByTestId('doctor-results')).toContainText('On leave, back on 31 October');
+});

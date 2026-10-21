@@ -10,7 +10,7 @@ export function DepartmentCard({ department, locale }: { department: Department;
   return (
     <Link
       href={`/departments/${department.slug}`}
-      className="group flex h-full flex-col gap-3 rounded-panel border border-border bg-surface p-5 transition-shadow hover:shadow-overlay"
+      className="group flex h-full flex-col gap-3 rounded-panel border border-border bg-surface p-4 transition-shadow hover:shadow-overlay sm:p-5"
     >
       <span className="flex size-12 items-center justify-center rounded-pill bg-primary-soft text-primary">
         <Icon name={isIconName(department.icon) ? department.icon : 'stethoscope'} size={26} />
@@ -18,7 +18,9 @@ export function DepartmentCard({ department, locale }: { department: Department;
       <span className="font-heading text-lg font-semibold text-heading group-hover:text-primary">
         {localize(department.name, locale)}
       </span>
-      <span className="text-sm text-text-muted">{localize(department.summary, locale)}</span>
+      <span className="hidden text-sm text-text-muted sm:block">
+        {localize(department.summary, locale)}
+      </span>
     </Link>
   );
 }

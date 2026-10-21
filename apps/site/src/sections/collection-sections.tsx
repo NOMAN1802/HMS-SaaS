@@ -56,7 +56,7 @@ export function DepartmentGridSection({
   return (
     <Band muted>
       <SectionHeading {...heading(props, locale, props.viewAll)} />
-      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {listDepartments()
           .slice(0, props.count)
           .map((department) => (
@@ -101,10 +101,11 @@ export function FeaturedDoctorsSection({
   return (
     <Band muted>
       <SectionHeading {...heading(props, locale, props.viewAll)} />
-      {/* Horizontal scroll with snap on small screens instead of an auto-playing carousel. */}
-      <ul className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
+      {/* Horizontal scroll with snap on small screens instead of an auto-playing carousel. The
+          row is positioned so screen-reader-only labels inside cards stay clipped by it. */}
+      <ul className="relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
         {doctors.slice(0, 8).map((doctor) => (
-          <li key={doctor.slug} className="w-64 shrink-0 snap-start sm:w-auto">
+          <li key={doctor.slug} className="w-80 shrink-0 snap-start sm:w-auto">
             <DoctorCard doctor={toDoctorSummary(doctor, locale)} locale={locale} />
           </li>
         ))}
@@ -121,11 +122,11 @@ export function PackageShowcaseSection({
   return (
     <Band>
       <SectionHeading {...heading(props, locale, props.viewAll)} />
-      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3">
         {listPackagesAll()
           .slice(0, props.count)
           .map((item) => (
-            <li key={item.slug}>
+            <li key={item.slug} className="w-72 shrink-0 snap-start sm:w-auto">
               <PackageCard item={item} locale={locale} />
             </li>
           ))}

@@ -23,3 +23,6 @@ apps/site/next-env.d.ts
 
 # Browser automation captures
 .playwright-mcp/
+
+# Impeccable design-review archive (local tool state)
+.impeccable/

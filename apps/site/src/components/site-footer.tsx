@@ -31,7 +31,7 @@ export async function SiteFooter({ site, locale }: { site: Site; locale: Locale 
   ];
 
   return (
-    <footer className="mt-16 bg-heading pb-20 text-on-primary md:pb-0">
+    <footer className="bg-heading pb-20 text-on-primary md:pb-0">
       <Container className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-5">
         <div className="flex flex-col gap-4 lg:col-span-2">
           <Logo name={localize(site.settings.hospitalName, locale)} inverse />
@@ -88,12 +88,12 @@ export async function SiteFooter({ site, locale }: { site: Site; locale: Locale 
               <h2 className="mb-3 font-heading text-base font-semibold text-on-primary">
                 {localize(column.title, locale)}
               </h2>
-              <ul className="flex flex-col gap-2 text-sm">
+              <ul className="flex flex-col text-sm">
                 {column.links.map((link) => (
                   <li key={link.href}>
                     <SiteLink
                       href={link.href}
-                      className="opacity-90 hover:underline hover:opacity-100"
+                      className="block py-2 opacity-90 hover:underline hover:opacity-100"
                     >
                       {localize(link.label, locale)}
                     </SiteLink>

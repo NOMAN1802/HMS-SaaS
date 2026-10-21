@@ -10,6 +10,7 @@ export const siteBnBD: SiteMessages = {
     description: 'HMS-এ তৈরি একটি হাসপাতালের ওয়েবসাইট।',
   },
   shell: {
+    callHotline: 'হটলাইন',
     skipToContent: 'মূল কনটেন্টে যান',
     emergency: 'ইমার্জেন্সি',
     hotline: 'হটলাইন',
@@ -26,14 +27,49 @@ export const siteBnBD: SiteMessages = {
     language: 'ভাষা',
     allOf: 'সব {name}',
     hideNotice: 'নোটিশ বন্ধ করুন',
-    call: 'কল করুন',
-    book: 'বুক করুন',
+    book: 'সিরিয়াল নিন',
     homeLink: '{name}, হোম পেজ',
     followUs: 'আমাদের সাথে থাকুন',
     contactUs: 'যোগাযোগ',
     opensInNewTab: '(নতুন ট্যাবে খুলবে)',
   },
   common: {
+    month: {
+      jan: 'জানুয়ারি',
+      feb: 'ফেব্রুয়ারি',
+      mar: 'মার্চ',
+      apr: 'এপ্রিল',
+      may: 'মে',
+      jun: 'জুন',
+      jul: 'জুলাই',
+      aug: 'আগস্ট',
+      sep: 'সেপ্টেম্বর',
+      oct: 'অক্টোবর',
+      nov: 'নভেম্বর',
+      dec: 'ডিসেম্বর',
+    },
+    period: {
+      am: 'এএম',
+      pm: 'পিএম',
+      morning: 'সকাল',
+      noon: 'দুপুর',
+      afternoon: 'বিকাল',
+      evening: 'সন্ধ্যা',
+      night: 'রাত',
+    },
+    clock: {
+      hour: '{period} {hour}টা',
+      hourMinute: '{period} {hour}:{minute}',
+    },
+    date: {
+      long: '{day} {month} {year}',
+      dayMonth: '{day} {month}',
+    },
+    today: 'আজ',
+    tomorrow: 'আগামীকাল',
+    backOn: 'ছুটিতে, ফিরবেন {date}',
+    nextChamber: 'পরবর্তী চেম্বার',
+    fee: 'ফি {amount}',
     home: 'হোম',
     breadcrumb: 'আপনি এখানে আছেন',
     weekday: {
@@ -51,8 +87,6 @@ export const siteBnBD: SiteMessages = {
       hi: 'হিন্দি',
       ar: 'আরবি',
     },
-    onLeave: 'ছুটিতে আছেন',
-    viewProfile: 'প্রোফাইল দেখুন',
     bookShort: 'সিরিয়াল নিন',
     packageCode: 'কোড {code}',
     separatePrice: 'আলাদা আলাদা করালে',
@@ -77,7 +111,7 @@ export const siteBnBD: SiteMessages = {
       article: 'হেলথ টিপস',
     },
     label: 'ডাক্তার বা ডিপার্টমেন্ট খুঁজুন',
-    placeholder: 'ডাক্তারের নাম, স্পেশালিটি বা ডিপার্টমেন্ট',
+    placeholder: 'ডাক্তার, রোগ বা ডিপার্টমেন্ট',
     submit: 'খুঁজুন',
     popular: 'বেশি খোঁজা হয়',
     results: '{count, plural, other {#টি রেজাল্ট}}',
@@ -85,6 +119,7 @@ export const siteBnBD: SiteMessages = {
     kindDepartment: 'ডিপার্টমেন্ট',
   },
   form: {
+    chooseDate: 'দিন বেছে নিন',
     email: 'ইমেইল (না দিলেও চলবে)',
     branch: 'ব্রাঞ্চ',
     anyBranch: 'যেকোনো ব্রাঞ্চ',
@@ -104,6 +139,8 @@ export const siteBnBD: SiteMessages = {
       'এটি একটি ডেমো ওয়েবসাইট, তাই কিছুই পাঠানো হয়নি। আসল ওয়েবসাইটে হাসপাতাল থেকে আপনাকে কল করা হতো।',
   },
   doctors: {
+    emptyHelp: 'বুকে ব্যথা বা জ্বরের মতো লক্ষণ লিখে খুঁজুন। জরুরি হলে এখনই কল করুন।',
+    seeDepartments: 'সব ডিপার্টমেন্ট দেখুন',
     results: 'রেজাল্ট',
     title: 'ডাক্তার খুঁজুন',
     intro:
@@ -118,7 +155,7 @@ export const siteBnBD: SiteMessages = {
     clear: 'ফিল্টার মুছুন',
   },
   doctor: {
-    book: 'অ্যাপয়েন্টমেন্ট নিন',
+    book: 'সিরিয়াল নিন',
     callHotline: 'কল করুন',
     speaks: 'কথা বলেন: {languages}',
     fee: 'কনসালটেশন ফি',
@@ -147,7 +184,7 @@ export const siteBnBD: SiteMessages = {
     opdHours: 'আউটডোর (OPD) এর সময়',
     doctors: 'এই ডিপার্টমেন্টের ডাক্তার',
     requestHeading: 'আমরা আপনাকে কল করব',
-    requestText: 'নাম আর নম্বর দিন, আমরা কল করে অ্যাপয়েন্টমেন্ট ঠিক করে দেব।',
+    requestText: 'নাম আর নম্বর দিন, আমরা কল করে সিরিয়াল ঠিক করে দেব।',
   },
   centres: {
     title: 'সেন্টার অব এক্সিলেন্স',
@@ -251,7 +288,7 @@ export const siteBnBD: SiteMessages = {
     helpful: 'দরকারি লিংক',
   },
   booking: {
-    title: 'অ্যাপয়েন্টমেন্ট নিন',
+    title: 'ডাক্তারের সিরিয়াল নিন',
     intro: 'ডাক্তার, দিন ও সময় বেছে নিন। এই ডেমো সাইট থেকে কিছুই পাঠানো হয় না।',
     progress: 'বুকিংয়ের ধাপ',
     steps: {
@@ -271,11 +308,11 @@ export const siteBnBD: SiteMessages = {
     note: 'কী সমস্যা (না লিখলেও চলবে)',
     back: 'আগের ধাপ',
     next: 'পরের ধাপ',
-    confirm: 'অ্যাপয়েন্টমেন্ট কনফার্ম করুন',
-    confirmedTitle: 'অ্যাপয়েন্টমেন্ট নেওয়া হয়েছে (ডেমো)',
+    confirm: 'সিরিয়াল কনফার্ম করুন',
+    confirmedTitle: 'সিরিয়াল নেওয়া হয়েছে (ডেমো)',
     confirmedBody:
-      'এটি একটি ডেমো ওয়েবসাইট, তাই কিছুই পাঠানো হয়নি এবং কোনো অ্যাপয়েন্টমেন্ট হয়নি। আসল ওয়েবসাইটে আপনি সিরিয়াল নম্বরসহ SMS পেতেন।',
-    again: 'আরেকটি অ্যাপয়েন্টমেন্ট নিন',
+      'এটি একটি ডেমো ওয়েবসাইট, তাই কিছুই পাঠানো হয়নি এবং কোনো সিরিয়াল হয়নি। আসল ওয়েবসাইটে আপনি সিরিয়াল নম্বরসহ SMS পেতেন।',
+    again: 'আরেকটি সিরিয়াল নিন',
   },
   reports: {
     title: 'অনলাইন রিপোর্ট',
@@ -314,5 +351,8 @@ export const siteBnBD: SiteMessages = {
     rating1: 'একদম ভালো না',
     submit: 'ফিডব্যাক পাঠান',
     demoTitle: 'ফিডব্যাকের জন্য ধন্যবাদ (ডেমো)',
+  },
+  hero: {
+    emergencyLine: 'ইমার্জেন্সি? এখনই কল করুন {number}',
   },
 };

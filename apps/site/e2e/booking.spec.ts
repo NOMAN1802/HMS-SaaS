@@ -18,7 +18,7 @@ test('a doctor from the profile is preselected and the booking sends nothing', a
   await page.getByTestId('booking-dates').getByRole('button').first().click();
   const times = page.getByTestId('booking-times').getByRole('button');
   // Senior consultants have 20-minute slots in this content.
-  await expect(times.nth(1)).toHaveText(/:20$/);
+  await expect(times.nth(1)).toHaveText(/:20/);
   await times.first().click();
   await page.getByRole('button', { name: 'Continue' }).click();
 
@@ -51,4 +51,13 @@ test('the booking page has no accessibility violations', async ({ page }) => {
   await page.goto('/en/book-appointment?doctor=farhana-rahman');
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations).toEqual([]);
+});
+
+test.describe('on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test('the call and book bar steps aside on the booking page', async ({ page }) => {
+    await page.goto('/en/book-appointment?doctor=farhana-rahman');
+    await expect(page.getByTestId('phone-action-bar')).toHaveCount(0);
+  });
 });

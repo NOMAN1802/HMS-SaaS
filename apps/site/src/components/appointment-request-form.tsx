@@ -6,14 +6,24 @@ import { Alert, Button, Field, Select, TextInput } from '@hms/ui';
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { contactErrors, type FieldError } from '../forms/validation';
+import { todayInDhaka } from '../format';
+import { dayOptions } from '../i18n/clock';
+import { useSiteLocale } from '../i18n/locale';
 
 export interface AppointmentRequestFormProps {
   departments: { value: string; label: string }[];
   department?: string;
+  /** The package form books a check-up, not a department (critique 2026-10-21). */
+  showDepartment?: boolean;
 }
 
-export function AppointmentRequestForm({ departments, department }: AppointmentRequestFormProps) {
+export function AppointmentRequestForm({
+  departments,
+  department,
+  showDepartment = true,
+}: AppointmentRequestFormProps) {
   const t = useTranslations();
+  const locale = useSiteLocale();
   const [values, setValues] = useState({
     name: '',
     phone: '',
@@ -73,21 +83,26 @@ export function AppointmentRequestForm({ departments, department }: AppointmentR
           />
         )}
       </Field>
-      <Field label={t('form.department')}>
+      {showDepartment ? (
+        <Field label={t('form.department')}>
+          {(control) => (
+            <Select
+              {...control}
+              options={[{ value: '', label: t('form.anyDepartment') }, ...departments]}
+              value={values.department}
+              onChange={(event) => setValues({ ...values, department: event.target.value })}
+            />
+          )}
+        </Field>
+      ) : null}
+      <Field label={t('form.preferredDate')}>
         {(control) => (
           <Select
             {...control}
-            options={[{ value: '', label: t('form.anyDepartment') }, ...departments]}
-            value={values.department}
-            onChange={(event) => setValues({ ...values, department: event.target.value })}
-          />
-        )}
-      </Field>
-      <Field label={t('form.preferredDate')}>
-        {(control) => (
-          <TextInput
-            {...control}
-            type="date"
+            options={[
+              { value: '', label: t('form.chooseDate') },
+              ...dayOptions(t, locale, todayInDhaka()),
+            ]}
             value={values.date}
             onChange={(event) => setValues({ ...values, date: event.target.value })}
           />

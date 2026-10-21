@@ -16,6 +16,27 @@
   },
   "sections": [
     {
+      "id": "band",
+      "type": "emergencyBand",
+      "props": {
+        "heading": {
+          "bn": "২৪ ঘণ্টা খোলা",
+          "en": "Open 24 hours"
+        },
+        "text": {
+          "bn": "ট্রমা, হার্ট অ্যাটাক, স্ট্রোক ও শিশুদের জরুরি চিকিৎসা।",
+          "en": "Trauma, heart attack, stroke and children's emergencies."
+        },
+        "image": {
+          "slot": "emergency-band",
+          "alt": {
+            "bn": "অ্যাম্বুলেন্স (চিত্র)",
+            "en": "Ambulance (illustration)"
+          }
+        }
+      }
+    },
+    {
       "id": "steps",
       "type": "richText",
       "props": {
@@ -34,27 +55,6 @@
             "2. Bring the patient's current medicines and earlier reports.",
             "3. Come to the emergency department through the east entrance of the Gulshan branch."
           ]
-        }
-      }
-    },
-    {
-      "id": "band",
-      "type": "emergencyBand",
-      "props": {
-        "heading": {
-          "bn": "২৪ ঘণ্টা খোলা",
-          "en": "Open 24 hours"
-        },
-        "text": {
-          "bn": "ট্রমা, হার্ট অ্যাটাক, স্ট্রোক ও শিশুদের জরুরি চিকিৎসা।",
-          "en": "Trauma, heart attack, stroke and children's emergencies."
-        },
-        "image": {
-          "slot": "emergency-band",
-          "alt": {
-            "bn": "অ্যাম্বুলেন্স (চিত্র)",
-            "en": "Ambulance (illustration)"
-          }
         }
       }
     },

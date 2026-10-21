@@ -119,7 +119,25 @@
         ]
       }
     ],
-    "centre": "heart-centre"
+    "centre": "heart-centre",
+    "keywords": [
+      {
+        "bn": "বুকে ব্যথা",
+        "en": "chest pain"
+      },
+      {
+        "bn": "হার্ট",
+        "en": "heart"
+      },
+      {
+        "bn": "প্রেশার",
+        "en": "blood pressure"
+      },
+      {
+        "bn": "বুক ধড়ফড়",
+        "en": "palpitations"
+      }
+    ]
   },
   {
     "slug": "neurology",
@@ -233,7 +251,25 @@
         ]
       }
     ],
-    "centre": "neuro-centre"
+    "centre": "neuro-centre",
+    "keywords": [
+      {
+        "bn": "মাথাব্যথা",
+        "en": "headache"
+      },
+      {
+        "bn": "মাথা ঘোরা",
+        "en": "dizziness"
+      },
+      {
+        "bn": "খিঁচুনি",
+        "en": "seizure"
+      },
+      {
+        "bn": "প্যারালাইসিস",
+        "en": "paralysis"
+      }
+    ]
   },
   {
     "slug": "orthopaedics",
@@ -351,7 +387,25 @@
         ]
       }
     ],
-    "centre": "bone-joint"
+    "centre": "bone-joint",
+    "keywords": [
+      {
+        "bn": "হাড় ভাঙা",
+        "en": "fracture"
+      },
+      {
+        "bn": "কোমর ব্যথা",
+        "en": "back pain"
+      },
+      {
+        "bn": "হাঁটু ব্যথা",
+        "en": "knee pain"
+      },
+      {
+        "bn": "জয়েন্ট ব্যথা",
+        "en": "joint pain"
+      }
+    ]
   },
   {
     "slug": "paediatrics",
@@ -469,7 +523,21 @@
         ]
       }
     ],
-    "centre": "mother-child"
+    "centre": "mother-child",
+    "keywords": [
+      {
+        "bn": "বাচ্চার জ্বর",
+        "en": "child fever"
+      },
+      {
+        "bn": "শিশুর কাশি",
+        "en": "child cough"
+      },
+      {
+        "bn": "টিকা",
+        "en": "vaccine"
+      }
+    ]
   },
   {
     "slug": "gynaecology",
@@ -587,7 +655,21 @@
         ]
       }
     ],
-    "centre": "mother-child"
+    "centre": "mother-child",
+    "keywords": [
+      {
+        "bn": "গর্ভাবস্থা",
+        "en": "pregnancy"
+      },
+      {
+        "bn": "মাসিক",
+        "en": "periods"
+      },
+      {
+        "bn": "প্রসব",
+        "en": "delivery"
+      }
+    ]
   },
   {
     "slug": "medicine",
@@ -700,6 +782,24 @@
           }
         ]
       }
+    ],
+    "keywords": [
+      {
+        "bn": "জ্বর",
+        "en": "fever"
+      },
+      {
+        "bn": "ডায়াবেটিস",
+        "en": "diabetes"
+      },
+      {
+        "bn": "দুর্বলতা",
+        "en": "weakness"
+      },
+      {
+        "bn": "থাইরয়েড",
+        "en": "thyroid"
+      }
     ]
   },
   {
@@ -808,6 +908,24 @@
             "end": "17:00"
           }
         ]
+      }
+    ],
+    "keywords": [
+      {
+        "bn": "কান ব্যথা",
+        "en": "ear pain"
+      },
+      {
+        "bn": "গলা ব্যথা",
+        "en": "sore throat"
+      },
+      {
+        "bn": "সাইনাস",
+        "en": "sinus"
+      },
+      {
+        "bn": "নাক বন্ধ",
+        "en": "blocked nose"
       }
     ]
   },
@@ -922,12 +1040,26 @@
           }
         ]
       }
+    ],
+    "keywords": [
+      {
+        "bn": "চোখ লাল",
+        "en": "red eye"
+      },
+      {
+        "bn": "চোখে কম দেখা",
+        "en": "blurred vision"
+      },
+      {
+        "bn": "ছানি",
+        "en": "cataract"
+      }
     ]
   },
   {
     "slug": "dental",
     "name": {
-      "bn": "দন্ত",
+      "bn": "ডেন্টাল",
       "en": "Dental care"
     },
     "icon": "tooth",
@@ -972,7 +1104,7 @@
     "image": {
       "slot": "department-dental",
       "alt": {
-        "bn": "দন্ত বিভাগের চিত্র",
+        "bn": "ডেন্টাল বিভাগের চিত্র",
         "en": "Dental care department (illustration)"
       }
     },
@@ -1034,6 +1166,16 @@
             "end": "20:00"
           }
         ]
+      }
+    ],
+    "keywords": [
+      {
+        "bn": "দাঁত ব্যথা",
+        "en": "toothache"
+      },
+      {
+        "bn": "মাড়ি",
+        "en": "gums"
       }
     ]
   },
@@ -1145,7 +1287,21 @@
         ]
       }
     ],
-    "centre": "kidney-centre"
+    "centre": "kidney-centre",
+    "keywords": [
+      {
+        "bn": "কিডনি",
+        "en": "kidney"
+      },
+      {
+        "bn": "প্রস্রাবে জ্বালা",
+        "en": "burning urine"
+      },
+      {
+        "bn": "পা ফোলা",
+        "en": "swollen feet"
+      }
+    ]
   },
   {
     "slug": "gastroenterology",
@@ -1253,6 +1409,24 @@
             "end": "16:00"
           }
         ]
+      }
+    ],
+    "keywords": [
+      {
+        "bn": "পেট ব্যথা",
+        "en": "stomach pain"
+      },
+      {
+        "bn": "গ্যাস্ট্রিক",
+        "en": "acidity"
+      },
+      {
+        "bn": "জন্ডিস",
+        "en": "jaundice"
+      },
+      {
+        "bn": "বমি",
+        "en": "vomiting"
       }
     ]
   },
@@ -1364,6 +1538,20 @@
         ]
       }
     ],
-    "centre": "cancer-care"
+    "centre": "cancer-care",
+    "keywords": [
+      {
+        "bn": "ক্যানসার",
+        "en": "cancer"
+      },
+      {
+        "bn": "টিউমার",
+        "en": "tumour"
+      },
+      {
+        "bn": "চাকা",
+        "en": "lump"
+      }
+    ]
   }
 ]

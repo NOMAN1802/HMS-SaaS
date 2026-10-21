@@ -38,6 +38,9 @@ function Band({ children, className }: { children: ReactNode; className?: string
 const optional = (text: LocalizedText | undefined, locale: Locale) =>
   text ? localize(text, locale) : undefined;
 
+// Emergency is the one quick action in the danger color, always with its word (F section 5).
+const EMERGENCY_HREF = '/emergency';
+
 export function QuickActionsSection({
   section,
   locale,
@@ -50,12 +53,16 @@ export function QuickActionsSection({
             <li key={item.href}>
               <SiteLink
                 href={item.href}
-                className="flex h-full min-h-24 flex-col items-center justify-center gap-2 rounded-control p-3 text-center font-ui text-sm font-medium hover:bg-primary-soft hover:text-primary"
+                className={`flex h-full min-h-24 flex-col items-center justify-center gap-2 rounded-control p-3 text-center font-ui text-sm font-medium ${
+                  item.href === EMERGENCY_HREF
+                    ? 'text-danger hover:bg-status-problem-bg'
+                    : 'hover:bg-primary-soft hover:text-primary'
+                }`}
               >
                 <Icon
                   name={isIconName(item.icon) ? item.icon : 'arrow-right'}
                   size={28}
-                  className="text-primary"
+                  className={item.href === EMERGENCY_HREF ? 'text-danger' : 'text-primary'}
                 />
                 {localize(item.label, locale)}
               </SiteLink>
@@ -101,6 +108,7 @@ export function EmergencyBandSection({
             locale={locale}
             ratio="card"
             icon="ambulance"
+            tone="dark"
             className="rounded-panel"
           />
         </div>

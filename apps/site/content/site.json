@@ -154,7 +154,7 @@
           },
           {
             "label": {
-              "bn": "দন্ত",
+              "bn": "ডেন্টাল",
               "en": "Dental care"
             },
             "href": "/departments/dental"
@@ -199,14 +199,14 @@
       {
         "label": {
           "bn": "টেস্টের দাম",
-          "en": "Test prices"
+          "en": "Prices"
         },
         "href": "/tests"
       },
       {
         "label": {
           "bn": "পেশেন্ট ও ভিজিটর",
-          "en": "Patients and visitors"
+          "en": "Patient guide"
         },
         "href": "/patients-and-visitors"
       },
@@ -227,7 +227,7 @@
     ],
     "headerCta": {
       "label": {
-        "bn": "অ্যাপয়েন্টমেন্ট নিন",
+        "bn": "সিরিয়াল নিন",
         "en": "Book appointment"
       },
       "href": "/book-appointment"
@@ -250,7 +250,7 @@
           },
           {
             "label": {
-              "bn": "অ্যাপয়েন্টমেন্ট",
+              "bn": "সিরিয়াল",
               "en": "Book appointment"
             },
             "href": "/book-appointment"

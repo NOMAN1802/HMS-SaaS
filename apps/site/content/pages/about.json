@@ -89,12 +89,12 @@
           "en": "Want to see a doctor?"
         },
         "text": {
-          "bn": "অনলাইনে অ্যাপয়েন্টমেন্ট নিন বা হটলাইনে ফোন করুন।",
+          "bn": "অনলাইনে সিরিয়াল নিন বা হটলাইনে ফোন করুন।",
           "en": "Book online or call the hotline."
         },
         "button": {
           "label": {
-            "bn": "অ্যাপয়েন্টমেন্ট নিন",
+            "bn": "সিরিয়াল নিন",
             "en": "Book appointment"
           },
           "href": "/book-appointment"

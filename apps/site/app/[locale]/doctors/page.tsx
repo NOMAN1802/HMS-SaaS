@@ -9,7 +9,13 @@ import { Suspense } from 'react';
 import { Container } from '../../../src/components/container';
 import { DoctorDirectory, DoctorGrid } from '../../../src/components/doctor-directory';
 import { PageHeader } from '../../../src/components/page-header';
-import { listBranches, listDepartments, listDoctors, localize } from '../../../src/content';
+import {
+  getSite,
+  listBranches,
+  listDepartments,
+  listDoctors,
+  localize,
+} from '../../../src/content';
 import { toDoctorSummary } from '../../../src/content/doctor-summary';
 import { withAlternates } from '../../../src/seo';
 
@@ -44,7 +50,12 @@ export default async function DoctorsPage({ params }: Params) {
       <Container className="py-10">
         <h2 className="sr-only">{t('doctors.results')}</h2>
         <Suspense fallback={<DoctorGrid doctors={doctors} />}>
-          <DoctorDirectory doctors={doctors} departments={departments} branches={branches} />
+          <DoctorDirectory
+            doctors={doctors}
+            departments={departments}
+            branches={branches}
+            help={getSite().settings.contacts}
+          />
         </Suspense>
       </Container>
     </>

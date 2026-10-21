@@ -81,3 +81,10 @@ for (const path of [
     expect(results.violations).toEqual([]);
   });
 }
+
+test('the emergency page puts the call buttons first (critique P0)', async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.goto('/bn/emergency');
+  const call = page.getByRole('main').getByRole('link', { name: /ইমার্জেন্সিতে কল করুন/ });
+  await expect(call).toBeInViewport();
+});

@@ -3,11 +3,13 @@
 import type { Article } from '@hms/contracts';
 import type { Locale } from '@hms/i18n';
 import { localize } from '../content/localize';
-import { calendarDate } from '../format';
+import { useTranslations } from 'next-intl';
+import { formatLongDate } from '../i18n/clock';
 import { Link } from '../i18n/navigation';
 import { ImageSlot } from './image-slot';
 
 export function ArticleCard({ article, locale }: { article: Article; locale: Locale }) {
+  const t = useTranslations();
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
       <ImageSlot image={article.image} locale={locale} ratio="wide" icon="newspaper" />
@@ -22,7 +24,9 @@ export function ArticleCard({ article, locale }: { article: Article; locale: Loc
         </h3>
         <p className="text-sm text-text-muted">{localize(article.excerpt, locale)}</p>
         <p className="mt-auto pt-2 font-ui text-xs text-text-muted">
-          <time dateTime={article.publishedOn}>{calendarDate(article.publishedOn, locale)}</time>
+          <time dateTime={article.publishedOn}>
+            {formatLongDate(t, article.publishedOn, locale)}
+          </time>
         </p>
       </div>
     </article>

@@ -8,11 +8,11 @@ test('package prices use lakh grouping and the taka sign in both languages (AT-W
 }) => {
   await page.goto('/en/packages/executive-health-check');
   const table = page.getByTestId('package-price-table');
-  await expect(table).toContainText('৳ 13,950.00');
-  await expect(table).toContainText('৳ 9,800.00');
-  await expect(table).toContainText('৳ 4,150.00');
+  await expect(table).toContainText('৳ 13,950');
+  await expect(table).toContainText('৳ 9,800');
+  await expect(table).toContainText('৳ 4,150');
   await page.goto('/bn/packages/executive-health-check');
-  await expect(page.getByTestId('package-price-table')).toContainText('৳ ১৩,৯৫০.০০');
+  await expect(page.getByTestId('package-price-table')).toContainText('৳ ১৩,৯৫০');
 });
 
 test('every package card says the price is a sample (AT-WEB-021)', async ({ page }) => {

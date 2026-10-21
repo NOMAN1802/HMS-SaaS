@@ -7,6 +7,9 @@ import { Alert, Button, Field, Select, TextArea, TextInput, type FieldControlPro
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { isFilled, isMobileNumber, type FieldError } from '../forms/validation';
+import { todayInDhaka } from '../format';
+import { dayOptions } from '../i18n/clock';
+import { useSiteLocale } from '../i18n/locale';
 
 export interface ServiceField {
   name: string;
@@ -43,11 +46,24 @@ function Control({
   onChange: (value: string) => void;
   control: FieldControlProps;
 }) {
+  const t = useTranslations();
+  const locale = useSiteLocale();
+  const chooseLabel = t('form.chooseDate');
   if (field.kind === 'textarea') {
     return (
       <TextArea
         {...control}
         rows={4}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+      />
+    );
+  }
+  if (field.kind === 'date') {
+    return (
+      <Select
+        {...control}
+        options={[{ value: '', label: chooseLabel }, ...dayOptions(t, locale, todayInDhaka())]}
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />

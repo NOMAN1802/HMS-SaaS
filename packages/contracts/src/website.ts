@@ -268,6 +268,8 @@ export const departmentSchema = z
     overview: localizedRichTextSchema,
     services: z.array(localizedTextSchema).min(1),
     facilities: z.array(localizedTextSchema),
+    /** Symptoms and everyday words patients search with ("chest pain"), so search finds the department. */
+    keywords: z.array(localizedTextSchema).optional(),
     centre: slugSchema.optional(),
     image: imageRefSchema,
     floor: localizedTextSchema,

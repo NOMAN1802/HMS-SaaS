@@ -41,11 +41,11 @@
         "items": [
           {
             "question": {
-              "bn": "অ্যাপয়েন্টমেন্ট ছাড়া কি ডাক্তার দেখানো যায়?",
+              "bn": "সিরিয়াল ছাড়া কি ডাক্তার দেখানো যায়?",
               "en": "Can I see a doctor without an appointment?"
             },
             "answer": {
-              "bn": ["হ্যাঁ, তবে অ্যাপয়েন্টমেন্ট থাকলে অপেক্ষা কম হয়।"],
+              "bn": ["হ্যাঁ, তবে সিরিয়াল থাকলে অপেক্ষা কম হয়।"],
               "en": ["Yes, but with an appointment you wait less."]
             }
           },
@@ -81,7 +81,7 @@
           "en": "Request a call back"
         },
         "text": {
-          "bn": "নাম ও ফোন নম্বর দিন, আমরা ফোন করে অ্যাপয়েন্টমেন্ট ঠিক করে দেব।",
+          "bn": "নাম ও ফোন নম্বর দিন, আমরা ফোন করে সিরিয়াল ঠিক করে দেব।",
           "en": "Leave your name and phone number and we will call to arrange an appointment."
         }
       }

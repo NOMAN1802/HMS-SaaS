@@ -20,7 +20,7 @@ test('a department page lists exactly its doctors (AT-WEB-013)', async ({ page }
 test('OPD hours use the page digits (AT-WEB-052)', async ({ page }) => {
   await page.goto('/bn/departments/cardiology');
   await expect(page.getByTestId('opd-hours')).toContainText('শনিবার');
-  await expect(page.getByTestId('opd-hours')).toContainText('০৯:০০');
+  await expect(page.getByTestId('opd-hours')).toContainText('সকাল ৯টা');
 });
 
 test('the call-back form validates and sends nothing (AT-WEB-054)', async ({ page }) => {

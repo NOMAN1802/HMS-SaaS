@@ -14,6 +14,7 @@ import { PageHeader } from '../../../../src/components/page-header';
 import {
   doctorsAtBranch,
   getBranch,
+  getSite,
   listBranches,
   listDepartments,
   localize,
@@ -139,7 +140,12 @@ export default async function BranchPage({ params }: Params) {
             {t('branch.doctors')}
           </h2>
           <Suspense fallback={<DoctorGrid doctors={doctors} />}>
-            <DoctorDirectory doctors={doctors} departments={departments} branches={[]} />
+            <DoctorDirectory
+              doctors={doctors}
+              departments={departments}
+              branches={[]}
+              help={getSite().settings.contacts}
+            />
           </Suspense>
         </Container>
       </section>

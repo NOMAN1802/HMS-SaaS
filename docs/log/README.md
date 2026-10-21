@@ -86,3 +86,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-21 | [T-WEB-15: WEB-A quality pass](2026-10-21-T-WEB-15-quality-pass.md)                                         |
 | 2026-10-21 | [T-WEB-03: natural Bangla copy](2026-10-21-T-WEB-03-bangla-copy.md)                                         |
 | 2026-10-21 | [T-WEB-03: Bangla heading font](2026-10-21-T-WEB-03-bangla-heading-font.md)                                 |
+| 2026-10-21 | [T-WEB-15: design critique and polish](2026-10-21-T-WEB-15-design-polish.md)                                |

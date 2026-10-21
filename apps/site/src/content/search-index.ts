@@ -58,7 +58,12 @@ export function buildSearchIndex(locale: Locale): SearchEntry[] {
     label: localize(department.name, locale),
     detail: localize(department.summary, locale),
     href: `/departments/${department.slug}`,
-    terms: terms(department.name, department.summary, ...department.services),
+    terms: terms(
+      department.name,
+      department.summary,
+      ...(department.keywords ?? []),
+      ...department.services,
+    ),
   }));
   const centres = listCentres().map((centre) => ({
     kind: 'centre' as const,

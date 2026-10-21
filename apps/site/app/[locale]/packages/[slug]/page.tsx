@@ -2,7 +2,7 @@
 // tests bought one by one with the package rate and the saving (FR-WEB-PKG-002, -004, X26,
 // AT-WEB-053), with a call-back request to book it. Implements: T-WEB-09, T-WEB-17.
 import { isLocale } from '@hms/i18n';
-import { Icon } from '@hms/ui';
+import { buttonClassName, Icon } from '@hms/ui';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -154,17 +154,20 @@ export default async function PackagePage({ params }: Params) {
             {item.doctorFeeNote ? (
               <p className="mt-3 text-sm text-text-muted">{localize(item.doctorFeeNote, locale)}</p>
             ) : null}
+            <a href="#request" className={buttonClassName('primary', 'lg', 'mt-4 w-full')}>
+              {t('package.requestHeading')}
+            </a>
           </section>
         </aside>
       </Container>
-      <section aria-labelledby="request-heading" className="pb-12">
+      <section id="request" aria-labelledby="request-heading" className="scroll-mt-24 pb-12">
         <Container>
           <div className="max-w-3xl rounded-panel border border-border bg-surface p-6 sm:p-8">
             <h2 id="request-heading" className="mb-2 text-2xl font-semibold">
               {t('package.requestHeading')}
             </h2>
             <p className="mb-6 text-text-muted">{t('package.requestText')}</p>
-            <AppointmentRequestForm departments={departments} />
+            <AppointmentRequestForm departments={departments} showDepartment={false} />
           </div>
         </Container>
       </section>

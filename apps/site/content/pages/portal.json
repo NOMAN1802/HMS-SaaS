@@ -10,7 +10,7 @@
       "en": "Patient portal"
     },
     "description": {
-      "bn": "শিগগিরই আসছে: রিপোর্ট, অ্যাপয়েন্টমেন্ট ও বিল এক জায়গায়।",
+      "bn": "শিগগিরই আসছে: রিপোর্ট, সিরিয়াল ও বিল এক জায়গায়।",
       "en": "Coming soon: reports, appointments and bills in one place."
     }
   },
@@ -24,9 +24,7 @@
           "en": "Coming soon"
         },
         "body": {
-          "bn": [
-            "পেশেন্ট পোর্টালে আপনি রিপোর্ট দেখতে, অ্যাপয়েন্টমেন্ট পরিচালনা করতে ও বিল দেখতে পারবেন।"
-          ],
+          "bn": ["পেশেন্ট পোর্টালে আপনি রিপোর্ট দেখতে, সিরিয়াল পরিচালনা করতে ও বিল দেখতে পারবেন।"],
           "en": [
             "In the patient portal you will be able to see reports, manage appointments and view bills."
           ]

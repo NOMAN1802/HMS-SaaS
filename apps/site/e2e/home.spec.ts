@@ -40,3 +40,8 @@ test('home sections render in the stored order (AT-WEB-008)', async ({ page }) =
     'emergency',
   ]);
 });
+
+test('the hero offers an emergency call line', async ({ page }) => {
+  await page.goto('/en');
+  await expect(page.getByTestId('hero-emergency')).toHaveAttribute('href', /^tel:/);
+});

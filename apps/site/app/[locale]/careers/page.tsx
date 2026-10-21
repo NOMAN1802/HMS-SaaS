@@ -9,7 +9,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { getBranch, listJobs, localize } from '../../../src/content';
-import { calendarDate } from '../../../src/format';
+import { formatLongDate } from '../../../src/i18n/clock';
 import { withAlternates } from '../../../src/seo';
 
 interface Params {
@@ -56,7 +56,7 @@ export default async function CareersPage({ params }: Params) {
                 </p>
                 <p>{localize(job.summary, locale)}</p>
                 <p className="text-sm text-text-muted">
-                  {t('careers.closing', { date: calendarDate(job.closingOn, locale) })}
+                  {t('careers.closing', { date: formatLongDate(t, job.closingOn, locale) })}
                 </p>
               </li>
             );

@@ -8,6 +8,7 @@ export const siteEn = {
     description: 'A hospital website built on HMS.',
   },
   shell: {
+    callHotline: 'Hotline',
     skipToContent: 'Skip to main content',
     emergency: 'Emergency',
     hotline: 'Hotline',
@@ -24,7 +25,6 @@ export const siteEn = {
     language: 'Language',
     allOf: 'All {name}',
     hideNotice: 'Hide notice',
-    call: 'Call',
     book: 'Book',
     homeLink: '{name}, home page',
     followUs: 'Follow us',
@@ -32,6 +32,42 @@ export const siteEn = {
     opensInNewTab: '(opens in a new tab)',
   },
   common: {
+    month: {
+      jan: 'January',
+      feb: 'February',
+      mar: 'March',
+      apr: 'April',
+      may: 'May',
+      jun: 'June',
+      jul: 'July',
+      aug: 'August',
+      sep: 'September',
+      oct: 'October',
+      nov: 'November',
+      dec: 'December',
+    },
+    period: {
+      am: 'am',
+      pm: 'pm',
+      morning: 'morning',
+      noon: 'noon',
+      afternoon: 'afternoon',
+      evening: 'evening',
+      night: 'night',
+    },
+    clock: {
+      hour: '{hour} {period}',
+      hourMinute: '{hour}:{minute} {period}',
+    },
+    date: {
+      long: '{day} {month} {year}',
+      dayMonth: '{day} {month}',
+    },
+    today: 'Today',
+    tomorrow: 'Tomorrow',
+    backOn: 'On leave, back on {date}',
+    nextChamber: 'Next chamber',
+    fee: 'Fee {amount}',
     home: 'Home',
     breadcrumb: 'Breadcrumb',
     weekday: {
@@ -49,9 +85,7 @@ export const siteEn = {
       hi: 'Hindi',
       ar: 'Arabic',
     },
-    onLeave: 'On leave',
-    viewProfile: 'View profile',
-    bookShort: 'Book',
+    bookShort: 'Book appointment',
     packageCode: 'Code {code}',
     separatePrice: 'Separate total',
     youSave: 'You save {amount}',
@@ -83,6 +117,7 @@ export const siteEn = {
     kindDepartment: 'Department',
   },
   form: {
+    chooseDate: 'Choose a day',
     email: 'Email (optional)',
     branch: 'Branch',
     anyBranch: 'Any branch',
@@ -102,6 +137,8 @@ export const siteEn = {
       'This is a demo website, so nothing was sent. On a live website the hospital would call you back.',
   },
   doctors: {
+    emptyHelp: 'Try a symptom such as chest pain or fever. If it is urgent, call now.',
+    seeDepartments: 'See all departments',
     results: 'Results',
     title: 'Find a doctor',
     intro:
@@ -314,6 +351,9 @@ export const siteEn = {
     rating1: 'Very poor',
     submit: 'Send feedback',
     demoTitle: 'Thank you for your feedback (demo)',
+  },
+  hero: {
+    emergencyLine: 'Emergency? Call {number} now',
   },
 } as const;
 
