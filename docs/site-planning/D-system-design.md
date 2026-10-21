@@ -65,7 +65,7 @@ apps/site/
 ## 5. Localization
 
 - next-intl routing with locales `bn-BD` and `en` and URL prefixes `/bn` and `/en` (`localePrefix: { mode: 'always', prefixes: {...} }`), default `bn-BD` (P-023).
-- `proxy.ts` redirects `/` and unprefixed paths, and remembers the last choice in the next-intl locale cookie.
+- `proxy.ts` redirects `/` and unprefixed paths to `/bn`. Browser-language and cookie detection are off (`localeDetection: false`, decided in T-WEB-01): every new visitor gets Bangla first (C-062), links stay deterministic, and the site sets no cookies.
 - UI text: `siteMessages` in `packages/i18n` (P-024). Content text: `{ bn, en }` fields resolved by `localize(text, locale)` in the content adapter (P-025).
 - The language switch links to the same pathname in the other locale (next-intl navigation helpers).
 
@@ -120,7 +120,7 @@ Every hospital tenant gets its own website (C-067). WEB-A serves one demo tenant
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Content-Security-Policy (enforced) | `default-src 'self'; script-src 'self' 'nonce-...'` or hashes as Next requires; `style-src 'self' 'unsafe-inline'` (Tailwind runtime-free, review); `img-src 'self' data:`; `font-src 'self'`; `connect-src 'self'`; `frame-ancestors 'none'`; `base-uri 'self'`; `form-action 'self'`; `object-src 'none'` |
 | Other headers                      | `Referrer-Policy: strict-origin-when-cross-origin`, `X-Content-Type-Options: nosniff`, `Permissions-Policy` denying camera, microphone, geolocation; `poweredByHeader: false`                                                                                                                               |
-| Storage                            | Only the locale cookie. No `localStorage` of personal data (lesson from R1).                                                                                                                                                                                                                                |
+| Storage                            | No cookies and no `localStorage` of personal data in WEB-A (lesson from R1).                                                                                                                                                                                                                                |
 | Forms                              | No network submission in WEB-A (FR-WEB-GEN-006).                                                                                                                                                                                                                                                            |
 | Robots                             | `noindex` while content is demo (FR-WEB-SEO-002).                                                                                                                                                                                                                                                           |
 

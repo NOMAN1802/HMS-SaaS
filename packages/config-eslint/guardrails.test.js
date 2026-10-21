@@ -88,6 +88,24 @@ describe('web guardrails', () => {
   });
 });
 
+describe('site guardrails (P-030)', () => {
+  const SITE = 'apps/site/app/[locale]/example/page.tsx';
+
+  it('rejects raw widgets, color literals and direct icon imports in apps/site', async () => {
+    const widget = await messagesFor('export const A = () => <button />;', SITE);
+    const color = await messagesFor("export const a = 'bg-[#00786f]';", SITE);
+    const icon = await messagesFor("import { X } from '@phosphor-icons/react';", SITE);
+    expect(widget.join(' ')).toContain('@hms/ui');
+    expect(color.join(' ')).toContain('Color literals');
+    expect(icon.join(' ')).toContain('Icon component');
+  });
+
+  it('exempts site e2e specs', async () => {
+    const e2e = await messagesFor("export const a = '#00786f';", 'apps/site/e2e/x.spec.ts');
+    expect(e2e).toEqual([]);
+  });
+});
+
 describe('ui guardrails', () => {
   it('allows raw widgets inside the design system', async () => {
     const messages = await messagesFor('export const A = () => <button type="button" />;', UI);

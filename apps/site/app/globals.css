@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import '@hms/ui/styles.css';
+
+/* Class names used inside the shared UI package must also generate CSS. */
+@source '../../../packages/ui/src';

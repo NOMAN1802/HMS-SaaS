@@ -7,6 +7,7 @@ Whole-hospital ERP sold as SaaS, starting in Bangladesh. The planning pack is in
 ```text
 apps/
   web/        Next.js staff UI (port 3100)
+  site/       Next.js public hospital website, Bangla and English (port 3200, docs/site-planning)
   api/        NestJS HTTP API (port 4100)
   worker/     NestJS background jobs (BullMQ, outbox relay)
 packages/
