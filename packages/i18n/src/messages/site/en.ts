@@ -140,6 +140,53 @@ export const siteEn = {
     departments: 'Departments in this centre',
     doctors: 'Our specialists',
   },
+  packages: {
+    title: 'Health packages',
+    intro:
+      'Check-ups that cost less than buying the same tests one by one. Prices on this demo site are samples.',
+    categories: 'Package categories',
+    all: 'All',
+    category: {
+      general: 'General',
+      women: 'Women',
+      men: 'Men',
+      senior: 'Senior',
+      child: 'Child',
+      vaccine: 'Vaccines',
+      corporate: 'Corporate',
+    },
+  },
+  package: {
+    included: 'What is included',
+    preparation: 'Before your check-up',
+    price: 'Price',
+    separateTotal: 'Tests bought one by one',
+    packagePrice: 'Package price',
+    saving: 'You save',
+    requestHeading: 'Book this package',
+    requestText: 'Leave your name and number and we will call to arrange a date.',
+  },
+  tests: {
+    title: 'Test prices',
+    intro: 'Search laboratory, imaging and heart tests by name or code.',
+    searchLabel: 'Test name or code',
+    categoryLabel: 'Category',
+    allCategories: 'All categories',
+    count: '{count, plural, one {# test} other {# tests}}',
+    empty: 'No test matches your search.',
+    code: 'Code',
+    name: 'Test',
+    reportTime: 'Report',
+    price: 'Price',
+    sampleNote: 'Prices on this demo site are samples, not real charges.',
+    category: {
+      pathology: 'Pathology',
+      biochemistry: 'Biochemistry',
+      imaging: 'Imaging',
+      cardiology: 'Heart tests',
+      other: 'Other',
+    },
+  },
 } as const;
 
 type Widen<T> = { -readonly [K in keyof T]: T[K] extends string ? string : Widen<T[K]> };
