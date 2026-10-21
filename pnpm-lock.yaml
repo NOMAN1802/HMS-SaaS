@@ -281,6 +281,9 @@ importers:
 
   apps/site:
     dependencies:
+      '@fontsource/hind-siliguri':
+        specifier: 5.3.0
+        version: 5.3.0
       '@hms/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
@@ -877,6 +880,9 @@ packages:
 
   '@fontsource-variable/tiktok-sans@5.3.0':
     resolution: {integrity: sha512-dYiXk1rzj1nouO4EiqvvvrA2aew9koFh5C6BBdyAiqyPlYpCQO6MzMCgK6Cbb+vewacnVnmrfdRO0hk1oFfoxg==}
+
+  '@fontsource/hind-siliguri@5.3.0':
+    resolution: {integrity: sha512-jTxXVXLTUYpiCqQ8zGzX9gK4pHkJ6nOn05nKqFjPEpqf3VY6gGREKAIvHfHprE/6N4ittSudnHsMPT10QQfgtw==}
 
   '@fontsource/tiro-bangla@5.3.0':
     resolution: {integrity: sha512-lwmDyUWLPgASmZFjfVtN6eShFoTIQ6o4Ch7hzrAf5XHbF4Tdo0S3GPCyw+IuNrwWi4FceTZazcNhR9KTmupAzA==}
@@ -4513,6 +4519,8 @@ snapshots:
   '@fontsource-variable/noto-sans-bengali@5.3.0': {}
 
   '@fontsource-variable/tiktok-sans@5.3.0': {}
+
+  '@fontsource/hind-siliguri@5.3.0': {}
 
   '@fontsource/tiro-bangla@5.3.0': {}
 

@@ -1,5 +1,16 @@
 @import 'tailwindcss';
 @import '@hms/ui/styles.css';
+/* Public site only (C-082): Bangla headings use Hind Siliguri; only its Bangla subset in the two
+   heading weights is loaded. */
+@import '@fontsource/hind-siliguri/bengali-600.css';
+@import '@fontsource/hind-siliguri/bengali-700.css';
 
 /* Class names used inside the shared UI package must also generate CSS. */
 @source '../../../packages/ui/src';
+
+/* Latin headings stay TikTok Sans; Bangla characters fall through to Hind Siliguri. The staff app
+   keeps Noto Sans Bengali (C-056). */
+@theme {
+  --font-heading:
+    'TikTok Sans Variable', 'Hind Siliguri', 'Noto Sans Bengali Variable', system-ui, sans-serif;
+}
