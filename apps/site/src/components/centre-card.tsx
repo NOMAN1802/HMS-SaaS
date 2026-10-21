@@ -10,9 +10,9 @@ export function CentreCard({ centre, locale }: { centre: Centre; locale: Locale 
   return (
     <Link
       href={`/centres/${centre.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface transition-shadow hover:shadow-overlay"
+      className="group flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface lift"
     >
-      <ImageSlot image={centre.image} locale={locale} icon="heartbeat" />
+      <ImageSlot image={centre.image} locale={locale} icon="heartbeat" className="zoom-media" />
       <span className="flex flex-col gap-2 p-5">
         <span className="font-heading text-lg font-semibold text-heading group-hover:text-primary">
           {localize(centre.name, locale)}

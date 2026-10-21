@@ -10,6 +10,8 @@ export default defineConfig({
   use: {
     baseURL: `http://localhost:${port}`,
     trace: 'on-first-retry',
+    // Journeys and axe checks run on the still page; e2e/motion.spec.ts turns motion back on (C-083).
+    contextOptions: { reducedMotion: 'reduce' },
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {

@@ -56,7 +56,7 @@ export function DepartmentGridSection({
   return (
     <Band muted>
       <SectionHeading {...heading(props, locale, props.viewAll)} />
-      <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      <ul className="reveal-list grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {listDepartments()
           .slice(0, props.count)
           .map((department) => (
@@ -78,7 +78,7 @@ export function CentreCardsSection({
   return (
     <Band>
       <SectionHeading {...heading(props, locale)} />
-      <ul className="grid gap-6 md:grid-cols-3">
+      <ul className="reveal-list grid gap-6 md:grid-cols-3">
         {centres.map((centre) => (
           <li key={centre.slug}>
             <CentreCard centre={centre} locale={locale} />
@@ -103,7 +103,7 @@ export function FeaturedDoctorsSection({
       <SectionHeading {...heading(props, locale, props.viewAll)} />
       {/* Horizontal scroll with snap on small screens instead of an auto-playing carousel. The
           row is positioned so screen-reader-only labels inside cards stay clipped by it. */}
-      <ul className="relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
+      <ul className="reveal-list relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
         {doctors.slice(0, 8).map((doctor) => (
           <li key={doctor.slug} className="w-80 shrink-0 snap-start sm:w-auto">
             <DoctorCard doctor={toDoctorSummary(doctor, locale)} locale={locale} />
@@ -122,7 +122,7 @@ export function PackageShowcaseSection({
   return (
     <Band>
       <SectionHeading {...heading(props, locale, props.viewAll)} />
-      <ul className="relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3">
+      <ul className="reveal-list relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3">
         {listPackagesAll()
           .slice(0, props.count)
           .map((item) => (
@@ -142,7 +142,7 @@ export function BranchCardsSection({
   return (
     <Band muted>
       <SectionHeading {...heading(section.props, locale)} />
-      <ul className="grid gap-6 md:grid-cols-3">
+      <ul className="reveal-list grid gap-6 md:grid-cols-3">
         {listBranches().map((branch) => (
           <li key={branch.slug}>
             <BranchCard branch={branch} locale={locale} />
@@ -161,7 +161,7 @@ export function ArticleListSection({
   return (
     <Band>
       <SectionHeading {...heading(props, locale, props.viewAll)} />
-      <ul className="grid gap-6 md:grid-cols-3">
+      <ul className="reveal-list grid gap-6 md:grid-cols-3">
         {listArticles()
           .slice(0, props.count)
           .map((article) => (

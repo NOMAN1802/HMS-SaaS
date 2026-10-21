@@ -11,8 +11,14 @@ import { ImageSlot } from './image-slot';
 export function ArticleCard({ article, locale }: { article: Article; locale: Locale }) {
   const t = useTranslations();
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
-      <ImageSlot image={article.image} locale={locale} ratio="wide" icon="newspaper" />
+    <article className="lift flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
+      <ImageSlot
+        image={article.image}
+        locale={locale}
+        ratio="wide"
+        icon="newspaper"
+        className="zoom-media"
+      />
       <div className="flex flex-1 flex-col gap-2 p-5">
         <p className="font-ui text-xs font-medium text-primary">
           {localize(article.category, locale)}

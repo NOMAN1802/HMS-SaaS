@@ -11,8 +11,14 @@ import { ImageSlot } from './image-slot';
 export function BranchCard({ branch, locale }: { branch: Branch; locale: Locale }) {
   const t = useTranslations();
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
-      <ImageSlot image={branch.image} locale={locale} ratio="wide" icon="hospital-building" />
+    <article className="lift flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
+      <ImageSlot
+        image={branch.image}
+        locale={locale}
+        ratio="wide"
+        icon="hospital-building"
+        className="zoom-media"
+      />
       <div className="flex flex-1 flex-col gap-2 p-5">
         <h3 className="text-lg font-semibold">
           <Link href={`/branches/${branch.slug}`} className="hover:text-primary">

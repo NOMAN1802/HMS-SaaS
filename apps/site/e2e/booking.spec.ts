@@ -4,12 +4,15 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-test('a doctor from the profile is preselected and the booking sends nothing', async ({ page }) => {
+test('a doctor from the profile is preselected and the booking sends nothing', async ({
+  page,
+  baseURL,
+}) => {
   const requests: string[] = [];
   await page.goto('/en/book-appointment?doctor=farhana-rahman');
   page.on('request', (request) => {
     const url = new URL(request.url());
-    if (request.method() !== 'GET' || url.origin !== 'http://localhost:3200')
+    if (request.method() !== 'GET' || url.origin !== new URL(baseURL ?? '').origin)
       requests.push(request.url());
   });
   await expect(page.getByRole('heading', { name: 'Date and time' })).toBeVisible();

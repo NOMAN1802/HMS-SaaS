@@ -15,7 +15,7 @@ export function PhoneActionBar({ site }: { site: Site }) {
   return (
     <div
       data-testid="phone-action-bar"
-      className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t border-border bg-surface p-2 md:hidden"
+      className="enter-bar fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t border-border bg-surface p-2 md:hidden"
     >
       <a
         href={`tel:${site.settings.contacts.hotline.tel}`}

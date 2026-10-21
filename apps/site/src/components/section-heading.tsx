@@ -14,7 +14,7 @@ export interface SectionHeadingProps {
 
 export function SectionHeading({ heading, text, action, id }: SectionHeadingProps) {
   return (
-    <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+    <div className="reveal mb-8 flex flex-wrap items-end justify-between gap-4">
       <div className="max-w-2xl">
         <h2 id={id} className="text-2xl font-semibold sm:text-3xl">
           {heading}
@@ -24,10 +24,14 @@ export function SectionHeading({ heading, text, action, id }: SectionHeadingProp
       {action ? (
         <SiteLink
           href={action.href}
-          className="inline-flex min-h-10 items-center gap-1 font-ui font-medium text-primary underline-offset-4 hover:underline"
+          className="group inline-flex min-h-10 items-center gap-1 font-ui font-medium text-primary underline-offset-4 hover:underline"
         >
           {action.label}
-          <Icon name="arrow-right" size={18} />
+          <Icon
+            name="arrow-right"
+            size={18}
+            className="transition-transform duration-200 group-hover:translate-x-1"
+          />
         </SiteLink>
       ) : null}
     </div>

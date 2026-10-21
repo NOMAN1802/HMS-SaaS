@@ -4,6 +4,7 @@
    heading weights is loaded. */
 @import '@fontsource/hind-siliguri/bengali-600.css';
 @import '@fontsource/hind-siliguri/bengali-700.css';
+@import './motion.css';
 
 /* Class names used inside the shared UI package must also generate CSS. */
 @source '../../../packages/ui/src';

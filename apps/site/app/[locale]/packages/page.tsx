@@ -32,7 +32,7 @@ export default async function PackagesPage({ params }: Params) {
   const t = await getTranslations({ locale });
 
   const grid = (items: ReturnType<typeof listPackages>) => (
-    <ul className="grid gap-6 pt-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="reveal-list grid gap-6 pt-6 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((item) => (
         <li key={item.slug}>
           <PackageCard item={item} locale={locale} />

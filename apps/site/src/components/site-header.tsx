@@ -20,7 +20,7 @@ export async function SiteHeader({ site, locale }: { site: Site; locale: Locale 
   if (!cta) return null;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-surface">
+    <header className="header-elevate sticky top-0 z-30 border-b border-border bg-surface">
       <Container className="flex min-h-16 items-center justify-between gap-4 py-2">
         <Logo name={localize(site.settings.shortName, locale)} />
         <nav aria-label={t('shell.mainNavigation')} className="hidden xl:block">
@@ -32,7 +32,7 @@ export async function SiteHeader({ site, locale }: { site: Site; locale: Locale 
                 ) : (
                   <Link
                     href={item.href}
-                    className="flex min-h-10 items-center rounded-control px-3 font-ui text-sm font-medium text-text hover:bg-primary-soft hover:text-primary"
+                    className="flex min-h-10 items-center rounded-control px-3 font-ui text-sm font-medium text-text transition-colors duration-200 hover:bg-primary-soft hover:text-primary"
                   >
                     {item.label}
                   </Link>

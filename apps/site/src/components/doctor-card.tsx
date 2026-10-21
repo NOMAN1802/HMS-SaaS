@@ -29,7 +29,7 @@ export function DoctorCard({ doctor, locale }: { doctor: DoctorSummary; locale: 
   const t = useTranslations();
   const chamberLabel = useChamberLabel()(doctor, locale);
   return (
-    <article className="flex h-full flex-col gap-4 rounded-panel border border-border bg-surface p-4">
+    <article className="lift flex h-full flex-col gap-4 rounded-panel border border-border bg-surface p-4">
       <div className="flex gap-4">
         <ImageSlot
           image={doctor.image}
@@ -38,7 +38,7 @@ export function DoctorCard({ doctor, locale }: { doctor: DoctorSummary; locale: 
           icon="user"
           iconSize={32}
           sizes="80px"
-          className="w-20 shrink-0 rounded-control"
+          className="zoom-media w-20 shrink-0 rounded-control"
         />
         <div className="flex min-w-0 flex-col">
           <h3 className="text-lg leading-snug font-semibold">

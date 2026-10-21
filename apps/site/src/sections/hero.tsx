@@ -53,7 +53,7 @@ export function HeroSection({ section, locale }: { section: SectionOf<'hero'>; l
   return (
     <section className="bg-linear-to-b from-primary-soft to-bg">
       <Container className="grid items-center gap-10 py-12 lg:grid-cols-2 lg:py-20">
-        <div className="flex flex-col gap-6">
+        <div className="enter-stagger flex flex-col gap-6">
           <h1 className="text-4xl font-semibold text-balance sm:text-5xl">
             {localize(props.heading, locale)}
           </h1>
@@ -66,7 +66,7 @@ export function HeroSection({ section, locale }: { section: SectionOf<'hero'>; l
                 <SiteLink
                   key={link.href}
                   href={link.href}
-                  className="rounded-pill border border-border-strong bg-surface px-3 py-1 hover:border-primary hover:text-primary"
+                  className="rounded-pill border border-border-strong bg-surface px-3 py-1 transition-colors duration-200 hover:border-primary hover:bg-primary-soft hover:text-primary"
                 >
                   {localize(link.label, locale)}
                 </SiteLink>
@@ -78,11 +78,13 @@ export function HeroSection({ section, locale }: { section: SectionOf<'hero'>; l
             className="inline-flex w-fit items-center gap-2 font-ui font-semibold text-danger underline-offset-4 hover:underline"
             data-testid="hero-emergency"
           >
-            <Icon name="siren" size={18} />
+            <span className="ping">
+              <Icon name="siren" size={18} />
+            </span>
             {t('hero.emergencyLine', { number: emergency.display })}
           </a>
         </div>
-        <div className="hidden lg:block">
+        <div className="enter-unveil hidden lg:block">
           <ImageSlot
             image={props.image}
             locale={locale}

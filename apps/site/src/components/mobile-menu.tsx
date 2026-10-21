@@ -40,10 +40,14 @@ export function MobileMenu({ items, cta }: MobileMenuProps) {
             {items.map((item) => (
               <li key={item.href}>
                 {item.children ? (
-                  <details className="group">
+                  <details className="disclosure group">
                     <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between rounded-control px-3 font-medium hover:bg-primary-soft [&::-webkit-details-marker]:hidden">
                       {item.label}
-                      <Icon name="caret-down" size={16} className="group-open:rotate-180" />
+                      <Icon
+                        name="caret-down"
+                        size={16}
+                        className="transition-transform duration-200 group-open:rotate-180"
+                      />
                     </summary>
                     <ul className="ms-3 border-s border-border ps-2">
                       {[

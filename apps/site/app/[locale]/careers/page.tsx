@@ -41,7 +41,7 @@ export default async function CareersPage({ params }: Params) {
       <PageHeader title={t('careers.title')} intro={t('careers.intro')} />
       <Container className="flex flex-col gap-6 py-10">
         <Alert tone="info">{t('careers.demoNote')}</Alert>
-        <ul className="grid gap-4 md:grid-cols-2">
+        <ul className="reveal-list grid gap-4 md:grid-cols-2">
           {listJobs().map((job) => {
             const branch = getBranch(job.location);
             return (

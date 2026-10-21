@@ -10,9 +10,9 @@ export function DepartmentCard({ department, locale }: { department: Department;
   return (
     <Link
       href={`/departments/${department.slug}`}
-      className="group flex h-full flex-col gap-3 rounded-panel border border-border bg-surface p-4 transition-shadow hover:shadow-overlay sm:p-5"
+      className="group flex h-full flex-col gap-3 rounded-panel border border-border bg-surface p-4 lift sm:p-5"
     >
-      <span className="flex size-12 items-center justify-center rounded-pill bg-primary-soft text-primary">
+      <span className="flex size-12 items-center justify-center rounded-pill bg-primary-soft text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-on-primary">
         <Icon name={isIconName(department.icon) ? department.icon : 'stethoscope'} size={26} />
       </span>
       <span className="font-heading text-lg font-semibold text-heading group-hover:text-primary">

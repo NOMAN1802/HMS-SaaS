@@ -21,7 +21,7 @@ export function PageHeader({ title, intro, crumbs = [], children }: PageHeaderPr
   const t = useTranslations();
   return (
     <div className="border-b border-border bg-linear-to-b from-primary-soft to-bg">
-      <Container className="py-10 sm:py-14">
+      <Container className="enter-stagger py-10 sm:py-14">
         <nav aria-label={t('common.breadcrumb')}>
           <ol className="flex flex-wrap items-center gap-2 text-sm text-text-muted">
             {[{ label: t('common.home'), href: '/' }, ...crumbs].map((crumb) => (

@@ -32,7 +32,7 @@ export default async function CentresPage({ params }: Params) {
       <PageHeader title={t('centres.title')} intro={t('centres.intro')} />
       <Container className="py-10">
         <h2 className="sr-only">{t('centres.title')}</h2>
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal-list grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {listCentres().map((centre) => (
             <li key={centre.slug}>
               <CentreCard centre={centre} locale={locale} />

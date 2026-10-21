@@ -12,8 +12,14 @@ import { ImageSlot } from './image-slot';
 export function PackageCard({ item, locale }: { item: HealthPackage; locale: Locale }) {
   const t = useTranslations();
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
-      <ImageSlot image={item.image} locale={locale} ratio="wide" icon="package" />
+    <article className="lift flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
+      <ImageSlot
+        image={item.image}
+        locale={locale}
+        ratio="wide"
+        icon="package"
+        className="zoom-media"
+      />
       <div className="flex flex-1 flex-col gap-2 p-5">
         <h3 className="text-lg font-semibold">
           <Link href={`/packages/${item.slug}`} className="hover:text-primary">

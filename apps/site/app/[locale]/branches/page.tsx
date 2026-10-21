@@ -32,7 +32,7 @@ export default async function BranchesPage({ params }: Params) {
       <PageHeader title={t('branches.title')} intro={t('branches.intro')} />
       <Container className="py-10">
         <h2 className="sr-only">{t('branches.title')}</h2>
-        <ul className="grid gap-6 md:grid-cols-3">
+        <ul className="reveal-list grid gap-6 md:grid-cols-3">
           {listBranches().map((branch) => (
             <li key={branch.slug}>
               <BranchCard branch={branch} locale={locale} />

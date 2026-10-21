@@ -76,7 +76,7 @@ function StepIndicator({ step }: { step: Step }) {
         <li
           key={key}
           aria-current={index === step ? 'step' : undefined}
-          className={`flex flex-col gap-1 border-t-4 pt-2 font-ui text-sm ${
+          className={`flex flex-col gap-1 border-t-4 pt-2 font-ui text-sm transition-colors duration-300 ${
             index <= step ? 'border-primary text-text' : 'border-border text-text-muted'
           }`}
         >
@@ -339,7 +339,7 @@ export function BookingWizard({
 
   if (confirmed) {
     return (
-      <div className="flex flex-col gap-6" data-testid="booking-confirmation">
+      <div className="motion-pop flex flex-col gap-6" data-testid="booking-confirmation">
         <Alert tone="success" title={t('booking.confirmedTitle')}>
           {t('booking.confirmedBody')}
         </Alert>
@@ -353,44 +353,49 @@ export function BookingWizard({
   return (
     <form noValidate onSubmit={next} className="flex flex-col gap-6">
       <StepIndicator step={step} />
-      <h2 className="text-2xl font-semibold">{t(STEPS[step])}</h2>
-      {step === 0 ? (
-        <DoctorStep
-          departments={departments}
-          doctors={doctors}
-          department={department}
-          doctorSlug={doctorSlug}
-          invalid={Boolean(errors.doctor)}
-          onDepartment={(value) => {
-            setDepartment(value);
-            setDoctorSlug('');
-          }}
-          onDoctor={(value) => {
-            setDoctorSlug(value);
-            setDate('');
-            setTime('');
-          }}
-        />
-      ) : null}
-      {step === 1 && doctor ? (
-        <DateTimeStep
-          doctor={doctor}
-          dates={dates}
-          slots={slots}
-          date={date}
-          time={time}
-          invalid={Boolean(errors.time)}
-          onDate={(value) => {
-            setDate(value);
-            setTime('');
-          }}
-          onTime={setTime}
-        />
-      ) : null}
-      {step === 2 ? <DetailsStep details={details} errors={errors} onChange={setDetails} /> : null}
-      {step === 3 && doctor && slot ? (
-        <ReviewStep doctor={doctor} date={date} slot={slot} details={details} locale={locale} />
-      ) : null}
+      {/* Keyed by step so each new step mounts and plays its entrance. */}
+      <div key={step} className="enter-step flex flex-col gap-6">
+        <h2 className="text-2xl font-semibold">{t(STEPS[step])}</h2>
+        {step === 0 ? (
+          <DoctorStep
+            departments={departments}
+            doctors={doctors}
+            department={department}
+            doctorSlug={doctorSlug}
+            invalid={Boolean(errors.doctor)}
+            onDepartment={(value) => {
+              setDepartment(value);
+              setDoctorSlug('');
+            }}
+            onDoctor={(value) => {
+              setDoctorSlug(value);
+              setDate('');
+              setTime('');
+            }}
+          />
+        ) : null}
+        {step === 1 && doctor ? (
+          <DateTimeStep
+            doctor={doctor}
+            dates={dates}
+            slots={slots}
+            date={date}
+            time={time}
+            invalid={Boolean(errors.time)}
+            onDate={(value) => {
+              setDate(value);
+              setTime('');
+            }}
+            onTime={setTime}
+          />
+        ) : null}
+        {step === 2 ? (
+          <DetailsStep details={details} errors={errors} onChange={setDetails} />
+        ) : null}
+        {step === 3 && doctor && slot ? (
+          <ReviewStep doctor={doctor} date={date} slot={slot} details={details} locale={locale} />
+        ) : null}
+      </div>
       <div className="flex flex-wrap gap-3">
         {step > 0 ? (
           <Button variant="secondary" size="lg" onClick={() => setStep((step - 1) as Step)}>

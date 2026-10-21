@@ -90,7 +90,7 @@ export default async function CentrePage({ params }: Params) {
           <h2 id="centre-departments" className="mb-6 text-2xl font-semibold">
             {t('centre.departments')}
           </h2>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="reveal-list grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {departments.map((department) => (
               <li key={department.slug}>
                 <DepartmentCard department={department} locale={locale} />

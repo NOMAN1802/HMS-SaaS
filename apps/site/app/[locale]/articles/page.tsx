@@ -32,7 +32,7 @@ export default async function ArticlesPage({ params }: Params) {
       <PageHeader title={t('articles.title')} intro={t('articles.intro')} />
       <Container className="py-10">
         <h2 className="sr-only">{t('articles.title')}</h2>
-        <ul className="grid gap-6 md:grid-cols-3">
+        <ul className="reveal-list grid gap-6 md:grid-cols-3">
           {listArticles().map((article) => (
             <li key={article.slug}>
               <ArticleCard article={article} locale={locale} />

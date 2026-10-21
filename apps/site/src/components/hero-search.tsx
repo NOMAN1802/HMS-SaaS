@@ -79,7 +79,7 @@ export function HeroSearch({ suggestions }: { suggestions: SearchSuggestion[] })
         {normalized.length >= 2 ? t('search.results', { count: results.length }) : ''}
       </p>
       {results.length > 0 ? (
-        <ul className="absolute inset-x-0 top-full z-20 mt-2 overflow-hidden rounded-panel border border-border bg-surface shadow-overlay">
+        <ul className="motion-pop absolute inset-x-0 top-full z-20 mt-2 origin-top overflow-hidden rounded-panel border border-border bg-surface shadow-overlay">
           {results.map((item) => (
             <li key={item.href}>
               <Link

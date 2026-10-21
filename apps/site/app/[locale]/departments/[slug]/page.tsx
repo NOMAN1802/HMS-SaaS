@@ -80,7 +80,7 @@ export default async function DepartmentPage({ params }: Params) {
             <h2 id="services-heading" className="mb-4 text-2xl font-semibold">
               {t('department.services')}
             </h2>
-            <ul className="grid gap-3 sm:grid-cols-2">
+            <ul className="reveal-list grid gap-3 sm:grid-cols-2">
               {department.services.map((service) => (
                 <li key={service.en} className="flex items-start gap-2">
                   <Icon name="check" size={20} className="mt-0.5 shrink-0 text-primary" />

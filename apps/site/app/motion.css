@@ -1,0 +1,217 @@
+/*
+ * Motion layer of the public site (C-083): the page settles in on arrival, sections rise into
+ * place as they scroll into view, cards answer the pointer, and the emergency line carries the one
+ * repeating cue. Everything is CSS, so it runs off the main thread and needs no script, and every
+ * piece degrades to the plain static page:
+ * - browsers without scroll-driven animations show sections in place;
+ * - reduced motion removes all movement and keeps only short opacity and color changes;
+ * - nothing animates on keyboard-initiated actions (ADR-022 section 13).
+ * Entrances use fill-mode `backwards`, so a finished animation leaves no transform behind: a
+ * leftover transform would make a new stacking context and trap the search suggestions under the
+ * quick actions panel.
+ * Implements: T-WEB-15, C-083.
+ */
+
+:root {
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --motion-enter: 640ms;
+  --motion-hover: 240ms;
+  --motion-stagger: 70ms;
+  /* Lets the FAQ answer grow to its natural height. */
+  interpolate-size: allow-keywords;
+}
+
+@keyframes site-rise {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+
+@keyframes site-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes site-unveil {
+  from {
+    opacity: 0;
+    scale: 1.04;
+    clip-path: inset(6% 6% 6% 6% round var(--radius-panel));
+  }
+  to {
+    clip-path: inset(0 round var(--radius-panel));
+  }
+}
+
+@keyframes site-bar-in {
+  from {
+    translate: 0 100%;
+  }
+}
+
+@keyframes site-ping {
+  0% {
+    opacity: 0.55;
+    scale: 0.7;
+  }
+  70%,
+  100% {
+    opacity: 0;
+    scale: 1.9;
+  }
+}
+
+@keyframes site-elevate {
+  to {
+    box-shadow: var(--shadow-overlay);
+    border-color: transparent;
+  }
+}
+
+/* Arrival: the hero and page title children settle in one after another. */
+@media (prefers-reduced-motion: no-preference) {
+  .enter-stagger > * {
+    animation: site-rise var(--motion-enter) var(--ease-out) backwards;
+  }
+  .enter-stagger > :nth-child(2) {
+    animation-delay: calc(var(--motion-stagger) * 1);
+  }
+  .enter-stagger > :nth-child(3) {
+    animation-delay: calc(var(--motion-stagger) * 2);
+  }
+  .enter-stagger > :nth-child(4) {
+    animation-delay: calc(var(--motion-stagger) * 3);
+  }
+  .enter-stagger > :nth-child(5) {
+    animation-delay: calc(var(--motion-stagger) * 4);
+  }
+  .enter-stagger > :nth-child(n + 6) {
+    animation-delay: calc(var(--motion-stagger) * 5);
+  }
+
+  .enter-rise {
+    animation: site-rise var(--motion-enter) var(--ease-out) 240ms backwards;
+  }
+
+  .enter-unveil {
+    animation: site-unveil 900ms var(--ease-out) 120ms backwards;
+  }
+
+  /* The phone bar slides up once the page is readable, so it never covers the first paint. */
+  .enter-bar {
+    animation: site-bar-in 420ms var(--ease-out) 500ms backwards;
+  }
+
+  /* A booking step rises in when the wizard moves on, so the change of step is seen. */
+  .enter-step {
+    animation: site-rise 280ms var(--ease-out) backwards;
+  }
+
+  /* One repeating cue on the page: a soft ring behind the emergency icon, meaning "open now". */
+  .ping {
+    position: relative;
+    display: inline-flex;
+  }
+  .ping::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: var(--radius-pill);
+    border: 2px solid currentColor;
+    opacity: 0;
+    animation: site-ping 2.4s var(--ease-out) infinite;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter-stagger > *,
+  .enter-rise,
+  .enter-unveil,
+  .enter-step {
+    animation: site-fade 200ms ease backwards;
+  }
+}
+
+/* Scroll reveal: progress follows the scroll position, so a fast scroll is never held up and a
+   section already in view on load is simply shown. Each item is fully opaque once it has fully
+   entered the viewport; items in one row start a little apart. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal,
+    .reveal-list > * {
+      animation-name: site-rise;
+      animation-duration: auto;
+      animation-timing-function: var(--ease-out);
+      animation-fill-mode: backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+    .reveal-list > :nth-child(4n + 2) {
+      animation-range: entry 6% entry 100%;
+    }
+    .reveal-list > :nth-child(4n + 3) {
+      animation-range: entry 12% entry 100%;
+    }
+    .reveal-list > :nth-child(4n + 4) {
+      animation-range: entry 18% entry 100%;
+    }
+  }
+}
+
+/* The sticky header gains its shadow as soon as the page scrolls under it. A color change, not
+   movement, so it stays for reduced motion. */
+@supports (animation-timeline: scroll()) {
+  .header-elevate {
+    animation-name: site-elevate;
+    animation-duration: auto;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+    animation-range: 0 96px;
+  }
+}
+
+/* Cards answer the pointer: a small lift, the overlay shadow and a slow zoom of the picture. Only
+   for a real hover-capable pointer, so a tap on a phone never leaves a card stuck lifted. */
+.lift {
+  transition:
+    box-shadow var(--motion-hover) var(--ease-out),
+    border-color var(--motion-hover) var(--ease-out),
+    translate var(--motion-hover) var(--ease-out);
+}
+.zoom-media > * {
+  transition: scale 700ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lift:hover {
+    box-shadow: var(--shadow-overlay);
+    border-color: var(--color-border-strong);
+  }
+  .lift:hover .zoom-media > * {
+    scale: 1.05;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .lift:hover {
+    translate: 0 -3px;
+  }
+}
+
+/* FAQ and menu groups open to their natural height instead of jumping. */
+@media (prefers-reduced-motion: no-preference) {
+  .disclosure::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size 280ms var(--ease-out),
+      content-visibility 280ms allow-discrete;
+  }
+  .disclosure[open]::details-content {
+    block-size: auto;
+  }
+}

@@ -37,11 +37,15 @@ export function NavDropdown({ item }: { item: NavLink }) {
 
   return (
     <details ref={ref} className="group relative">
-      <summary className="flex min-h-10 cursor-pointer list-none items-center gap-1 rounded-control px-3 font-ui text-sm font-medium text-text hover:bg-primary-soft hover:text-primary [&::-webkit-details-marker]:hidden">
+      <summary className="flex min-h-10 cursor-pointer list-none items-center gap-1 rounded-control px-3 font-ui text-sm font-medium text-text transition-colors duration-200 hover:bg-primary-soft hover:text-primary [&::-webkit-details-marker]:hidden">
         {item.label}
-        <Icon name="caret-down" size={16} className="transition-transform group-open:rotate-180" />
+        <Icon
+          name="caret-down"
+          size={16}
+          className="transition-transform duration-200 group-open:rotate-180"
+        />
       </summary>
-      <div className="absolute top-full left-0 z-40 mt-2 w-[min(40rem,90vw)] rounded-panel border border-border bg-surface p-4 shadow-overlay">
+      <div className="absolute top-full left-0 z-40 mt-2 w-[min(40rem,90vw)] origin-top-left group-open:motion-pop rounded-panel border border-border bg-surface p-4 shadow-overlay">
         <ul className="grid grid-cols-2 gap-1 sm:grid-cols-3">
           {(item.children ?? []).map((child) => (
             <li key={child.href}>

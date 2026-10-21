@@ -15,7 +15,7 @@
 
 What carries over unchanged from DESIGN.md: tokens (Clinical Teal primary, Signal Cyan accent, Mist neutrals), fonts (TikTok Sans and Noto Sans Bengali headings, Geist and Tiro Bangla body), radius scale (6 / 8 px), motion grammar, focus ring, the One Meaning Rule, the Word Beside The Color Rule, no faux bold, Longer Bangla Rule, Logo Quarantine.
 
-What is different on the site (P-027): photography and illustration are allowed; section backgrounds may use `primary-soft`, `accent-soft` and a deep `heading`-color band; display headline sizes are larger than in the ERP; cards may use the overlay shadow on hover only.
+What is different on the site (P-027): photography and illustration are allowed; section backgrounds may use `primary-soft`, `accent-soft` and a deep `heading`-color band; display headline sizes are larger than in the ERP; cards may use the overlay shadow on hover only. The site also adds a motion layer on top of the motion grammar (C-083): arrival, scroll reveals, card lift, header shadow, FAQ height, booking steps and the emergency ring, all removed for reduced motion.
 
 Layout reference: the structure of continental.health (C-064), as observed in R1 section 1. Nothing is copied.
 
