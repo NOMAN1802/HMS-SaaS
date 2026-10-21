@@ -78,3 +78,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-21 | [T-WEB-08: departments and centres](2026-10-21-T-WEB-08-departments.md)                                     |
 | 2026-10-21 | [T-WEB-09: health packages and test prices](2026-10-21-T-WEB-09-packages-tests.md)                          |
 | 2026-10-21 | [T-WEB-12: information pages](2026-10-21-T-WEB-12-info-pages.md)                                            |
+| 2026-10-21 | [T-WEB-10: booking wizard (mock)](2026-10-21-T-WEB-10-booking.md)                                           |

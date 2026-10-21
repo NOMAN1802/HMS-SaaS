@@ -238,6 +238,33 @@ export const siteEn = {
     home: 'Go to the home page',
     helpful: 'Helpful links',
   },
+  booking: {
+    title: 'Book an appointment',
+    intro: 'Choose a doctor, a date and a time. On this demo site nothing is sent.',
+    progress: 'Booking steps',
+    steps: {
+      doctor: 'Doctor',
+      date: 'Date and time',
+      details: 'Your details',
+      review: 'Review',
+    },
+    doctor: 'Doctor',
+    chooseDoctor: 'Choose a doctor',
+    date: 'Date',
+    time: 'Time',
+    place: 'Place',
+    noDates: 'This doctor has no free dates in the next two weeks.',
+    chooseDateFirst: 'Choose a date to see the times.',
+    chooseTime: 'Choose a time.',
+    note: 'Reason for the visit (optional)',
+    back: 'Back',
+    next: 'Continue',
+    confirm: 'Confirm appointment',
+    confirmedTitle: 'Appointment noted (demo)',
+    confirmedBody:
+      'This is a demo website, so nothing was sent and no appointment was made. On a live website you would get an SMS with your serial number.',
+    again: 'Book another appointment',
+  },
 } as const;
 
 type Widen<T> = { -readonly [K in keyof T]: T[K] extends string ? string : Widen<T[K]> };
