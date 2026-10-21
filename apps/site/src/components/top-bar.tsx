@@ -47,7 +47,7 @@ export async function TopBar({ site, locale }: { site: Site; locale: Locale }) {
               {t('shell.outsideDhaka')} {contacts.hotlineOutsideDhaka.display}
             </a>
           </li>
-          <li className="hidden xl:block">
+          <li className="hidden 2xl:block">
             <a
               href={`mailto:${contacts.email}`}
               className="inline-flex items-center gap-2 hover:underline"

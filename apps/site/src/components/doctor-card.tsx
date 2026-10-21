@@ -1,25 +1,16 @@
 // Doctor card: portrait slot, name, title, department and branches, with "View profile" and
-// "Book" links. Shows a leave badge when the doctor is on leave today (FR-WEB-DOC-006).
+// "Book" links, and a leave badge when the doctor is on leave today (FR-WEB-DOC-006).
+// Presentational: it takes a DoctorSummary so the client-side directory can render it too.
 // Implements: T-WEB-06, T-WEB-07, FR-WEB-DOC-001.
-import type { Doctor } from '@hms/contracts';
 import type { Locale } from '@hms/i18n';
 import { buttonClassName } from '@hms/ui';
 import { useTranslations } from 'next-intl';
-import { getBranch, getDepartment, leaveOn, localize } from '../content';
-import { todayInDhaka } from '../format';
+import type { DoctorSummary } from '../content/doctor-summary';
 import { Link } from '../i18n/navigation';
 import { ImageSlot } from './image-slot';
 
-export function DoctorCard({ doctor, locale }: { doctor: Doctor; locale: Locale }) {
+export function DoctorCard({ doctor, locale }: { doctor: DoctorSummary; locale: Locale }) {
   const t = useTranslations();
-  const department = getDepartment(doctor.department);
-  const branches = doctor.branches
-    .map((slug) => getBranch(slug))
-    .filter((branch) => branch !== undefined)
-    .map((branch) => localize(branch.area, locale))
-    .join(', ');
-  const onLeave = leaveOn(doctor, todayInDhaka()) !== undefined;
-
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-panel border border-border bg-surface">
       <div className="relative">
@@ -30,7 +21,7 @@ export function DoctorCard({ doctor, locale }: { doctor: Doctor; locale: Locale 
           icon="user"
           sizes="(min-width: 1024px) 25vw, 50vw"
         />
-        {onLeave ? (
+        {doctor.onLeave ? (
           <span className="absolute start-3 top-3 rounded-pill bg-status-attention-bg px-3 py-1 font-ui text-xs font-medium text-status-attention-text">
             {t('common.onLeave')}
           </span>
@@ -39,14 +30,14 @@ export function DoctorCard({ doctor, locale }: { doctor: Doctor; locale: Locale 
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="text-lg font-semibold">
           <Link href={`/doctors/${doctor.slug}`} className="hover:text-primary">
-            {localize(doctor.name, locale)}
+            {doctor.name}
           </Link>
         </h3>
-        <p className="text-sm text-text">{localize(doctor.title, locale)}</p>
-        {department ? (
-          <p className="text-sm font-medium text-primary">{localize(department.name, locale)}</p>
+        <p className="text-sm text-text">{doctor.title}</p>
+        {doctor.department ? (
+          <p className="text-sm font-medium text-primary">{doctor.department}</p>
         ) : null}
-        <p className="text-sm text-text-muted">{branches}</p>
+        <p className="text-sm text-text-muted">{doctor.branches}</p>
         <div className="mt-auto grid grid-cols-2 gap-2 pt-4">
           <Link
             href={`/doctors/${doctor.slug}`}
