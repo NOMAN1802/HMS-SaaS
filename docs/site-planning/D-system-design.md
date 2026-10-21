@@ -157,10 +157,89 @@ flowchart LR
 
 ## 12. Development and deploy impact
 
-| Item                 | Change                                                                                                                                                    |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| New app              | `apps/site` (`@hms/site`), `pnpm --filter @hms/site dev` on port 3200 (P-034); included in `pnpm dev`, `build`, `lint`, `typecheck`, `test` through turbo |
-| New env vars         | None in WEB-A                                                                                                                                             |
-| Migrations           | None                                                                                                                                                      |
-| New service / domain | None until Q-075; nothing is deployed (CLAUDE.md)                                                                                                         |
-| CI                   | New app joins existing lint, typecheck, test, e2e and boundary jobs                                                                                       |
+| Item                 | Change                                                                                                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| New app              | `apps/site` (`@hms/site`), `pnpm --filter @hms/site dev` on port 3200 (P-034); included in `pnpm dev`, `build`, `lint`, `typecheck`, `test` through turbo                            |
+| New env vars         | None in WEB-A                                                                                                                                                                        |
+| Migrations           | None                                                                                                                                                                                 |
+| New service / domain | No new domain (C-075). When the one-host routing ships (section 13): a site container and an nginx path rule, applied by the project lead; nothing is deployed by agents (CLAUDE.md) |
+| CI                   | New app joins existing lint, typecheck, test, e2e and boundary jobs                                                                                                                  |
+
+## 13. One host: public site and staff app (C-075..C-081)
+
+Only two hosts exist: `healthcare.bytespate.com` and `healthcareapi.bytespate.com` (C-075). The public site takes the root of the first; the staff app (ERP and CMS) moves under `/staff` (C-076). The API host is unchanged. This section is a proposal for ADR-023 "Public site and staff app share one host", which would amend ADR-021 point 1 (one container per host); it is merged into the ERP ADRs only on approval. It does not change any SaaS or tenancy text (Q-086).
+
+### 13.1 Request routing
+
+```mermaid
+flowchart LR
+  V[Browser] --> N[nginx<br/>healthcare.bytespate.com]
+  N -->|"/staff and /staff/*"| W[apps/web<br/>basePath /staff, 127.0.0.1:3100]
+  N -->|"/login, /choose-hospital"| R[301 to /staff/...]
+  N -->|everything else| S[apps/site<br/>127.0.0.1:3200]
+  W -->|"fetch, credentials: include"| A[healthcareapi.bytespate.com<br/>apps/api, unchanged]
+  S -.->|WEB-B: public read API| A
+```
+
+| Path                                     | Served by   | Login                       |
+| ---------------------------------------- | ----------- | --------------------------- |
+| `/`, `/bn/...`, `/en/...`                | `apps/site` | Never                       |
+| `/staff/login`, `/staff/choose-hospital` | `apps/web`  | -                           |
+| `/staff/start`                           | `apps/web`  | Yes (choice screen)         |
+| `/staff/...` ERP screens                 | `apps/web`  | Yes, ERP permission         |
+| `/staff/website/...` CMS screens         | `apps/web`  | Yes, `website.*` permission |
+
+nginx sketch for the project lead (not applied by agents):
+
+```nginx
+location = /login           { return 301 /staff/login; }
+location = /choose-hospital { return 301 /staff/choose-hospital; }
+location /staff { proxy_pass http://127.0.0.1:3100; }   # apps/web, basePath /staff
+location /      { proxy_pass http://127.0.0.1:3200; }   # apps/site
+```
+
+### 13.2 Login and landing
+
+```mermaid
+flowchart TD
+  L["/staff/login"] --> H{More than one hospital?}
+  H -->|yes| C["/staff/choose-hospital"]
+  H -->|no| P
+  C --> P{"landingFor(permissions)"}
+  P -->|ERP only| E["/staff (ERP home)"]
+  P -->|website only| WS["/staff/website (CMS home)"]
+  P -->|both| ST["/staff/start: ERP or Website"]
+  P -->|none| NA[No access message + sign out]
+```
+
+- The existing login, CSRF, session and hospital choice (T-ACC-01, T-UI-02) are reused unchanged; only the last redirect calls `landingFor()` (P-046).
+- Permissions come with the session (T-ACC-02). Until the CMS exists no user holds `website.*`, so everyone lands on the ERP home and the behavior equals today's.
+- The shell shows an "ERP / Website" switch only when both sides are allowed (FR-WEB-ROUTE-004). The API enforces permissions on every call; the landing is routing, not security.
+
+### 13.3 Security on a shared origin (C-080)
+
+| Topic          | Effect of sharing `healthcare.bytespate.com`                                                                                                                                          | Control                                                                                                                         |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Session cookie | Unchanged: host-only on the API host, `httpOnly` (ADR-021). The site's pages never see it.                                                                                            | -                                                                                                                               |
+| CORS           | `https://healthcare.bytespate.com` is already the allowed origin; the site gets the same origin, so a script running on a site page could call the API as the signed-in staff member. | Enforced CSP on both apps (P-029, P-047); CMS content is structured text only (P-036); no third-party scripts (NFR-WEB-SEC-002) |
+| Login attacks  | `/staff/login` is public and guessable, like any path name.                                                                                                                           | Rate limiting and lockout (C-032, T-ACC-03); two-factor for website publishers and admins (C-081)                               |
+| Indexing       | Search engines could list staff pages.                                                                                                                                                | `robots.txt` disallow and `X-Robots-Tag` (P-045)                                                                                |
+| Exit path      | -                                                                                                                                                                                     | When a third host is allowed, move the site or the staff app to its own host; only nginx and `basePath` change                  |
+
+### 13.4 Development and verification
+
+- Development keeps separate ports (P-044): site `http://localhost:3200/bn`, staff app `http://localhost:3100/staff`. `CORS_ORIGINS` and `NEXT_PUBLIC_API_URL` stay as they are.
+- The `apps/web` Playwright config uses the `/staff` base URL; `apps/site` e2e checks that its proxy leaves `/staff` paths alone.
+- The joined-host behavior (AT-WEB-060) is checked on staging by the project lead after the nginx change.
+
+### 13.5 Deploy impact (for the PR of T-WEB-18)
+
+| Item          | Change                                                                                        |
+| ------------- | --------------------------------------------------------------------------------------------- |
+| New service   | `apps/site` container on `127.0.0.1:3200`                                                     |
+| nginx         | `healthcare.bytespate.com`: `/staff` -> web, `/` -> site, two legacy redirects (section 13.1) |
+| Build         | `apps/web` built with `basePath: '/staff'`                                                    |
+| Env vars      | None new; `CORS_ORIGINS` and `NEXT_PUBLIC_API_URL` unchanged                                  |
+| Origin / CORS | None                                                                                          |
+| Migrations    | None                                                                                          |
+| Users         | Staff URL changes from `healthcare.bytespate.com` to `healthcare.bytespate.com/staff` (Q-087) |

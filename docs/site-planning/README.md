@@ -6,6 +6,8 @@ This pack plans the **public, patient-facing website** that sits beside the Hosp
 
 The first release (**WEB-A**) is a **frontend-only site with mock data**, laid out like continental.health but built with HMS fonts, colors and components. Every hospital tenant gets its own site (C-067), and hospital owners edit everything on it through a built-in CMS (C-072, WEB-B). Later releases add ERP data and transactions (booking, reports, portal).
 
+**Routing (C-075..C-081):** the website is the root of `healthcare.bytespate.com` with no login; the ERP and the CMS live under `/staff` behind one login, and each user lands on the ERP, the CMS or a choice between them according to their permissions. The API stays on `healthcareapi.bytespate.com`. Details: [D section 13](D-system-design.md#13-one-host-public-site-and-staff-app-c-075c-081).
+
 ## Start here
 
 | You are...               | Open first                                                                                                                                                                         |

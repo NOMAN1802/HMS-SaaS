@@ -27,6 +27,8 @@ flowchart LR
   P3 --> P4[Phase W4<br/>mock services]
   P4 --> P5[Phase W5<br/>SEO, images, QA]
   P5 --> G6{{RG-W1<br/>WEB-A review}}
+  G6 --> P6[Phase W6<br/>one host: /staff]
+  P6 --> G7{{RG-W2<br/>site public on shared host}}
 ```
 
 ## 3. Tasks
@@ -79,6 +81,12 @@ flowchart LR
 | **T-WEB-17** Full-pass features (C-074) | Doctor leave notice and related doctors (with T-WEB-07); OPD hours (with T-WEB-08); package price table (with T-WEB-09); appointment request section (with T-WEB-10); branch pages with branch-scoped search, patient rights and discharge guide (with T-WEB-12); inside/outside Dhaka hotlines (with T-WEB-05); site-wide search with a build-time static index | FR-WEB-DOC-006, -007, DEP-004, PKG-004, GEN-009, -010, INF-007, SVC-005, SRCH-001 | T-WEB-05..12  | -           | AT-WEB-050..058 pass in both languages                           |
 | **T-WEB-16** Body map (stretch)         | Interactive body map linking areas to departments                                                                                                                                                                                                                                                                                                                | R1 X16                                                                            | T-WEB-08      | Q-074       | Keyboard and screen-reader usable alternative list               |
 
+### Phase W6 — One host: public site at the root, staff app at `/staff` (C-075..C-081)
+
+| Task                                  | Outcome                                                                                                                                                                                                                                                                                                                  | Requirements                                                       | Depends on | Blocking Qs     | Key acceptance criteria                                                                                                                                                              |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ---------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **T-WEB-18** Staff app under `/staff` | `apps/web` `basePath: '/staff'`, its Playwright base URL and CI updated; `X-Robots-Tag` and the P-047 security headers on `apps/web`; site `proxy.ts` matcher and headers skip `/staff`, site `robots.txt` disallows it; nginx sketch and deploy impact in `docs/DEPLOYMENT.md` (text only, applied by the project lead) | FR-WEB-ROUTE-001, -002, -006, NFR-WEB-SEC-002, P-043..P-045, P-047 | T-WEB-01   | Q-087 (release) | All existing `apps/web` unit and e2e tests pass at `/staff`; AT-WEB-065, -067 pass; `/staff/login` signs in against the local API with no CORS change; deploy impact table filled in |
+
 ### EP-32 Website CMS (WEB-B, outline; detailed when scheduled)
 
 | Task                                                    | Outcome                                                                                                                                      | Requirements                     | Depends on                          | Blocking Qs    |
@@ -92,6 +100,8 @@ flowchart LR
 | **T-CMS-07** Preview and publish                        | Signed preview of drafts in `apps/site`, publish with validation, revalidation, version history and rollback                                 | FR-CMS-009, -010, -015           | T-CMS-03..06                        | Q-080          |
 | **T-CMS-08** Site on CMS data                           | Content adapter reads the published snapshot by host name; tenant domains                                                                    | P-041, D section 11              | T-CMS-07                            | Q-075          |
 | **T-CMS-09** Form inbox                                 | Site forms deliver to a staff inbox with spam protection and retention                                                                       | FR-CMS-018                       | T-CMS-02                            | privacy review |
+| **T-CMS-10** Permission-based landing and switch        | `landingFor()`, the `/staff/start` choice screen, the "ERP / Website" switch in the shell, "no access" states for ERP and CMS URLs           | FR-WEB-ROUTE-003..005, P-046     | T-WEB-18, T-ACC-02, T-CMS-02        | Q-080          |
+| **T-CMS-11** Two-factor for website roles               | Website publish, theme and settings permissions marked privileged, so the TOTP flow is required for them                                     | FR-WEB-ROUTE-007, C-081          | T-ACC-04, T-CMS-02                  | -              |
 
 ### Later epics (kept visible)
 
@@ -127,3 +137,5 @@ Give the agent: this pack's README, A, the task row above, the relevant C requir
 ## 7. Release gate
 
 **RG-W1 (WEB-A review):** all T-WEB-01..15 done; H section 2 green; product owner signs UAT-WEB-001 (layout parity with continental.health in HMS style, Bangla first); demo notice present; nothing deployed.
+
+**RG-W2 (site public on the shared host):** T-WEB-18 done and merged with the project lead's agreement (Q-087); login rate limiting and lockout live (T-ACC-03, C-081); staff app security headers in place (P-047); the project lead has applied the nginx rules and checked AT-WEB-060 on staging. Before the CMS opens to hospital editors, T-CMS-10 and T-CMS-11 are also done.

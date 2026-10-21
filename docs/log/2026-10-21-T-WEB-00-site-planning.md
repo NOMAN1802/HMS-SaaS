@@ -44,3 +44,7 @@ A planning pack for the public, patient-facing hospital website (`apps/site`) an
 ## How to debug
 
 Planning only. If a requirement looks wrong, check its decision ID in `A-decisions-and-questions.md`, then the source row in R1.
+
+## Addendum 2026-10-21: one-host routing and staff access
+
+Recorded the owner's routing decision for the two available hosts: the public website at the root of `healthcare.bytespate.com` with no login, the ERP and CMS under `/staff` behind one login, and a permission-based landing (ERP, CMS, or a choice). Additions only: C-075..C-081, P-043..P-047, Q-086 (SaaS model, on hold, nothing SaaS-related changed), Q-087 (staging timing); FR-WEB-ROUTE-001..007, NFR-WEB-SEC-002; D section 13; tasks T-WEB-18, T-CMS-10, T-CMS-11 and release gate RG-W2; tests AT-WEB-060..067. Q-075 is answered for the current deployment. Deploy impact of the plan itself: none (docs only). T-WEB-18 will need a site container and an nginx path rule, applied by the project lead (D section 13.5).

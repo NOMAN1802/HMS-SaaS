@@ -118,12 +118,27 @@ Requirement IDs use `FR-WEB-<AREA>-nnn` and `NFR-WEB-<AREA>-nnn`. All requiremen
 
 ## 11. Non-functional requirements
 
-| ID                | Requirement                                                                                                                                                                  | Status                    | Verify |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------ |
-| NFR-WEB-PERF-001  | Lighthouse mobile performance >= 90 on home, directory and profile; LCP <= 2.5 s; CLS <= 0.1.                                                                                | PROPOSED (SM-W03)         | T      |
-| NFR-WEB-PERF-002  | First-load JavaScript for content pages kept small: interactive parts (search, filters, wizard, menu) are client components; everything else is server-rendered static HTML. | PROPOSED                  | A      |
-| NFR-WEB-ACC-001   | WCAG 2.2 AA: axe clean in both languages; keyboard-only use of menu, search, filters and wizard; visible focus; 44 px touch targets.                                         | PROPOSED (as NFR-ACC-001) | T, U   |
-| NFR-WEB-I18N-001  | Layouts survive Bangla strings about 30 percent longer than English (DESIGN.md Longer Bangla Rule).                                                                          | CONFIRMED (C-052)         | U      |
-| NFR-WEB-SEC-001   | Enforced CSP and security headers (P-029); no third-party scripts in WEB-A; no cookies and no data stored in browser storage in WEB-A.                                       | PROPOSED                  | T      |
-| NFR-WEB-MAINT-001 | Reuse guardrails and boundary rules (P-030) pass in CI; shared pieces go to `packages/ui`.                                                                                   | PROPOSED                  | T      |
-| NFR-WEB-RESP-001  | Layouts reviewed at 360, 768, 1366 and 1920 px.                                                                                                                              | PROPOSED                  | U      |
+| ID                | Requirement                                                                                                                                                                     | Status                    | Verify |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------ |
+| NFR-WEB-PERF-001  | Lighthouse mobile performance >= 90 on home, directory and profile; LCP <= 2.5 s; CLS <= 0.1.                                                                                   | PROPOSED (SM-W03)         | T      |
+| NFR-WEB-PERF-002  | First-load JavaScript for content pages kept small: interactive parts (search, filters, wizard, menu) are client components; everything else is server-rendered static HTML.    | PROPOSED                  | A      |
+| NFR-WEB-ACC-001   | WCAG 2.2 AA: axe clean in both languages; keyboard-only use of menu, search, filters and wizard; visible focus; 44 px touch targets.                                            | PROPOSED (as NFR-ACC-001) | T, U   |
+| NFR-WEB-I18N-001  | Layouts survive Bangla strings about 30 percent longer than English (DESIGN.md Longer Bangla Rule).                                                                             | CONFIRMED (C-052)         | U      |
+| NFR-WEB-SEC-001   | Enforced CSP and security headers (P-029); no third-party scripts in WEB-A; no cookies and no data stored in browser storage in WEB-A.                                          | PROPOSED                  | T      |
+| NFR-WEB-SEC-002   | Shared-host safety (C-080): both apps send an enforced CSP; CMS content is structured fields only and is rendered as text, never as HTML; the site loads no third-party script. | CONFIRMED (C-080)         | T, A   |
+| NFR-WEB-MAINT-001 | Reuse guardrails and boundary rules (P-030) pass in CI; shared pieces go to `packages/ui`.                                                                                      | PROPOSED                  | T      |
+| NFR-WEB-RESP-001  | Layouts reviewed at 360, 768, 1366 and 1920 px.                                                                                                                                 | PROPOSED                  | U      |
+
+## 12. Routing and staff access (one host)
+
+Applies to WEB-A, except where a row depends on the CMS (EP-32). Design: D section 13.
+
+| ID               | Requirement                                                                                                                                                                                                  | Status                   | Verify |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ------ |
+| FR-WEB-ROUTE-001 | `healthcare.bytespate.com/` shows the public website (redirect to `/bn`) to every visitor without login. No public page asks for a login.                                                                    | CONFIRMED (C-075)        | T      |
+| FR-WEB-ROUTE-002 | Every staff screen is under `/staff`. Opening `/staff` while signed out shows the login at `/staff/login`; old paths `/login` and `/choose-hospital` redirect there.                                         | CONFIRMED (C-076), P-043 | T      |
+| FR-WEB-ROUTE-003 | After login (and choosing a hospital when the account has several), the user lands by permission: ERP only -> ERP home; website only -> CMS home `/staff/website`; both -> the choice screen `/staff/start`. | CONFIRMED (C-077), P-046 | T      |
+| FR-WEB-ROUTE-004 | A user who holds both ERP and website permissions can switch between ERP and CMS from the staff shell without logging in again. Users with one side only never see the switch.                               | CONFIRMED (C-077)        | T      |
+| FR-WEB-ROUTE-005 | Opening a CMS URL without a website permission, or an ERP URL without any ERP permission, shows the "no access" state; the API rejects the call regardless of the screen.                                    | CONFIRMED (C-077, C-079) | T      |
+| FR-WEB-ROUTE-006 | `/staff` is not indexed: the site's `robots.txt` disallows it and every staff response carries `X-Robots-Tag: noindex, nofollow`. The site's locale routing never redirects a `/staff` path.                 | CONFIRMED (C-076), P-045 | T      |
+| FR-WEB-ROUTE-007 | Accounts with `website.content.publish`, `website.theme.edit` or `website.settings.edit` must complete two-factor login; login rate limiting and lockout (C-032) apply to `/staff/login`.                    | CONFIRMED (C-081)        | T      |
