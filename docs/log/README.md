@@ -75,3 +75,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-21 | [T-WEB-05: site shell](2026-10-21-T-WEB-05-site-shell.md)                                                   |
 | 2026-10-21 | [T-WEB-06: home page and section registry](2026-10-21-T-WEB-06-home.md)                                     |
 | 2026-10-21 | [T-WEB-07: find a doctor and doctor profiles](2026-10-21-T-WEB-07-doctors.md)                               |
+| 2026-10-21 | [T-WEB-08: departments and centres](2026-10-21-T-WEB-08-departments.md)                                     |

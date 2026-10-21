@@ -116,6 +116,30 @@ export const siteEn = {
     interests: 'Special interests',
     related: 'Related doctors',
   },
+  departments: {
+    title: 'Departments',
+    intro:
+      'Specialist care in twelve departments, each with its own doctors, services and outpatient hours.',
+  },
+  department: {
+    services: 'Services',
+    facilities: 'Facilities',
+    where: 'Where to find us',
+    partOf: 'Part of',
+    opdHours: 'Outpatient hours',
+    doctors: 'Doctors in this department',
+    requestHeading: 'Ask us to call you',
+    requestText: 'Leave your name and number and we will call to arrange an appointment.',
+  },
+  centres: {
+    title: 'Centres of excellence',
+    intro: 'Departments that work together as one team for complex care.',
+  },
+  centre: {
+    highlights: 'Highlights',
+    departments: 'Departments in this centre',
+    doctors: 'Our specialists',
+  },
 } as const;
 
 type Widen<T> = { -readonly [K in keyof T]: T[K] extends string ? string : Widen<T[K]> };
