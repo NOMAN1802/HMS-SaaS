@@ -16,6 +16,7 @@ import {
   listDoctors,
   localize,
 } from '../../../src/content';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -24,7 +25,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('booking.title'), description: t('booking.intro') };
+  return withAlternates('/book-appointment', locale, {
+    title: t('booking.title'),
+    description: t('booking.intro'),
+  });
 }
 
 export default async function BookAppointmentPage({ params }: Params) {

@@ -26,6 +26,7 @@ import { toDoctorSummary } from '../../../../src/content/doctor-summary';
 import { calendarDate, digits, money, todayInDhaka } from '../../../../src/format';
 import { Link } from '../../../../src/i18n/navigation';
 import { languageKey } from '../../../../src/i18n/labels';
+import { withAlternates } from '../../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string; slug: string }>;
@@ -39,10 +40,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, slug } = await params;
   const doctor = getDoctor(slug);
   if (!doctor || !isLocale(locale)) return {};
-  return {
+  return withAlternates(`/doctors/${slug}`, locale, {
     title: localize(doctor.name, locale),
     description: `${localize(doctor.title, locale)}. ${localize(doctor.qualifications, locale)}`,
-  };
+  });
 }
 
 function Years({ from, to, locale }: { from: number; to?: number; locale: Locale }) {

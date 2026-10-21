@@ -19,6 +19,7 @@ import {
 } from '../../../../src/content';
 import { calendarDate } from '../../../../src/format';
 import { Link } from '../../../../src/i18n/navigation';
+import { withAlternates } from '../../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string; slug: string }>;
@@ -32,7 +33,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, slug } = await params;
   const article = getArticle(slug);
   if (!article || !isLocale(locale)) return {};
-  return { title: localize(article.title, locale), description: localize(article.excerpt, locale) };
+  return withAlternates(`/articles/${slug}`, locale, {
+    title: localize(article.title, locale),
+    description: localize(article.excerpt, locale),
+  });
 }
 
 export default async function ArticlePage({ params }: Params) {

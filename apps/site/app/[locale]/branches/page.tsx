@@ -7,6 +7,7 @@ import { BranchCard } from '../../../src/components/branch-card';
 import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { listBranches } from '../../../src/content';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -15,7 +16,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('branches.title'), description: t('branches.intro') };
+  return withAlternates('/branches', locale, {
+    title: t('branches.title'),
+    description: t('branches.intro'),
+  });
 }
 
 export default async function BranchesPage({ params }: Params) {

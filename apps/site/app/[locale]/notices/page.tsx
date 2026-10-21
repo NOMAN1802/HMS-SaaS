@@ -7,6 +7,7 @@ import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { listNotices, localize, localizeRich } from '../../../src/content';
 import { calendarDate } from '../../../src/format';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -15,7 +16,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('notices.title'), description: t('notices.intro') };
+  return withAlternates('/notices', locale, {
+    title: t('notices.title'),
+    description: t('notices.intro'),
+  });
 }
 
 export default async function NoticesPage({ params }: Params) {

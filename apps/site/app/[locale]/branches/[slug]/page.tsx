@@ -19,6 +19,7 @@ import {
   localize,
 } from '../../../../src/content';
 import { toDoctorSummary } from '../../../../src/content/doctor-summary';
+import { withAlternates } from '../../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string; slug: string }>;
@@ -32,7 +33,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, slug } = await params;
   const branch = getBranch(slug);
   if (!branch || !isLocale(locale)) return {};
-  return { title: localize(branch.name, locale), description: localize(branch.address, locale) };
+  return withAlternates(`/branches/${slug}`, locale, {
+    title: localize(branch.name, locale),
+    description: localize(branch.address, locale),
+  });
 }
 
 export default async function BranchPage({ params }: Params) {

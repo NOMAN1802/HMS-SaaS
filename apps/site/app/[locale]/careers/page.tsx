@@ -10,6 +10,7 @@ import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { getBranch, listJobs, localize } from '../../../src/content';
 import { calendarDate } from '../../../src/format';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -24,7 +25,10 @@ const JOB_TYPE_KEY = {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('careers.title'), description: t('careers.intro') };
+  return withAlternates('/careers', locale, {
+    title: t('careers.title'),
+    description: t('careers.intro'),
+  });
 }
 
 export default async function CareersPage({ params }: Params) {

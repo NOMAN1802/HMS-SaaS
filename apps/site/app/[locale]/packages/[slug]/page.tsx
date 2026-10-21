@@ -19,6 +19,7 @@ import {
 } from '../../../../src/content';
 import { digits, money } from '../../../../src/format';
 import { packageCategoryKey } from '../../../../src/i18n/category-labels';
+import { withAlternates } from '../../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string; slug: string }>;
@@ -32,7 +33,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, slug } = await params;
   const item = getPackage(slug);
   if (!item || !isLocale(locale)) return {};
-  return { title: localize(item.name, locale), description: localize(item.summary, locale) };
+  return withAlternates(`/packages/${slug}`, locale, {
+    title: localize(item.name, locale),
+    description: localize(item.summary, locale),
+  });
 }
 
 export default async function PackagePage({ params }: Params) {

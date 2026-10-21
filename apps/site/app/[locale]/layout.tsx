@@ -15,6 +15,7 @@ import { SiteHeader } from '../../src/components/site-header';
 import { TopBar } from '../../src/components/top-bar';
 import { getSite, localize } from '../../src/content';
 import { routing } from '../../src/i18n/routing';
+import { SITE_ORIGIN } from '../../src/seo';
 import '../globals.css';
 
 interface LocaleParams {
@@ -34,8 +35,11 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
     ? localize(site.settings.hospitalName, locale)
     : '';
   return {
+    metadataBase: new URL(SITE_ORIGIN),
     title: { default: name || t('meta.title'), template: `%s | ${name}` },
     description: t('meta.description'),
+    // Demo content must not be indexed (FR-WEB-SEO-002, P-032); real content turns the notice off.
+    robots: site.notice.enabled ? { index: false, follow: false } : undefined,
   };
 }
 

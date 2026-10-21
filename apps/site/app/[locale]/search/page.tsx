@@ -9,6 +9,7 @@ import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { SiteSearch } from '../../../src/components/site-search';
 import { buildSearchIndex } from '../../../src/content/search-index';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -17,7 +18,7 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('search.title'), robots: { index: false } };
+  return withAlternates('/search', locale, { title: t('search.title'), robots: { index: false } });
 }
 
 export default async function SearchPage({ params }: Params) {

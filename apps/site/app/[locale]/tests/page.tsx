@@ -11,6 +11,7 @@ import { TestPriceList, type TestRow } from '../../../src/components/test-price-
 import { listTests, localize, normalizeQuery } from '../../../src/content';
 import { digits, money } from '../../../src/format';
 import { testCategoryKey } from '../../../src/i18n/category-labels';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -19,7 +20,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('tests.title'), description: t('tests.intro') };
+  return withAlternates('/tests', locale, {
+    title: t('tests.title'),
+    description: t('tests.intro'),
+  });
 }
 
 export default async function TestsPage({ params }: Params) {

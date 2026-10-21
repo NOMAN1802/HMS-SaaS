@@ -19,6 +19,7 @@ import {
   localizeRich,
 } from '../../../../src/content';
 import { toDoctorSummary } from '../../../../src/content/doctor-summary';
+import { withAlternates } from '../../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string; slug: string }>;
@@ -32,7 +33,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, slug } = await params;
   const centre = getCentre(slug);
   if (!centre || !isLocale(locale)) return {};
-  return { title: localize(centre.name, locale), description: localize(centre.summary, locale) };
+  return withAlternates(`/centres/${slug}`, locale, {
+    title: localize(centre.name, locale),
+    description: localize(centre.summary, locale),
+  });
 }
 
 export default async function CentrePage({ params }: Params) {

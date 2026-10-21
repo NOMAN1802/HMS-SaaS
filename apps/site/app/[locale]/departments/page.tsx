@@ -7,6 +7,7 @@ import { Container } from '../../../src/components/container';
 import { DepartmentCard } from '../../../src/components/department-card';
 import { PageHeader } from '../../../src/components/page-header';
 import { listDepartments } from '../../../src/content';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -15,7 +16,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('departments.title'), description: t('departments.intro') };
+  return withAlternates('/departments', locale, {
+    title: t('departments.title'),
+    description: t('departments.intro'),
+  });
 }
 
 export default async function DepartmentsPage({ params }: Params) {

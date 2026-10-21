@@ -11,6 +11,7 @@ import { DoctorDirectory, DoctorGrid } from '../../../src/components/doctor-dire
 import { PageHeader } from '../../../src/components/page-header';
 import { listBranches, listDepartments, listDoctors, localize } from '../../../src/content';
 import { toDoctorSummary } from '../../../src/content/doctor-summary';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -19,7 +20,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('doctors.title'), description: t('doctors.intro') };
+  return withAlternates('/doctors', locale, {
+    title: t('doctors.title'),
+    description: t('doctors.intro'),
+  });
 }
 
 export default async function DoctorsPage({ params }: Params) {

@@ -8,6 +8,7 @@ import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { ServiceForm } from '../../../src/components/service-form';
 import { listBranches, localize } from '../../../src/content';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -16,7 +17,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('feedback.title'), description: t('feedback.intro') };
+  return withAlternates('/feedback', locale, {
+    title: t('feedback.title'),
+    description: t('feedback.intro'),
+  });
 }
 
 export default async function FeedbackPage({ params }: Params) {

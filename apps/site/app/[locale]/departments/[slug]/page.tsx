@@ -22,6 +22,7 @@ import {
 } from '../../../../src/content';
 import { toDoctorSummary } from '../../../../src/content/doctor-summary';
 import { Link } from '../../../../src/i18n/navigation';
+import { withAlternates } from '../../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string; slug: string }>;
@@ -35,10 +36,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale, slug } = await params;
   const department = getDepartment(slug);
   if (!department || !isLocale(locale)) return {};
-  return {
+  return withAlternates(`/departments/${slug}`, locale, {
     title: localize(department.name, locale),
     description: localize(department.summary, locale),
-  };
+  });
 }
 
 export default async function DepartmentPage({ params }: Params) {

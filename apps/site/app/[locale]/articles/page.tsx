@@ -7,6 +7,7 @@ import { ArticleCard } from '../../../src/components/article-card';
 import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { listArticles } from '../../../src/content';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -15,7 +16,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('articles.title'), description: t('articles.intro') };
+  return withAlternates('/articles', locale, {
+    title: t('articles.title'),
+    description: t('articles.intro'),
+  });
 }
 
 export default async function ArticlesPage({ params }: Params) {

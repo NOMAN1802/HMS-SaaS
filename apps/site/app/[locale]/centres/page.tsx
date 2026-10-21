@@ -7,6 +7,7 @@ import { CentreCard } from '../../../src/components/centre-card';
 import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { listCentres } from '../../../src/content';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -15,7 +16,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('centres.title'), description: t('centres.intro') };
+  return withAlternates('/centres', locale, {
+    title: t('centres.title'),
+    description: t('centres.intro'),
+  });
 }
 
 export default async function CentresPage({ params }: Params) {

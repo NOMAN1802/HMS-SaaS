@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { ContentPage, contentPageMetadata } from '../../../src/components/content-page';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -11,7 +12,9 @@ interface Params {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
-  return isLocale(locale) ? contentPageMetadata('emergency', locale) : {};
+  return isLocale(locale)
+    ? withAlternates('/emergency', locale, contentPageMetadata('emergency', locale))
+    : {};
 }
 
 export default async function EmergencyPage({ params }: Params) {

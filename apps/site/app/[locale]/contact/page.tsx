@@ -10,6 +10,7 @@ import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
 import { getSite, listBranches, localize } from '../../../src/content';
 import { Link } from '../../../src/i18n/navigation';
+import { withAlternates } from '../../../src/seo';
 
 interface Params {
   params: Promise<{ locale: string }>;
@@ -18,7 +19,10 @@ interface Params {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return { title: t('contact.title'), description: t('contact.intro') };
+  return withAlternates('/contact', locale, {
+    title: t('contact.title'),
+    description: t('contact.intro'),
+  });
 }
 
 export default async function ContactPage({ params }: Params) {

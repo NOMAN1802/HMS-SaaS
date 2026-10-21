@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { getPage, localize } from '../../src/content';
 import { SectionList } from '../../src/sections/registry';
+import { withAlternates } from '../../src/seo';
 
 interface HomeParams {
   params: Promise<{ locale: string }>;
@@ -16,10 +17,10 @@ export async function generateMetadata({ params }: HomeParams): Promise<Metadata
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const { seo } = getPage('home');
-  return {
+  return withAlternates('/', locale, {
     title: { absolute: localize(seo.title, locale) },
     description: localize(seo.description, locale),
-  };
+  });
 }
 
 export default async function HomePage({ params }: HomeParams) {
