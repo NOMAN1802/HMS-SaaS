@@ -45,3 +45,32 @@ test('the hero offers an emergency call line', async ({ page }) => {
   await page.goto('/en');
   await expect(page.getByTestId('hero-emergency')).toHaveAttribute('href', /^tel:/);
 });
+
+// Featured doctors and packages are user-driven sliders (C-084, APG carousel pattern).
+test('the doctor slider moves with its buttons and with keyboard focus', async ({ page }) => {
+  await page.goto('/en');
+  const slider = page.locator('[aria-labelledby="doctors-heading"]');
+  await expect(slider).toHaveAttribute('aria-roledescription', 'Carousel');
+  const slides = slider.locator('[data-slide]');
+  await expect(slides.first()).toHaveAttribute('aria-label', '1 of 8');
+  const previous = slider.getByRole('button', { name: 'Previous' });
+  const next = slider.getByRole('button', { name: 'Next' });
+  await expect(previous).toBeDisabled();
+
+  await next.click();
+  await expect(slides.nth(4)).toBeInViewport();
+  await expect(slides.first()).not.toBeInViewport();
+  await expect(previous).toBeEnabled();
+  await previous.click();
+  await expect(slides.first()).toBeInViewport();
+
+  // Tabbing into a card off screen slides it into view.
+  await slides.nth(6).getByRole('link').first().focus();
+  await expect(slides.nth(6)).toBeInViewport();
+});
+
+test('slide labels use Bangla words and digits', async ({ page }) => {
+  await page.goto('/bn');
+  const slides = page.locator('[aria-labelledby="packages-heading"] [data-slide]');
+  await expect(slides.first()).toHaveAttribute('aria-label', /^[০-৯]+টির মধ্যে ১$/);
+});

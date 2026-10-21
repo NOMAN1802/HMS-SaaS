@@ -4,6 +4,7 @@
 // AT-WEB-011, AT-WEB-014). The full list is rendered on the server as the no-JavaScript fallback.
 // Implements: T-WEB-07.
 import type { Phone } from '@hms/contracts';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { Button, buttonClassName, Field, Icon, Select, TextInput } from '@hms/ui';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -29,8 +30,12 @@ export interface DoctorDirectoryProps {
 
 export function DoctorGrid({ doctors }: { doctors: DoctorSummary[] }) {
   const locale = useSiteLocale();
+  // Cards glide out, in and into their new places as filters change (C-084); AutoAnimate turns
+  // itself off for reduced motion.
+  const [listRef] = useAutoAnimate<HTMLUListElement>({ duration: 220, easing: 'ease-out' });
   return (
     <ul
+      ref={listRef}
       className="reveal-list grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       data-testid="doctor-results"
     >

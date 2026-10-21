@@ -162,3 +162,45 @@ WEB-A ships tokenized SVG placeholders. During T-WEB-14 a file `apps/site/conten
 | `emergency-band`          | Emergency strip           | 1600 x 500 | Ambulance bay at dusk, motion blur, no faces                                                                                              |
 
 AI-generated faces of "doctors" are illustrations, not real staff; alt text says so (P-032).
+
+## 7. Motion and animation libraries (C-083, C-084)
+
+Motion on the site has one job: make the page feel cared for without slowing anyone down. Every effect below is removed for visitors with reduced motion turned on, and nothing animates on keyboard actions.
+
+### What moves, where and why
+
+| Effect                                                   | Where                                                          | Why                                                                     | Built with           |
+| -------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------- | -------------------- |
+| Arrival: text settles in one element after another       | Home hero, every inner page title                              | Guides the eye from the headline to the search and the emergency line   | CSS (`motion.css`)   |
+| Scroll reveal: sections and cards rise into place        | Section headings, card lists, text blocks, FAQ, call to action | Shows where a new section starts; follows the scroll, never holds it up | CSS scroll timelines |
+| Card lift, picture zoom, icon fill, arrow nudge          | All cards, "view all" links, quick actions                     | Tells a mouse user "this is clickable"; off on touch screens            | CSS                  |
+| Header shadow on scroll                                  | Sticky header                                                  | Separates the header from the page once content slides under it         | CSS scroll timeline  |
+| Dropdown and suggestions grow from their trigger         | Departments menu, hero search                                  | Shows where the panel came from                                         | CSS                  |
+| FAQ answers and menu groups open to their height         | FAQ, mobile menu                                               | No jump; the eye follows the answer                                     | CSS                  |
+| Booking step rises in, confirmation pops                 | Booking wizard                                                 | Makes the change of step visible; marks success                         | CSS                  |
+| Soft repeating ring                                      | Emergency icon (hero line, emergency band)                     | The one "open now" signal; the only repeating motion on the site        | CSS                  |
+| Stats count up                                           | Stats section (hidden in the current content)                  | Draws attention to the numbers once                                     | Small script         |
+| Slider with previous and next buttons                    | Home: featured doctors, health packages                        | One row instead of two; swipe on phones; never auto-plays               | Embla Carousel       |
+| Cards glide out, in and into place when the list changes | Doctor directory filters, site search results                  | Shows what a filter removed or added instead of a sudden jump           | AutoAnimate          |
+
+### Libraries in use
+
+| Library                               | Used for                                 | Why this one                                                                                                                                                                                    |
+| ------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `embla-carousel-react` 8.6.0          | Featured doctors and packages sliders    | Small, touch-first, no styling of its own (our cards and tokens stay in charge), works with keyboard focus and the APG carousel pattern. Swiper does the same job but is several times heavier. |
+| `@formkit/auto-animate` 0.10.0        | Doctor directory and site search results | One line per list, no layout code, and it turns itself off for reduced motion. Motion (Framer Motion) could do it but is far larger for this one job.                                           |
+| CSS only (`apps/site/app/motion.css`) | Everything else in the table above       | Runs off the main thread, needs no script and no CSP change, and falls back to a still page.                                                                                                    |
+
+### Considered and not used
+
+| Library                      | Why not                                                                                                                                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Typed.js, typewriter-effect  | They type one character at a time, which breaks Bangla conjunct letters (juktakkhor) mid-word; they also delay the main headline and read badly on screen readers. Swap whole words if ever needed. |
+| Swiper                       | Heavier than Embla for the same two sliders.                                                                                                                                                        |
+| Motion (Framer Motion), GSAP | Large; the site's motion is simple enough for CSS. Revisit only for drag gestures or pinned storytelling pages.                                                                                     |
+| Lenis (smooth scroll)        | Changes how the page scrolls; feels wrong to everyday users and older phones.                                                                                                                       |
+| canvas-confetti, particles   | Wrong tone for a hospital.                                                                                                                                                                          |
+| Lottie                       | Worth adding later for a booking-confirmed tick and empty states, once designed animation files exist.                                                                                              |
+| react-fast-marquee           | Only useful for a logo strip (insurance partners); none in the content yet.                                                                                                                         |
+
+Rules for adding motion later: give each effect a reason from the table's "Why" column; keep interface animations under 300 ms; never auto-play a slider; never start from `scale(0)`; gate everything on `prefers-reduced-motion`; add a dependency only when CSS cannot do the job, pinned to an exact version.

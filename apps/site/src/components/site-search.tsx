@@ -2,6 +2,7 @@
 // Site-wide search results grouped by type, in the page language; accepts Bangla or English words
 // and Bangla or Latin digits (FR-WEB-SRCH-001, AT-WEB-058). The query lives in the URL (?q=) so
 // results can be shared. Implements: T-WEB-17.
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { Field, TextInput } from '@hms/ui';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -72,22 +73,31 @@ export function SiteSearch({ index }: { index: SearchEntry[] }) {
             <h2 id={`group-${kind}`} className="mb-3 text-xl font-semibold">
               {t(key)}
             </h2>
-            <ul className="grid gap-3 md:grid-cols-2">
-              {entries.slice(0, PER_GROUP).map((entry) => (
-                <li key={entry.href}>
-                  <Link
-                    href={entry.href}
-                    className="flex flex-col rounded-panel border border-border bg-surface p-4 hover:border-primary"
-                  >
-                    <span className="font-medium text-heading">{entry.label}</span>
-                    <span className="text-sm text-text-muted">{entry.detail}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <ResultList entries={entries.slice(0, PER_GROUP)} />
           </section>
         );
       })}
     </div>
+  );
+}
+
+/** One group's results; entries glide in and out as the query changes (C-084). AutoAnimate turns
+ * itself off for reduced motion. */
+function ResultList({ entries }: { entries: SearchEntry[] }) {
+  const [listRef] = useAutoAnimate<HTMLUListElement>({ duration: 200, easing: 'ease-out' });
+  return (
+    <ul ref={listRef} className="grid gap-3 md:grid-cols-2">
+      {entries.map((entry) => (
+        <li key={entry.href}>
+          <Link
+            href={entry.href}
+            className="flex flex-col rounded-panel border border-border bg-surface p-4 transition-colors duration-200 hover:border-primary"
+          >
+            <span className="font-medium text-heading">{entry.label}</span>
+            <span className="text-sm text-text-muted">{entry.detail}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

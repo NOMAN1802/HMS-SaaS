@@ -32,6 +32,13 @@ export const siteEn = {
     opensInNewTab: '(opens in a new tab)',
   },
   common: {
+    carousel: {
+      name: 'Carousel',
+      slideName: 'Slide',
+      slide: '{index} of {total}',
+      previous: 'Previous',
+      next: 'Next',
+    },
     month: {
       jan: 'January',
       feb: 'February',

@@ -16,6 +16,7 @@ import {
 } from '../content';
 import { ArticleCard } from '../components/article-card';
 import { BranchCard } from '../components/branch-card';
+import { Carousel } from '../components/carousel';
 import { CentreCard } from '../components/centre-card';
 import { Container } from '../components/container';
 import { DepartmentCard } from '../components/department-card';
@@ -100,16 +101,22 @@ export function FeaturedDoctorsSection({
       : props.doctors.map(getDoctor).filter((doctor) => doctor !== undefined);
   return (
     <Band muted>
-      <SectionHeading {...heading(props, locale, props.viewAll)} />
-      {/* Horizontal scroll with snap on small screens instead of an auto-playing carousel. The
-          row is positioned so screen-reader-only labels inside cards stay clipped by it. */}
-      <ul className="reveal-list relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
-        {doctors.slice(0, 8).map((doctor) => (
-          <li key={doctor.slug} className="w-80 shrink-0 snap-start sm:w-auto">
-            <DoctorCard doctor={toDoctorSummary(doctor, locale)} locale={locale} />
-          </li>
-        ))}
-      </ul>
+      <SectionHeading {...heading(props, locale, props.viewAll)} id={`${section.id}-heading`} />
+      {/* A user-driven slider, never auto-playing (C-084): one row instead of two rows of four. */}
+      <div className="reveal">
+        <Carousel
+          labelledBy={`${section.id}-heading`}
+          slideClassName="basis-[85%] sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+        >
+          {doctors.slice(0, 8).map((doctor) => (
+            <DoctorCard
+              key={doctor.slug}
+              doctor={toDoctorSummary(doctor, locale)}
+              locale={locale}
+            />
+          ))}
+        </Carousel>
+      </div>
     </Band>
   );
 }
@@ -121,16 +128,19 @@ export function PackageShowcaseSection({
   const { props } = section;
   return (
     <Band>
-      <SectionHeading {...heading(props, locale, props.viewAll)} />
-      <ul className="reveal-list relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 lg:grid-cols-3">
-        {listPackagesAll()
-          .slice(0, props.count)
-          .map((item) => (
-            <li key={item.slug} className="w-72 shrink-0 snap-start sm:w-auto">
-              <PackageCard item={item} locale={locale} />
-            </li>
-          ))}
-      </ul>
+      <SectionHeading {...heading(props, locale, props.viewAll)} id={`${section.id}-heading`} />
+      <div className="reveal">
+        <Carousel
+          labelledBy={`${section.id}-heading`}
+          slideClassName="basis-[80%] sm:basis-1/2 lg:basis-1/3"
+        >
+          {listPackagesAll()
+            .slice(0, props.count)
+            .map((item) => (
+              <PackageCard key={item.slug} item={item} locale={locale} />
+            ))}
+        </Carousel>
+      </div>
     </Band>
   );
 }

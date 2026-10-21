@@ -34,6 +34,13 @@ export const siteBnBD: SiteMessages = {
     opensInNewTab: '(নতুন ট্যাবে খুলবে)',
   },
   common: {
+    carousel: {
+      name: 'স্লাইডার',
+      slideName: 'স্লাইড',
+      slide: '{total}টির মধ্যে {index}',
+      previous: 'আগের গুলো',
+      next: 'পরের গুলো',
+    },
     month: {
       jan: 'জানুয়ারি',
       feb: 'ফেব্রুয়ারি',
