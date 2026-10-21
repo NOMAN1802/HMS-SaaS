@@ -68,3 +68,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-18 | [CI: fix the Prisma generate race in @hms/database](2026-10-18-ci-prisma-generate-race.md)                  |
 | 2026-10-18 | [CI: cache the generated Prisma client with the database build](2026-10-18-ci-database-generated-cache.md)  |
 | 2026-10-18 | [T-PLT-07 (part 1): API request pipeline middleware](2026-10-18-T-PLT-07-request-pipeline.md)               |
+| 2026-10-21 | [T-WEB-00: public website planning pack](2026-10-21-T-WEB-00-site-planning.md)                              |
