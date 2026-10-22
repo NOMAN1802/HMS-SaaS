@@ -52,3 +52,11 @@ for (const path of ['/bn/departments/cardiology', '/en/centres/heart-centre']) {
     expect(results.violations).toEqual([]);
   });
 }
+
+test('the department picture spans the page width above the columns', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/en/departments/cardiology');
+  const box = await page.locator('main img').first().boundingBox();
+  expect(box?.width).toBeGreaterThanOrEqual(1200);
+  expect(box?.height).toBeGreaterThanOrEqual(600);
+});
