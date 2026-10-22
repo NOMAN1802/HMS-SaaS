@@ -304,6 +304,24 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 - Used on: general package cards
 - Prompt: A nurse drawing blood from an adult's arm in a bright sample collection room. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
+### `package-executive`
+
+- Size: 800 x 500
+- Used on: executive health check card
+- Prompt: A professional man in his forties in a business shirt going over his check-up results with a doctor on a tablet, in a calm, premium consultation lounge. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
+### `package-diabetes`
+
+- Size: 800 x 500
+- Used on: diabetes check card
+- Prompt: A nurse checking a seated adult's blood sugar with a glucose meter at the fingertip, a balanced meal and a water glass on the desk. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
+### `package-cardiac`
+
+- Size: 800 x 500
+- Used on: heart check card
+- Prompt: A relaxed fully dressed adult seated beside a technician who points at a steady ECG trace on a monitor, electrodes only on the wrists. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
 ### `package-women`
 
 - Size: 800 x 500

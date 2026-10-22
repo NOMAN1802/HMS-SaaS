@@ -1,7 +1,7 @@
 // WEB-A quality pass (T-WEB-15, H section 2): every page in the sitemap renders in both languages
-// without console errors; every page type is axe clean in both languages; and no page type
-// scrolls sideways on a 360 px phone. Implements: AT-WEB-001, AT-WEB-035, NFR-WEB-ACC-001,
-// NFR-WEB-RESP-001.
+// without console errors; every page type is axe clean in both languages; no page type shows the
+// same picture twice; and no page type scrolls sideways on a 360 px phone.
+// Implements: AT-WEB-001, AT-WEB-035, NFR-WEB-ACC-001, NFR-WEB-RESP-001.
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
@@ -74,6 +74,23 @@ for (const prefix of ['/bn', '/en']) {
     }
   });
 }
+
+// Each card and page shows its own picture: one image slot must not stand in for another (T-WEB-14).
+// Hidden tab panels repeat cards by design, so only visible images count.
+test('no page type shows the same picture twice', async ({ page }) => {
+  test.setTimeout(180_000);
+  for (const path of TEMPLATES) {
+    await page.goto(`/bn${path}`);
+    const shown = await page.$$eval('img', (images) =>
+      images
+        .filter((image) => image.checkVisibility())
+        .map((image) => decodeURIComponent(image.src).match(/\/images\/([a-z0-9-]+)\.webp/)?.[1])
+        .filter((name) => name !== undefined),
+    );
+    const repeated = shown.filter((name, index) => shown.indexOf(name) !== index);
+    expect(repeated, `/bn${path}`).toEqual([]);
+  }
+});
 
 test.describe('on a 360 px phone', () => {
   test.use({ viewport: { width: 360, height: 780 } });

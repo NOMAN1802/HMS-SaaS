@@ -157,7 +157,7 @@ WEB-A ships tokenized SVG placeholders. During T-WEB-14 a file `apps/site/conten
 | `department-<slug>` (x12) | Department pages          | 1200 x 600 | Clinical equipment or a care moment for that department                                                                                   |
 | `doctor-<slug>` (x24)     | Doctor cards and profiles | 600 x 750  | Portrait of a fictional doctor, neutral background; marked as an illustration in alt text                                                 |
 | `branch-<slug>` (x3)      | Branch cards              | 800 x 500  | Exterior of a modern hospital building in Dhaka, daytime                                                                                  |
-| `package-<category>` (x7) | Package cards             | 800 x 500  | Health-check scene matching the category                                                                                                  |
+| `package-<name>` (x10)    | Package cards             | 800 x 500  | Health-check scene matching the package                                                                                                   |
 | `article-<slug>` (x6)     | Articles                  | 1200 x 630 | Editorial illustration for the topic                                                                                                      |
 | `emergency-band`          | Emergency strip           | 1200 x 900 | Ambulance at the entrance at blue hour, in the band's dark teal with one red beacon, no faces                                             |
 

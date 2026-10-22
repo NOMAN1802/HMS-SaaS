@@ -161,12 +161,12 @@
     "price": "9800.00",
     "separatePrice": "13950.00",
     "image": {
-      "slot": "package-general",
+      "slot": "package-executive",
       "alt": {
         "bn": "এক্সিকিউটিভ হেলথ চেকআপ (চিত্র)",
         "en": "Executive health check (illustration)"
       },
-      "src": "/images/package-general-cc592763.webp"
+      "src": "/images/package-executive-d520763e.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -606,12 +606,12 @@
     "price": "4800.00",
     "separatePrice": "6300.00",
     "image": {
-      "slot": "package-general",
+      "slot": "package-diabetes",
       "alt": {
         "bn": "ডায়াবেটিস চেকআপ (চিত্র)",
         "en": "Diabetes check (illustration)"
       },
-      "src": "/images/package-general-cc592763.webp"
+      "src": "/images/package-diabetes-f848f106.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -685,12 +685,12 @@
     "price": "8900.00",
     "separatePrice": "12400.00",
     "image": {
-      "slot": "package-general",
+      "slot": "package-cardiac",
       "alt": {
         "bn": "হার্ট চেকআপ (চিত্র)",
         "en": "Heart check (illustration)"
       },
-      "src": "/images/package-general-cc592763.webp"
+      "src": "/images/package-cardiac-6a78a2ed.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
