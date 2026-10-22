@@ -12,6 +12,7 @@ const RATIOS = {
   wide: 'aspect-[16/9]',
   feature: 'aspect-[2/1]',
   card: 'aspect-[4/3]',
+  photo: 'aspect-[3/2]',
   portrait: 'aspect-[4/5]',
   square: 'aspect-square',
 } as const;

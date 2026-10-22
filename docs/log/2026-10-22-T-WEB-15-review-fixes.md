@@ -16,7 +16,7 @@ Six defects found in review, and one owner request (7):
 
 6. **Inputs in a row did not line up.** `Field` put the hint between the label and the control, so on the booking details step (and the callback, contact and service forms) the mobile number input sat lower than the name input beside it. The hint now goes under the control, after the error, so controls and errors line up across a row. It is still announced with the control through `aria-describedby`. The staff app uses no hints, so only the site changes.
 
-7. **Department pictures were small and soft.** The picture sat in the left column at 824 x 412 and was served at 640 px wide (the default `sizes` assumes a third of the screen). It now spans the page width above the columns at 2:1 (1216 x 608 at 1280 px), edge to edge at 16:9 on a phone, with `sizes` matching and `priority`, since it is the page's largest paint. Checked with Playwright on all 12 departments at 1280 and 360 px: loaded, full size, no sideways scroll.
+7. **Department pictures were cropped.** The pictures were made at 3:2 (1536 x 1024) but stored and shown at 2:1, which cut off the top and bottom (on Cardiology, the doctor's head). The 12 pictures are re-exported from the originals at 1200 x 800 (the full frame, new fingerprints, old files removed) and shown at 3:2 (new `photo` ratio in `ImageSlot`) in the same column as before: 824 x 549 instead of 824 x 412 at 1280 px. `sizes` now matches the column, so the browser loads a file wide enough to stay sharp. A first attempt that moved the picture full width above the columns was reverted at the owner's request (too big). Checked with Playwright on all 12 departments at 1280 and 360 px: the frame has the picture's own shape, no sideways scroll.
 
 ## Files
 
@@ -37,7 +37,10 @@ Six defects found in review, and one owner request (7):
 | `apps/site/src/components/appointment-request-form.tsx` | Date choices from `useToday`                                              |
 | `apps/site/src/components/booking-wizard.tsx`           | Bookable dates from `useToday`                                            |
 | `packages/ui/src/primitives/Field.tsx`                  | Error and then hint under the control                                     |
-| `apps/site/app/[locale]/departments/[slug]/page.tsx`    | Full-width department picture                                             |
+| `apps/site/app/[locale]/departments/[slug]/page.tsx`    | Department picture at 3:2 in its column                                   |
+| `apps/site/src/components/image-slot.tsx`               | `photo` ratio (3:2)                                                       |
+| `apps/site/content/departments.json`, `public/images/`  | Department pictures re-exported at 3:2                                    |
+| `apps/site/content/image-prompts.md`                    | Department size 1200 x 800                                                |
 | `apps/site/e2e/*.spec.ts`                               | Regression tests for all five (home, shell, doctors, services)            |
 
 ## Verification

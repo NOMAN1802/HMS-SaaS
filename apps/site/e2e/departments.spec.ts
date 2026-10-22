@@ -53,10 +53,10 @@ for (const path of ['/bn/departments/cardiology', '/en/centres/heart-centre']) {
   });
 }
 
-test('the department picture spans the page width above the columns', async ({ page }) => {
+test('the department picture shows the whole 3:2 picture, not a crop', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/en/departments/cardiology');
   const box = await page.locator('main img').first().boundingBox();
-  expect(box?.width).toBeGreaterThanOrEqual(1200);
-  expect(box?.height).toBeGreaterThanOrEqual(600);
+  expect(box).not.toBeNull();
+  expect((box?.width ?? 0) / (box?.height ?? 1)).toBeCloseTo(1.5, 1);
 });
