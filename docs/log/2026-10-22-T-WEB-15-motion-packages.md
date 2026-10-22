@@ -42,10 +42,13 @@ Reduced motion: the slideshow never plays by itself and has no pause button or z
 
 ## Verification
 
-| Command                                             | Result                                                                |
-| --------------------------------------------------- | --------------------------------------------------------------------- |
-| `pnpm --filter @hms/site typecheck`, `lint`, `test` | Clean; 31 unit tests passed                                           |
-| Full Playwright suite against the production build  | 88 passed before the new spec; new spec 7 passed, three runs in a row |
+| Command                                                          | Result                                                                                                    |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `pnpm turbo run lint typecheck test` (site, ui, i18n, contracts) | 15 tasks successful                                                                                       |
+| Full Playwright suite against the production build               | 95 passed (two of three full runs; the other had three 30 s timeouts at load average 7, which pass alone) |
+| `e2e/motion-packages.spec.ts` alone, three runs                  | 7 passed each time                                                                                        |
+
+The slideshow test drives Playwright's fake clock and steps it a second at a time, so hydration timing does not matter; the reveal test waits for the card to be marked pending before checking it is transparent.
 
 ## Known limitations
 

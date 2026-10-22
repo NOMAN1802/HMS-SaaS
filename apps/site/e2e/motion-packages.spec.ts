@@ -18,10 +18,13 @@ test.describe('with motion allowed', () => {
     // Playing: the next picture arrives on its own (interval 6 s).
     // Steps the clock a second at a time, so it does not matter when hydration starts the timer.
     await expect
-      .poll(async () => {
-        await page.clock.runFor(1000);
-        return current.getAttribute('aria-label');
-      })
+      .poll(
+        async () => {
+          await page.clock.runFor(1000);
+          return current.getAttribute('aria-label');
+        },
+        { timeout: 20_000 },
+      )
       .toBe('2 of 4');
     await slides.getByRole('button', { name: 'Pause the slideshow' }).click();
     await page.mouse.move(0, 0);
