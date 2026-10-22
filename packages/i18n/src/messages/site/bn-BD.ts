@@ -109,7 +109,7 @@ export const siteBnBD: SiteMessages = {
     title: 'সার্চ',
     headerLink: 'পুরো সাইটে সার্চ করুন',
     close: 'সার্চ বন্ধ করুন',
-    seeAll: '{count, plural, other {#টি রেজাল্টই দেখুন}}',
+    seeAll: 'সার্চ পেজে সব রেজাল্ট ({count})',
     none: 'কিছু পাওয়া যায়নি। অন্য শব্দ লিখে দেখুন।',
     failed: 'সার্চ লোড হয়নি। সার্চ পেজে গিয়ে খুঁজুন।',
     placeholderAll: 'ডাক্তার, ডিপার্টমেন্ট, প্যাকেজ, টেস্ট বা যেকোনো বিষয়',
