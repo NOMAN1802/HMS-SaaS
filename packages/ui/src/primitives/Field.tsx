@@ -1,6 +1,8 @@
 'use client';
-// Label, hint and error wiring for one control: label above, error below (F section 7.1,
-// no placeholder-as-label). The control receives its id and described-by through a render
+// Label, hint and error wiring for one control: label above, error and then hint below (F section
+// 7.1, no placeholder-as-label). The hint sits under the control so that, in a row of fields,
+// the controls and their errors line up whether or not a field has a hint; it is still read out
+// with the control through aria-describedby. The control receives its id and described-by through a render
 // function, so any input-like primitive can sit inside. Implements: T-UI-01, NFR-ACC-001.
 import { type ReactNode, useId } from 'react';
 import { cx } from '../utils/cx.js';
@@ -37,11 +39,6 @@ export function Field({ label, hint, error, required = false, className, childre
           </span>
         ) : null}
       </label>
-      {hint ? (
-        <p id={hintId} className="text-sm text-text-muted">
-          {hint}
-        </p>
-      ) : null}
       {children({
         id,
         'aria-describedby': describedBy || undefined,
@@ -51,6 +48,11 @@ export function Field({ label, hint, error, required = false, className, childre
       {error ? (
         <p id={errorId} className="text-sm font-medium text-danger">
           {error}
+        </p>
+      ) : null}
+      {hint ? (
+        <p id={hintId} className="text-sm text-text-muted">
+          {hint}
         </p>
       ) : null}
     </div>
