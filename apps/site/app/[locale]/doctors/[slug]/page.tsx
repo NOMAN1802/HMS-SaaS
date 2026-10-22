@@ -1,7 +1,7 @@
 // Doctor profile (FR-WEB-DOC-004..007): header with photo slot, qualifications and languages;
-// book and call actions; a leave notice when the doctor is or will soon be on leave (X19); About,
+// book, call and share actions (C-085); a leave notice when the doctor is or will soon be on leave (X19); About,
 // Education and Experience tabs; the weekly schedule; and related doctors (X20).
-// Implements: T-WEB-07, T-WEB-17.
+// Implements: T-WEB-07, T-WEB-15, T-WEB-17.
 import { isLocale, type Locale } from '@hms/i18n';
 import { Alert, buttonClassName, Icon, Tabs } from '@hms/ui';
 import type { Metadata } from 'next';
@@ -11,6 +11,7 @@ import { Container } from '../../../../src/components/container';
 import { DoctorGrid } from '../../../../src/components/doctor-directory';
 import { ImageSlot } from '../../../../src/components/image-slot';
 import { PageHeader } from '../../../../src/components/page-header';
+import { ShareButton } from '../../../../src/components/share-button';
 import { ScheduleTable } from '../../../../src/components/schedule-table';
 import {
   currentOrNextLeave,
@@ -100,6 +101,7 @@ export default async function DoctorPage({ params }: Params) {
             <Icon name="phone" size={20} />
             {t('doctor.callHotline')} {hotline.display}
           </a>
+          <ShareButton title={localize(doctor.name, locale)} />
         </aside>
         <div className="flex min-w-0 flex-col gap-8">
           <div className="flex flex-col gap-2">

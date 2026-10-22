@@ -51,24 +51,25 @@ Everything a hospital owner can change outside page bodies (C-072). In WEB-B thi
 
 `Section { id, type, hidden: boolean, props }`, where `props` is validated by the schema of its `type` (P-036). Initial section catalog:
 
-| Type                 | Props (summary)                                    | Used on                                              |
-| -------------------- | -------------------------------------------------- | ---------------------------------------------------- |
-| `hero`               | heading, text, image, search on/off, popular links | home                                                 |
-| `quickActions`       | items `{ icon, label, href }[]`                    | home                                                 |
-| `departmentGrid`     | heading, count, "view all" link                    | home                                                 |
-| `centreCards`        | heading, centre slugs                              | home                                                 |
-| `featuredDoctors`    | heading, doctor slugs or "featured"                | home                                                 |
-| `packageShowcase`    | heading, categories                                | home                                                 |
-| `branchCards`        | heading                                            | home, contact                                        |
-| `articleList`        | heading, count, category                           | home                                                 |
-| `emergencyBand`      | heading, text, image                               | home, emergency                                      |
-| `richText`           | heading, paragraphs                                | any                                                  |
-| `imageText`          | heading, paragraphs, image, image side             | any                                                  |
-| `callToAction`       | heading, text, button                              | any                                                  |
-| `faq`                | items `{ question, answer }[]`                     | guide pages                                          |
-| `stats`              | items `{ value, label }[]`                         | about (only real figures; hidden in WEB-A per P-032) |
-| `gallery`            | images                                             | about                                                |
-| `appointmentRequest` | heading, text, department preselect (optional)     | articles, stories, departments (FR-WEB-GEN-009)      |
+| Type                 | Props (summary)                                                                                 | Used on                                              |
+| -------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `hero`               | heading, text, image, optional slides `{ image, link }[]` (C-085), search on/off, popular links | home                                                 |
+| `quickActions`       | items `{ icon, label, href }[]`                                                                 | home                                                 |
+| `serviceStrip`       | label, items `{ icon, label }[]` (C-085)                                                        | home                                                 |
+| `departmentGrid`     | heading, count, "view all" link                                                                 | home                                                 |
+| `centreCards`        | heading, centre slugs                                                                           | home                                                 |
+| `featuredDoctors`    | heading, doctor slugs or "featured"                                                             | home                                                 |
+| `packageShowcase`    | heading, categories                                                                             | home                                                 |
+| `branchCards`        | heading                                                                                         | home, contact                                        |
+| `articleList`        | heading, count, category                                                                        | home                                                 |
+| `emergencyBand`      | heading, text, image                                                                            | home, emergency                                      |
+| `richText`           | heading, paragraphs                                                                             | any                                                  |
+| `imageText`          | heading, paragraphs, image, image side                                                          | any                                                  |
+| `callToAction`       | heading, text, button                                                                           | any                                                  |
+| `faq`                | items `{ question, answer }[]`                                                                  | guide pages                                          |
+| `stats`              | items `{ value, label }[]`                                                                      | about (only real figures; hidden in WEB-A per P-032) |
+| `gallery`            | images                                                                                          | about                                                |
+| `appointmentRequest` | heading, text, department preselect (optional)                                                  | articles, stories, departments (FR-WEB-GEN-009)      |
 
 ### Department (`departments.json`, about 12)
 

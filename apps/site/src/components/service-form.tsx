@@ -3,11 +3,12 @@
 // The page passes translated labels and a field list; the form validates required fields and
 // mobile numbers (Bangla digits accepted) and ends in a demo message. Nothing is sent
 // (FR-WEB-GEN-006, AT-WEB-033). Implements: T-WEB-11.
-import { Alert, Button, Field, Select, TextArea, TextInput, type FieldControlProps } from '@hms/ui';
+import { Button, Field, Select, TextArea, TextInput, type FieldControlProps } from '@hms/ui';
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { isFilled, isMobileNumber, type FieldError } from '../forms/validation';
 import { useDemoSubmit } from '../forms/use-demo-submit';
+import { FormSuccess } from './success-tick';
 import { todayInDhaka } from '../format';
 import { dayOptions } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
@@ -118,9 +119,9 @@ export function ServiceForm({ fields, submitLabel, demoTitle, demoBody }: Servic
 
   if (sent) {
     return (
-      <Alert tone="success" title={demoTitle}>
+      <FormSuccess title={demoTitle}>
         <span data-testid="demo-confirmation">{demoBody}</span>
-      </Alert>
+      </FormSuccess>
     );
   }
 

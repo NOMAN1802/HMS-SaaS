@@ -139,6 +139,12 @@ export const sectionSchema = z.discriminatedUnion('type', [
         heading: localizedTextSchema,
         text: localizedTextSchema,
         image: imageRefSchema,
+        // More pictures after `image` turn the hero picture into a slideshow (C-085); each one
+        // carries a short link to the service it shows.
+        slides: z
+          .array(z.object({ image: imageRefSchema, link: menuItemSchema }).strict())
+          .max(5)
+          .optional(),
         search: z.boolean(),
         popularLinks: z.array(menuItemSchema).max(6),
       })
@@ -154,6 +160,19 @@ export const sectionSchema = z.discriminatedUnion('type', [
           )
           .min(2)
           .max(8),
+      })
+      .strict(),
+  ),
+  // A slowly moving strip of services and facilities under the hero (C-085).
+  section(
+    'serviceStrip',
+    z
+      .object({
+        label: localizedTextSchema,
+        items: z
+          .array(z.object({ icon: iconSchema, label: localizedTextSchema }).strict())
+          .min(4)
+          .max(16),
       })
       .strict(),
   ),

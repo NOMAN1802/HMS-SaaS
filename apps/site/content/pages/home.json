@@ -35,6 +35,59 @@
           },
           "src": "/images/hero-main-f2b91b41.webp"
         },
+        "slides": [
+          {
+            "image": {
+              "slot": "hero-paediatrics",
+              "alt": {
+                "bn": "শিশু বিশেষজ্ঞ একটি শিশুকে স্টেথোস্কোপ দিয়ে দেখছেন, পাশে মা (চিত্র)",
+                "en": "A paediatrician listening to a child's chest while the mother holds him (illustration)"
+              },
+              "src": "/images/hero-paediatrics-71854413.webp"
+            },
+            "link": {
+              "label": {
+                "bn": "শিশু স্বাস্থ্য",
+                "en": "Child health"
+              },
+              "href": "/departments/paediatrics"
+            }
+          },
+          {
+            "image": {
+              "slot": "hero-ward",
+              "alt": {
+                "bn": "একজন নার্স ওয়ার্ডে একজন বয়স্ক রোগীর যত্ন নিচ্ছেন (চিত্র)",
+                "en": "A nurse caring for an older patient on a ward (illustration)"
+              },
+              "src": "/images/hero-ward-cbe1ef98.webp"
+            },
+            "link": {
+              "label": {
+                "bn": "ভর্তি ও সেবা",
+                "en": "Inpatient care"
+              },
+              "href": "/patients-and-visitors"
+            }
+          },
+          {
+            "image": {
+              "slot": "hero-imaging",
+              "alt": {
+                "bn": "রেডিওগ্রাফার সিটি স্ক্যানের আগে রোগীকে আশ্বস্ত করছেন (চিত্র)",
+                "en": "A radiographer reassuring a patient before a CT scan (illustration)"
+              },
+              "src": "/images/hero-imaging-40be5096.webp"
+            },
+            "link": {
+              "label": {
+                "bn": "টেস্ট ও ইমেজিং",
+                "en": "Tests and imaging"
+              },
+              "href": "/tests"
+            }
+          }
+        ],
         "search": true,
         "popularLinks": [
           {
@@ -125,6 +178,88 @@
       }
     },
     {
+      "id": "service-strip",
+      "type": "serviceStrip",
+      "props": {
+        "label": {
+          "bn": "আমাদের সেবা ও সুবিধা",
+          "en": "Our services and facilities"
+        },
+        "items": [
+          {
+            "icon": "siren",
+            "label": {
+              "bn": "২৪ ঘণ্টা ইমার্জেন্সি",
+              "en": "24-hour emergency"
+            }
+          },
+          {
+            "icon": "ambulance",
+            "label": {
+              "bn": "অ্যাম্বুলেন্স",
+              "en": "Ambulance"
+            }
+          },
+          {
+            "icon": "bed",
+            "label": {
+              "bn": "আইসিইউ ও সিসিইউ",
+              "en": "ICU and CCU"
+            }
+          },
+          {
+            "icon": "baby",
+            "label": {
+              "bn": "এনআইসিইউ",
+              "en": "NICU"
+            }
+          },
+          {
+            "icon": "drop",
+            "label": {
+              "bn": "ডায়ালাইসিস",
+              "en": "Dialysis"
+            }
+          },
+          {
+            "icon": "microscope",
+            "label": {
+              "bn": "ল্যাব টেস্ট",
+              "en": "Lab tests"
+            }
+          },
+          {
+            "icon": "brain",
+            "label": {
+              "bn": "এমআরআই ও সিটি স্ক্যান",
+              "en": "MRI and CT scan"
+            }
+          },
+          {
+            "icon": "test-tube",
+            "label": {
+              "bn": "বাসা থেকে স্যাম্পল কালেকশন",
+              "en": "Home sample collection"
+            }
+          },
+          {
+            "icon": "file-text",
+            "label": {
+              "bn": "অনলাইন রিপোর্ট",
+              "en": "Online reports"
+            }
+          },
+          {
+            "icon": "package",
+            "label": {
+              "bn": "হেলথ চেকআপ প্যাকেজ",
+              "en": "Health check packages"
+            }
+          }
+        ]
+      }
+    },
+    {
       "id": "departments",
       "type": "departmentGrid",
       "props": {
@@ -154,7 +289,11 @@
           "bn": "সেন্টার অব এক্সিলেন্স",
           "en": "Centres of excellence"
         },
-        "centres": ["heart-centre", "mother-child", "bone-joint"]
+        "centres": [
+          "heart-centre",
+          "mother-child",
+          "bone-joint"
+        ]
       }
     },
     {
@@ -216,8 +355,12 @@
           "en": "Patient and visitor guide"
         },
         "body": {
-          "bn": ["ভর্তি, ছাড়পত্র, দর্শনার্থীর সময় ও রোগীর অধিকার: আসার আগে জেনে নিন।"],
-          "en": ["Admission, discharge, visiting hours and patient rights: know before you come."]
+          "bn": [
+            "ভর্তি, ছাড়পত্র, দর্শনার্থীর সময় ও রোগীর অধিকার: আসার আগে জেনে নিন।"
+          ],
+          "en": [
+            "Admission, discharge, visiting hours and patient rights: know before you come."
+          ]
         },
         "image": {
           "slot": "guide-teaser",

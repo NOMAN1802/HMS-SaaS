@@ -141,10 +141,21 @@ function checkPricesAndPosts(check: Checker, content: ContentSet): void {
   for (const job of content.jobs) check.ref(`job ${job.id}`, 'branches', job.location);
 }
 
+/** A link to a doctor, department or centre page must name a record that exists. */
+function checkDetailHref(check: Checker, owner: string, href: string): void {
+  const match = /^\/(departments|doctors|centres)\/([a-z0-9-]+)$/.exec(href);
+  if (match) check.ref(owner, match[1] as Kind, match[2] as string);
+}
+
 function checkSection(check: Checker, owner: string, section: Section): void {
   switch (section.type) {
     case 'quickActions':
+    case 'serviceStrip':
       for (const item of section.props.items) check.icon(owner, item.icon);
+      break;
+    case 'hero':
+      for (const slide of section.props.slides ?? [])
+        checkDetailHref(check, owner, slide.link.href);
       break;
     case 'centreCards':
       for (const slug of section.props.centres) check.ref(owner, 'centres', slug);
@@ -181,10 +192,7 @@ function checkNavigation(check: Checker, site: Site): void {
     ...menuHrefs(site.navigation.topBar),
     ...site.footer.columns.flatMap((column) => menuHrefs(column.links)),
   ];
-  for (const href of hrefs) {
-    const match = /^\/(departments|doctors|centres)\/([a-z0-9-]+)$/.exec(href);
-    if (match) check.ref('navigation', match[1] as Kind, match[2] as string);
-  }
+  for (const href of hrefs) checkDetailHref(check, 'navigation', href);
 }
 
 /** Returns one message per broken reference; an empty list means the content is consistent. */

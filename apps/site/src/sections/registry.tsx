@@ -22,6 +22,7 @@ import {
   ImageTextSection,
   QuickActionsSection,
   RichTextSection,
+  ServiceStripSection,
   StatsSection,
 } from './content-sections';
 import { HeroSection } from './hero';
@@ -32,6 +33,8 @@ function SectionView({ section, locale }: { section: Section; locale: Locale }) 
       return <HeroSection section={section} locale={locale} />;
     case 'quickActions':
       return <QuickActionsSection section={section} locale={locale} />;
+    case 'serviceStrip':
+      return <ServiceStripSection section={section} locale={locale} />;
     case 'departmentGrid':
       return <DepartmentGridSection section={section} locale={locale} />;
     case 'centreCards':

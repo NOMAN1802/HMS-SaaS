@@ -30,6 +30,7 @@ test('home sections render in the stored order (AT-WEB-008)', async ({ page }) =
   expect(order).toEqual([
     'hero',
     'quick-actions',
+    'service-strip',
     'departments',
     'centres',
     'doctors',

@@ -1,9 +1,8 @@
 /*
- * Motion layer of the public site (C-083): the page settles in on arrival, sections rise into
- * place as they scroll into view, cards answer the pointer, and the emergency line carries the one
- * repeating cue. Everything is CSS, so it runs off the main thread and needs no script, and every
- * piece degrades to the plain static page:
- * - browsers without scroll-driven animations show sections in place;
+ * Motion layer of the public site (C-083): the page settles in on arrival, cards answer the
+ * pointer, and the emergency line carries the one repeating cue. These parts are CSS, so they run
+ * off the main thread and need no script; the scroll reveal and the hero slideshow use Motion
+ * (scroll-reveal.tsx, hero-slides.tsx, C-085). Every piece degrades to the plain static page:
  * - reduced motion removes all movement and keeps only short opacity and color changes;
  * - nothing animates on keyboard-initiated actions (ADR-022 section 13).
  * Entrances use fill-mode `backwards`, so a finished animation leaves no transform behind: a
@@ -147,29 +146,12 @@
   }
 }
 
-/* Scroll reveal: progress follows the scroll position, so a fast scroll is never held up and a
-   section already in view on load is simply shown. Each item is fully opaque once it has fully
-   entered the viewport; items in one row start a little apart. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal,
-    .reveal-list > * {
-      animation-name: site-rise;
-      animation-duration: auto;
-      animation-timing-function: var(--ease-out);
-      animation-fill-mode: backwards;
-      animation-timeline: view();
-      animation-range: entry 0% entry 100%;
-    }
-    .reveal-list > :nth-child(4n + 2) {
-      animation-range: entry 6% entry 100%;
-    }
-    .reveal-list > :nth-child(4n + 3) {
-      animation-range: entry 12% entry 100%;
-    }
-    .reveal-list > :nth-child(4n + 4) {
-      animation-range: entry 18% entry 100%;
-    }
+/* Scroll reveal runs in scroll-reveal.tsx (Motion, C-085). Parts waiting below the fold are
+   transparent only in the browser; a printout shows them. */
+@media print {
+  [data-reveal-pending] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

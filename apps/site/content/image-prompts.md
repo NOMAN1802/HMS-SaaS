@@ -14,6 +14,24 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 - Used on: Home hero
 - Prompt: A Bangladeshi doctor in a white coat talking warmly with a patient in a bright modern consultation room, window light, shallow depth of field. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
+### `hero-paediatrics`
+
+- Size: 1200 x 900
+- Used on: Home hero slideshow, slide 2
+- Prompt: A friendly Bangladeshi paediatrician in a white coat smiling and listening with a stethoscope to a happy fully dressed young child sitting on the mother's lap, bright modern children's consultation room, window light, shallow depth of field. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
+### `hero-ward`
+
+- Size: 1200 x 900
+- Used on: Home hero slideshow, slide 3
+- Prompt: A kind Bangladeshi nurse in teal scrubs gently adjusting the blanket of a smiling elderly man resting in a bright, spacious modern hospital ward room with large windows and plants, his daughter seated beside the bed, warm and reassuring. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
+### `hero-imaging`
+
+- Size: 1200 x 900
+- Used on: Home hero slideshow, slide 4
+- Prompt: A Bangladeshi radiographer in teal scrubs reassuring a calm, fully dressed middle-aged woman lying on the table of a modern CT scanner in a bright, spotless imaging suite, large window light, spacious and high-tech. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
 ### `guide-teaser`
 
 - Size: 1200 x 900

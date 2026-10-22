@@ -1,6 +1,7 @@
-// Content sections an editor composes pages from: quick actions, emergency band, rich text, image
-// with text, call to action, FAQ, stats, gallery, the patient guide and the call-back request.
-// Text is rendered as text, never as HTML (C-080). Implements: T-WEB-06, T-WEB-12.
+// Content sections an editor composes pages from: quick actions, services strip, emergency band,
+// rich text, image with text, call to action, FAQ, stats, gallery, the patient guide and the
+// call-back request. Text is rendered as text, never as HTML (C-080).
+// Implements: T-WEB-06, T-WEB-12, T-WEB-15 (services strip, C-085).
 import type { LocalizedRichText, LocalizedText, SectionOf } from '@hms/contracts';
 import type { Locale } from '@hms/i18n';
 import { buttonClassName, Icon, isIconName } from '@hms/ui';
@@ -12,6 +13,7 @@ import { Container } from '../components/container';
 import { CountUp } from '../components/count-up';
 import { ImageSlot } from '../components/image-slot';
 import { SectionHeading } from '../components/section-heading';
+import { ServiceStrip } from '../components/service-strip';
 import { SiteLink } from '../components/site-link';
 
 interface Base {
@@ -41,6 +43,21 @@ const optional = (text: LocalizedText | undefined, locale: Locale) =>
 
 // Emergency is the one quick action in the danger color, always with its word (F section 5).
 const EMERGENCY_HREF = '/emergency';
+
+export function ServiceStripSection({
+  section,
+  locale,
+}: Base & { section: SectionOf<'serviceStrip'> }) {
+  return (
+    <ServiceStrip
+      label={localize(section.props.label, locale)}
+      items={section.props.items.map((item) => ({
+        icon: isIconName(item.icon) ? item.icon : 'check',
+        label: localize(item.label, locale),
+      }))}
+    />
+  );
+}
 
 export function QuickActionsSection({
   section,

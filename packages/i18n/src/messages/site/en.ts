@@ -107,7 +107,7 @@ export const siteEn = {
     title: 'Search',
     headerLink: 'Search the site',
     close: 'Close search',
-    seeAll: '{count, plural, one {See the result on the search page} other {See all # results}}',
+    seeAll: 'All results on the search page ({count})',
     none: 'Nothing matches. Try another word.',
     failed: 'Search could not load. Open the search page instead.',
     placeholderAll: 'Doctor, department, package, test or topic',
@@ -367,6 +367,14 @@ export const siteEn = {
   },
   hero: {
     emergencyLine: 'Emergency? Call {number} now',
+    slideshow: 'Our care in pictures',
+    pause: 'Pause the slideshow',
+    play: 'Play the slideshow',
+  },
+  share: {
+    button: 'Share',
+    copied: 'Link copied. Paste it anywhere to share.',
+    failed: 'The link could not be copied. Copy it from the address bar.',
   },
 } as const;
 
