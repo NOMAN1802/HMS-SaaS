@@ -1,5 +1,6 @@
-// Wires authentication into the API: the service, the /auth controller and three global
-// guards. Every route is protected unless marked @Public or @AllowWithoutTenant.
+// Wires authentication and authorization into the API: the service, the /auth controller and
+// four global guards. Every route is refused unless marked @Public, @AllowWithoutTenant or
+// @RequirePermission (T-ACC-02).
 import { Module, type DynamicModule } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { systemClock, type Clock } from '@hms/domain-kernel';
@@ -7,6 +8,7 @@ import { AUTH_CONFIG, CLOCK, type AuthConfig } from './application/auth.config.j
 import { AuthService } from './application/auth.service.js';
 import { AuthController } from './http/auth.controller.js';
 import { ALLOWED_ORIGINS, CsrfGuard, SessionGuard, TenantGuard } from './http/guards.js';
+import { PermissionGuard } from './http/permission.guard.js';
 
 export interface IdentityAccessOptions {
   /** Exact web origins allowed to send writes (same list as CORS_ORIGINS). */
@@ -29,10 +31,12 @@ export class IdentityAccessModule {
         { provide: AUTH_CONFIG, useValue: config },
         { provide: CLOCK, useValue: clock },
         { provide: ALLOWED_ORIGINS, useValue: allowedOrigins },
-        // Order matters: session first, then CSRF (needs the session token), then tenant.
+        // Order matters: session first, then CSRF (needs the session token), then tenant,
+        // then permissions (need the hospital), as in D section 7.2.
         { provide: APP_GUARD, useClass: SessionGuard },
         { provide: APP_GUARD, useClass: CsrfGuard },
         { provide: APP_GUARD, useClass: TenantGuard },
+        { provide: APP_GUARD, useClass: PermissionGuard },
       ],
       exports: [AuthService],
     };
