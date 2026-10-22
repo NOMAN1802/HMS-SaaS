@@ -6,19 +6,19 @@
 
 ## What was built
 
-| Package (pinned)            | Where                                      | What it does                                                                                                                                                                                                                        |
-| --------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `motion` 13.5.1             | Home hero, every page                      | Hero slideshow: four pictures cross-fade with a slow zoom, a link chip and a progress line; previous, pause and next buttons. Scroll reveal: every section below the first screen fades and rises in, card lists follow one by one. |
-| `lottie-web` 5.13.0 (light) | Contact, call-back, service forms, booking | A hand-made success tick (`src/motion/success-tick.json`) draws itself above the success message.                                                                                                                                   |
-| `react-fast-marquee` 1.6.5  | Home, under the quick actions              | New `serviceStrip` section: ten services and facilities drift across; screen readers get one plain list.                                                                                                                            |
-| `sonner` 2.0.8              | Doctor profiles, articles                  | New share button: system share sheet on phones, otherwise copies the link and shows a "Link copied" toast.                                                                                                                          |
-| `vaul` 1.1.2                | Phone and tablet menu                      | The menu is a bottom sheet that can be dragged down to close.                                                                                                                                                                       |
+| Package (pinned)            | Where                                      | What it does                                                                                                                                                                                                                                                                                                                                      |
+| --------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `motion` 13.5.1             | Home hero, every page                      | Hero slideshow: every 6 s the next of four pictures morphs in (a soft rounded shape opens into the frame and sharpens from a blur) while the current one blurs away; a link chip and a progress line; no buttons, pauses under the pointer. Scroll reveal: every section below the first screen fades and rises in, card lists follow one by one. |
+| `lottie-web` 5.13.0 (light) | Contact, call-back, service forms, booking | A hand-made success tick (`src/motion/success-tick.json`) draws itself above the success message.                                                                                                                                                                                                                                                 |
+| `react-fast-marquee` 1.6.5  | Home, under the quick actions              | New `serviceStrip` section: ten services and facilities drift across; screen readers get one plain list.                                                                                                                                                                                                                                          |
+| `sonner` 2.0.8              | Doctor profiles, articles                  | New share button: system share sheet on phones, otherwise copies the link and shows a "Link copied" toast.                                                                                                                                                                                                                                        |
+| `vaul` 1.1.2                | Phone and tablet menu                      | The menu is a bottom sheet that can be dragged down to close.                                                                                                                                                                                                                                                                                     |
 
 Three new hero pictures (`hero-paediatrics`, `hero-ward`, `hero-imaging`, 1200 x 900 WebP, fingerprinted) were generated with ChatGPT from the prompts added to `content/image-prompts.md`.
 
 The CSS scroll-timeline reveal of C-083 is removed; it only ran in Chromium browsers and moved too little to notice. The new reveal hides only parts still below the fold, only after hydration, and clears its inline styles once shown; print shows everything.
 
-Reduced motion: the slideshow never plays by itself and has no pause button or zoom, the strip sits still in wrapped rows, the tick is drawn finished, and the reveal is skipped.
+Reduced motion: the slideshow stays on the first picture, the strip sits still in wrapped rows, the tick is drawn finished, and the reveal is skipped.
 
 ## Files
 
@@ -59,5 +59,6 @@ The slideshow test drives Playwright's fake clock and steps it a second at a tim
 ## How to debug
 
 - A section stays invisible: look for `data-reveal-pending` on it; the reveal waits for 12 percent of it to be in view. Reduced motion skips the reveal entirely.
-- The slideshow does not move: it pauses while hovered or focused, when the tab is hidden, after the pause button, and always under reduced motion.
+- The slideshow does not move: it pauses while hovered or focused, when the tab is hidden, and always under reduced motion (`data-playing` on the slideshow shows the state).
+- No controls by the owner's choice (2026-10-22). Without a pause button, keyboard-only visitors can stop the show only by tabbing to the link chip; add a button back if an accessibility audit asks for WCAG 2.2.2.
 - The tick shows but does not animate: the Lottie player loads on demand; check the network tab for the `lottie_light` chunk.

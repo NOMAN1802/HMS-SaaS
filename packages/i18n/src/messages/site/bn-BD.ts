@@ -368,8 +368,6 @@ export const siteBnBD: SiteMessages = {
   hero: {
     emergencyLine: 'ইমার্জেন্সি? এখনই কল করুন {number}',
     slideshow: 'ছবিতে আমাদের সেবা',
-    pause: 'স্লাইডশো থামান',
-    play: 'স্লাইডশো চালান',
   },
   share: {
     button: 'শেয়ার করুন',

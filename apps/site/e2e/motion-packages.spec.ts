@@ -1,6 +1,6 @@
-// The motion packages of C-085 in a real browser: the hero slideshow (Motion) plays, pauses and
-// steps, and never plays by itself with reduced motion; the services strip (react-fast-marquee)
-// gives screen readers one plain list; the success tick (Lottie) follows a sent form; the share
+// The motion packages of C-085 in a real browser: the hero slideshow (Motion) morphs on its own,
+// pauses under the pointer and never plays with reduced motion; the services strip
+// (react-fast-marquee) gives screen readers one plain list; the success tick (Lottie) follows a sent form; the share
 // button copies the link and confirms with a toast (Sonner); the phone menu is a drawer (Vaul).
 // Implements: T-WEB-15, C-085.
 import AxeBuilder from '@axe-core/playwright';
@@ -9,13 +9,15 @@ import { expect, test } from '@playwright/test';
 test.describe('with motion allowed', () => {
   test.use({ contextOptions: { reducedMotion: 'no-preference' } });
 
-  test('the hero slideshow plays, pauses and steps', async ({ page }) => {
+  test('the hero slideshow morphs to the next picture and pauses under the pointer', async ({
+    page,
+  }) => {
     await page.clock.install();
     await page.goto('/en');
     const slides = page.getByTestId('hero-slides');
     const current = slides.locator('[data-active]');
     await expect(current).toHaveAttribute('aria-label', '1 of 4');
-    // Playing: the next picture arrives on its own (interval 6 s).
+    await expect(slides.getByRole('button')).toHaveCount(0);
     // Steps the clock a second at a time, so it does not matter when hydration starts the timer.
     await expect
       .poll(
@@ -26,13 +28,15 @@ test.describe('with motion allowed', () => {
         { timeout: 20_000 },
       )
       .toBe('2 of 4');
-    await slides.getByRole('button', { name: 'Pause the slideshow' }).click();
-    await page.mouse.move(0, 0);
+    await slides.hover();
+    await expect(slides).not.toHaveAttribute('data-playing');
     await page.clock.runFor(7000);
     await expect(current).toHaveAttribute('aria-label', '2 of 4');
-    await slides.getByRole('button', { name: 'Next' }).click();
-    await expect(current).toHaveAttribute('aria-label', '3 of 4');
-    await expect(current.getByRole('img')).toBeVisible();
+    await page.mouse.move(0, 0);
+    await expect(slides).toHaveAttribute('data-playing', 'true');
+    // Each picture after the first links to the service it shows.
+    await current.getByRole('link', { name: 'Child health' }).click();
+    await expect(page).toHaveURL(/\/en\/departments\/paediatrics$/);
   });
 
   test('the services strip moves but is read once as a list', async ({ page }) => {
@@ -47,18 +51,10 @@ test('with reduced motion the slideshow waits and the strip sits still', async (
   await page.clock.install();
   await page.goto('/en');
   const slides = page.getByTestId('hero-slides');
-  await expect(slides.getByRole('button', { name: 'Pause the slideshow' })).toHaveCount(0);
   await page.clock.runFor(7000);
   await expect(slides.locator('[data-active]')).toHaveAttribute('aria-label', '1 of 4');
+  await expect(slides).not.toHaveAttribute('data-playing');
   await expect(page.getByTestId('service-strip').locator('.rfm-marquee-container')).toBeHidden();
-});
-
-test('each slide after the first links to the service it shows', async ({ page }) => {
-  await page.goto('/en');
-  const slides = page.getByTestId('hero-slides');
-  await slides.getByRole('button', { name: 'Next' }).click();
-  await slides.getByRole('link', { name: 'Child health' }).click();
-  await expect(page).toHaveURL(/\/en\/departments\/paediatrics$/);
 });
 
 test('a sent form shows the success tick', async ({ page }) => {

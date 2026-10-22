@@ -368,8 +368,6 @@ export const siteEn = {
   hero: {
     emergencyLine: 'Emergency? Call {number} now',
     slideshow: 'Our care in pictures',
-    pause: 'Pause the slideshow',
-    play: 'Play the slideshow',
   },
   share: {
     button: 'Share',
