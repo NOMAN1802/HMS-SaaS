@@ -159,7 +159,7 @@ WEB-A ships tokenized SVG placeholders. During T-WEB-14 a file `apps/site/conten
 | `branch-<slug>` (x3)      | Branch cards              | 800 x 500  | Exterior of a modern hospital building in Dhaka, daytime                                                                                  |
 | `package-<category>` (x7) | Package cards             | 800 x 500  | Health-check scene matching the category                                                                                                  |
 | `article-<slug>` (x6)     | Articles                  | 1200 x 630 | Editorial illustration for the topic                                                                                                      |
-| `emergency-band`          | Emergency strip           | 1600 x 500 | Ambulance bay at dusk, motion blur, no faces                                                                                              |
+| `emergency-band`          | Emergency strip           | 1200 x 900 | Ambulance at the entrance at blue hour, in the band's dark teal with one red beacon, no faces                                             |
 
 AI-generated faces of "doctors" are illustrations, not real staff; alt text says so (P-032).
 

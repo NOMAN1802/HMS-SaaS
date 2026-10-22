@@ -74,7 +74,7 @@ export default async function PackagePage({ params }: Params) {
           <ImageSlot
             image={item.image}
             locale={locale}
-            ratio="banner"
+            ratio="wide"
             icon="package"
             className="rounded-panel"
           />

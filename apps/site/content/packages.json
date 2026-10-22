@@ -74,7 +74,8 @@
       "alt": {
         "bn": "বেসিক হেলথ চেকআপ (চিত্র)",
         "en": "Basic health check (illustration)"
-      }
+      },
+      "src": "/images/package-general-cc592763.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -164,7 +165,8 @@
       "alt": {
         "bn": "এক্সিকিউটিভ হেলথ চেকআপ (চিত্র)",
         "en": "Executive health check (illustration)"
-      }
+      },
+      "src": "/images/package-general-cc592763.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -242,7 +244,8 @@
       "alt": {
         "bn": "নারী সুস্থতা প্যাকেজ (চিত্র)",
         "en": "Women's wellness package (illustration)"
-      }
+      },
+      "src": "/images/package-women-4131bea9.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -320,7 +323,8 @@
       "alt": {
         "bn": "পুরুষ সুস্থতা প্যাকেজ (চিত্র)",
         "en": "Men's wellness package (illustration)"
-      }
+      },
+      "src": "/images/package-men-effd8ba0.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -402,7 +406,8 @@
       "alt": {
         "bn": "প্রবীণ স্বাস্থ্য প্যাকেজ (চিত্র)",
         "en": "Senior care package (illustration)"
-      }
+      },
+      "src": "/images/package-senior-fef1ee09.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -480,7 +485,8 @@
       "alt": {
         "bn": "শিশু বৃদ্ধি চেকআপ (চিত্র)",
         "en": "Child growth check (illustration)"
-      }
+      },
+      "src": "/images/package-child-c1ba92b7.webp"
     }
   },
   {
@@ -529,7 +535,8 @@
       "alt": {
         "bn": "প্রাপ্তবয়স্ক টিকা প্যাকেজ (চিত্র)",
         "en": "Adult vaccination package (illustration)"
-      }
+      },
+      "src": "/images/package-vaccine-7cb14992.webp"
     }
   },
   {
@@ -603,7 +610,8 @@
       "alt": {
         "bn": "ডায়াবেটিস চেকআপ (চিত্র)",
         "en": "Diabetes check (illustration)"
-      }
+      },
+      "src": "/images/package-general-cc592763.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -681,7 +689,8 @@
       "alt": {
         "bn": "হার্ট চেকআপ (চিত্র)",
         "en": "Heart check (illustration)"
-      }
+      },
+      "src": "/images/package-general-cc592763.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
@@ -747,7 +756,8 @@
       "alt": {
         "bn": "কর্পোরেট হেলথ চেকআপ (চিত্র)",
         "en": "Corporate health check (illustration)"
-      }
+      },
+      "src": "/images/package-corporate-d18867ac.webp"
     },
     "doctorFeeNote": {
       "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",

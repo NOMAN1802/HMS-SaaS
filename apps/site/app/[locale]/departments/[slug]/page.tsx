@@ -67,7 +67,7 @@ export default async function DepartmentPage({ params }: Params) {
           <ImageSlot
             image={department.image}
             locale={locale}
-            ratio="banner"
+            ratio="feature"
             icon="stethoscope"
             className="rounded-panel"
           />

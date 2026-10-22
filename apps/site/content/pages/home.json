@@ -32,7 +32,8 @@
           "alt": {
             "bn": "ডাক্তার রোগীর সঙ্গে কথা বলছেন (চিত্র)",
             "en": "A doctor talking with a patient (illustration)"
-          }
+          },
+          "src": "/images/hero-main-f2b91b41.webp"
         },
         "search": true,
         "popularLinks": [
@@ -223,7 +224,8 @@
           "alt": {
             "bn": "হাসপাতালের রিসেপশন (চিত্র)",
             "en": "Hospital reception (illustration)"
-          }
+          },
+          "src": "/images/guide-teaser-dfce216a.webp"
         },
         "imageSide": "start",
         "link": {
@@ -270,7 +272,8 @@
           "alt": {
             "bn": "অ্যাম্বুলেন্স (চিত্র)",
             "en": "Ambulance (illustration)"
-          }
+          },
+          "src": "/images/emergency-band-1bb90024.webp"
         }
       }
     }

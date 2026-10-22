@@ -1,6 +1,6 @@
 # Image prompts (C-065, T-WEB-14)
 
-One prompt per image slot used in the site content. Generate each image at the size given, save it as WebP to `apps/site/public/images/<slot>.webp`, then set `src` on the slot's `ImageRef` in the content file (for example `"src": "/images/hero-main.webp"`). Until then the site shows a token-colored placeholder.
+One prompt per image slot used in the site content. Generate each image at the size given, save it as WebP to `apps/site/public/images/<slot>-<hash>.webp`, where `<hash>` is the first 8 hex characters of the file's SHA-256, then set `src` on the slot's `ImageRef` in the content file (for example `"src": "/images/hero-main-f2b91b41.webp"`). The fingerprint gives a replaced image a new URL, so no browser, image or CDN cache keeps serving the old one. Until then the site shows a token-colored placeholder.
 
 Rules: no real people, no identifiable patients, no hospital names or logos, no text in the image. Doctor portraits are AI illustrations of fictional people and their alt text already says so (P-032).
 
@@ -22,9 +22,9 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 
 ### `emergency-band`
 
-- Size: 1600 x 500
+- Size: 1200 x 900
 - Used on: Home and emergency band
-- Prompt: An ambulance parked at a hospital emergency entrance at dusk, lights on, slight motion blur, no faces. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: A white ambulance with a single red beacon light parked at a modern hospital emergency entrance at blue hour, no faces. Colors match the dark teal emergency band (#022f2e): deep teal and blue-green night tones, edges fading toward dark teal, the entrance glowing with cool teal (#00786f) and cyan (#007595) light, the red beacon (#c10007) the only warm accent; no orange sunset, no red and blue light bar. Photorealistic, calm, clean modern Bangladeshi hospital architecture, no text, no logos, no watermarks, no writing on the ambulance.
 
 ### `about-team`
 
@@ -62,13 +62,13 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 
 - Size: 1200 x 600
 - Used on: Paediatrics page
-- Prompt: A smiling paediatrician listening to a young child's chest while the mother watches. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: A smiling paediatrician with a stethoscope around her neck talking warmly with a mother who holds her happy toddler, in a bright friendly children's clinic with soft toys on a shelf, everyone fully dressed. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-gynaecology`
 
 - Size: 1200 x 600
 - Used on: Gynaecology and obstetrics page
-- Prompt: An obstetrician doing an ultrasound for an expectant mother in a calm room. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: An obstetrician pointing at an ultrasound screen while talking with an expectant mother seated beside her, both fully dressed, calm room. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-medicine`
 
@@ -130,7 +130,7 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 
 - Size: 800 x 600
 - Used on: Mother and Child Centre card and page
-- Prompt: Wide establishing view of an obstetrician doing an ultrasound for an expectant mother in a calm room, spacious and modern. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: Wide establishing view of an obstetrician pointing at an ultrasound screen while talking with an expectant mother seated beside her, both fully dressed, spacious and modern. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `centre-bone-joint`
 
@@ -326,7 +326,7 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 
 - Size: 800 x 500
 - Used on: child package cards
-- Prompt: A child being measured for height by a nurse, playful and friendly. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: A happy fully dressed child standing against a height chart while a nurse smiles and a parent watches, playful and friendly. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `package-vaccine`
 
@@ -366,34 +366,34 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 
 - Size: 1200 x 630
 - Used on: Article: Know the warning signs of a heart attack
-- Prompt: Flat editorial illustration of a human heart with a gentle pulse line, warm and clear. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: Flat editorial illustration of a human heart with a gentle pulse line, warm and clear. Flat vector editorial illustration, soft rounded shapes, Bangladeshi people where people appear, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `article-dengue-season-care`
 
 - Size: 1200 x 630
 - Used on: Article: What to do in dengue season
-- Prompt: Flat editorial illustration of mosquito protection at home: net, water bottle, calm family. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: Flat editorial illustration of mosquito protection at home: net, water bottle, calm family. Flat vector editorial illustration, soft rounded shapes, Bangladeshi people where people appear, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `article-child-vaccination-schedule`
 
 - Size: 1200 x 630
 - Used on: Article: Your child's vaccination schedule
-- Prompt: Flat editorial illustration of a child with a parent and a nurse holding a vaccination card. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: Flat editorial illustration of a child with a parent and a nurse holding a vaccination card. Flat vector editorial illustration, soft rounded shapes, Bangladeshi people where people appear, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `article-managing-diabetes-daily`
 
 - Size: 1200 x 630
 - Used on: Article: Managing diabetes every day
-- Prompt: Flat editorial illustration of a balanced plate, walking shoes and a glucose meter. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: Flat editorial illustration of a balanced plate, walking shoes and a glucose meter. Flat vector editorial illustration, soft rounded shapes, Bangladeshi people where people appear, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `article-knee-pain-when-to-see-doctor`
 
 - Size: 1200 x 630
 - Used on: Article: Knee pain: when to see a doctor
-- Prompt: Flat editorial illustration of a knee joint with soft highlight on the pain area. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: Flat editorial illustration of a knee joint with soft highlight on the pain area. Flat vector editorial illustration, soft rounded shapes, Bangladeshi people where people appear, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `article-pregnancy-first-trimester`
 
 - Size: 1200 x 630
 - Used on: Article: The first three months of pregnancy
-- Prompt: Flat editorial illustration of an expectant mother with a calendar and folic acid tablets. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+- Prompt: Flat editorial illustration of an expectant mother with a calendar and folic acid tablets. Flat vector editorial illustration, soft rounded shapes, Bangladeshi people where people appear, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.

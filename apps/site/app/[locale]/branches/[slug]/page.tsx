@@ -64,7 +64,7 @@ export default async function BranchPage({ params }: Params) {
           <ImageSlot
             image={branch.image}
             locale={locale}
-            ratio="banner"
+            ratio="wide"
             icon="hospital-building"
             className="rounded-panel"
           />

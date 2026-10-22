@@ -9,9 +9,9 @@ import { localize } from '../content/localize';
 
 const RATIOS = {
   wide: 'aspect-[16/9]',
+  feature: 'aspect-[2/1]',
   card: 'aspect-[4/3]',
   portrait: 'aspect-[4/5]',
-  banner: 'aspect-[3/1]',
   square: 'aspect-square',
 } as const;
 
