@@ -6,6 +6,7 @@ import { Alert, Button, Field, Select, TextArea, TextInput } from '@hms/ui';
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { contactErrors, isFilled, type FieldError } from '../forms/validation';
+import { useDemoSubmit } from '../forms/use-demo-submit';
 
 type Errors = Partial<Record<'name' | 'phone' | 'message', FieldError>>;
 
@@ -14,6 +15,7 @@ export function ContactForm({ branches }: { branches: { value: string; label: st
   const [values, setValues] = useState({ name: '', phone: '', email: '', branch: '', message: '' });
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const submitting = useDemoSubmit();
   const messages: Record<FieldError, string> = {
     required: t('form.required'),
     invalidPhone: t('form.invalidPhone'),
@@ -25,7 +27,7 @@ export function ContactForm({ branches }: { branches: { value: string; label: st
     const found: Errors = { ...contactErrors(values) };
     if (!isFilled(values.message)) found.message = 'required';
     setErrors(found);
-    setSent(Object.keys(found).length === 0);
+    if (Object.keys(found).length === 0) submitting.run(() => setSent(true));
   }
 
   if (sent) {
@@ -37,7 +39,12 @@ export function ContactForm({ branches }: { branches: { value: string; label: st
   }
 
   return (
-    <form noValidate onSubmit={submit} className="grid gap-4 sm:grid-cols-2">
+    <form
+      noValidate
+      onSubmit={submit}
+      aria-busy={submitting.pending || undefined}
+      className="grid gap-4 sm:grid-cols-2"
+    >
       <Field label={t('form.name')} required error={message(errors.name)}>
         {(control) => (
           <TextInput
@@ -102,8 +109,8 @@ export function ContactForm({ branches }: { branches: { value: string; label: st
         )}
       </Field>
       <div className="sm:col-span-2">
-        <Button type="submit" size="lg">
-          {t('form.send')}
+        <Button type="submit" size="lg" loading={submitting.pending}>
+          {submitting.pending ? t('form.sending') : t('form.send')}
         </Button>
       </div>
     </form>

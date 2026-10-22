@@ -6,6 +6,7 @@ import { Alert, Button, Field, Select, TextInput } from '@hms/ui';
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { contactErrors, type FieldError } from '../forms/validation';
+import { useDemoSubmit } from '../forms/use-demo-submit';
 import { todayInDhaka } from '../format';
 import { dayOptions } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
@@ -32,6 +33,7 @@ export function AppointmentRequestForm({
   });
   const [errors, setErrors] = useState<Partial<Record<'name' | 'phone', FieldError>>>({});
   const [sent, setSent] = useState(false);
+  const submitting = useDemoSubmit();
 
   const messages: Record<FieldError, string> = {
     required: t('form.required'),
@@ -43,7 +45,7 @@ export function AppointmentRequestForm({
     event.preventDefault();
     const found = contactErrors(values);
     setErrors(found);
-    setSent(Object.keys(found).length === 0);
+    if (Object.keys(found).length === 0) submitting.run(() => setSent(true));
   }
 
   if (sent) {
@@ -55,7 +57,12 @@ export function AppointmentRequestForm({
   }
 
   return (
-    <form noValidate onSubmit={submit} className="grid gap-4 sm:grid-cols-2">
+    <form
+      noValidate
+      onSubmit={submit}
+      aria-busy={submitting.pending || undefined}
+      className="grid gap-4 sm:grid-cols-2"
+    >
       <Field label={t('form.name')} required error={message(errors.name)}>
         {(control) => (
           <TextInput
@@ -109,8 +116,8 @@ export function AppointmentRequestForm({
         )}
       </Field>
       <div className="sm:col-span-2">
-        <Button type="submit" size="lg">
-          {t('form.requestCallBack')}
+        <Button type="submit" size="lg" loading={submitting.pending}>
+          {submitting.pending ? t('form.sending') : t('form.requestCallBack')}
         </Button>
       </div>
     </form>

@@ -16,6 +16,7 @@ export { TextInput, type TextInputProps } from './primitives/TextInput.js';
 export { TextArea, type TextAreaProps } from './primitives/TextArea.js';
 export { Select, type SelectOption, type SelectProps } from './primitives/Select.js';
 export { Field, type FieldControlProps, type FieldProps } from './primitives/Field.js';
+export { Skeleton, type SkeletonProps } from './primitives/Skeleton.js';
 export { StatusBadge, type StatusBadgeProps, type StatusKind } from './primitives/StatusBadge.js';
 export { Dialog, type DialogProps, type DialogSize } from './primitives/Dialog.js';
 export { Menu, type MenuItem, type MenuProps, type MenuTriggerProps } from './primitives/Menu.js';

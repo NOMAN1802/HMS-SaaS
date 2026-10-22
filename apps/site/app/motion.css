@@ -215,3 +215,31 @@
     block-size: auto;
   }
 }
+
+/* Page-change progress bar (navigation-progress.tsx): grows quickly, then slows as if waiting,
+   and snaps full before fading out when the page arrives. Reduced motion shows it still, part-full. */
+@keyframes site-progress {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 0.92 1;
+  }
+}
+
+.nav-progress[data-state='pending'] {
+  animation: site-progress 8s cubic-bezier(0.1, 0.6, 0.2, 1) forwards;
+}
+
+.nav-progress[data-state='done'] {
+  scale: 1 1;
+  opacity: 0;
+  transition: opacity 300ms ease-out 100ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-progress[data-state='pending'] {
+    animation: none;
+    scale: 0.4 1;
+  }
+}

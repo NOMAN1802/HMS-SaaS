@@ -32,6 +32,7 @@ export const siteEn = {
     opensInNewTab: '(opens in a new tab)',
   },
   common: {
+    loading: 'Loading...',
     carousel: {
       name: 'Carousel',
       slideName: 'Slide',
@@ -124,6 +125,7 @@ export const siteEn = {
     kindDepartment: 'Department',
   },
   form: {
+    sending: 'Sending...',
     chooseDate: 'Choose a day',
     email: 'Email (optional)',
     branch: 'Branch',

@@ -15,6 +15,7 @@ import {
   type BookableDoctor,
   type Slot,
 } from '../booking/slots';
+import { useDemoSubmit } from '../forms/use-demo-submit';
 import { contactErrors, type FieldError } from '../forms/validation';
 import { digits, todayInDhaka } from '../format';
 import { formatClock, formatDayMonth } from '../i18n/clock';
@@ -314,6 +315,7 @@ export function BookingWizard({
   const [details, setDetails] = useState<Details>(EMPTY_DETAILS);
   const [errors, setErrors] = useState<Errors>({});
   const [confirmed, setConfirmed] = useState(false);
+  const submitting = useDemoSubmit();
 
   const doctor = doctors.find((item) => item.slug === doctorSlug);
   const dates = useMemo(() => (doctor ? bookableDates(doctor, todayInDhaka()) : []), [doctor]);
@@ -325,7 +327,7 @@ export function BookingWizard({
     const found = stepErrors(step, { doctor, slot, details });
     setErrors(found);
     if (Object.keys(found).length > 0) return;
-    if (step === 3) setConfirmed(true);
+    if (step === 3) submitting.run(() => setConfirmed(true));
     else setStep((step + 1) as Step);
   }
 
@@ -350,8 +352,16 @@ export function BookingWizard({
     );
   }
 
+  let submitLabel = step === 3 ? t('booking.confirm') : t('booking.next');
+  if (submitting.pending) submitLabel = t('form.sending');
+
   return (
-    <form noValidate onSubmit={next} className="flex flex-col gap-6">
+    <form
+      noValidate
+      onSubmit={next}
+      aria-busy={submitting.pending || undefined}
+      className="flex flex-col gap-6"
+    >
       <StepIndicator step={step} />
       {/* Keyed by step so each new step mounts and plays its entrance. */}
       <div key={step} className="enter-step flex flex-col gap-6">
@@ -398,12 +408,17 @@ export function BookingWizard({
       </div>
       <div className="flex flex-wrap gap-3">
         {step > 0 ? (
-          <Button variant="secondary" size="lg" onClick={() => setStep((step - 1) as Step)}>
+          <Button
+            variant="secondary"
+            size="lg"
+            disabled={submitting.pending}
+            onClick={() => setStep((step - 1) as Step)}
+          >
             {t('booking.back')}
           </Button>
         ) : null}
-        <Button type="submit" size="lg">
-          {step === 3 ? t('booking.confirm') : t('booking.next')}
+        <Button type="submit" size="lg" loading={submitting.pending}>
+          {submitLabel}
         </Button>
       </div>
     </form>

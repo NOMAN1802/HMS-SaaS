@@ -1,7 +1,8 @@
 // Root layout of the public website, one per locale (`/bn`, `/en`). Sets the document language,
 // loads the design tokens and fonts, and provides the site catalog to client components.
-// Every page gets the shell: top bar, header, demo notice, footer and the phone action bar.
-// Implements: T-WEB-01, T-WEB-05, FR-WEB-GEN-001, FR-WEB-NAV-005 (skip link), P-023, P-028.
+// Every page gets the shell: page-change progress bar, top bar, header, demo notice, footer and
+// the phone action bar.
+// Implements: T-WEB-01, T-WEB-05, T-WEB-15, FR-WEB-GEN-001, FR-WEB-NAV-005 (skip link), P-023, P-028.
 import { htmlLang } from '@hms/i18n';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -9,6 +10,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { ReactNode } from 'react';
 import { DemoNotice } from '../../src/components/demo-notice';
+import { NavigationProgress } from '../../src/components/navigation-progress';
 import { PhoneActionBar } from '../../src/components/phone-action-bar';
 import { SiteFooter } from '../../src/components/site-footer';
 import { SiteHeader } from '../../src/components/site-header';
@@ -64,6 +66,7 @@ export default async function LocaleLayout({
           {t('shell.skipToContent')}
         </a>
         <NextIntlClientProvider>
+          <NavigationProgress />
           <TopBar site={site} locale={locale} />
           <SiteHeader site={site} locale={locale} />
           {site.notice.enabled ? <DemoNotice text={localize(site.notice.text, locale)} /> : null}

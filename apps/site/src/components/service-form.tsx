@@ -7,6 +7,7 @@ import { Alert, Button, Field, Select, TextArea, TextInput, type FieldControlPro
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { isFilled, isMobileNumber, type FieldError } from '../forms/validation';
+import { useDemoSubmit } from '../forms/use-demo-submit';
 import { todayInDhaka } from '../format';
 import { dayOptions } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
@@ -98,6 +99,7 @@ export function ServiceForm({ fields, submitLabel, demoTitle, demoBody }: Servic
   );
   const [errors, setErrors] = useState<Record<string, FieldError>>({});
   const [sent, setSent] = useState(false);
+  const submitting = useDemoSubmit();
   const messages: Record<FieldError, string> = {
     required: t('form.required'),
     invalidPhone: t('form.invalidPhone'),
@@ -111,7 +113,7 @@ export function ServiceForm({ fields, submitLabel, demoTitle, demoBody }: Servic
       if (error) found[field.name] = error;
     }
     setErrors(found);
-    setSent(Object.keys(found).length === 0);
+    if (Object.keys(found).length === 0) submitting.run(() => setSent(true));
   }
 
   if (sent) {
@@ -123,7 +125,12 @@ export function ServiceForm({ fields, submitLabel, demoTitle, demoBody }: Servic
   }
 
   return (
-    <form noValidate onSubmit={submit} className="grid gap-4 sm:grid-cols-2">
+    <form
+      noValidate
+      onSubmit={submit}
+      aria-busy={submitting.pending || undefined}
+      className="grid gap-4 sm:grid-cols-2"
+    >
       {fields.map((field) => {
         const error = errors[field.name];
         return (
@@ -147,8 +154,8 @@ export function ServiceForm({ fields, submitLabel, demoTitle, demoBody }: Servic
         );
       })}
       <div className="sm:col-span-2">
-        <Button type="submit" size="lg">
-          {submitLabel}
+        <Button type="submit" size="lg" loading={submitting.pending}>
+          {submitting.pending ? t('form.sending') : submitLabel}
         </Button>
       </div>
     </form>

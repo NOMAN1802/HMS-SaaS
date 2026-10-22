@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Suspense } from 'react';
 import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
+import { SearchSkeleton } from '../../../src/components/skeletons';
 import { SiteSearch } from '../../../src/components/site-search';
 import { buildSearchIndex } from '../../../src/content/search-index';
 import { withAlternates } from '../../../src/seo';
@@ -30,7 +31,7 @@ export default async function SearchPage({ params }: Params) {
     <>
       <PageHeader title={t('search.title')} />
       <Container className="py-10">
-        <Suspense>
+        <Suspense fallback={<SearchSkeleton />}>
           <SiteSearch index={buildSearchIndex(locale)} />
         </Suspense>
       </Container>

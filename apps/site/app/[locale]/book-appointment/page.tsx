@@ -9,6 +9,7 @@ import { Suspense } from 'react';
 import { BookingWizard, type BookingDoctor } from '../../../src/components/booking-wizard';
 import { Container } from '../../../src/components/container';
 import { PageHeader } from '../../../src/components/page-header';
+import { BookingSkeleton } from '../../../src/components/skeletons';
 import {
   getBranch,
   getDepartment,
@@ -67,7 +68,8 @@ export default async function BookAppointmentPage({ params }: Params) {
       <PageHeader title={t('booking.title')} intro={t('booking.intro')} />
       <Container className="py-10">
         <div className="max-w-4xl rounded-panel border border-border bg-surface p-6 sm:p-8">
-          <Suspense>
+          {/* The wizard reads the URL, so it renders in the browser; the skeleton holds its place. */}
+          <Suspense fallback={<BookingSkeleton />}>
             <BookingWizard doctors={doctors} departments={departments} />
           </Suspense>
         </div>

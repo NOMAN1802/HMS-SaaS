@@ -204,3 +204,14 @@ Motion on the site has one job: make the page feel cared for without slowing any
 | react-fast-marquee           | Only useful for a logo strip (insurance partners); none in the content yet.                                                                                                                         |
 
 Rules for adding motion later: give each effect a reason from the table's "Why" column; keep interface animations under 300 ms; never auto-play a slider; never start from `scale(0)`; gate everything on `prefers-reduced-motion`; add a dependency only when CSS cannot do the job, pinned to an exact version.
+
+### Loading states (T-WEB-15)
+
+| State         | Where                                                        | How                                                                                 |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| Page change   | Every link to another page                                   | Thin teal progress bar at the top, only if the change takes over 150 ms             |
+| Skeleton      | Booking wizard, site search                                  | `Skeleton` blocks shaped like the real layout until the browser renders the part    |
+| Photo loading | Every image slot with a photo                                | Shimmer in the frame, then the photo fades in; without script the photo shows as-is |
+| Sending       | Contact, appointment request, service forms, booking confirm | Button spinner and "Sending...", form `aria-busy`, button disabled                  |
+
+Pages are static HTML, so they get no route loading screens: a `loading.tsx` makes Next send every page as a skeleton with the real content hidden until a script swaps it in, which breaks no-script reading, delays the largest paint and turns the not-found page into a 200.

@@ -34,6 +34,7 @@ export const siteBnBD: SiteMessages = {
     opensInNewTab: '(নতুন ট্যাবে খুলবে)',
   },
   common: {
+    loading: 'লোড হচ্ছে...',
     carousel: {
       name: 'স্লাইডার',
       slideName: 'স্লাইড',
@@ -126,6 +127,7 @@ export const siteBnBD: SiteMessages = {
     kindDepartment: 'ডিপার্টমেন্ট',
   },
   form: {
+    sending: 'পাঠানো হচ্ছে...',
     chooseDate: 'দিন বেছে নিন',
     email: 'ইমেইল (না দিলেও চলবে)',
     branch: 'ব্রাঞ্চ',

@@ -9,10 +9,11 @@ import { expect, test, type Page } from '@playwright/test';
 // At the top of the page the shadow is either absent or still fully transparent.
 const NO_SHADOW = /^(none|rgba\(0, 0, 0, 0\) 0px 0px 0px 0px, rgba\(0, 0, 0, 0\) 0px 0px 0px 0px)$/;
 
-/** Waits for every time-based animation to end; scroll-driven and repeating ones never end. */
+/** Waits for every time-based animation to end; scroll-driven and repeating ones never end. A
+ * cancelled animation (a photo fade replaced mid-way) counts as ended. */
 async function settle(page: Page) {
   await page.evaluate(() =>
-    Promise.all(
+    Promise.allSettled(
       document
         .getAnimations()
         .filter(
