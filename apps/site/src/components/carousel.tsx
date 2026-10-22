@@ -31,6 +31,8 @@ export function Carousel({ children, labelledBy, slideClassName }: CarouselProps
     align: 'start',
     containScroll: 'trimSnaps',
     slidesToScroll: 'auto',
+    // Focus is handled below, so reduced motion is respected.
+    watchFocus: false,
   });
   const [canPrevious, setCanPrevious] = useState(false);
   const [canNext, setCanNext] = useState(false);
@@ -51,13 +53,14 @@ export function Carousel({ children, labelledBy, slideClassName }: CarouselProps
   }, [api]);
 
   // Focus inside a hidden slide: Embla moves the track, so the viewport itself must not scroll.
+  // `scrollTo` takes a snap (a screenful of slides), not a slide, so find the slide's snap.
   const onFocus = (event: FocusEvent<HTMLDivElement>) => {
     event.currentTarget.scrollLeft = 0;
+    if (!api) return;
     const slide = (event.target as HTMLElement).closest('[data-slide]');
-    const index = api?.slideNodes().indexOf(slide as HTMLElement) ?? -1;
-    if (api && index >= 0 && !api.slidesInView().includes(index)) {
-      api.scrollTo(index, prefersReducedMotion());
-    }
+    const index = api.slideNodes().indexOf(slide as HTMLElement);
+    const snap = api.internalEngine().slideRegistry.findIndex((group) => group.includes(index));
+    if (snap >= 0 && snap !== api.selectedScrollSnap()) api.scrollTo(snap, prefersReducedMotion());
   };
 
   return (

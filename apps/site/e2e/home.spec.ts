@@ -68,6 +68,12 @@ test('the doctor slider moves with its buttons and with keyboard focus', async (
   // Tabbing into a card off screen slides it into view.
   await slides.nth(6).getByRole('link').first().focus();
   await expect(slides.nth(6)).toBeInViewport();
+  // Shift+Tab back out of the second screenful lands on a card that is slid back into view
+  // (the slide must be mapped to its screenful, not passed to Embla as one).
+  await slides.nth(4).getByRole('link').first().focus();
+  await page.keyboard.press('Shift+Tab');
+  await expect(page.locator(':focus')).toBeInViewport();
+  await expect(slides.nth(3)).toBeInViewport();
 });
 
 test('slide labels use Bangla words and digits', async ({ page }) => {

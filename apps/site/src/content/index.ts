@@ -90,17 +90,7 @@ export function relatedDoctors(doctor: Doctor, limit = 4): Doctor[] {
   return [...sameDepartment, ...sameBranch].slice(0, limit);
 }
 
-/** The leave period covering `isoDate` (YYYY-MM-DD in Asia/Dhaka), if any (FR-WEB-DOC-006). */
-export function leaveOn(doctor: Doctor, isoDate: string) {
-  return doctor.leave.find((leave) => leave.from <= isoDate && isoDate <= leave.to);
-}
-
-/** Leave that has not ended yet, so the notice also shows before the leave starts. */
-export function currentOrNextLeave(doctor: Doctor, isoDate: string) {
-  return [...doctor.leave]
-    .filter((leave) => leave.to >= isoDate)
-    .sort((a, b) => a.from.localeCompare(b.from))[0];
-}
+export { currentOrNextLeave, leaveOn } from './availability';
 
 export function listPackages(category?: PackageCategory): HealthPackage[] {
   return category ? content.packages.filter((p) => p.category === category) : content.packages;

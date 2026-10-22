@@ -18,9 +18,10 @@ import {
 import { useDemoSubmit } from '../forms/use-demo-submit';
 import { FormSuccess } from './success-tick';
 import { contactErrors, type FieldError } from '../forms/validation';
-import { digits, todayInDhaka } from '../format';
+import { digits } from '../format';
 import { formatClock, formatDayMonth } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
+import { useToday } from '../i18n/use-today';
 import { weekdayKey } from '../i18n/labels';
 
 export interface BookingDoctor extends BookableDoctor {
@@ -319,7 +320,11 @@ export function BookingWizard({
   const submitting = useDemoSubmit();
 
   const doctor = doctors.find((item) => item.slug === doctorSlug);
-  const dates = useMemo(() => (doctor ? bookableDates(doctor, todayInDhaka()) : []), [doctor]);
+  const today = useToday();
+  const dates = useMemo(
+    () => (doctor && today ? bookableDates(doctor, today) : []),
+    [doctor, today],
+  );
   const slots = useMemo(() => (doctor && date ? slotsOn(doctor, date) : []), [doctor, date]);
   const slot = slots.find((item) => item.time === time);
 

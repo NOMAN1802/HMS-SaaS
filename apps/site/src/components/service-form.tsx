@@ -9,9 +9,9 @@ import { useState, type FormEvent } from 'react';
 import { isFilled, isMobileNumber, type FieldError } from '../forms/validation';
 import { useDemoSubmit } from '../forms/use-demo-submit';
 import { FormSuccess } from './success-tick';
-import { todayInDhaka } from '../format';
 import { dayOptions } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
+import { useToday } from '../i18n/use-today';
 
 export interface ServiceField {
   name: string;
@@ -51,6 +51,8 @@ function Control({
   const t = useTranslations();
   const locale = useSiteLocale();
   const chooseLabel = t('form.chooseDate');
+  // Day choices appear once the browser knows today (see use-today.ts).
+  const today = useToday();
   if (field.kind === 'textarea') {
     return (
       <TextArea
@@ -65,7 +67,10 @@ function Control({
     return (
       <Select
         {...control}
-        options={[{ value: '', label: chooseLabel }, ...dayOptions(t, locale, todayInDhaka())]}
+        options={[
+          { value: '', label: chooseLabel },
+          ...(today ? dayOptions(t, locale, today) : []),
+        ]}
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />

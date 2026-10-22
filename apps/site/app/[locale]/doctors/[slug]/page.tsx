@@ -1,20 +1,21 @@
 // Doctor profile (FR-WEB-DOC-004..007): header with photo slot, qualifications and languages;
-// book, call and share actions (C-085); a leave notice when the doctor is or will soon be on leave (X19); About,
+// book, call and share actions (C-085); a leave notice when the doctor is or will soon be on leave
+// (X19, chosen in the browser against today, see leave-notice.tsx); About,
 // Education and Experience tabs; the weekly schedule; and related doctors (X20).
 // Implements: T-WEB-07, T-WEB-15, T-WEB-17.
 import { isLocale, type Locale } from '@hms/i18n';
-import { Alert, buttonClassName, Icon, Tabs } from '@hms/ui';
+import { buttonClassName, Icon, Tabs } from '@hms/ui';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Container } from '../../../../src/components/container';
 import { DoctorGrid } from '../../../../src/components/doctor-directory';
 import { ImageSlot } from '../../../../src/components/image-slot';
+import { LeaveNotice } from '../../../../src/components/leave-notice';
 import { PageHeader } from '../../../../src/components/page-header';
 import { ShareButton } from '../../../../src/components/share-button';
 import { ScheduleTable } from '../../../../src/components/schedule-table';
 import {
-  currentOrNextLeave,
   getDepartment,
   getDoctor,
   getSite,
@@ -24,8 +25,7 @@ import {
   relatedDoctors,
 } from '../../../../src/content';
 import { toDoctorSummary } from '../../../../src/content/doctor-summary';
-import { digits, money, todayInDhaka } from '../../../../src/format';
-import { formatLongDate } from '../../../../src/i18n/clock';
+import { digits, money } from '../../../../src/format';
 import { Link } from '../../../../src/i18n/navigation';
 import { languageKey } from '../../../../src/i18n/labels';
 import { withAlternates } from '../../../../src/seo';
@@ -59,7 +59,6 @@ export default async function DoctorPage({ params }: Params) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
   const department = getDepartment(doctor.department);
-  const leave = currentOrNextLeave(doctor, todayInDhaka());
   const { hotline } = getSite().settings.contacts;
   const name = localize(doctor.name, locale);
   const languages = doctor.languages.map((code) => t(languageKey[code])).join(', ');
@@ -123,18 +122,14 @@ export default async function DoctorPage({ params }: Params) {
               </p>
             ) : null}
           </div>
-          {leave ? (
-            <div data-testid="leave-notice">
-              <Alert tone="warning" title={t('doctor.leaveTitle')}>
-                {leave.message
-                  ? localize(leave.message, locale)
-                  : t('doctor.leaveDates', {
-                      from: formatLongDate(t, leave.from, locale),
-                      to: formatLongDate(t, leave.to, locale),
-                    })}
-              </Alert>
-            </div>
-          ) : null}
+          <LeaveNotice
+            locale={locale}
+            leave={doctor.leave.map(({ from, to, message }) => ({
+              from,
+              to,
+              ...(message ? { message: localize(message, locale) } : {}),
+            }))}
+          />
           <section
             aria-labelledby="schedule-heading"
             className="rounded-panel border border-border bg-surface p-5"

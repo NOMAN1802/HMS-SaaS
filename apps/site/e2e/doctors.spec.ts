@@ -20,6 +20,25 @@ test('filters by department and branch together and keeps them in the URL', asyn
   ).toBeVisible();
 });
 
+test('the filters follow the URL when it changes from outside the form', async ({ page }) => {
+  await page.goto('/en/doctors');
+  await page.getByLabel('Department').selectOption('cardiology');
+  await expect(page).toHaveURL(/department=cardiology/);
+  await expect(page.getByTestId('doctor-count')).toHaveText('2 doctors found');
+
+  await page
+    .getByRole('navigation', { name: 'Main navigation' })
+    .getByRole('link', { name: 'Doctors', exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/en\/doctors$/);
+  await expect(page.getByTestId('doctor-count')).toHaveText('24 doctors found');
+  await expect(page.getByLabel('Department')).toHaveValue('');
+
+  await page.goBack();
+  await expect(page.getByTestId('doctor-count')).toHaveText('2 doctors found');
+  await expect(page.getByLabel('Department')).toHaveValue('cardiology');
+});
+
 test('searches by interest and shows the empty state (AT-WEB-010, AT-WEB-014)', async ({
   page,
 }) => {
@@ -83,4 +102,24 @@ test('cards show the next chamber and fee, and a doctor on leave shows the retur
   await expect(card).toContainText('Fee');
   await expect(card).toContainText(/am|pm/);
   await expect(page.getByTestId('doctor-results')).toContainText('On leave, back on 31 October');
+});
+
+// The pages are built ahead of time, so the next chamber is worked out in the browser against
+// the visitor's today. Dr. Kamrul Hasan sits Sunday and Thursday at 10 am and Tuesday at 4 pm.
+test("the next chamber follows the visitor's day, not the build day", async ({ page }) => {
+  const kamrul = page
+    .getByTestId('doctor-results')
+    .getByRole('article')
+    .filter({ hasText: 'Dr. Kamrul Hasan' });
+
+  // Thursday 22 October 2026, 9 am in Dhaka.
+  await page.clock.setFixedTime(new Date('2026-10-22T03:00:00Z'));
+  await page.goto('/en/doctors?department=medicine');
+  await expect(kamrul).toContainText('Today, 10 am');
+
+  // Friday: no session, so the next one is Sunday.
+  await page.clock.setFixedTime(new Date('2026-10-23T03:00:00Z'));
+  await page.goto('/en/doctors?department=medicine');
+  await expect(kamrul).toContainText('Sunday, 10 am');
+  await expect(kamrul).not.toContainText('Today');
 });

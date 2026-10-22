@@ -8,9 +8,9 @@ import { useState, type FormEvent } from 'react';
 import { contactErrors, type FieldError } from '../forms/validation';
 import { useDemoSubmit } from '../forms/use-demo-submit';
 import { FormSuccess } from './success-tick';
-import { todayInDhaka } from '../format';
 import { dayOptions } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
+import { useToday } from '../i18n/use-today';
 
 export interface AppointmentRequestFormProps {
   departments: { value: string; label: string }[];
@@ -26,6 +26,8 @@ export function AppointmentRequestForm({
 }: AppointmentRequestFormProps) {
   const t = useTranslations();
   const locale = useSiteLocale();
+  // Day choices appear once the browser knows today (see use-today.ts).
+  const today = useToday();
   const [values, setValues] = useState({
     name: '',
     phone: '',
@@ -109,7 +111,7 @@ export function AppointmentRequestForm({
             {...control}
             options={[
               { value: '', label: t('form.chooseDate') },
-              ...dayOptions(t, locale, todayInDhaka()),
+              ...(today ? dayOptions(t, locale, today) : []),
             ]}
             value={values.date}
             onChange={(event) => setValues({ ...values, date: event.target.value })}

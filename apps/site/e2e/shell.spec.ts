@@ -23,6 +23,26 @@ test('the language switch keeps the current page (AT-WEB-004)', async ({ page })
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
 });
 
+test('the language switch keeps the chosen doctor and filters', async ({ page }) => {
+  await page.goto('/en/book-appointment?doctor=farhana-rahman');
+  const bangla = page.getByRole('navigation', { name: 'Language' }).getByRole('link', {
+    name: 'বাংলা',
+  });
+  await expect(bangla).toHaveAttribute('href', /\?doctor=farhana-rahman$/);
+  await bangla.click();
+  await expect(page).toHaveURL(/\/bn\/book-appointment\?doctor=farhana-rahman$/);
+
+  await page.goto('/en/doctors');
+  await page.getByLabel('Department').selectOption('cardiology');
+  await expect(page).toHaveURL(/department=cardiology/);
+  await page
+    .getByRole('navigation', { name: 'Language' })
+    .getByRole('link', { name: 'বাংলা' })
+    .click();
+  await expect(page).toHaveURL(/\/bn\/doctors\?department=cardiology$/);
+  await expect(page.getByLabel('ডিপার্টমেন্ট')).toHaveValue('cardiology');
+});
+
 test('the demo notice is shown and can be hidden (FR-WEB-GEN-004)', async ({ page }) => {
   await page.goto('/en');
   await expect(page.getByTestId('demo-notice')).toContainText('Demo content');
