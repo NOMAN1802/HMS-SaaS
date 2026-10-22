@@ -1,13 +1,14 @@
 // Sticky header: logo, main navigation with the departments dropdown, and the "Book appointment"
-// call to action. Below the extra-large breakpoint the links move into the mobile menu
-// (F section 3). Implements: T-WEB-05, FR-WEB-NAV-*.
+// call to action. The search button opens the header search bar (header-search.tsx). Below the
+// extra-large breakpoint the links move into the mobile menu (F section 3). Implements: T-WEB-05, T-WEB-17, FR-WEB-NAV-*.
 import type { Site } from '@hms/contracts';
 import type { Locale } from '@hms/i18n';
-import { buttonClassName, Icon, iconButtonClassName } from '@hms/ui';
+import { buttonClassName } from '@hms/ui';
 import { getTranslations } from 'next-intl/server';
 import { localize } from '../content';
 import { Link } from '../i18n/navigation';
 import { Container } from './container';
+import { HeaderSearch } from './header-search';
 import { Logo } from './logo';
 import { MobileMenu } from './mobile-menu';
 import { NavDropdown } from './nav-dropdown';
@@ -42,14 +43,7 @@ export async function SiteHeader({ site, locale }: { site: Site; locale: Locale 
           </ul>
         </nav>
         <div className="flex items-center gap-2">
-          <Link
-            href="/search"
-            aria-label={t('search.headerLink')}
-            title={t('search.headerLink')}
-            className={iconButtonClassName('secondary')}
-          >
-            <Icon name="search" />
-          </Link>
+          <HeaderSearch />
           {/* The wrapper hides the call to action on phones, where the bottom bar offers it;
               a display class on the link itself would fight the button's inline-flex. */}
           <div className="hidden md:block">

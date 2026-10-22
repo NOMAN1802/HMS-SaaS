@@ -28,6 +28,13 @@
   }
 }
 
+@keyframes site-drop {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
 @keyframes site-fade {
   from {
     opacity: 0;
@@ -102,6 +109,11 @@
   /* The phone bar slides up once the page is readable, so it never covers the first paint. */
   .enter-bar {
     animation: site-bar-in 420ms var(--ease-out) 500ms backwards;
+  }
+
+  /* The header search bar drops in from under the header. */
+  .search-panel {
+    animation: site-drop 200ms var(--ease-out);
   }
 
   /* A booking step rises in when the wizard moves on, so the change of step is seen. */

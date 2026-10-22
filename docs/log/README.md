@@ -91,3 +91,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-22 | [T-WEB-15: sliders and list motion](2026-10-22-T-WEB-15-sliders-and-list-motion.md)                         |
 | 2026-10-22 | [T-WEB-14: generated images for every slot](2026-10-22-T-WEB-14-generated-images.md)                        |
 | 2026-10-22 | [T-WEB-15: loading states and skeletons](2026-10-22-T-WEB-15-loading-states.md)                             |
+| 2026-10-22 | [T-WEB-17: header search bar with live results](2026-10-22-T-WEB-17-header-search.md)                       |
