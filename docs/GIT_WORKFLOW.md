@@ -97,11 +97,11 @@ Every branch and tag is pushed to all three remotes:
 git push origin <branch> && git push reza <branch> && git push noman <branch>
 ```
 
-| Remote   | Repository         | Role                                  |
-| -------- | ------------------ | ------------------------------------- |
-| `origin` | byteSpate/HMS-SaaS | Main repository; PRs and CI live here |
-| `reza`   | rezaulrht/HMS-ERP  | Backup 1 (full mirror)                |
-| `noman`  | NOMAN1802/HMS-ERP  | Backup 2 (full mirror)                |
+| Remote   | Repository         | Role                                                                           |
+| -------- | ------------------ | ------------------------------------------------------------------------------ |
+| `origin` | byteSpate/HMS-SaaS | Main repository; PRs and CI live here                                          |
+| `reza`   | rezaulrht/HMS-ERP  | Backup 1 (full mirror)                                                         |
+| `noman`  | NOMAN1802/HMS-SaaS | Backup 2 (full mirror; renamed from HMS-ERP, the repository the server clones) |
 
 After a branch is merged, delete it everywhere: `git push origin --delete <branch> && git push reza --delete <branch> && git push noman --delete <branch>`.
 

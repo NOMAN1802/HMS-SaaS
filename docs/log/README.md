@@ -95,3 +95,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-22 | [T-WEB-17: header search bar with live results](2026-10-22-T-WEB-17-header-search.md)                                            |
 | 2026-10-22 | [T-WEB-15: hero slideshow, scroll reveal and five motion packages](2026-10-22-T-WEB-15-motion-packages.md)                       |
 | 2026-10-22 | [T-WEB-15: review fixes (carousel focus, language switch, filters, dates, field alignment)](2026-10-22-T-WEB-15-review-fixes.md) |
+| 2026-10-23 | [Docs: noman remote renamed to NOMAN1802/HMS-SaaS](2026-10-23-docs-noman-remote.md)                                              |
