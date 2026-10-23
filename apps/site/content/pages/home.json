@@ -289,11 +289,7 @@
           "bn": "সেন্টার অব এক্সিলেন্স",
           "en": "Centres of excellence"
         },
-        "centres": [
-          "heart-centre",
-          "mother-child",
-          "bone-joint"
-        ]
+        "centres": ["heart-centre", "mother-child", "bone-joint"]
       }
     },
     {
@@ -355,12 +351,8 @@
           "en": "Patient and visitor guide"
         },
         "body": {
-          "bn": [
-            "ভর্তি, ছাড়পত্র, দর্শনার্থীর সময় ও রোগীর অধিকার: আসার আগে জেনে নিন।"
-          ],
-          "en": [
-            "Admission, discharge, visiting hours and patient rights: know before you come."
-          ]
+          "bn": ["ভর্তি, ছাড়পত্র, দর্শনার্থীর সময় ও রোগীর অধিকার: আসার আগে জেনে নিন।"],
+          "en": ["Admission, discharge, visiting hours and patient rights: know before you come."]
         },
         "image": {
           "slot": "guide-teaser",
