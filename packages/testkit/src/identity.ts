@@ -1,6 +1,7 @@
 // Synthetic identity fixtures for integration tests (AS-009). Every name carries a random
 // suffix, so tests can run repeatedly against the same database.
 import { randomUUID } from 'node:crypto';
+import type { ModuleCode, PermissionCode } from '@hms/contracts';
 import { withTenant, type PrismaClient } from '@hms/database';
 
 export async function seedTenant(prisma: PrismaClient, nameEn = 'Test Hospital'): Promise<string> {
@@ -45,4 +46,41 @@ export async function seedMembership(
     tx.membership.create({ data: { tenantId, userId, status } }),
   );
   return membership.id;
+}
+
+/**
+ * Gives a membership the listed permissions through a new role of its own (T-ACC-02). Codes
+ * are typed against the catalogue, so a test cannot grant a code that does not exist.
+ */
+export async function grantPermissions(
+  prisma: PrismaClient,
+  tenantId: string,
+  membershipId: string,
+  codes: readonly PermissionCode[],
+): Promise<string> {
+  const role = await withTenant(prisma, { tenantId }, (tx) =>
+    tx.role.create({
+      data: {
+        tenantId,
+        code: `test-${randomUUID().slice(0, 8)}`,
+        nameEn: 'Test role',
+        permissions: { create: codes.map((permissionCode) => ({ permissionCode })) },
+        memberships: { create: { membershipId } },
+      },
+    }),
+  );
+  return role.id;
+}
+
+/** Turns modules on for a hospital (FR-SAA-004); the core module needs no row. */
+export async function seedEntitlements(
+  prisma: PrismaClient,
+  tenantId: string,
+  modules: readonly ModuleCode[],
+): Promise<void> {
+  await withTenant(prisma, { tenantId }, (tx) =>
+    tx.tenantEntitlement.createMany({
+      data: modules.map((moduleCode) => ({ tenantId, moduleCode })),
+    }),
+  );
 }

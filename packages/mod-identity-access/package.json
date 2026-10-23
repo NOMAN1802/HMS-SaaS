@@ -28,6 +28,7 @@
     "unplugin-swc": "2.0.0"
   },
   "dependencies": {
+    "@hms/authz": "workspace:*",
     "@hms/contracts": "workspace:*",
     "@hms/database": "workspace:*",
     "@hms/domain-kernel": "workspace:*",

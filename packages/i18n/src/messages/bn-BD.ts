@@ -79,6 +79,7 @@ export const bnBD: Messages = {
       CSRF_TOKEN_INVALID: 'আপনার সেশন নতুন করতে হবে। অনুগ্রহ করে আবার সাইন ইন করুন।',
       TENANT_NOT_SELECTED: 'আগে একটি হাসপাতাল বেছে নিন।',
       MEMBERSHIP_NOT_ACTIVE: 'এই হাসপাতালে আপনার অ্যাক্সেস সক্রিয় নয়।',
+      ENTITLEMENT_MISSING: 'এই হাসপাতাল এই মডিউলটি ব্যবহার করে না।',
       NOT_FOUND: 'রেকর্ড পাওয়া যায়নি।',
       VALIDATION_FAILED: 'চিহ্নিত ঘরগুলো পরীক্ষা করুন।',
       PAYLOAD_TOO_LARGE: 'অনুরোধটি অনেক বড়। কম তথ্য পাঠিয়ে আবার চেষ্টা করুন।',
