@@ -8,7 +8,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { Button, buttonClassName, Field, Icon, Select, TextInput } from '@hms/ui';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { DoctorSummary } from '../content/doctor-summary';
 import { normalizeQuery } from '../content/normalize';
 import { Link, usePathname, useRouter } from '../i18n/navigation';
@@ -48,25 +48,46 @@ export function DoctorGrid({ doctors }: { doctors: DoctorSummary[] }) {
   );
 }
 
+type Filters = { q: string; department: string; branch: string };
+
+function filtersFrom(params: URLSearchParams): Filters {
+  return {
+    q: params.get('q') ?? '',
+    department: params.get('department') ?? '',
+    branch: params.get('branch') ?? '',
+  };
+}
+
 export function DoctorDirectory({ doctors, departments, branches, help }: DoctorDirectoryProps) {
   const t = useTranslations();
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  // Filters live in state and are mirrored to the URL; reading them back from the URL would lose
-  // a change made before the previous URL update finished.
-  const [filters, setFilters] = useState({
-    q: params.get('q') ?? '',
-    department: params.get('department') ?? '',
-    branch: params.get('branch') ?? '',
-  });
+  // Filters live in state and are mirrored to the URL; reading them back from the URL on every
+  // keystroke would lose a change made before the previous URL update finished. Query strings
+  // this form wrote are remembered, so when the URL changes for another reason (the header's
+  // Doctors link, back and forward) the filters follow it.
+  const [filters, setFilters] = useState(() => filtersFrom(params));
+  const written = useRef<string[]>([]);
+  const urlQuery = params.toString();
   const { q: query, department, branch } = filters;
 
-  function update(next: typeof filters) {
+  useEffect(() => {
+    const own = written.current.indexOf(urlQuery);
+    if (own >= 0) {
+      written.current = written.current.slice(own + 1);
+      return;
+    }
+    written.current = [];
+    setFilters(filtersFrom(new URLSearchParams(urlQuery)));
+  }, [urlQuery]);
+
+  function update(next: Filters) {
     setFilters(next);
     const search = new URLSearchParams();
     for (const [key, value] of Object.entries(next)) if (value) search.set(key, value);
     const suffix = search.toString();
+    written.current.push(suffix);
     router.replace(suffix ? `${pathname}?${suffix}` : pathname, { scroll: false });
   }
 

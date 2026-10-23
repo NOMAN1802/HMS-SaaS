@@ -8,17 +8,9 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
 import { normalizeQuery } from '../content/normalize';
-import type { SearchEntry, SearchKind } from '../content/search-index';
+import type { SearchEntry } from '../content/search-index';
 import { Link, usePathname, useRouter } from '../i18n/navigation';
-
-const GROUPS = [
-  { kind: 'doctor', key: 'search.group.doctor' },
-  { kind: 'department', key: 'search.group.department' },
-  { kind: 'centre', key: 'search.group.centre' },
-  { kind: 'package', key: 'search.group.package' },
-  { kind: 'test', key: 'search.group.test' },
-  { kind: 'article', key: 'search.group.article' },
-] as const satisfies readonly { kind: SearchKind; key: string }[];
+import { matchEntries, MIN_QUERY, SEARCH_GROUPS } from './search-groups';
 
 const PER_GROUP = 8;
 
@@ -30,10 +22,7 @@ export function SiteSearch({ index }: { index: SearchEntry[] }) {
   const [query, setQuery] = useState(params.get('q') ?? '');
   const normalized = normalizeQuery(query);
 
-  const results = useMemo(
-    () => (normalized.length < 2 ? [] : index.filter((entry) => entry.terms.includes(normalized))),
-    [index, normalized],
-  );
+  const results = useMemo(() => matchEntries(index, normalized), [index, normalized]);
 
   function change(value: string) {
     setQuery(value);
@@ -59,9 +48,11 @@ export function SiteSearch({ index }: { index: SearchEntry[] }) {
         </Field>
       </form>
       <p aria-live="polite" className="font-ui font-medium" data-testid="search-count">
-        {normalized.length < 2 ? t('search.hint') : t('search.results', { count: results.length })}
+        {normalized.length < MIN_QUERY
+          ? t('search.hint')
+          : t('search.results', { count: results.length })}
       </p>
-      {GROUPS.map(({ kind, key }) => {
+      {SEARCH_GROUPS.map(({ kind, key }) => {
         const entries = results.filter((entry) => entry.kind === kind);
         if (entries.length === 0) return null;
         return (

@@ -25,10 +25,38 @@ test('"ecg" finds packages and tests; a Bangla-digit code finds the test', async
   await expect(page.getByTestId('test-count')).toHaveText('১টি টেস্ট');
 });
 
-test('the header search link opens the search page', async ({ page }) => {
+test('the header search opens a bar with live results instead of leaving the page', async ({
+  page,
+}) => {
+  await page.goto('/en/about');
+  await page.getByTestId('header-search-toggle').click();
+  await expect(page).toHaveURL(/\/en\/about$/);
+  const bar = page.getByTestId('header-search');
+  await bar.getByRole('searchbox').fill('card');
+  await expect(bar.getByRole('region', { name: 'Doctors' })).toContainText('Dr. Farhana Rahman');
+  await expect(bar.getByRole('region', { name: 'Departments' })).toContainText('Cardiology');
+  await page.keyboard.press('Escape');
+  await expect(bar).toBeHidden();
+  await expect(page.getByTestId('header-search-toggle')).toBeFocused();
+});
+
+test('a header search result opens its page and closes the bar', async ({ page }) => {
+  await page.goto('/bn');
+  await page.getByTestId('header-search-toggle').click();
+  const bar = page.getByTestId('header-search');
+  await bar.getByRole('searchbox').fill('কার্ড');
+  await bar.getByRole('region', { name: 'ডিপার্টমেন্ট' }).getByRole('link').first().click();
+  await expect(page).toHaveURL(/\/bn\/departments\//);
+  await expect(bar).toBeHidden();
+});
+
+test('the header search bar has no accessibility violations', async ({ page }) => {
   await page.goto('/en');
-  await page.getByRole('banner').getByRole('link', { name: 'Search the site' }).click();
-  await expect(page).toHaveURL(/\/en\/search$/);
+  await page.getByTestId('header-search-toggle').click();
+  await page.getByTestId('header-search').getByRole('searchbox').fill('card');
+  await expect(page.getByTestId('header-search').getByRole('region').first()).toBeVisible();
+  const results = await new AxeBuilder({ page }).include('[data-testid="header-search"]').analyze();
+  expect(results.violations).toEqual([]);
 });
 
 test('the search page has no accessibility violations', async ({ page }) => {

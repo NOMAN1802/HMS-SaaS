@@ -3,14 +3,15 @@
 // The page passes translated labels and a field list; the form validates required fields and
 // mobile numbers (Bangla digits accepted) and ends in a demo message. Nothing is sent
 // (FR-WEB-GEN-006, AT-WEB-033). Implements: T-WEB-11.
-import { Alert, Button, Field, Select, TextArea, TextInput, type FieldControlProps } from '@hms/ui';
+import { Button, Field, Select, TextArea, TextInput, type FieldControlProps } from '@hms/ui';
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { isFilled, isMobileNumber, type FieldError } from '../forms/validation';
 import { useDemoSubmit } from '../forms/use-demo-submit';
-import { todayInDhaka } from '../format';
+import { FormSuccess } from './success-tick';
 import { dayOptions } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
+import { useToday } from '../i18n/use-today';
 
 export interface ServiceField {
   name: string;
@@ -50,6 +51,8 @@ function Control({
   const t = useTranslations();
   const locale = useSiteLocale();
   const chooseLabel = t('form.chooseDate');
+  // Day choices appear once the browser knows today (see use-today.ts).
+  const today = useToday();
   if (field.kind === 'textarea') {
     return (
       <TextArea
@@ -64,7 +67,10 @@ function Control({
     return (
       <Select
         {...control}
-        options={[{ value: '', label: chooseLabel }, ...dayOptions(t, locale, todayInDhaka())]}
+        options={[
+          { value: '', label: chooseLabel },
+          ...(today ? dayOptions(t, locale, today) : []),
+        ]}
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />
@@ -118,9 +124,9 @@ export function ServiceForm({ fields, submitLabel, demoTitle, demoBody }: Servic
 
   if (sent) {
     return (
-      <Alert tone="success" title={demoTitle}>
+      <FormSuccess title={demoTitle}>
         <span data-testid="demo-confirmation">{demoBody}</span>
-      </Alert>
+      </FormSuccess>
     );
   }
 

@@ -75,6 +75,7 @@ export const iconNames = [
   'translate',
   'whatsapp',
   'youtube',
+  'share',
 ] as const;
 
 export type IconName = (typeof iconNames)[number];

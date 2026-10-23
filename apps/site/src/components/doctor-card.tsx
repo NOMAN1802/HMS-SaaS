@@ -1,33 +1,42 @@
+'use client';
 // Doctor card built around how patients choose: who, which department, the next chamber (day,
 // time, branch) and the fee, with one booking action. A doctor on leave says when they are back;
 // the booking wizard offers no leave days (FR-WEB-DOC-006). Compact and horizontal so a phone
 // shows several doctors per screen (critique 2026-10-21 P1). Presentational: it takes a
-// DoctorSummary so the client-side directory can render it too.
+// DoctorSummary so the client-side directory can render it too. The next chamber and the leave
+// note depend on today, so they are worked out in the browser; the built HTML lists the weekly
+// chamber days instead, which stay true whatever day the page is opened.
 // Implements: T-WEB-06, T-WEB-07, T-WEB-15, FR-WEB-DOC-001.
 import type { Locale } from '@hms/i18n';
 import { buttonClassName, Icon } from '@hms/ui';
 import { useTranslations } from 'next-intl';
+import { backOn, nextChamber } from '../content/availability';
 import type { DoctorSummary } from '../content/doctor-summary';
 import { formatClock, formatDayMonth } from '../i18n/clock';
 import { weekdayKey } from '../i18n/labels';
 import { Link } from '../i18n/navigation';
+import { useToday } from '../i18n/use-today';
 import { ImageSlot } from './image-slot';
 
 const RELATIVE_KEY = { today: 'common.today', tomorrow: 'common.tomorrow' } as const;
 
-function useChamberLabel() {
+function useChamberLabel(doctor: DoctorSummary, locale: Locale, today: string | null) {
   const t = useTranslations();
-  return (doctor: DoctorSummary, locale: Locale) => {
-    const chamber = doctor.nextChamber;
-    if (!chamber) return null;
-    const day = chamber.relative ? t(RELATIVE_KEY[chamber.relative]) : t(weekdayKey[chamber.day]);
-    return `${day}, ${formatClock(t, chamber.start, locale)}, ${chamber.branch}`;
-  };
+  if (!today) {
+    const days = [...new Set(doctor.sessions.map((session) => session.day))];
+    return days.length > 0 ? days.map((day) => t(weekdayKey[day])).join(', ') : null;
+  }
+  const chamber = nextChamber(doctor, today);
+  if (!chamber) return null;
+  const day = chamber.relative ? t(RELATIVE_KEY[chamber.relative]) : t(weekdayKey[chamber.day]);
+  return `${day}, ${formatClock(t, chamber.start, locale)}, ${chamber.branch}`;
 }
 
 export function DoctorCard({ doctor, locale }: { doctor: DoctorSummary; locale: Locale }) {
   const t = useTranslations();
-  const chamberLabel = useChamberLabel()(doctor, locale);
+  const today = useToday();
+  const chamberLabel = useChamberLabel(doctor, locale, today);
+  const back = today ? backOn(doctor, today) : null;
   return (
     <article className="lift flex h-full flex-col gap-4 rounded-panel border border-border bg-surface p-4">
       <div className="flex gap-4">
@@ -68,9 +77,9 @@ export function DoctorCard({ doctor, locale }: { doctor: DoctorSummary; locale: 
           </div>
         ) : null}
       </dl>
-      {doctor.backOn ? (
+      {back ? (
         <p className="w-fit rounded-pill bg-status-attention-bg px-3 py-1 font-ui text-xs font-medium text-status-attention-text">
-          {t('common.backOn', { date: formatDayMonth(t, doctor.backOn, locale) })}
+          {t('common.backOn', { date: formatDayMonth(t, back, locale) })}
         </p>
       ) : null}
       <Link

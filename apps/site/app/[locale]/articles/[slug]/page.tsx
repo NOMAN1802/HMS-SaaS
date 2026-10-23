@@ -1,6 +1,6 @@
-// Article page: category, date, author link, body as paragraphs, and a call-back request with the
-// article's department preselected (FR-WEB-INF-003, X23, AT-WEB-054). Implements: T-WEB-12,
-// T-WEB-17.
+// Article page: category, date, author link, a share button (C-085), body as paragraphs, and a
+// call-back request with the article's department preselected (FR-WEB-INF-003, X23, AT-WEB-054).
+// Implements: T-WEB-12, T-WEB-15, T-WEB-17.
 import { isLocale } from '@hms/i18n';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -9,6 +9,7 @@ import { AppointmentRequestForm } from '../../../../src/components/appointment-r
 import { Container } from '../../../../src/components/container';
 import { ImageSlot } from '../../../../src/components/image-slot';
 import { PageHeader } from '../../../../src/components/page-header';
+import { ShareButton } from '../../../../src/components/share-button';
 import {
   getArticle,
   getDoctor,
@@ -75,6 +76,7 @@ export default async function ArticlePage({ params }: Params) {
             </span>
           ) : null}
         </p>
+        <ShareButton title={localize(article.title, locale)} className="mt-6" />
       </PageHeader>
       <Container className="py-10">
         <article className="mx-auto flex max-w-3xl flex-col gap-6">

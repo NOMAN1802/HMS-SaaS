@@ -1,6 +1,6 @@
 // Department page (FR-WEB-DEP-002, FR-WEB-DEP-004): overview, services, facilities, where to find
 // it, OPD hours (X33), exactly the doctors of this department (AT-WEB-013) and a call-back request
-// with the department preselected (X23). Implements: T-WEB-08, T-WEB-17.
+// with the department preselected (X23). Implements: T-WEB-08, T-WEB-15, T-WEB-17.
 import { isLocale } from '@hms/i18n';
 import { Icon } from '@hms/ui';
 import type { Metadata } from 'next';
@@ -64,11 +64,13 @@ export default async function DepartmentPage({ params }: Params) {
       />
       <Container className="grid gap-10 py-10 lg:grid-cols-[1fr_22rem]">
         <div className="flex min-w-0 flex-col gap-8">
+          {/* 3:2, the shape the pictures were made in, so none of it is cut off. */}
           <ImageSlot
             image={department.image}
             locale={locale}
-            ratio="feature"
+            ratio="photo"
             icon="stethoscope"
+            sizes="(min-width: 1280px) 824px, (min-width: 1024px) 66vw, 100vw"
             className="rounded-panel"
           />
           <div className="flex flex-col gap-4 text-lg">

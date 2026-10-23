@@ -4,7 +4,7 @@
 // Dates and times come from the doctor's schedule; leave days are not offered. Confirming shows a
 // demo message and sends nothing (FR-WEB-GEN-006, AT-WEB-032). Implements: T-WEB-10.
 import type { Locale } from '@hms/i18n';
-import { Alert, Button, Field, Select, TextArea, TextInput } from '@hms/ui';
+import { Button, Field, Select, TextArea, TextInput } from '@hms/ui';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useMemo, useState, type FormEvent } from 'react';
@@ -16,10 +16,12 @@ import {
   type Slot,
 } from '../booking/slots';
 import { useDemoSubmit } from '../forms/use-demo-submit';
+import { FormSuccess } from './success-tick';
 import { contactErrors, type FieldError } from '../forms/validation';
-import { digits, todayInDhaka } from '../format';
+import { digits } from '../format';
 import { formatClock, formatDayMonth } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
+import { useToday } from '../i18n/use-today';
 import { weekdayKey } from '../i18n/labels';
 
 export interface BookingDoctor extends BookableDoctor {
@@ -318,7 +320,11 @@ export function BookingWizard({
   const submitting = useDemoSubmit();
 
   const doctor = doctors.find((item) => item.slug === doctorSlug);
-  const dates = useMemo(() => (doctor ? bookableDates(doctor, todayInDhaka()) : []), [doctor]);
+  const today = useToday();
+  const dates = useMemo(
+    () => (doctor && today ? bookableDates(doctor, today) : []),
+    [doctor, today],
+  );
   const slots = useMemo(() => (doctor && date ? slotsOn(doctor, date) : []), [doctor, date]);
   const slot = slots.find((item) => item.time === time);
 
@@ -342,9 +348,7 @@ export function BookingWizard({
   if (confirmed) {
     return (
       <div className="motion-pop flex flex-col gap-6" data-testid="booking-confirmation">
-        <Alert tone="success" title={t('booking.confirmedTitle')}>
-          {t('booking.confirmedBody')}
-        </Alert>
+        <FormSuccess title={t('booking.confirmedTitle')}>{t('booking.confirmedBody')}</FormSuccess>
         <Button variant="secondary" className="w-fit" onClick={restart}>
           {t('booking.again')}
         </Button>

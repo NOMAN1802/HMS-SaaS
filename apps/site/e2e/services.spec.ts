@@ -37,6 +37,28 @@ test('home sample collection needs an address and a date', async ({ page }) => {
   expect(requests).toEqual([]);
 });
 
+// The day choices start at the visitor's today, whatever day the site was built, and the page
+// hydrates cleanly (the built HTML carries no dates).
+for (const path of ['/en/sample-collection', '/en/departments/cardiology']) {
+  test(`${path} offers days from the visitor's today without a hydration error`, async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text());
+    });
+    // Five days after the build day (the build is from today).
+    const later = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000);
+    await page.clock.setFixedTime(later);
+    await page.goto(path);
+    const expected = new Date(later.getTime() + 6 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const picker = page.getByLabel('Preferred date');
+    await expect(picker.locator('option').nth(1)).toHaveAttribute('value', expected);
+    expect(errors.filter((text) => /hydrat|#418/i.test(text))).toEqual([]);
+  });
+}
+
 test('feedback accepts an anonymous message', async ({ page }) => {
   await page.goto('/en/feedback');
   await page.getByLabel('How was your visit?').selectOption('4');

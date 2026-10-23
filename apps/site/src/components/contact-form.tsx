@@ -2,11 +2,12 @@
 // Contact form (FR-WEB-INF-002): name, mobile, optional email, branch and message. In WEB-A it
 // validates and shows a demo confirmation; nothing leaves the page (FR-WEB-GEN-006, AT-WEB-033).
 // Implements: T-WEB-12.
-import { Alert, Button, Field, Select, TextArea, TextInput } from '@hms/ui';
+import { Button, Field, Select, TextArea, TextInput } from '@hms/ui';
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { contactErrors, isFilled, type FieldError } from '../forms/validation';
 import { useDemoSubmit } from '../forms/use-demo-submit';
+import { FormSuccess } from './success-tick';
 
 type Errors = Partial<Record<'name' | 'phone' | 'message', FieldError>>;
 
@@ -32,9 +33,9 @@ export function ContactForm({ branches }: { branches: { value: string; label: st
 
   if (sent) {
     return (
-      <Alert tone="success" title={t('form.demoTitle')}>
+      <FormSuccess title={t('form.demoTitle')}>
         <span data-testid="demo-confirmation">{t('form.demoBody')}</span>
-      </Alert>
+      </FormSuccess>
     );
   }
 

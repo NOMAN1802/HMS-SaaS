@@ -2,14 +2,15 @@
 // "Request a call back" form (appointmentRequest section, X23): name, mobile, department and
 // preferred date. In WEB-A it validates and shows a demo confirmation that says nothing was sent;
 // no request leaves the page (FR-WEB-GEN-006, FR-WEB-GEN-009, AT-WEB-054). Implements: T-WEB-06.
-import { Alert, Button, Field, Select, TextInput } from '@hms/ui';
+import { Button, Field, Select, TextInput } from '@hms/ui';
 import { useTranslations } from 'next-intl';
 import { useState, type FormEvent } from 'react';
 import { contactErrors, type FieldError } from '../forms/validation';
 import { useDemoSubmit } from '../forms/use-demo-submit';
-import { todayInDhaka } from '../format';
+import { FormSuccess } from './success-tick';
 import { dayOptions } from '../i18n/clock';
 import { useSiteLocale } from '../i18n/locale';
+import { useToday } from '../i18n/use-today';
 
 export interface AppointmentRequestFormProps {
   departments: { value: string; label: string }[];
@@ -25,6 +26,8 @@ export function AppointmentRequestForm({
 }: AppointmentRequestFormProps) {
   const t = useTranslations();
   const locale = useSiteLocale();
+  // Day choices appear once the browser knows today (see use-today.ts).
+  const today = useToday();
   const [values, setValues] = useState({
     name: '',
     phone: '',
@@ -50,9 +53,9 @@ export function AppointmentRequestForm({
 
   if (sent) {
     return (
-      <Alert tone="success" title={t('form.demoTitle')}>
+      <FormSuccess title={t('form.demoTitle')}>
         <span data-testid="demo-confirmation">{t('form.demoBody')}</span>
-      </Alert>
+      </FormSuccess>
     );
   }
 
@@ -108,7 +111,7 @@ export function AppointmentRequestForm({
             {...control}
             options={[
               { value: '', label: t('form.chooseDate') },
-              ...dayOptions(t, locale, todayInDhaka()),
+              ...(today ? dayOptions(t, locale, today) : []),
             ]}
             value={values.date}
             onChange={(event) => setValues({ ...values, date: event.target.value })}

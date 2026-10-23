@@ -14,6 +14,24 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 - Used on: Home hero
 - Prompt: A Bangladeshi doctor in a white coat talking warmly with a patient in a bright modern consultation room, window light, shallow depth of field. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
+### `hero-paediatrics`
+
+- Size: 1200 x 900
+- Used on: Home hero slideshow, slide 2
+- Prompt: A friendly Bangladeshi paediatrician in a white coat smiling and listening with a stethoscope to a happy fully dressed young child sitting on the mother's lap, bright modern children's consultation room, window light, shallow depth of field. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
+### `hero-ward`
+
+- Size: 1200 x 900
+- Used on: Home hero slideshow, slide 3
+- Prompt: A kind Bangladeshi nurse in teal scrubs gently adjusting the blanket of a smiling elderly man resting in a bright, spacious modern hospital ward room with large windows and plants, his daughter seated beside the bed, warm and reassuring. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
+### `hero-imaging`
+
+- Size: 1200 x 900
+- Used on: Home hero slideshow, slide 4
+- Prompt: A Bangladeshi radiographer in teal scrubs reassuring a calm, fully dressed middle-aged woman lying on the table of a modern CT scanner in a bright, spotless imaging suite, large window light, spacious and high-tech. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
+
 ### `guide-teaser`
 
 - Size: 1200 x 900
@@ -42,73 +60,73 @@ Shared style: Photorealistic, natural soft daylight, clean modern Bangladeshi ho
 
 ### `department-cardiology`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Cardiology page
 - Prompt: A cardiologist reviewing an echocardiogram on a monitor next to an ecg machine. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-neurology`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Neurology page
 - Prompt: A neurologist pointing at a brain mri scan on a light screen. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-orthopaedics`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Orthopaedics page
 - Prompt: A physiotherapist guiding a patient's knee exercise in a bright rehab room. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-paediatrics`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Paediatrics page
 - Prompt: A smiling paediatrician with a stethoscope around her neck talking warmly with a mother who holds her happy toddler, in a bright friendly children's clinic with soft toys on a shelf, everyone fully dressed. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-gynaecology`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Gynaecology and obstetrics page
 - Prompt: An obstetrician pointing at an ultrasound screen while talking with an expectant mother seated beside her, both fully dressed, calm room. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-medicine`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Internal medicine page
 - Prompt: A physician taking a patient's blood pressure in a consultation room. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-ent`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Ear, nose and throat page
 - Prompt: An ent doctor examining a patient's ear with an otoscope. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-ophthalmology`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Eye care page
 - Prompt: An eye specialist using a slit lamp to examine a patient. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-dental`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Dental care page
 - Prompt: A dentist and assistant at a modern dental chair, patient relaxed. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-nephrology`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Nephrology page
 - Prompt: A quiet, well-lit dialysis unit with reclining chairs and a nurse checking a machine. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-gastroenterology`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Gastroenterology page
 - Prompt: A clean endoscopy suite with equipment ready, no patient visible. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 
 ### `department-oncology`
 
-- Size: 1200 x 600
+- Size: 1200 x 800
 - Used on: Oncology page
 - Prompt: A comfortable day-care chemotherapy lounge with a nurse and a patient talking. Photorealistic, natural soft daylight, clean modern Bangladeshi hospital setting, calm teal and white palette with a touch of cyan, no text, no logos, no watermarks.
 

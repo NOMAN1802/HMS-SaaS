@@ -1,6 +1,7 @@
 // Home hero: the page's h1, a supporting line, the doctor and department search, popular links
-// and the hero image slot (F section 3, FR-WEB-HOME-*). Implements: T-WEB-06.
-import type { SectionOf } from '@hms/contracts';
+// and the hero pictures, a slideshow when the content lists more than one (F section 3,
+// FR-WEB-HOME-*, C-085). Implements: T-WEB-06, T-WEB-15.
+import type { ImageRef, SectionOf } from '@hms/contracts';
 import type { Locale } from '@hms/i18n';
 import { Icon } from '@hms/ui';
 import { useTranslations } from 'next-intl';
@@ -14,6 +15,7 @@ import {
 } from '../content';
 import { Container } from '../components/container';
 import { HeroSearch, type SearchSuggestion } from '../components/hero-search';
+import { HeroSlides } from '../components/hero-slides';
 import { ImageSlot } from '../components/image-slot';
 import { SiteLink } from '../components/site-link';
 
@@ -50,6 +52,17 @@ export function HeroSection({ section, locale }: { section: SectionOf<'hero'>; l
   const t = useTranslations();
   const { props } = section;
   const { emergency } = getSite().settings.contacts;
+  const picture = (image: ImageRef, first: boolean) => (
+    <ImageSlot
+      image={image}
+      locale={locale}
+      ratio="card"
+      icon="stethoscope"
+      priority={first}
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      className="h-full"
+    />
+  );
   return (
     <section className="bg-linear-to-b from-primary-soft to-bg">
       <Container className="grid items-center gap-10 py-12 lg:grid-cols-2 lg:py-20">
@@ -85,14 +98,15 @@ export function HeroSection({ section, locale }: { section: SectionOf<'hero'>; l
           </a>
         </div>
         <div className="enter-unveil hidden lg:block">
-          <ImageSlot
-            image={props.image}
+          <HeroSlides
             locale={locale}
-            ratio="card"
-            icon="stethoscope"
-            priority
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="rounded-panel shadow-overlay"
+            slides={[
+              { media: picture(props.image, true) },
+              ...(props.slides ?? []).map((slide) => ({
+                media: picture(slide.image, false),
+                link: { label: localize(slide.link.label, locale), href: slide.link.href },
+              })),
+            ]}
           />
         </div>
       </Container>

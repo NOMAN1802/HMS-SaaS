@@ -1,5 +1,5 @@
-// Motion layer (C-083, T-WEB-15): with motion allowed, the page settles in and leaves no transform
-// behind, sections reveal as they scroll in and the header gains its shadow on scroll; with reduced
+// Motion layer (C-083, C-085, T-WEB-15): with motion allowed, the page settles in and leaves no
+// transform behind, sections reveal as they scroll in and the header gains its shadow on scroll; with reduced
 // motion nothing moves. The stats count-up is unit tested, as the stats section is hidden in the
 // current content. The other specs run with reduced motion (playwright.config.ts), so this file is
 // the one that sees motion.
@@ -48,12 +48,14 @@ test.describe('with motion allowed', () => {
     await settle(page);
     const header = page.locator('header').first();
     await expect(header).toHaveCSS('box-shadow', NO_SHADOW);
+    // Once the page hydrates, a card below the fold waits transparent (scroll-reveal.tsx, C-085).
     const card = page.locator('.reveal-list > li').last();
-    const before = Number(await card.evaluate((element) => getComputedStyle(element).opacity));
-    expect(before).toBeLessThan(1);
+    await expect(card).toHaveAttribute('data-reveal-pending', '');
+    await expect(card).toHaveCSS('opacity', '0');
     await card.scrollIntoViewIfNeeded();
     await page.mouse.wheel(0, 200);
     await expect(card).toHaveCSS('opacity', '1');
+    await expect(card).not.toHaveAttribute('data-reveal-pending');
     await expect(header).not.toHaveCSS('box-shadow', NO_SHADOW);
   });
 
