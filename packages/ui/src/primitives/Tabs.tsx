@@ -66,7 +66,7 @@ export function Tabs({ tabs, label, value, defaultValue, onValueChange }: TabsPr
         role="tablist"
         aria-label={label}
         onKeyDown={onKeyDown}
-        className="flex gap-1 border-b border-border"
+        className="flex gap-1 overflow-x-auto overflow-y-hidden border-b border-border"
       >
         {tabs.map((tab, index) => {
           const isSelected = tab.id === selected;
@@ -85,7 +85,7 @@ export function Tabs({ tabs, label, value, defaultValue, onValueChange }: TabsPr
               tabIndex={isSelected ? 0 : -1}
               onClick={() => !tab.disabled && setSelected(tab.id)}
               className={cx(
-                '-mb-px h-11 border-b-2 px-4 font-ui font-medium',
+                '-mb-px h-11 shrink-0 border-b-2 px-4 font-ui font-medium whitespace-nowrap',
                 isSelected
                   ? 'border-primary text-primary'
                   : 'border-transparent text-text-muted hover:text-text',

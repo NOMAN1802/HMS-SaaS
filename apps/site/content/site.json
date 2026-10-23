@@ -1,0 +1,387 @@
+{
+  "settings": {
+    "hospitalName": {
+      "bn": "কেয়ারস্পেট হাসপাতাল",
+      "en": "CareSpate Hospital"
+    },
+    "shortName": {
+      "bn": "কেয়ারস্পেট",
+      "en": "CareSpate"
+    },
+    "tagline": {
+      "bn": "আপনজনের মতো যত্ন",
+      "en": "Care that knows you by name"
+    },
+    "contacts": {
+      "hotline": {
+        "display": "09600-000000",
+        "tel": "+8809600000000"
+      },
+      "hotlineOutsideDhaka": {
+        "display": "09600-000001",
+        "tel": "+8809600000001"
+      },
+      "emergency": {
+        "display": "09600-000999",
+        "tel": "+8809600000999"
+      },
+      "ambulance": {
+        "display": "09600-000911",
+        "tel": "+8809600000911"
+      },
+      "email": "info@carespate.example"
+    },
+    "socialLinks": [
+      {
+        "network": "facebook",
+        "url": "https://www.facebook.com"
+      },
+      {
+        "network": "youtube",
+        "url": "https://www.youtube.com"
+      },
+      {
+        "network": "linkedin",
+        "url": "https://www.linkedin.com"
+      }
+    ],
+    "defaultBranch": "gulshan"
+  },
+  "theme": {
+    "logo": {
+      "slot": "logo",
+      "alt": {
+        "bn": "কেয়ারস্পেট লোগো",
+        "en": "CareSpate logo"
+      }
+    },
+    "primaryOverride": null
+  },
+  "navigation": {
+    "topBar": [
+      {
+        "label": {
+          "bn": "নোটিশ",
+          "en": "Notices"
+        },
+        "href": "/notices"
+      },
+      {
+        "label": {
+          "bn": "ক্যারিয়ার",
+          "en": "Careers"
+        },
+        "href": "/careers"
+      },
+      {
+        "label": {
+          "bn": "পেশেন্ট পোর্টাল",
+          "en": "Patient portal"
+        },
+        "href": "/portal"
+      }
+    ],
+    "header": [
+      {
+        "label": {
+          "bn": "ডাক্তার",
+          "en": "Doctors"
+        },
+        "href": "/doctors"
+      },
+      {
+        "label": {
+          "bn": "ডিপার্টমেন্ট",
+          "en": "Departments"
+        },
+        "href": "/departments",
+        "children": [
+          {
+            "label": {
+              "bn": "কার্ডিওলজি",
+              "en": "Cardiology"
+            },
+            "href": "/departments/cardiology"
+          },
+          {
+            "label": {
+              "bn": "নিউরোলজি",
+              "en": "Neurology"
+            },
+            "href": "/departments/neurology"
+          },
+          {
+            "label": {
+              "bn": "অর্থোপেডিক্স",
+              "en": "Orthopaedics"
+            },
+            "href": "/departments/orthopaedics"
+          },
+          {
+            "label": {
+              "bn": "শিশু (পেডিয়াট্রিক্স)",
+              "en": "Paediatrics"
+            },
+            "href": "/departments/paediatrics"
+          },
+          {
+            "label": {
+              "bn": "গাইনি ও অবস",
+              "en": "Gynaecology and obstetrics"
+            },
+            "href": "/departments/gynaecology"
+          },
+          {
+            "label": {
+              "bn": "মেডিসিন",
+              "en": "Internal medicine"
+            },
+            "href": "/departments/medicine"
+          },
+          {
+            "label": {
+              "bn": "নাক, কান ও গলা (ENT)",
+              "en": "Ear, nose and throat"
+            },
+            "href": "/departments/ent"
+          },
+          {
+            "label": {
+              "bn": "চক্ষু",
+              "en": "Eye care"
+            },
+            "href": "/departments/ophthalmology"
+          },
+          {
+            "label": {
+              "bn": "ডেন্টাল",
+              "en": "Dental care"
+            },
+            "href": "/departments/dental"
+          },
+          {
+            "label": {
+              "bn": "কিডনি (নেফ্রোলজি)",
+              "en": "Nephrology"
+            },
+            "href": "/departments/nephrology"
+          },
+          {
+            "label": {
+              "bn": "গ্যাস্ট্রোএন্টারোলজি",
+              "en": "Gastroenterology"
+            },
+            "href": "/departments/gastroenterology"
+          },
+          {
+            "label": {
+              "bn": "ক্যানসার (অনকোলজি)",
+              "en": "Oncology"
+            },
+            "href": "/departments/oncology"
+          }
+        ]
+      },
+      {
+        "label": {
+          "bn": "সেন্টার",
+          "en": "Centres"
+        },
+        "href": "/centres"
+      },
+      {
+        "label": {
+          "bn": "প্যাকেজ",
+          "en": "Packages"
+        },
+        "href": "/packages"
+      },
+      {
+        "label": {
+          "bn": "টেস্টের দাম",
+          "en": "Prices"
+        },
+        "href": "/tests"
+      },
+      {
+        "label": {
+          "bn": "পেশেন্ট ও ভিজিটর",
+          "en": "Patient guide"
+        },
+        "href": "/patients-and-visitors"
+      },
+      {
+        "label": {
+          "bn": "ব্রাঞ্চ",
+          "en": "Branches"
+        },
+        "href": "/branches"
+      },
+      {
+        "label": {
+          "bn": "যোগাযোগ",
+          "en": "Contact"
+        },
+        "href": "/contact"
+      }
+    ],
+    "headerCta": {
+      "label": {
+        "bn": "সিরিয়াল নিন",
+        "en": "Book appointment"
+      },
+      "href": "/book-appointment"
+    }
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": {
+          "bn": "রোগীদের জন্য",
+          "en": "For patients"
+        },
+        "links": [
+          {
+            "label": {
+              "bn": "ডাক্তার খুঁজুন",
+              "en": "Find a doctor"
+            },
+            "href": "/doctors"
+          },
+          {
+            "label": {
+              "bn": "সিরিয়াল",
+              "en": "Book appointment"
+            },
+            "href": "/book-appointment"
+          },
+          {
+            "label": {
+              "bn": "অনলাইন রিপোর্ট",
+              "en": "Online reports"
+            },
+            "href": "/reports"
+          },
+          {
+            "label": {
+              "bn": "টেস্টের দাম",
+              "en": "Test prices"
+            },
+            "href": "/tests"
+          },
+          {
+            "label": {
+              "bn": "হেলথ প্যাকেজ",
+              "en": "Health packages"
+            },
+            "href": "/packages"
+          },
+          {
+            "label": {
+              "bn": "বাসা থেকে স্যাম্পল কালেকশন",
+              "en": "Home sample collection"
+            },
+            "href": "/sample-collection"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "হাসপাতাল",
+          "en": "Hospital"
+        },
+        "links": [
+          {
+            "label": {
+              "bn": "আমাদের কথা",
+              "en": "About us"
+            },
+            "href": "/about"
+          },
+          {
+            "label": {
+              "bn": "ব্রাঞ্চ",
+              "en": "Branches"
+            },
+            "href": "/branches"
+          },
+          {
+            "label": {
+              "bn": "সেন্টার",
+              "en": "Centres of excellence"
+            },
+            "href": "/centres"
+          },
+          {
+            "label": {
+              "bn": "হেলথ টিপস",
+              "en": "Health articles"
+            },
+            "href": "/articles"
+          },
+          {
+            "label": {
+              "bn": "নোটিশ",
+              "en": "Notices"
+            },
+            "href": "/notices"
+          },
+          {
+            "label": {
+              "bn": "ক্যারিয়ার",
+              "en": "Careers"
+            },
+            "href": "/careers"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "সহায়তা",
+          "en": "Help"
+        },
+        "links": [
+          {
+            "label": {
+              "bn": "পেশেন্ট ও ভিজিটর গাইড",
+              "en": "Patient and visitor guide"
+            },
+            "href": "/patients-and-visitors"
+          },
+          {
+            "label": {
+              "bn": "ইমার্জেন্সি সার্ভিস",
+              "en": "Emergency"
+            },
+            "href": "/emergency"
+          },
+          {
+            "label": {
+              "bn": "ফিডব্যাক দিন",
+              "en": "Feedback"
+            },
+            "href": "/feedback"
+          },
+          {
+            "label": {
+              "bn": "যোগাযোগ",
+              "en": "Contact"
+            },
+            "href": "/contact"
+          }
+        ]
+      }
+    ],
+    "note": {
+      "bn": "© ২০২৬ কেয়ারস্পেট হাসপাতাল (ডেমো)। বাইটস্পেট HMS দ্বারা পরিচালিত।",
+      "en": "© 2026 CareSpate Hospital (demo). Powered by Bytespate HMS."
+    }
+  },
+  "notice": {
+    "enabled": true,
+    "text": {
+      "bn": "ডেমো কনটেন্ট: এই সাইটের নাম, মূল্য ও সময়সূচি নমুনা মাত্র।",
+      "en": "Demo content: names, prices and schedules on this site are samples."
+    }
+  }
+}

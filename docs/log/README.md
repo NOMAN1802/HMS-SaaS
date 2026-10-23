@@ -69,3 +69,26 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-18 | [CI: cache the generated Prisma client with the database build](2026-10-18-ci-database-generated-cache.md)  |
 | 2026-10-18 | [T-PLT-07 (part 1): API request pipeline middleware](2026-10-18-T-PLT-07-request-pipeline.md)               |
 | 2026-10-19 | [T-ACC-02: roles, permissions and the route permission guard](2026-10-19-T-ACC-02-permission-guard.md)      |
+| 2026-10-21 | [T-WEB-00: public website planning pack](2026-10-21-T-WEB-00-site-planning.md)                              |
+| 2026-10-21 | [T-WEB-01: public site scaffold](2026-10-21-T-WEB-01-site-scaffold.md)                                      |
+| 2026-10-21 | [T-WEB-02: shared UI additions](2026-10-21-T-WEB-02-shared-ui.md)                                           |
+| 2026-10-21 | [T-WEB-04: content layer and mock data](2026-10-21-T-WEB-04-content-layer.md)                               |
+| 2026-10-21 | [T-WEB-05: site shell](2026-10-21-T-WEB-05-site-shell.md)                                                   |
+| 2026-10-21 | [T-WEB-06: home page and section registry](2026-10-21-T-WEB-06-home.md)                                     |
+| 2026-10-21 | [T-WEB-07: find a doctor and doctor profiles](2026-10-21-T-WEB-07-doctors.md)                               |
+| 2026-10-21 | [T-WEB-08: departments and centres](2026-10-21-T-WEB-08-departments.md)                                     |
+| 2026-10-21 | [T-WEB-09: health packages and test prices](2026-10-21-T-WEB-09-packages-tests.md)                          |
+| 2026-10-21 | [T-WEB-12: information pages](2026-10-21-T-WEB-12-info-pages.md)                                            |
+| 2026-10-21 | [T-WEB-10: booking wizard (mock)](2026-10-21-T-WEB-10-booking.md)                                           |
+| 2026-10-21 | [T-WEB-11: patient service forms (mock)](2026-10-21-T-WEB-11-patient-services.md)                           |
+| 2026-10-21 | [T-WEB-17: site-wide search](2026-10-21-T-WEB-17-site-search.md)                                            |
+| 2026-10-21 | [T-WEB-13: search engine signals](2026-10-21-T-WEB-13-seo.md)                                               |
+| 2026-10-21 | [T-WEB-14: image slots and AI prompt list](2026-10-21-T-WEB-14-image-prompts.md)                            |
+| 2026-10-21 | [T-WEB-15: WEB-A quality pass](2026-10-21-T-WEB-15-quality-pass.md)                                         |
+| 2026-10-21 | [T-WEB-03: natural Bangla copy](2026-10-21-T-WEB-03-bangla-copy.md)                                         |
+| 2026-10-21 | [T-WEB-03: Bangla heading font](2026-10-21-T-WEB-03-bangla-heading-font.md)                                 |
+| 2026-10-21 | [T-WEB-15: design critique and polish](2026-10-21-T-WEB-15-design-polish.md)                                |
+| 2026-10-21 | [T-WEB-15: motion layer](2026-10-21-T-WEB-15-motion.md)                                                     |
+| 2026-10-22 | [T-WEB-15: sliders and list motion](2026-10-22-T-WEB-15-sliders-and-list-motion.md)                         |
+| 2026-10-22 | [T-WEB-14: generated images for every slot](2026-10-22-T-WEB-14-generated-images.md)                        |
+| 2026-10-22 | [T-WEB-15: loading states and skeletons](2026-10-22-T-WEB-15-loading-states.md)                             |

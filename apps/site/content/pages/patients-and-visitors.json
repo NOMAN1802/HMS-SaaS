@@ -1,0 +1,90 @@
+{
+  "path": "/patients-and-visitors",
+  "title": {
+    "bn": "পেশেন্ট ও ভিজিটর",
+    "en": "Patients and visitors"
+  },
+  "seo": {
+    "title": {
+      "bn": "পেশেন্ট ও ভিজিটর",
+      "en": "Patients and visitors"
+    },
+    "description": {
+      "bn": "ভর্তি, ছাড়পত্র, দর্শনার্থীর সময় ও রোগীর অধিকার।",
+      "en": "Admission, discharge, visiting hours and patient rights."
+    }
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "type": "richText",
+      "props": {
+        "body": {
+          "bn": ["হাসপাতালে আসার আগে এই নির্দেশিকা পড়ে নিলে সময় বাঁচবে।"],
+          "en": ["Reading this guide before you come will save you time."]
+        }
+      }
+    },
+    {
+      "id": "guide",
+      "type": "guideSections",
+      "props": {}
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "props": {
+        "heading": {
+          "bn": "সাধারণ প্রশ্ন",
+          "en": "Common questions"
+        },
+        "items": [
+          {
+            "question": {
+              "bn": "সিরিয়াল ছাড়া কি ডাক্তার দেখানো যায়?",
+              "en": "Can I see a doctor without an appointment?"
+            },
+            "answer": {
+              "bn": ["হ্যাঁ, তবে সিরিয়াল থাকলে অপেক্ষা কম হয়।"],
+              "en": ["Yes, but with an appointment you wait less."]
+            }
+          },
+          {
+            "question": {
+              "bn": "রিপোর্ট কীভাবে পাব?",
+              "en": "How do I get my reports?"
+            },
+            "answer": {
+              "bn": ["রিপোর্ট কাউন্টার থেকে বা অনলাইন রিপোর্ট পাতা থেকে সংগ্রহ করুন।"],
+              "en": ["Collect them at the report counter or on the online reports page."]
+            }
+          },
+          {
+            "question": {
+              "bn": "কার্ডে পেমেন্ট করা যায়?",
+              "en": "Can I pay by card?"
+            },
+            "answer": {
+              "bn": ["হ্যাঁ, কার্ড ও মোবাইল ব্যাংকিং দুটোই গ্রহণ করা হয়।"],
+              "en": ["Yes, cards and mobile banking are both accepted."]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "request",
+      "type": "appointmentRequest",
+      "props": {
+        "heading": {
+          "bn": "কলব্যাক অনুরোধ",
+          "en": "Request a call back"
+        },
+        "text": {
+          "bn": "নাম ও ফোন নম্বর দিন, আমরা ফোন করে সিরিয়াল ঠিক করে দেব।",
+          "en": "Leave your name and phone number and we will call to arrange an appointment."
+        }
+      }
+    }
+  ]
+}
