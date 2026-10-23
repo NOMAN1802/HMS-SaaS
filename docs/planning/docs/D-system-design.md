@@ -292,16 +292,17 @@ Every command evaluates the following, in order (fail fast):
 
 These run in `authz` guards plus application-layer checks, because state checks need the record.
 
-**Route permission guard (PROPOSED, T-ACC-02).**
+**Route permission guard (built in T-ACC-02).**
 - Every controller handler declares what it needs with exactly one explicit marker:
-  - `@RequirePermission('billing.payment.record')`: codes come from the permission catalogue in `packages/contracts`, so a misspelled code fails typecheck. Several codes mean all are required.
+  - `@RequirePermission('billing.payment.record')`: codes come from the permission catalogue in `packages/contracts`, so a misspelled code fails typecheck. Several codes mean all are required. On a controller the codes apply to every handler, and a handler's own codes are added.
   - `@Public()` (no session) or `@AllowWithoutTenant()` (session, no hospital chosen yet), which already exist from T-ACC-01.
-- `PermissionGuard` is a global guard that runs after `TenantGuard`. It reads the marker with Nest's `Reflector` and checks module entitlement (step 3) and the membership's cached permission set (step 4). Failure returns `403 ENTITLEMENT_MISSING` or `403 PERMISSION_DENIED`; a denied sensitive attempt is audited (§7.3).
+- `PermissionGuard` is a global guard that runs after `TenantGuard`. It reads the marker with Nest's `Reflector` and checks module entitlement (step 3) and the membership's permission set (step 4). Failure returns `403 ENTITLEMENT_MISSING` or `403 PERMISSION_DENIED`. Every refusal is audited as `authz.access.denied` in its own short transaction (§7.3), not only sensitive ones, because a refusal at the route has no business transaction to judge sensitivity by.
+- Each permission code belongs to one entitlement module, named after its `mod-*` package (§5). The `core` module (users, roles, configuration, audit, support grants) needs no `tenant_entitlement` row.
 - **Default deny:** a handler with no marker is refused with `403 PERMISSION_DENIED`, and an API test lists every route and fails if any has no marker. Forgetting the decorator can never open a route.
 - Steps 5 and 6 (facility/department scope, record state, segregation of duty) stay in the application layer, because they need the loaded record.
 - The permission matrix test (H §4) builds its route list from these markers.
 
-Permissions are loaded per membership from roles and cached (`t:{tenant}:perm:{membership}:v{rolesVersion}`). Any role or membership change bumps the version.
+Permissions are loaded per membership from roles (`role`, `role_permission`, `membership_role`). Until the Valkey client exists (T-PLT-03) the guard reads them from PostgreSQL on every guarded request; then they are cached (`t:{tenant}:perm:{membership}:v{rolesVersion}`) and any role or membership change bumps the version.
 
 ### 7.3 Audit
 

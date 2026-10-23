@@ -76,6 +76,7 @@ export const en = {
       CSRF_TOKEN_INVALID: 'Your session needs to be refreshed. Please sign in again.',
       TENANT_NOT_SELECTED: 'Choose a hospital first.',
       MEMBERSHIP_NOT_ACTIVE: 'Your access to this hospital is not active.',
+      ENTITLEMENT_MISSING: 'This hospital does not use this module.',
       NOT_FOUND: 'Record not found.',
       VALIDATION_FAILED: 'Please check the highlighted fields.',
       PAYLOAD_TOO_LARGE: 'The request is too large. Send less data and try again.',
