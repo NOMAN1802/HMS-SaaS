@@ -17,7 +17,7 @@ Full guide: [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md). In short:
 | -------- | ----------------------------------------- | -------- |
 | `origin` | https://github.com/byteSpate/HMS-SaaS.git | Main     |
 | `reza`   | https://github.com/rezaulrht/HMS-ERP.git  | Backup 1 |
-| `noman`  | https://github.com/NOMAN1802/HMS-ERP.git  | Backup 2 |
+| `noman`  | https://github.com/NOMAN1802/HMS-SaaS.git | Backup 2 |
 
 Push **every branch and tag** to **all three** (work branches too):
 
@@ -29,7 +29,7 @@ git push origin <branch> && git push reza <branch> && git push noman <branch>
 - **No AI attribution in commits or PRs.** Never add a `Co-Authored-By: Claude` trailer, a "Generated with Claude Code" line or a session link. `.claude/settings.json` sets `attribution` to empty for everyone; do not override it.
 - Commit messages follow the same character rule as code (below): plain ASCII punctuation only.
 - If the remotes are missing (fresh clone), add them:
-  `git remote add reza https://github.com/rezaulrht/HMS-ERP.git && git remote add noman https://github.com/NOMAN1802/HMS-ERP.git`
+  `git remote add reza https://github.com/rezaulrht/HMS-ERP.git && git remote add noman https://github.com/NOMAN1802/HMS-SaaS.git`
 
 ## Deployment boundary (development only)
 
