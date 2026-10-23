@@ -3,9 +3,9 @@ import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import { createPrismaClient, type PrismaClient } from '@hms/database';
 import { fixedClock } from '@hms/domain-kernel';
-import { IdentityAccessModule, hashPassword } from '@hms/mod-identity-access';
+import { IdentityAccessModule, RequirePermission, hashPassword } from '@hms/mod-identity-access';
 import { DatabaseModule } from '@hms/platform';
-import { seedMembership, seedTenant, seedUser } from '@hms/testkit';
+import { grantPermissions, seedMembership, seedTenant, seedUser } from '@hms/testkit';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { configureApp } from './http/configure-app.js';
 
@@ -18,6 +18,8 @@ const PASSWORD = 'correct horse battery';
 const clock = fixedClock(new Date());
 
 // A tenant-scoped probe route, standing in for any business endpoint (AT-ACC-003, AT-ACC-004).
+// It needs a core permission, so no module entitlement is involved; seeded users hold it.
+@RequirePermission('audit.view')
 @Controller('probe')
 class ProbeController {
   @Get('tenant-data')
@@ -72,7 +74,10 @@ describe('auth over HTTP', () => {
     const user = await seedUser(prisma, { passwordHash: await hashPassword(PASSWORD) });
     const memberships: string[] = [];
     for (let i = 0; i < hospitals; i += 1) {
-      memberships.push(await seedMembership(prisma, await seedTenant(prisma), user.id));
+      const tenantId = await seedTenant(prisma);
+      const membershipId = await seedMembership(prisma, tenantId, user.id);
+      await grantPermissions(prisma, tenantId, membershipId, ['audit.view']);
+      memberships.push(membershipId);
     }
     return { ...user, memberships };
   }

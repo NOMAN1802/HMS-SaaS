@@ -32,9 +32,11 @@ model Tenant {
   createdAt DateTime     @default(now()) @map("created_at") @db.Timestamptz
   version   Int          @default(1)
 
-  facilities  Facility[]
-  memberships Membership[]
-  auditEvents AuditEvent[]
+  facilities   Facility[]
+  memberships  Membership[]
+  auditEvents  AuditEvent[]
+  roles        Role[]
+  entitlements TenantEntitlement[]
 
   @@map("tenant")
   @@schema("hms")
@@ -133,7 +135,8 @@ model UserAccount {
   @@schema("hms")
 }
 
-// A user's access to one hospital. Roles and facility scope arrive with T-ACC-02.
+// A user's access to one hospital, with its roles (T-ACC-02). Facility and department scope
+// (FR-ACC-008) arrive with the first command that checks it.
 model Membership {
   tenantId  String           @map("tenant_id") @db.Uuid
   id        String           @id @default(uuid(7)) @db.Uuid
@@ -142,13 +145,77 @@ model Membership {
   createdAt DateTime         @default(now()) @map("created_at") @db.Timestamptz
   version   Int              @default(1)
 
-  tenant   Tenant        @relation(fields: [tenantId], references: [id])
-  user     UserAccount   @relation(fields: [userId], references: [id])
+  tenant   Tenant           @relation(fields: [tenantId], references: [id])
+  user     UserAccount      @relation(fields: [userId], references: [id])
   sessions UserSession[]
+  roles    MembershipRole[]
 
   @@unique([tenantId, id])
   @@unique([tenantId, userId])
   @@map("membership")
+  @@schema("hms")
+}
+
+// A hospital's own role. It starts as a copy of a product template (template_code) and the
+// hospital may add or remove permissions (FR-ACC-008, C-045).
+model Role {
+  tenantId     String   @map("tenant_id") @db.Uuid
+  id           String   @id @default(uuid(7)) @db.Uuid
+  code         String
+  nameEn       String   @map("name_en")
+  nameBn       String?  @map("name_bn")
+  templateCode String?  @map("template_code")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+  version      Int      @default(1)
+
+  tenant      Tenant           @relation(fields: [tenantId], references: [id])
+  permissions RolePermission[]
+  memberships MembershipRole[]
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, code])
+  @@map("role")
+  @@schema("hms")
+}
+
+// Permission codes come from the catalogue in @hms/contracts; the database checks only the format.
+model RolePermission {
+  tenantId       String @map("tenant_id") @db.Uuid
+  roleId         String @map("role_id") @db.Uuid
+  permissionCode String @map("permission_code")
+
+  role Role @relation(fields: [tenantId, roleId], references: [tenantId, id], onDelete: Cascade)
+
+  @@id([tenantId, roleId, permissionCode])
+  @@map("role_permission")
+  @@schema("hms")
+}
+
+model MembershipRole {
+  tenantId     String @map("tenant_id") @db.Uuid
+  membershipId String @map("membership_id") @db.Uuid
+  roleId       String @map("role_id") @db.Uuid
+
+  membership Membership @relation(fields: [tenantId, membershipId], references: [tenantId, id], onDelete: Cascade)
+  role       Role       @relation(fields: [tenantId, roleId], references: [tenantId, id], onDelete: Cascade)
+
+  @@id([tenantId, membershipId, roleId])
+  @@index([tenantId, roleId])
+  @@map("membership_role")
+  @@schema("hms")
+}
+
+// Modules the hospital has bought (FR-SAA-004). An entitlement never grants a permission.
+// The core module needs no row (coreModules in @hms/contracts).
+model TenantEntitlement {
+  tenantId   String   @map("tenant_id") @db.Uuid
+  moduleCode String   @map("module_code")
+  enabledAt  DateTime @default(now()) @map("enabled_at") @db.Timestamptz
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+
+  @@id([tenantId, moduleCode])
+  @@map("tenant_entitlement")
   @@schema("hms")
 }
 
