@@ -292,7 +292,17 @@ Every command evaluates the following, in order (fail fast):
 
 These run in `authz` guards plus application-layer checks, because state checks need the record.
 
-Permissions are loaded per membership from roles and cached (`t:{tenant}:perm:{membership}:v{rolesVersion}`). Any role or membership change bumps the version.
+**Route permission guard (built in T-ACC-02).**
+- Every controller handler declares what it needs with exactly one explicit marker:
+  - `@RequirePermission('billing.payment.record')`: codes come from the permission catalogue in `packages/contracts`, so a misspelled code fails typecheck. Several codes mean all are required. On a controller the codes apply to every handler, and a handler's own codes are added.
+  - `@Public()` (no session) or `@AllowWithoutTenant()` (session, no hospital chosen yet), which already exist from T-ACC-01.
+- `PermissionGuard` is a global guard that runs after `TenantGuard`. It reads the marker with Nest's `Reflector` and checks module entitlement (step 3) and the membership's permission set (step 4). Failure returns `403 ENTITLEMENT_MISSING` or `403 PERMISSION_DENIED`. Every refusal is audited as `authz.access.denied` in its own short transaction (§7.3), not only sensitive ones, because a refusal at the route has no business transaction to judge sensitivity by.
+- Each permission code belongs to one entitlement module, named after its `mod-*` package (§5). The `core` module (users, roles, configuration, audit, support grants) needs no `tenant_entitlement` row.
+- **Default deny:** a handler with no marker is refused with `403 PERMISSION_DENIED`, and an API test lists every route and fails if any has no marker. Forgetting the decorator can never open a route.
+- Steps 5 and 6 (facility/department scope, record state, segregation of duty) stay in the application layer, because they need the loaded record.
+- The permission matrix test (H §4) builds its route list from these markers.
+
+Permissions are loaded per membership from roles (`role`, `role_permission`, `membership_role`). Until the Valkey client exists (T-PLT-03) the guard reads them from PostgreSQL on every guarded request; then they are cached (`t:{tenant}:perm:{membership}:v{rolesVersion}`) and any role or membership change bumps the version.
 
 ### 7.3 Audit
 
@@ -334,7 +344,8 @@ flowchart LR
 | Transitions | `POST …/{id}:{action}` style (colon action) or sub-resource | `POST /api/v1/lab/results/{id}:release` |
 | Idempotency | `Idempotency-Key` header (UUID v4/v7 from the client per user intent); required on all POSTs that create or transition | `Idempotency-Key: 0192f…` |
 | Optimistic concurrency | Responses include `ETag: "v{version}"`; transitions send `If-Match`. A missing `If-Match` on a transition → `428`. | `If-Match: "v7"` |
-| Pagination | Keyset (cursor) for worklists and large lists: `?limit=50&cursor=…`; response `{items, nextCursor}`. Offset only for small admin lists. | `/api/v1/lab/worklists/to-verify?limit=50` |
+| Success body (PROPOSED, T-PLT-08) | Every successful JSON response has the same shape, `{ "data": …, "meta": { "correlationId": "…" } }`, added by a global response interceptor. `204` has no body. Errors are not wrapped: they stay RFC 9457 problem details (§8.3), which also carry `correlationId`. | `{ "data": { "patientId": "…", "mrn": "MRN-000123" }, "meta": { "correlationId": "01J…" } }` |
+| Pagination | Keyset (cursor) for worklists and large lists: `?limit=50&cursor=…`; response `{ data: [...], meta: { nextCursor, correlationId } }`. Offset only for small admin lists. | `/api/v1/lab/worklists/to-verify?limit=50` |
 | Filtering | Explicit query params validated by Zod; no free-form query languages | `?status=RELEASED&from=2026-11-01` |
 | Money | Decimal **strings** with currency: `{ "amount": "500.00", "currency": "BDT" }` | — |
 | Time | RFC 3339 UTC instants (`2026-11-02T04:00:00Z`); business dates as `YYYY-MM-DD` with facility timezone | — |
@@ -367,7 +378,8 @@ Errors use RFC 9457 `application/problem+json` with the stable `code` from [C00 
 | `FEATURE_NOT_AVAILABLE`, `POLICY_NOT_CONFIGURED` | 409 (with explanatory detail) |
 | missing `If-Match` | 428 |
 | `ACCOUNT_LOCKED` | 423 |
-| rate limited | 429 |
+| `PAYLOAD_TOO_LARGE` (proposed, T-PLT-07) | 413 |
+| `RATE_LIMITED` (proposed, T-PLT-07) | 429 |
 | `INTERNAL_ERROR` | 500 |
 | `SERVICE_UNAVAILABLE` | 503 |
 
@@ -434,6 +446,32 @@ Proposed initial event catalogue:
 - `AdmissionCreated`, `BedAllocated`, `BedTransferred`, `PatientDeparted`, `BedCleaningCompleted`
 - `MedicineDispensed`, `MedicineReturnAccepted`
 - `PolicyPublished`, `MembershipChanged`, `RolePermissionsChanged`
+
+### 8.6 API request pipeline (NestJS)
+
+Every API request passes the same layers in a fixed order (PROPOSED, T-PLT-07). Each cross-cutting concern lives in exactly one layer; controllers stay thin and never repeat these checks.
+
+| Order | Nest layer | Component | Job | Task |
+| --- | --- | --- | --- | --- |
+| 1 | Express middleware (`configureApp`) | `requestIdMiddleware` (`platform`) | Accept a well-formed `X-Request-Id` from nginx or the client, otherwise create a random UUID; echo it in the response header and keep it on the request. It becomes the `correlationId`. It runs first, before body parsing, so even a rejected body (413, malformed JSON) gets an ID. | T-PLT-07 (done) |
+| 2 | Express middleware (`configureApp`) | trust proxy, `helmet`, cookie parser, CORS | Real visitor IP from nginx; security headers with API defaults (HSTS stays with nginx); cookies; CORS allow-list (ADR-021) | T-ACC-01, T-PLT-07 (done) |
+| 3 | Express body parser (`configureApp`) | JSON parser with a 1 MB limit | A larger body is answered as a `PAYLOAD_TOO_LARGE` problem; uploads go to object storage by presigned URL instead | T-PLT-07 (done) |
+| 4 | Nest middleware (`RequestPipelineModule`) | `RequestContextMiddleware` | Open an `AsyncLocalStorage` store for the request holding `correlationId`; `SessionGuard` adds `tenantId`, `userId`, `membershipId`. Logs, audit, outbox and job enqueueing read it without passing it through every call. | T-PLT-07 (done) |
+| 5 | Nest middleware (`RequestPipelineModule`) | Request logger (`nestjs-pino`) | One line per request, written when the response finishes: method, path without query string, status, `durationMs`, `correlationId`, `tenantId`, `userId`. Headers are never logged. Redaction rules for other log lines come from T-PLT-06. | T-PLT-07 (done), T-PLT-06 |
+| 6 | Guards | `SessionGuard`, `CsrfGuard`, `TenantGuard`, then `PermissionGuard` reading `@RequirePermission` (default deny, §7.2) | Authorization steps 1 to 4 of §7.2 | T-ACC-01 (done), T-ACC-02 |
+| 7 | Guard | Rate-limit guard (`@nestjs/throttler`, Valkey storage) | Per-session API limit (NFR-SEC-005) answered as `RATE_LIMITED`; login per IP and account limits are T-ACC-03 | T-PLT-07 (second part, needs the Valkey client), T-ACC-03 |
+| 8 | Interceptors | Idempotency, audit, then `ResponseEnvelopeInterceptor`: checks the handler result against its contract schema (ADR-005) and wraps it as `{ data, meta }` (§8.2) | §9, §7.3, ADR-005 | T-PLT-01, T-PLT-02, T-PLT-08 |
+| 9 | Pipe | Zod validation pipe | Input contract check, `VALIDATION_FAILED` | ADR-005 |
+| 10 | Controller, application service | `withTenant()` | Business command or query (§6.2) | module tasks |
+| 11 | Exception filter | `ProblemDetailsFilter` | RFC 9457 body with `correlationId` (§8.3) | T-ACC-01 (done) |
+
+**Rules:**
+- Middleware never makes an authorization decision and never queries the database. It runs before routing, so it cannot see route metadata such as public or permission markers; authorization stays in guards (§7.2).
+- Rate limiting is a guard, not middleware, because the limit key needs the resolved session and the route.
+- The response interceptor never sends fields the contract does not declare. A result that fails its schema is logged and answered as `500 INTERNAL_ERROR`, so a Prisma row or an internal field cannot leak by accident. Routes that do not return JSON (`/health`, file downloads) opt out with an explicit `@RawResponse()` marker.
+- An incoming `X-Request-Id` is accepted only if it is short and made of safe characters (letters, digits, `-`), so a client cannot inject text into logs.
+- `/health` is excluded from rate limiting and logged at debug level only, so deploy and proxy checks do not flood the logs.
+- The worker has no HTTP pipeline. Each job processor restores the same context store from the job payload (`correlationId`, `tenantId`, §6.4) before it runs.
 
 ## 9. Transactions, concurrency, idempotency, outbox/inbox and reconciliation
 

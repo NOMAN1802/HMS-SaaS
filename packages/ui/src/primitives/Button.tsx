@@ -4,25 +4,15 @@
 // for reduced motion. 44 px height on the large size for touch tiers (C-053).
 import type { ButtonHTMLAttributes, Ref } from 'react';
 import { Icon, type IconName } from '../icons/Icon.js';
-import { cx } from '../utils/cx.js';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost';
-export type ButtonSize = 'md' | 'lg';
+import {
+  buttonClassName,
+  iconButtonClassName,
+  type ButtonSize,
+  type ButtonVariant,
+} from './button-styles.js';
 
-const BASE =
-  'inline-flex items-center justify-center gap-2 rounded-control font-ui font-medium whitespace-nowrap select-none transition-[transform,background-color,filter] duration-(--motion-press) ease-out motion-safe:active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100';
-
-const VARIANTS: Record<ButtonVariant, string> = {
-  primary: 'bg-primary text-on-primary hover:bg-primary-strong',
-  secondary: 'bg-surface text-text border border-border-strong hover:bg-surface-hover',
-  danger: 'bg-danger text-on-danger hover:brightness-90',
-  ghost: 'bg-transparent text-primary hover:bg-primary-soft',
-};
-
-const SIZES: Record<ButtonSize, string> = {
-  md: 'h-10 px-4 text-base',
-  lg: 'h-11 px-5 text-base',
-};
+export type { ButtonSize, ButtonVariant } from './button-styles.js';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -49,7 +39,7 @@ export function Button({
       type={type}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
-      className={cx(BASE, VARIANTS[variant], SIZES[size], className)}
+      className={buttonClassName(variant, size, className)}
       {...rest}
     >
       {loading ? <Icon name="spinner" size={18} className="motion-safe:animate-spin" /> : null}
@@ -84,7 +74,7 @@ export function IconButton({
       type={type}
       aria-label={label}
       title={label}
-      className={cx(BASE, VARIANTS[variant], 'size-10 shrink-0 p-0', className)}
+      className={iconButtonClassName(variant, className)}
       {...rest}
     >
       <Icon name={icon} />

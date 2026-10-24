@@ -44,7 +44,8 @@ const rawWidgetSelector = {
 
 const useServerSelector = {
   selector: "ExpressionStatement > Literal[value='use server']",
-  message: "'use server' is not allowed in apps/web: business writes go through the API (ADR-002).",
+  message:
+    "'use server' is not allowed in apps/web or apps/site: business writes go through the API (ADR-002).",
 };
 
 const iconImportRestriction = {
@@ -56,12 +57,13 @@ const iconImportRestriction = {
   ],
 };
 
-const testFiles = ['**/*.test.{ts,tsx,js}', 'apps/web/e2e/**'];
+const testFiles = ['**/*.test.{ts,tsx,js}', 'apps/web/e2e/**', 'apps/site/e2e/**'];
 
+// The public site (apps/site) follows the same reuse rules as the staff app (P-030).
 export const webGuardrails = [
   {
     name: 'hms/web-guardrails',
-    files: ['apps/web/**/*.{ts,tsx}'],
+    files: ['apps/web/**/*.{ts,tsx}', 'apps/site/**/*.{ts,tsx}'],
     ignores: testFiles,
     rules: {
       'no-restricted-syntax': [

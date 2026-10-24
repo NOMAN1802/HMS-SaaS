@@ -8,6 +8,8 @@ describe('errorCodes', () => {
     expect(errorCodes.CSRF_TOKEN_INVALID).toBe(403);
     expect(errorCodes.TENANT_NOT_SELECTED).toBe(403);
     expect(errorCodes.ACCOUNT_LOCKED).toBe(423);
+    expect(errorCodes.PERMISSION_DENIED).toBe(403);
+    expect(errorCodes.ENTITLEMENT_MISSING).toBe(403);
     expect(errorCodes.VALIDATION_FAILED).toBe(422);
   });
 });

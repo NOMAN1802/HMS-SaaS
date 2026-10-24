@@ -3,9 +3,9 @@ import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import { createPrismaClient, type PrismaClient } from '@hms/database';
 import { fixedClock } from '@hms/domain-kernel';
-import { IdentityAccessModule, hashPassword } from '@hms/mod-identity-access';
+import { IdentityAccessModule, RequirePermission, hashPassword } from '@hms/mod-identity-access';
 import { DatabaseModule } from '@hms/platform';
-import { seedMembership, seedTenant, seedUser } from '@hms/testkit';
+import { grantPermissions, seedMembership, seedTenant, seedUser } from '@hms/testkit';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { configureApp } from './http/configure-app.js';
 
@@ -18,6 +18,8 @@ const PASSWORD = 'correct horse battery';
 const clock = fixedClock(new Date());
 
 // A tenant-scoped probe route, standing in for any business endpoint (AT-ACC-003, AT-ACC-004).
+// It needs a core permission, so no module entitlement is involved; seeded users hold it.
+@RequirePermission('audit.view')
 @Controller('probe')
 class ProbeController {
   @Get('tenant-data')
@@ -72,7 +74,10 @@ describe('auth over HTTP', () => {
     const user = await seedUser(prisma, { passwordHash: await hashPassword(PASSWORD) });
     const memberships: string[] = [];
     for (let i = 0; i < hospitals; i += 1) {
-      memberships.push(await seedMembership(prisma, await seedTenant(prisma), user.id));
+      const tenantId = await seedTenant(prisma);
+      const membershipId = await seedMembership(prisma, tenantId, user.id);
+      await grantPermissions(prisma, tenantId, membershipId, ['audit.view']);
+      memberships.push(membershipId);
     }
     return { ...user, memberships };
   }
@@ -174,16 +179,18 @@ describe('auth over HTTP', () => {
     expect(res.headers.get('set-cookie')).toBeNull();
   });
 
-  it('does not store a client-supplied request id that is not a safe token', async () => {
+  it('replaces a client-supplied request id that is not a safe token (T-PLT-07)', async () => {
     const user = await seedLogin(1);
-    await fetch(`${base}/auth/login`, {
+    const res = await fetch(`${base}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Request-Id': 'bad id; drop table' },
       body: JSON.stringify({ username: user.username, password: 'wrong' }),
     });
+    const issuedId = res.headers.get('x-request-id');
+    expect(issuedId).not.toBe('bad id; drop table');
     const events = await prisma.authEvent.findMany({ where: { userId: user.id } });
     expect(events).not.toHaveLength(0);
-    expect(events.every((e) => e.correlationId === null)).toBe(true);
+    expect(events.every((e) => e.correlationId === issuedId)).toBe(true);
   });
 
   it('returns 422 for an empty username', async () => {

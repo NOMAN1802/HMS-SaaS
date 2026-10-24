@@ -1,0 +1,222 @@
+[
+  {
+    "slug": "heart-attack-warning-signs",
+    "title": {
+      "bn": "হার্ট অ্যাটাকের সতর্ক সংকেত চিনে নিন",
+      "en": "Know the warning signs of a heart attack"
+    },
+    "category": {
+      "bn": "হৃদ্‌রোগ",
+      "en": "Heart health"
+    },
+    "excerpt": {
+      "bn": "বুকে চাপ, ঘাম ও শ্বাসকষ্ট হলে দেরি না করে ইমার্জেন্সিতে আসুন।",
+      "en": "Chest pressure, sweating and breathlessness mean: come to emergency without delay."
+    },
+    "body": {
+      "bn": [
+        "হার্ট অ্যাটাকের সাধারণ লক্ষণ হলো বুকের মাঝখানে চাপ বা ব্যথা, যা বাম হাত, চোয়াল বা পিঠে ছড়াতে পারে।",
+        "ঘাম, বমিভাব ও শ্বাসকষ্টও হতে পারে। নারী ও ডায়াবেটিস রোগীদের লক্ষণ অনেক সময় হালকা হয়।",
+        "লক্ষণ দেখা দিলে নিজে গাড়ি চালিয়ে আসবেন না। জরুরি নম্বরে ফোন করুন।"
+      ],
+      "en": [
+        "Common signs of a heart attack are pressure or pain in the middle of the chest that may spread to the left arm, jaw or back.",
+        "Sweating, nausea and breathlessness can also occur. Women and people with diabetes often have milder signs.",
+        "If you notice these signs, do not drive yourself. Call the emergency number."
+      ]
+    },
+    "author": "farhana-rahman",
+    "department": "cardiology",
+    "publishedOn": "2026-10-02",
+    "image": {
+      "slot": "article-heart-attack-warning-signs",
+      "alt": {
+        "bn": "হৃদ্‌যন্ত্রের চিত্র",
+        "en": "Illustration of a heart"
+      },
+      "src": "/images/article-heart-attack-warning-signs-a52610f8.webp"
+    }
+  },
+  {
+    "slug": "dengue-season-care",
+    "title": {
+      "bn": "ডেঙ্গু মৌসুমে কী করবেন",
+      "en": "What to do in dengue season"
+    },
+    "category": {
+      "bn": "সংক্রমণ",
+      "en": "Infections"
+    },
+    "excerpt": {
+      "bn": "জ্বরের প্রথম দিনেই টেস্ট ও প্রচুর পানি পান জরুরি।",
+      "en": "Test on the first day of fever and drink plenty of fluids."
+    },
+    "body": {
+      "bn": [
+        "ডেঙ্গু জ্বরে প্রথম তিন দিনের মধ্যে NS1 টেস্ট করালে দ্রুত রোগ নির্ণয় হয়।",
+        "প্রচুর পানি, স্যালাইন ও তরল খাবার খান। ব্যথানাশক হিসেবে শুধু প্যারাসিটামল খান।",
+        "পেটে ব্যথা, বমি, রক্তপাত বা অতিরিক্ত দুর্বলতা হলে সঙ্গে সঙ্গে হাসপাতালে আসুন।"
+      ],
+      "en": [
+        "An NS1 test in the first three days of fever helps diagnose dengue quickly.",
+        "Drink plenty of water, oral saline and fluids. Use only paracetamol for pain.",
+        "Come to hospital at once if you have stomach pain, vomiting, bleeding or severe weakness."
+      ]
+    },
+    "author": "kamrul-hasan",
+    "department": "medicine",
+    "publishedOn": "2026-09-18",
+    "image": {
+      "slot": "article-dengue-season-care",
+      "alt": {
+        "bn": "মশা প্রতিরোধের চিত্র",
+        "en": "Illustration of mosquito protection"
+      },
+      "src": "/images/article-dengue-season-care-d33028b0.webp"
+    }
+  },
+  {
+    "slug": "child-vaccination-schedule",
+    "title": {
+      "bn": "শিশুর টিকার সময়সূচি",
+      "en": "Your child's vaccination schedule"
+    },
+    "category": {
+      "bn": "শিশু স্বাস্থ্য",
+      "en": "Child health"
+    },
+    "excerpt": {
+      "bn": "সময়মতো টিকা শিশুকে গুরুতর রোগ থেকে রক্ষা করে।",
+      "en": "Vaccines on time protect children from serious diseases."
+    },
+    "body": {
+      "bn": [
+        "জন্মের পর থেকে নির্দিষ্ট বয়সে টিকা দিলে শিশু সবচেয়ে বেশি সুরক্ষা পায়।",
+        "টিকার কার্ড সঙ্গে আনুন, যাতে কোন টিকা বাকি আছে তা দেখা যায়।"
+      ],
+      "en": [
+        "Children are best protected when each vaccine is given at the recommended age.",
+        "Bring the vaccination card so we can see which doses are due."
+      ]
+    },
+    "author": "shirin-akter",
+    "department": "paediatrics",
+    "publishedOn": "2026-09-05",
+    "image": {
+      "slot": "article-child-vaccination-schedule",
+      "alt": {
+        "bn": "শিশুর টিকাদানের চিত্র",
+        "en": "Illustration of a child being vaccinated"
+      },
+      "src": "/images/article-child-vaccination-schedule-413119e0.webp"
+    }
+  },
+  {
+    "slug": "managing-diabetes-daily",
+    "title": {
+      "bn": "প্রতিদিন ডায়াবেটিস নিয়ন্ত্রণ",
+      "en": "Managing diabetes every day"
+    },
+    "category": {
+      "bn": "দীর্ঘমেয়াদি রোগ",
+      "en": "Long-term conditions"
+    },
+    "excerpt": {
+      "bn": "খাবার, হাঁটা ও নিয়মিত টেস্ট: তিনটি অভ্যাস।",
+      "en": "Food, walking and regular tests: three habits."
+    },
+    "body": {
+      "bn": [
+        "প্রতিদিন অন্তত ৩০ মিনিট হাঁটুন এবং ভাত ও মিষ্টির পরিমাণ কমান।",
+        "প্রতি তিন মাসে HbA1c এবং বছরে একবার চোখ ও কিডনি টেস্ট করান।"
+      ],
+      "en": [
+        "Walk for at least 30 minutes a day and eat less rice and sweets.",
+        "Check HbA1c every three months, and your eyes and kidneys once a year."
+      ]
+    },
+    "author": "laila-arjumand",
+    "department": "medicine",
+    "publishedOn": "2026-08-22",
+    "image": {
+      "slot": "article-managing-diabetes-daily",
+      "alt": {
+        "bn": "স্বাস্থ্যকর খাবারের চিত্র",
+        "en": "Illustration of healthy food"
+      },
+      "src": "/images/article-managing-diabetes-daily-0a3e9163.webp"
+    }
+  },
+  {
+    "slug": "knee-pain-when-to-see-doctor",
+    "title": {
+      "bn": "হাঁটুর ব্যথা: কখন ডাক্তারের কাছে যাবেন",
+      "en": "Knee pain: when to see a doctor"
+    },
+    "category": {
+      "bn": "হাড় ও জোড়া",
+      "en": "Bones and joints"
+    },
+    "excerpt": {
+      "bn": "ফোলা, লাল হওয়া বা হাঁটতে না পারলে দেরি করবেন না।",
+      "en": "Swelling, redness or not being able to walk need a doctor."
+    },
+    "body": {
+      "bn": [
+        "বয়স, ওজন ও আঘাত হাঁটুর ব্যথার সাধারণ কারণ।",
+        "দুই সপ্তাহের বেশি ব্যথা, ফোলা বা হাঁটু আটকে যাওয়া হলে অর্থোপেডিক স্পেশালিস্ট দেখান।"
+      ],
+      "en": [
+        "Age, weight and injury are common causes of knee pain.",
+        "See an orthopaedic specialist if pain or swelling lasts more than two weeks, or if the knee locks."
+      ]
+    },
+    "author": "rafiqul-islam",
+    "department": "orthopaedics",
+    "publishedOn": "2026-08-10",
+    "image": {
+      "slot": "article-knee-pain-when-to-see-doctor",
+      "alt": {
+        "bn": "হাঁটুর চিত্র",
+        "en": "Illustration of a knee"
+      },
+      "src": "/images/article-knee-pain-when-to-see-doctor-491f7d03.webp"
+    }
+  },
+  {
+    "slug": "pregnancy-first-trimester",
+    "title": {
+      "bn": "গর্ভাবস্থার প্রথম তিন মাস",
+      "en": "The first three months of pregnancy"
+    },
+    "category": {
+      "bn": "মা ও শিশু",
+      "en": "Mother and child"
+    },
+    "excerpt": {
+      "bn": "প্রথম চেকআপ, ফলিক অ্যাসিড ও সতর্কতার লক্ষণ।",
+      "en": "Your first check-up, folic acid and warning signs."
+    },
+    "body": {
+      "bn": [
+        "গর্ভধারণ নিশ্চিত হলে যত দ্রুত সম্ভব প্রথম চেকআপ করান।",
+        "ফলিক অ্যাসিড নিয়মিত খান। রক্তপাত বা তীব্র পেটব্যথা হলে সঙ্গে সঙ্গে আসুন।"
+      ],
+      "en": [
+        "Book your first check-up as soon as the pregnancy is confirmed.",
+        "Take folic acid every day. Come at once if you have bleeding or severe stomach pain."
+      ]
+    },
+    "author": "rokeya-sultana",
+    "department": "gynaecology",
+    "publishedOn": "2026-07-28",
+    "image": {
+      "slot": "article-pregnancy-first-trimester",
+      "alt": {
+        "bn": "গর্ভবতী মায়ের চিত্র",
+        "en": "Illustration of an expectant mother"
+      },
+      "src": "/images/article-pregnancy-first-trimester-02557934.webp"
+    }
+  }
+]

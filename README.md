@@ -6,7 +6,9 @@ Whole-hospital ERP sold as SaaS, starting in Bangladesh. The planning pack is in
 
 ```text
 apps/
-  web/        Next.js staff UI (port 3100)
+  web/        Next.js staff UI under /staff (port 3100)
+  dev-proxy/  Development only: joins site and staff app on http://localhost:3000, like nginx
+  site/       Next.js public hospital website, Bangla and English (port 3200, docs/site-planning)
   api/        NestJS HTTP API (port 4100)
   worker/     NestJS background jobs (BullMQ, outbox relay)
 packages/
@@ -39,18 +41,18 @@ pnpm --filter @hms/web exec playwright install chromium
 
 ## Everyday commands
 
-| Command                        | What it does                                            |
-| ------------------------------ | ------------------------------------------------------- |
-| `pnpm dev`                     | Run web, api and worker with hot reload                 |
-| `pnpm build`                   | Build everything                                        |
-| `pnpm test`                    | Vitest unit tests in every package                      |
-| `pnpm test:e2e`                | Playwright browser tests                                |
-| `pnpm lint` / `pnpm typecheck` | ESLint (incl. SonarJS rules) / TypeScript               |
-| `pnpm boundaries:check`        | Package dependency rules                                |
-| `pnpm format`                  | Prettier                                                |
-| `pnpm db:migrate`              | Create/apply a migration after editing `schema.prisma`  |
-| `pnpm db:studio`               | Browse the local database                               |
-| `pnpm services:down`           | Stop Postgres + Valkey (data is kept in Docker volumes) |
+| Command                        | What it does                                                                                                                           |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm dev`                     | Run every app with hot reload; open `http://localhost:3000` (site) and `http://localhost:3000/staff` (staff app) through the dev proxy |
+| `pnpm build`                   | Build everything                                                                                                                       |
+| `pnpm test`                    | Vitest unit tests in every package                                                                                                     |
+| `pnpm test:e2e`                | Playwright browser tests                                                                                                               |
+| `pnpm lint` / `pnpm typecheck` | ESLint (incl. SonarJS rules) / TypeScript                                                                                              |
+| `pnpm boundaries:check`        | Package dependency rules                                                                                                               |
+| `pnpm format`                  | Prettier                                                                                                                               |
+| `pnpm db:migrate`              | Create/apply a migration after editing `schema.prisma`                                                                                 |
+| `pnpm db:studio`               | Browse the local database                                                                                                              |
+| `pnpm services:down`           | Stop Postgres + Valkey (data is kept in Docker volumes)                                                                                |
 
 ## Decisions made at scaffold
 

@@ -1,0 +1,41 @@
+{
+  "name": "@hms/site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --port 3200",
+    "start": "next start --port 3200",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint app src e2e proxy.ts",
+    "test": "vitest run --passWithNoTests",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource/hind-siliguri": "5.3.0",
+    "@formkit/auto-animate": "0.10.0",
+    "@hms/contracts": "workspace:*",
+    "@hms/i18n": "workspace:*",
+    "@hms/ui": "workspace:*",
+    "embla-carousel-react": "8.6.0",
+    "lottie-web": "5.13.0",
+    "motion": "13.5.1",
+    "next": "16.4.0",
+    "next-intl": "4.14.9",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-fast-marquee": "1.6.5",
+    "sonner": "2.0.8",
+    "vaul": "1.1.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@hms/config-typescript": "workspace:*",
+    "@playwright/test": "1.64.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.3"
+  }
+}

@@ -1,0 +1,767 @@
+[
+  {
+    "slug": "basic-health-check",
+    "code": "HCP-01",
+    "name": {
+      "bn": "বেসিক হেলথ চেকআপ",
+      "en": "Basic health check"
+    },
+    "category": "general",
+    "audience": {
+      "bn": "১৮ বছরের বেশি বয়সী সবার জন্য",
+      "en": "Adults over 18"
+    },
+    "summary": {
+      "bn": "রক্ত, প্রস্রাব ও বুকের এক্স-রে দিয়ে সাধারণ স্বাস্থ্য টেস্ট।",
+      "en": "A general check with blood, urine and a chest X-ray."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "ব্লাড টেস্ট",
+          "en": "Blood tests"
+        },
+        "tests": [
+          {
+            "bn": "CBC",
+            "en": "Complete blood count"
+          },
+          {
+            "bn": "ফাস্টিং ব্লাড সুগার",
+            "en": "Fasting blood sugar"
+          },
+          {
+            "bn": "সিরাম ক্রিয়েটিনিন",
+            "en": "Serum creatinine"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "অন্যান্য",
+          "en": "Other"
+        },
+        "tests": [
+          {
+            "bn": "ইউরিন টেস্ট",
+            "en": "Urine test"
+          },
+          {
+            "bn": "বুকের এক্স-রে",
+            "en": "Chest X-ray"
+          },
+          {
+            "bn": "ECG",
+            "en": "ECG"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "3500.00",
+    "separatePrice": "4600.00",
+    "image": {
+      "slot": "package-general",
+      "alt": {
+        "bn": "বেসিক হেলথ চেকআপ (চিত্র)",
+        "en": "Basic health check (illustration)"
+      },
+      "src": "/images/package-general-cc592763.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  },
+  {
+    "slug": "executive-health-check",
+    "code": "HCP-02",
+    "name": {
+      "bn": "এক্সিকিউটিভ হেলথ চেকআপ",
+      "en": "Executive health check"
+    },
+    "category": "general",
+    "audience": {
+      "bn": "৩৫ বছরের বেশি বয়সীদের জন্য",
+      "en": "Adults over 35"
+    },
+    "summary": {
+      "bn": "হৃদ্‌যন্ত্র, লিভার, কিডনি ও কোলেস্টেরলসহ বিস্তারিত টেস্ট।",
+      "en": "A detailed check including heart, liver, kidney and cholesterol."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "ব্লাড টেস্ট",
+          "en": "Blood tests"
+        },
+        "tests": [
+          {
+            "bn": "CBC",
+            "en": "Complete blood count"
+          },
+          {
+            "bn": "লিপিড প্রোফাইল",
+            "en": "Lipid profile"
+          },
+          {
+            "bn": "HbA1c",
+            "en": "HbA1c"
+          },
+          {
+            "bn": "লিভার ফাংশন টেস্ট",
+            "en": "Liver function test"
+          },
+          {
+            "bn": "সিরাম ক্রিয়েটিনিন",
+            "en": "Serum creatinine"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "ইমেজিং ও হার্ট",
+          "en": "Imaging and heart"
+        },
+        "tests": [
+          {
+            "bn": "ECG",
+            "en": "ECG"
+          },
+          {
+            "bn": "ইকোকার্ডিওগ্রাম",
+            "en": "Echocardiogram"
+          },
+          {
+            "bn": "পেটের আল্ট্রাসনোগ্রাম",
+            "en": "Abdominal ultrasound"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "9800.00",
+    "separatePrice": "13950.00",
+    "image": {
+      "slot": "package-executive",
+      "alt": {
+        "bn": "এক্সিকিউটিভ হেলথ চেকআপ (চিত্র)",
+        "en": "Executive health check (illustration)"
+      },
+      "src": "/images/package-executive-d520763e.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  },
+  {
+    "slug": "women-wellness",
+    "code": "WHP-01",
+    "name": {
+      "bn": "নারী সুস্থতা প্যাকেজ",
+      "en": "Women's wellness package"
+    },
+    "category": "women",
+    "audience": {
+      "bn": "২৫ বছরের বেশি বয়সী নারীদের জন্য",
+      "en": "Women over 25"
+    },
+    "summary": {
+      "bn": "রক্তশূন্যতা, থাইরয়েড ও জরায়ুমুখ ক্যানসার স্ক্রিনিং।",
+      "en": "Anaemia, thyroid and cervical cancer screening."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "ব্লাড টেস্ট",
+          "en": "Blood tests"
+        },
+        "tests": [
+          {
+            "bn": "CBC",
+            "en": "Complete blood count"
+          },
+          {
+            "bn": "TSH",
+            "en": "TSH"
+          },
+          {
+            "bn": "ভিটামিন ডি",
+            "en": "Vitamin D"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "স্ক্রিনিং",
+          "en": "Screening"
+        },
+        "tests": [
+          {
+            "bn": "প্যাপ স্মিয়ার",
+            "en": "Pap smear"
+          },
+          {
+            "bn": "স্তনের আল্ট্রাসনোগ্রাম",
+            "en": "Breast ultrasound"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "6500.00",
+    "separatePrice": "8700.00",
+    "image": {
+      "slot": "package-women",
+      "alt": {
+        "bn": "নারী সুস্থতা প্যাকেজ (চিত্র)",
+        "en": "Women's wellness package (illustration)"
+      },
+      "src": "/images/package-women-4131bea9.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  },
+  {
+    "slug": "men-wellness",
+    "code": "MHP-01",
+    "name": {
+      "bn": "পুরুষ সুস্থতা প্যাকেজ",
+      "en": "Men's wellness package"
+    },
+    "category": "men",
+    "audience": {
+      "bn": "৩০ বছরের বেশি বয়সী পুরুষদের জন্য",
+      "en": "Men over 30"
+    },
+    "summary": {
+      "bn": "হৃদ্‌যন্ত্র, ডায়াবেটিস ও প্রোস্টেট স্ক্রিনিং।",
+      "en": "Heart, diabetes and prostate screening."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "ব্লাড টেস্ট",
+          "en": "Blood tests"
+        },
+        "tests": [
+          {
+            "bn": "লিপিড প্রোফাইল",
+            "en": "Lipid profile"
+          },
+          {
+            "bn": "HbA1c",
+            "en": "HbA1c"
+          },
+          {
+            "bn": "PSA",
+            "en": "PSA"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "হার্ট",
+          "en": "Heart"
+        },
+        "tests": [
+          {
+            "bn": "ECG",
+            "en": "ECG"
+          },
+          {
+            "bn": "ETT",
+            "en": "Exercise tolerance test"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "7200.00",
+    "separatePrice": "9500.00",
+    "image": {
+      "slot": "package-men",
+      "alt": {
+        "bn": "পুরুষ সুস্থতা প্যাকেজ (চিত্র)",
+        "en": "Men's wellness package (illustration)"
+      },
+      "src": "/images/package-men-effd8ba0.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  },
+  {
+    "slug": "senior-care",
+    "code": "SHP-01",
+    "name": {
+      "bn": "প্রবীণ স্বাস্থ্য প্যাকেজ",
+      "en": "Senior care package"
+    },
+    "category": "senior",
+    "audience": {
+      "bn": "৬০ বছরের বেশি বয়সীদের জন্য",
+      "en": "Adults over 60"
+    },
+    "summary": {
+      "bn": "হাড়ের ঘনত্ব, চোখ, হৃদ্‌যন্ত্র ও কিডনির টেস্ট।",
+      "en": "Bone density, eyes, heart and kidney checks."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "ব্লাড টেস্ট",
+          "en": "Blood tests"
+        },
+        "tests": [
+          {
+            "bn": "CBC",
+            "en": "Complete blood count"
+          },
+          {
+            "bn": "সিরাম ক্রিয়েটিনিন",
+            "en": "Serum creatinine"
+          },
+          {
+            "bn": "HbA1c",
+            "en": "HbA1c"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "অন্যান্য",
+          "en": "Other"
+        },
+        "tests": [
+          {
+            "bn": "হাড়ের ঘনত্ব (BMD)",
+            "en": "Bone density (BMD)"
+          },
+          {
+            "bn": "আই টেস্ট",
+            "en": "Eye test"
+          },
+          {
+            "bn": "ECG",
+            "en": "ECG"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "8500.00",
+    "separatePrice": "11200.00",
+    "image": {
+      "slot": "package-senior",
+      "alt": {
+        "bn": "প্রবীণ স্বাস্থ্য প্যাকেজ (চিত্র)",
+        "en": "Senior care package (illustration)"
+      },
+      "src": "/images/package-senior-fef1ee09.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  },
+  {
+    "slug": "child-growth",
+    "code": "CHP-01",
+    "name": {
+      "bn": "শিশু বৃদ্ধি চেকআপ",
+      "en": "Child growth check"
+    },
+    "category": "child",
+    "audience": {
+      "bn": "১ থেকে ১২ বছরের শিশুদের জন্য",
+      "en": "Children aged 1 to 12"
+    },
+    "summary": {
+      "bn": "বৃদ্ধি, রক্তশূন্যতা ও কৃমির টেস্ট এবং শিশু স্পেশালিস্টের পরামর্শ।",
+      "en": "Growth, anaemia and worm tests with a paediatrician visit."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "টেস্ট",
+          "en": "Tests"
+        },
+        "tests": [
+          {
+            "bn": "CBC",
+            "en": "Complete blood count"
+          },
+          {
+            "bn": "স্টুল টেস্ট",
+            "en": "Stool test"
+          },
+          {
+            "bn": "ইউরিন টেস্ট",
+            "en": "Urine test"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "পরামর্শ",
+          "en": "Consultation"
+        },
+        "tests": [
+          {
+            "bn": "শিশু স্পেশালিস্টের পরামর্শ",
+            "en": "Paediatrician consultation"
+          },
+          {
+            "bn": "বৃদ্ধি চার্ট",
+            "en": "Growth chart review"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "2800.00",
+    "separatePrice": "3600.00",
+    "image": {
+      "slot": "package-child",
+      "alt": {
+        "bn": "শিশু বৃদ্ধি চেকআপ (চিত্র)",
+        "en": "Child growth check (illustration)"
+      },
+      "src": "/images/package-child-c1ba92b7.webp"
+    }
+  },
+  {
+    "slug": "adult-vaccination",
+    "code": "VAC-01",
+    "name": {
+      "bn": "প্রাপ্তবয়স্ক টিকা প্যাকেজ",
+      "en": "Adult vaccination package"
+    },
+    "category": "vaccine",
+    "audience": {
+      "bn": "প্রাপ্তবয়স্কদের জন্য",
+      "en": "Adults"
+    },
+    "summary": {
+      "bn": "হেপাটাইটিস বি, ইনফ্লুয়েঞ্জা ও টিটেনাস টিকা।",
+      "en": "Hepatitis B, influenza and tetanus vaccines."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "টিকা",
+          "en": "Vaccines"
+        },
+        "tests": [
+          {
+            "bn": "হেপাটাইটিস বি (৩ ডোজ)",
+            "en": "Hepatitis B (3 doses)"
+          },
+          {
+            "bn": "ইনফ্লুয়েঞ্জা",
+            "en": "Influenza"
+          },
+          {
+            "bn": "টিটেনাস",
+            "en": "Tetanus"
+          }
+        ]
+      }
+    ],
+    "preparation": [],
+    "price": "4200.00",
+    "separatePrice": "5100.00",
+    "image": {
+      "slot": "package-vaccine",
+      "alt": {
+        "bn": "প্রাপ্তবয়স্ক টিকা প্যাকেজ (চিত্র)",
+        "en": "Adult vaccination package (illustration)"
+      },
+      "src": "/images/package-vaccine-7cb14992.webp"
+    }
+  },
+  {
+    "slug": "diabetes-check",
+    "code": "HCP-03",
+    "name": {
+      "bn": "ডায়াবেটিস চেকআপ",
+      "en": "Diabetes check"
+    },
+    "category": "general",
+    "audience": {
+      "bn": "ডায়াবেটিস আছে বা ঝুঁকিতে আছেন এমন সবার জন্য",
+      "en": "People with or at risk of diabetes"
+    },
+    "summary": {
+      "bn": "সুগার নিয়ন্ত্রণ, কিডনি, চোখ ও ফুট চেক।",
+      "en": "Sugar control, kidney, eye and foot checks."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "রক্ত ও প্রস্রাব",
+          "en": "Blood and urine"
+        },
+        "tests": [
+          {
+            "bn": "HbA1c",
+            "en": "HbA1c"
+          },
+          {
+            "bn": "ফাস্টিং ব্লাড সুগার",
+            "en": "Fasting blood sugar"
+          },
+          {
+            "bn": "ইউরিন মাইক্রোঅ্যালবুমিন",
+            "en": "Urine microalbumin"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "অন্যান্য",
+          "en": "Other"
+        },
+        "tests": [
+          {
+            "bn": "রেটিনা চেক",
+            "en": "Retina check"
+          },
+          {
+            "bn": "ফুট চেক",
+            "en": "Foot check"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "4800.00",
+    "separatePrice": "6300.00",
+    "image": {
+      "slot": "package-diabetes",
+      "alt": {
+        "bn": "ডায়াবেটিস চেকআপ (চিত্র)",
+        "en": "Diabetes check (illustration)"
+      },
+      "src": "/images/package-diabetes-f848f106.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  },
+  {
+    "slug": "cardiac-check",
+    "code": "HCP-04",
+    "name": {
+      "bn": "হার্ট চেকআপ",
+      "en": "Heart check"
+    },
+    "category": "general",
+    "audience": {
+      "bn": "৪০ বছরের বেশি বয়সী বা বুকে ব্যথার ইতিহাস আছে এমন সবার জন্য",
+      "en": "Adults over 40 or with a history of chest pain"
+    },
+    "summary": {
+      "bn": "ECG, ইকো, ETT ও কোলেস্টেরল টেস্ট।",
+      "en": "ECG, echo, exercise test and cholesterol."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "হার্ট",
+          "en": "Heart"
+        },
+        "tests": [
+          {
+            "bn": "ECG",
+            "en": "ECG"
+          },
+          {
+            "bn": "ইকোকার্ডিওগ্রাম",
+            "en": "Echocardiogram"
+          },
+          {
+            "bn": "ETT",
+            "en": "Exercise tolerance test"
+          }
+        ]
+      },
+      {
+        "title": {
+          "bn": "ব্লাড টেস্ট",
+          "en": "Blood tests"
+        },
+        "tests": [
+          {
+            "bn": "লিপিড প্রোফাইল",
+            "en": "Lipid profile"
+          },
+          {
+            "bn": "ট্রপোনিন আই",
+            "en": "Troponin I"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "8900.00",
+    "separatePrice": "12400.00",
+    "image": {
+      "slot": "package-cardiac",
+      "alt": {
+        "bn": "হার্ট চেকআপ (চিত্র)",
+        "en": "Heart check (illustration)"
+      },
+      "src": "/images/package-cardiac-6a78a2ed.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  },
+  {
+    "slug": "corporate-basic",
+    "code": "CRP-01",
+    "name": {
+      "bn": "কর্পোরেট হেলথ চেকআপ",
+      "en": "Corporate health check"
+    },
+    "category": "corporate",
+    "audience": {
+      "bn": "প্রতিষ্ঠানের কর্মীদের জন্য (ন্যূনতম ২০ জন)",
+      "en": "Company staff (minimum 20 people)"
+    },
+    "summary": {
+      "bn": "কর্মস্থলে বা হাসপাতালে কর্মীদের বার্ষিক স্বাস্থ্য টেস্ট।",
+      "en": "Annual staff check-ups at your office or at the hospital."
+    },
+    "groups": [
+      {
+        "title": {
+          "bn": "টেস্ট",
+          "en": "Tests"
+        },
+        "tests": [
+          {
+            "bn": "CBC",
+            "en": "Complete blood count"
+          },
+          {
+            "bn": "ব্লাড সুগার",
+            "en": "Blood sugar"
+          },
+          {
+            "bn": "বুকের এক্স-রে",
+            "en": "Chest X-ray"
+          },
+          {
+            "bn": "ECG",
+            "en": "ECG"
+          }
+        ]
+      }
+    ],
+    "preparation": [
+      {
+        "bn": "টেস্টের আগের রাত ১০টার পর কিছু খাবেন না",
+        "en": "Do not eat after 10 pm the night before"
+      },
+      {
+        "bn": "সকাল ৮টা থেকে ১০টার মধ্যে আসুন",
+        "en": "Come between 8 am and 10 am"
+      }
+    ],
+    "price": "2500.00",
+    "separatePrice": "3400.00",
+    "image": {
+      "slot": "package-corporate",
+      "alt": {
+        "bn": "কর্পোরেট হেলথ চেকআপ (চিত্র)",
+        "en": "Corporate health check (illustration)"
+      },
+      "src": "/images/package-corporate-d18867ac.webp"
+    },
+    "doctorFeeNote": {
+      "bn": "ফলাফল দেখাতে একজন ডাক্তারের পরামর্শ ফি অন্তর্ভুক্ত।",
+      "en": "Includes one doctor consultation to review the results."
+    }
+  }
+]

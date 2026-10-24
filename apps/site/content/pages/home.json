@@ -1,0 +1,416 @@
+{
+  "path": "/",
+  "title": {
+    "bn": "কেয়ারস্পেট হাসপাতাল",
+    "en": "CareSpate Hospital"
+  },
+  "seo": {
+    "title": {
+      "bn": "কেয়ারস্পেট হাসপাতাল",
+      "en": "CareSpate Hospital"
+    },
+    "description": {
+      "bn": "ডাক্তার খুঁজুন, সিরিয়াল নিন, টেস্টের দাম ও হেলথ প্যাকেজ দেখুন।",
+      "en": "Find a doctor, book an appointment, and see test prices and health packages."
+    }
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "props": {
+        "heading": {
+          "bn": "আপনজনের মতো যত্ন",
+          "en": "Care that knows you by name"
+        },
+        "text": {
+          "bn": "৩টি ব্রাঞ্চে ১২টি ডিপার্টমেন্টের স্পেশালিস্ট ডাক্তার। আজই আপনার ডাক্তার খুঁজে নিন।",
+          "en": "Specialists in 12 departments across 3 branches. Find your doctor today."
+        },
+        "image": {
+          "slot": "hero-main",
+          "alt": {
+            "bn": "ডাক্তার রোগীর সঙ্গে কথা বলছেন (চিত্র)",
+            "en": "A doctor talking with a patient (illustration)"
+          },
+          "src": "/images/hero-main-f2b91b41.webp"
+        },
+        "slides": [
+          {
+            "image": {
+              "slot": "hero-paediatrics",
+              "alt": {
+                "bn": "শিশু বিশেষজ্ঞ একটি শিশুকে স্টেথোস্কোপ দিয়ে দেখছেন, পাশে মা (চিত্র)",
+                "en": "A paediatrician listening to a child's chest while the mother holds him (illustration)"
+              },
+              "src": "/images/hero-paediatrics-71854413.webp"
+            },
+            "link": {
+              "label": {
+                "bn": "শিশু স্বাস্থ্য",
+                "en": "Child health"
+              },
+              "href": "/departments/paediatrics"
+            }
+          },
+          {
+            "image": {
+              "slot": "hero-ward",
+              "alt": {
+                "bn": "একজন নার্স ওয়ার্ডে একজন বয়স্ক রোগীর যত্ন নিচ্ছেন (চিত্র)",
+                "en": "A nurse caring for an older patient on a ward (illustration)"
+              },
+              "src": "/images/hero-ward-cbe1ef98.webp"
+            },
+            "link": {
+              "label": {
+                "bn": "ভর্তি ও সেবা",
+                "en": "Inpatient care"
+              },
+              "href": "/patients-and-visitors"
+            }
+          },
+          {
+            "image": {
+              "slot": "hero-imaging",
+              "alt": {
+                "bn": "রেডিওগ্রাফার সিটি স্ক্যানের আগে রোগীকে আশ্বস্ত করছেন (চিত্র)",
+                "en": "A radiographer reassuring a patient before a CT scan (illustration)"
+              },
+              "src": "/images/hero-imaging-40be5096.webp"
+            },
+            "link": {
+              "label": {
+                "bn": "টেস্ট ও ইমেজিং",
+                "en": "Tests and imaging"
+              },
+              "href": "/tests"
+            }
+          }
+        ],
+        "search": true,
+        "popularLinks": [
+          {
+            "label": {
+              "bn": "কার্ডিওলজি",
+              "en": "Cardiology"
+            },
+            "href": "/departments/cardiology"
+          },
+          {
+            "label": {
+              "bn": "শিশু",
+              "en": "Paediatrics"
+            },
+            "href": "/departments/paediatrics"
+          },
+          {
+            "label": {
+              "bn": "চক্ষু",
+              "en": "Eye care"
+            },
+            "href": "/departments/ophthalmology"
+          },
+          {
+            "label": {
+              "bn": "হেলথ চেকআপ",
+              "en": "Health check"
+            },
+            "href": "/packages"
+          }
+        ]
+      }
+    },
+    {
+      "id": "quick-actions",
+      "type": "quickActions",
+      "props": {
+        "items": [
+          {
+            "icon": "stethoscope",
+            "label": {
+              "bn": "ডাক্তার খুঁজুন",
+              "en": "Find a doctor"
+            },
+            "href": "/doctors"
+          },
+          {
+            "icon": "calendar",
+            "label": {
+              "bn": "সিরিয়াল",
+              "en": "Book appointment"
+            },
+            "href": "/book-appointment"
+          },
+          {
+            "icon": "package",
+            "label": {
+              "bn": "হেলথ প্যাকেজ",
+              "en": "Health packages"
+            },
+            "href": "/packages"
+          },
+          {
+            "icon": "file-text",
+            "label": {
+              "bn": "অনলাইন রিপোর্ট",
+              "en": "Online reports"
+            },
+            "href": "/reports"
+          },
+          {
+            "icon": "test-tube",
+            "label": {
+              "bn": "টেস্টের দাম",
+              "en": "Test prices"
+            },
+            "href": "/tests"
+          },
+          {
+            "icon": "siren",
+            "label": {
+              "bn": "ইমার্জেন্সি সার্ভিস",
+              "en": "Emergency"
+            },
+            "href": "/emergency"
+          }
+        ]
+      }
+    },
+    {
+      "id": "service-strip",
+      "type": "serviceStrip",
+      "props": {
+        "label": {
+          "bn": "আমাদের সেবা ও সুবিধা",
+          "en": "Our services and facilities"
+        },
+        "items": [
+          {
+            "icon": "siren",
+            "label": {
+              "bn": "২৪ ঘণ্টা ইমার্জেন্সি",
+              "en": "24-hour emergency"
+            }
+          },
+          {
+            "icon": "ambulance",
+            "label": {
+              "bn": "অ্যাম্বুলেন্স",
+              "en": "Ambulance"
+            }
+          },
+          {
+            "icon": "bed",
+            "label": {
+              "bn": "আইসিইউ ও সিসিইউ",
+              "en": "ICU and CCU"
+            }
+          },
+          {
+            "icon": "baby",
+            "label": {
+              "bn": "এনআইসিইউ",
+              "en": "NICU"
+            }
+          },
+          {
+            "icon": "drop",
+            "label": {
+              "bn": "ডায়ালাইসিস",
+              "en": "Dialysis"
+            }
+          },
+          {
+            "icon": "microscope",
+            "label": {
+              "bn": "ল্যাব টেস্ট",
+              "en": "Lab tests"
+            }
+          },
+          {
+            "icon": "brain",
+            "label": {
+              "bn": "এমআরআই ও সিটি স্ক্যান",
+              "en": "MRI and CT scan"
+            }
+          },
+          {
+            "icon": "test-tube",
+            "label": {
+              "bn": "বাসা থেকে স্যাম্পল কালেকশন",
+              "en": "Home sample collection"
+            }
+          },
+          {
+            "icon": "file-text",
+            "label": {
+              "bn": "অনলাইন রিপোর্ট",
+              "en": "Online reports"
+            }
+          },
+          {
+            "icon": "package",
+            "label": {
+              "bn": "হেলথ চেকআপ প্যাকেজ",
+              "en": "Health check packages"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "departments",
+      "type": "departmentGrid",
+      "props": {
+        "heading": {
+          "bn": "আমাদের ডিপার্টমেন্ট",
+          "en": "Our departments"
+        },
+        "text": {
+          "bn": "প্রতিটি ডিপার্টমেন্টে অভিজ্ঞ স্পেশালিস্ট আর আধুনিক সুবিধা।",
+          "en": "Experienced specialists and modern facilities in every department."
+        },
+        "count": 12,
+        "viewAll": {
+          "label": {
+            "bn": "সব ডিপার্টমেন্ট",
+            "en": "All departments"
+          },
+          "href": "/departments"
+        }
+      }
+    },
+    {
+      "id": "centres",
+      "type": "centreCards",
+      "props": {
+        "heading": {
+          "bn": "সেন্টার অব এক্সিলেন্স",
+          "en": "Centres of excellence"
+        },
+        "centres": ["heart-centre", "mother-child", "bone-joint"]
+      }
+    },
+    {
+      "id": "doctors",
+      "type": "featuredDoctors",
+      "props": {
+        "heading": {
+          "bn": "আমাদের স্পেশালিস্ট ডাক্তার",
+          "en": "Meet our specialists"
+        },
+        "doctors": "featured",
+        "viewAll": {
+          "label": {
+            "bn": "সব ডাক্তার",
+            "en": "All doctors"
+          },
+          "href": "/doctors"
+        }
+      }
+    },
+    {
+      "id": "packages",
+      "type": "packageShowcase",
+      "props": {
+        "heading": {
+          "bn": "হেলথ প্যাকেজ",
+          "en": "Health packages"
+        },
+        "text": {
+          "bn": "আলাদা আলাদা টেস্টের চেয়ে কম খরচে।",
+          "en": "Costs less than buying the tests one by one."
+        },
+        "count": 6,
+        "viewAll": {
+          "label": {
+            "bn": "সব প্যাকেজ",
+            "en": "All packages"
+          },
+          "href": "/packages"
+        }
+      }
+    },
+    {
+      "id": "branches",
+      "type": "branchCards",
+      "props": {
+        "heading": {
+          "bn": "আমাদের ব্রাঞ্চ",
+          "en": "Our branches"
+        }
+      }
+    },
+    {
+      "id": "guide",
+      "type": "imageText",
+      "props": {
+        "heading": {
+          "bn": "পেশেন্ট ও ভিজিটর গাইড",
+          "en": "Patient and visitor guide"
+        },
+        "body": {
+          "bn": ["ভর্তি, ছাড়পত্র, দর্শনার্থীর সময় ও রোগীর অধিকার: আসার আগে জেনে নিন।"],
+          "en": ["Admission, discharge, visiting hours and patient rights: know before you come."]
+        },
+        "image": {
+          "slot": "guide-teaser",
+          "alt": {
+            "bn": "হাসপাতালের রিসেপশন (চিত্র)",
+            "en": "Hospital reception (illustration)"
+          },
+          "src": "/images/guide-teaser-dfce216a.webp"
+        },
+        "imageSide": "start",
+        "link": {
+          "label": {
+            "bn": "গাইড পড়ুন",
+            "en": "Read the guide"
+          },
+          "href": "/patients-and-visitors"
+        }
+      }
+    },
+    {
+      "id": "articles",
+      "type": "articleList",
+      "props": {
+        "heading": {
+          "bn": "হেলথ টিপস",
+          "en": "Health articles"
+        },
+        "count": 3,
+        "viewAll": {
+          "label": {
+            "bn": "সব টিপস",
+            "en": "All articles"
+          },
+          "href": "/articles"
+        }
+      }
+    },
+    {
+      "id": "emergency",
+      "type": "emergencyBand",
+      "props": {
+        "heading": {
+          "bn": "২৪ ঘণ্টা ইমার্জেন্সি সার্ভিস",
+          "en": "24-hour emergency care"
+        },
+        "text": {
+          "bn": "গুলশান ব্রাঞ্চের ইমার্জেন্সি সারা বছর দিনরাত খোলা।",
+          "en": "The emergency department at our Gulshan branch is open day and night, all year."
+        },
+        "image": {
+          "slot": "emergency-band",
+          "alt": {
+            "bn": "অ্যাম্বুলেন্স (চিত্র)",
+            "en": "Ambulance (illustration)"
+          },
+          "src": "/images/emergency-band-1bb90024.webp"
+        }
+      }
+    }
+  ]
+}

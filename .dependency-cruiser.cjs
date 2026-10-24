@@ -19,6 +19,13 @@ module.exports = {
       },
     },
     {
+      name: 'site-allowed-packages-only',
+      comment: 'the public site imports only ui, i18n and contracts (site plan P-030)',
+      severity: 'error',
+      from: { path: '^apps/site/' },
+      to: { path: '^(packages/|@hms/)(?!(ui|i18n|contracts)(/|$))[^/]+' },
+    },
+    {
       name: 'ui-imports-i18n-only',
       comment: 'packages/ui imports only i18n among workspace packages (ADR-022 section 9, rule 4)',
       severity: 'error',

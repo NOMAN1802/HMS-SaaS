@@ -1,0 +1,56 @@
+{
+  "path": "/portal",
+  "title": {
+    "bn": "পেশেন্ট পোর্টাল",
+    "en": "Patient portal"
+  },
+  "seo": {
+    "title": {
+      "bn": "পেশেন্ট পোর্টাল",
+      "en": "Patient portal"
+    },
+    "description": {
+      "bn": "শিগগিরই আসছে: রিপোর্ট, সিরিয়াল ও বিল এক জায়গায়।",
+      "en": "Coming soon: reports, appointments and bills in one place."
+    }
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "type": "richText",
+      "props": {
+        "heading": {
+          "bn": "শিগগিরই আসছে",
+          "en": "Coming soon"
+        },
+        "body": {
+          "bn": ["পেশেন্ট পোর্টালে আপনি রিপোর্ট দেখতে, সিরিয়াল পরিচালনা করতে ও বিল দেখতে পারবেন।"],
+          "en": [
+            "In the patient portal you will be able to see reports, manage appointments and view bills."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cta",
+      "type": "callToAction",
+      "props": {
+        "heading": {
+          "bn": "এখনই রিপোর্ট দরকার?",
+          "en": "Need a report now?"
+        },
+        "text": {
+          "bn": "অনলাইন রিপোর্ট পাতা ব্যবহার করুন।",
+          "en": "Use the online reports page."
+        },
+        "button": {
+          "label": {
+            "bn": "অনলাইন রিপোর্ট",
+            "en": "Online reports"
+          },
+          "href": "/reports"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,3280 @@
+[
+  {
+    "slug": "farhana-rahman",
+    "name": {
+      "bn": "ডা. ফারহানা রহমান",
+      "en": "Dr. Farhana Rahman"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "cardiology",
+    "branches": ["gulshan", "dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, MD (কার্ডিওলজি)",
+      "en": "MBBS, MD (Cardiology)"
+    },
+    "languages": ["bn", "en", "hi"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. ফারহানা রহমান কেয়ারস্পেটের কার্ডিওলজি বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ১৮ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে উচ্চ রক্তচাপ ও হার্ট ফেইলিওর বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Farhana Rahman is a Senior Consultant in Cardiology at CareSpate with 18 years of clinical experience.",
+        "She sees patients mainly for high blood pressure and heart failure. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2002
+      },
+      {
+        "degree": {
+          "bn": "MD (কার্ডিওলজি)",
+          "en": "MD (Cardiology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2008
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2004,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "উচ্চ রক্তচাপ",
+        "en": "High blood pressure"
+      },
+      {
+        "bn": "হার্ট ফেইলিওর",
+        "en": "Heart failure"
+      },
+      {
+        "bn": "হৃৎস্পন্দনের সমস্যা",
+        "en": "Heart rhythm problems"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-farhana-rahman",
+      "alt": {
+        "bn": "ডা. ফারহানা রহমান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Farhana Rahman (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-farhana-rahman-cfcd1831.webp"
+    }
+  },
+  {
+    "slug": "tanvir-ahmed",
+    "name": {
+      "bn": "ডা. তানভীর আহমেদ",
+      "en": "Dr. Tanvir Ahmed"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "cardiology",
+    "branches": ["gulshan"],
+    "qualifications": {
+      "bn": "MBBS, MD (কার্ডিওলজি)",
+      "en": "MBBS, MD (Cardiology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. তানভীর আহমেদ কেয়ারস্পেটের কার্ডিওলজি বিভাগের কনসালট্যান্ট। তাঁর ১২ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে উচ্চ রক্তচাপ ও হার্ট ফেইলিওর বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Tanvir Ahmed is a Consultant in Cardiology at CareSpate with 12 years of clinical experience.",
+        "He sees patients mainly for high blood pressure and heart failure. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2008
+      },
+      {
+        "degree": {
+          "bn": "MD (কার্ডিওলজি)",
+          "en": "MD (Cardiology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2010,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "উচ্চ রক্তচাপ",
+        "en": "High blood pressure"
+      },
+      {
+        "bn": "হার্ট ফেইলিওর",
+        "en": "Heart failure"
+      },
+      {
+        "bn": "হৃৎস্পন্দনের সমস্যা",
+        "en": "Heart rhythm problems"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [
+      {
+        "from": "2026-10-20",
+        "to": "2026-10-30",
+        "message": {
+          "bn": "ডাক্তার ছুটিতে আছেন। ৩১ অক্টোবর থেকে আবার রোগী দেখবেন।",
+          "en": "The doctor is on leave and sees patients again from 31 October."
+        }
+      }
+    ],
+    "image": {
+      "slot": "doctor-tanvir-ahmed",
+      "alt": {
+        "bn": "ডা. তানভীর আহমেদ-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Tanvir Ahmed (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-tanvir-ahmed-2b5f355a.webp"
+    }
+  },
+  {
+    "slug": "nusrat-jahan",
+    "name": {
+      "bn": "ডা. নুসরাত জাহান",
+      "en": "Dr. Nusrat Jahan"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "neurology",
+    "branches": ["gulshan"],
+    "qualifications": {
+      "bn": "MBBS, MD (নিউরোলজি)",
+      "en": "MBBS, MD (Neurology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. নুসরাত জাহান কেয়ারস্পেটের নিউরোলজি বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ২০ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে স্ট্রোক ও মাইগ্রেন বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Nusrat Jahan is a Senior Consultant in Neurology at CareSpate with 20 years of clinical experience.",
+        "She sees patients mainly for stroke and migraine. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2000
+      },
+      {
+        "degree": {
+          "bn": "MD (নিউরোলজি)",
+          "en": "MD (Neurology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2006
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2002,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "স্ট্রোক",
+        "en": "Stroke"
+      },
+      {
+        "bn": "মাইগ্রেন",
+        "en": "Migraine"
+      },
+      {
+        "bn": "খিঁচুনি",
+        "en": "Epilepsy"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-nusrat-jahan",
+      "alt": {
+        "bn": "ডা. নুসরাত জাহান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Nusrat Jahan (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-nusrat-jahan-b69f4ee4.webp"
+    }
+  },
+  {
+    "slug": "mahmudul-hasan",
+    "name": {
+      "bn": "ডা. মাহমুদুল হাসান",
+      "en": "Dr. Mahmudul Hasan"
+    },
+    "title": {
+      "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+      "en": "Associate Consultant"
+    },
+    "department": "neurology",
+    "branches": ["gulshan", "uttara"],
+    "qualifications": {
+      "bn": "MBBS, MD (নিউরোলজি)",
+      "en": "MBBS, MD (Neurology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. মাহমুদুল হাসান কেয়ারস্পেটের নিউরোলজি বিভাগের অ্যাসোসিয়েট কনসালট্যান্ট। তাঁর ৬ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে স্ট্রোক ও মাইগ্রেন বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Mahmudul Hasan is a Associate Consultant in Neurology at CareSpate with 6 years of clinical experience.",
+        "He sees patients mainly for stroke and migraine. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2014
+      },
+      {
+        "degree": {
+          "bn": "MD (নিউরোলজি)",
+          "en": "MD (Neurology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2020
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+          "en": "Associate Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2020
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2016,
+        "to": 2020
+      }
+    ],
+    "interests": [
+      {
+        "bn": "স্ট্রোক",
+        "en": "Stroke"
+      },
+      {
+        "bn": "মাইগ্রেন",
+        "en": "Migraine"
+      },
+      {
+        "bn": "খিঁচুনি",
+        "en": "Epilepsy"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1000.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-mahmudul-hasan",
+      "alt": {
+        "bn": "ডা. মাহমুদুল হাসান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Mahmudul Hasan (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-mahmudul-hasan-fff93bd2.webp"
+    }
+  },
+  {
+    "slug": "rafiqul-islam",
+    "name": {
+      "bn": "ডা. রফিকুল ইসলাম",
+      "en": "Dr. Rafiqul Islam"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "orthopaedics",
+    "branches": ["gulshan", "dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, MS (অর্থোপেডিক্স)",
+      "en": "MBBS, MS (Orthopaedics)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. রফিকুল ইসলাম কেয়ারস্পেটের অর্থোপেডিক্স বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ১৯ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে হাঁটুর ব্যথা ও খেলাধুলার আঘাত বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Rafiqul Islam is a Senior Consultant in Orthopaedics at CareSpate with 19 years of clinical experience.",
+        "He sees patients mainly for knee pain and sports injuries. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2001
+      },
+      {
+        "degree": {
+          "bn": "MS (অর্থোপেডিক্স)",
+          "en": "MS (Orthopaedics)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2007
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2003,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "হাঁটুর ব্যথা",
+        "en": "Knee pain"
+      },
+      {
+        "bn": "খেলাধুলার আঘাত",
+        "en": "Sports injuries"
+      },
+      {
+        "bn": "মেরুদণ্ডের সমস্যা",
+        "en": "Spine problems"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-rafiqul-islam",
+      "alt": {
+        "bn": "ডা. রফিকুল ইসলাম-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Rafiqul Islam (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-rafiqul-islam-1ce7b6be.webp"
+    }
+  },
+  {
+    "slug": "sabina-yasmin",
+    "name": {
+      "bn": "ডা. সাবিনা ইয়াসমিন",
+      "en": "Dr. Sabina Yasmin"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "orthopaedics",
+    "branches": ["uttara"],
+    "qualifications": {
+      "bn": "MBBS, MS (অর্থোপেডিক্স)",
+      "en": "MBBS, MS (Orthopaedics)"
+    },
+    "languages": ["bn", "en", "hi"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. সাবিনা ইয়াসমিন কেয়ারস্পেটের অর্থোপেডিক্স বিভাগের কনসালট্যান্ট। তাঁর ১৩ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে হাঁটুর ব্যথা ও খেলাধুলার আঘাত বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Sabina Yasmin is a Consultant in Orthopaedics at CareSpate with 13 years of clinical experience.",
+        "She sees patients mainly for knee pain and sports injuries. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2007
+      },
+      {
+        "degree": {
+          "bn": "MS (অর্থোপেডিক্স)",
+          "en": "MS (Orthopaedics)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2013
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2009,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "হাঁটুর ব্যথা",
+        "en": "Knee pain"
+      },
+      {
+        "bn": "খেলাধুলার আঘাত",
+        "en": "Sports injuries"
+      },
+      {
+        "bn": "মেরুদণ্ডের সমস্যা",
+        "en": "Spine problems"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-sabina-yasmin",
+      "alt": {
+        "bn": "ডা. সাবিনা ইয়াসমিন-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Sabina Yasmin (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-sabina-yasmin-2c3eb202.webp"
+    }
+  },
+  {
+    "slug": "shirin-akter",
+    "name": {
+      "bn": "ডা. শিরিন আক্তার",
+      "en": "Dr. Shirin Akter"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "paediatrics",
+    "branches": ["gulshan", "uttara"],
+    "qualifications": {
+      "bn": "MBBS, FCPS (শিশু)",
+      "en": "MBBS, FCPS (Paediatrics)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. শিরিন আক্তার কেয়ারস্পেটের শিশু (পেডিয়াট্রিক্স) বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ১৮ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে নবজাতক পরিচর্যা ও শিশুর অ্যাজমা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Shirin Akter is a Senior Consultant in Paediatrics at CareSpate with 18 years of clinical experience.",
+        "She sees patients mainly for newborn care and childhood asthma. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2002
+      },
+      {
+        "degree": {
+          "bn": "FCPS (শিশু)",
+          "en": "FCPS (Paediatrics)"
+        },
+        "institution": {
+          "bn": "বাংলাদেশ কলেজ অব ফিজিশিয়ানস অ্যান্ড সার্জনস",
+          "en": "Bangladesh College of Physicians and Surgeons"
+        },
+        "year": 2008
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2004,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "নবজাতক পরিচর্যা",
+        "en": "Newborn care"
+      },
+      {
+        "bn": "শিশুর অ্যাজমা",
+        "en": "Childhood asthma"
+      },
+      {
+        "bn": "বৃদ্ধি ও পুষ্টি",
+        "en": "Growth and nutrition"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-shirin-akter",
+      "alt": {
+        "bn": "ডা. শিরিন আক্তার-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Shirin Akter (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-shirin-akter-f685af48.webp"
+    }
+  },
+  {
+    "slug": "imran-hossain",
+    "name": {
+      "bn": "ডা. ইমরান হোসেন",
+      "en": "Dr. Imran Hossain"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "paediatrics",
+    "branches": ["dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, FCPS (শিশু)",
+      "en": "MBBS, FCPS (Paediatrics)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. ইমরান হোসেন কেয়ারস্পেটের শিশু (পেডিয়াট্রিক্স) বিভাগের কনসালট্যান্ট। তাঁর ১২ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে নবজাতক পরিচর্যা ও শিশুর অ্যাজমা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Imran Hossain is a Consultant in Paediatrics at CareSpate with 12 years of clinical experience.",
+        "He sees patients mainly for newborn care and childhood asthma. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2008
+      },
+      {
+        "degree": {
+          "bn": "FCPS (শিশু)",
+          "en": "FCPS (Paediatrics)"
+        },
+        "institution": {
+          "bn": "বাংলাদেশ কলেজ অব ফিজিশিয়ানস অ্যান্ড সার্জনস",
+          "en": "Bangladesh College of Physicians and Surgeons"
+        },
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2010,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "নবজাতক পরিচর্যা",
+        "en": "Newborn care"
+      },
+      {
+        "bn": "শিশুর অ্যাজমা",
+        "en": "Childhood asthma"
+      },
+      {
+        "bn": "বৃদ্ধি ও পুষ্টি",
+        "en": "Growth and nutrition"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [
+      {
+        "from": "2026-11-05",
+        "to": "2026-11-12"
+      }
+    ],
+    "image": {
+      "slot": "doctor-imran-hossain",
+      "alt": {
+        "bn": "ডা. ইমরান হোসেন-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Imran Hossain (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-imran-hossain-45dd1a31.webp"
+    }
+  },
+  {
+    "slug": "rokeya-sultana",
+    "name": {
+      "bn": "ডা. রোকেয়া সুলতানা",
+      "en": "Dr. Rokeya Sultana"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "gynaecology",
+    "branches": ["gulshan"],
+    "qualifications": {
+      "bn": "MBBS, FCPS (গাইনি ও অবস)",
+      "en": "MBBS, FCPS (Obstetrics and Gynaecology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. রোকেয়া সুলতানা কেয়ারস্পেটের গাইনি ও অবস বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ২০ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে উচ্চ ঝুঁকির গর্ভধারণ ও বন্ধ্যাত্ব বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Rokeya Sultana is a Senior Consultant in Gynaecology and obstetrics at CareSpate with 20 years of clinical experience.",
+        "She sees patients mainly for high-risk pregnancy and fertility. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2000
+      },
+      {
+        "degree": {
+          "bn": "FCPS (গাইনি ও অবস)",
+          "en": "FCPS (Obstetrics and Gynaecology)"
+        },
+        "institution": {
+          "bn": "বাংলাদেশ কলেজ অব ফিজিশিয়ানস অ্যান্ড সার্জনস",
+          "en": "Bangladesh College of Physicians and Surgeons"
+        },
+        "year": 2006
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2002,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "উচ্চ ঝুঁকির গর্ভধারণ",
+        "en": "High-risk pregnancy"
+      },
+      {
+        "bn": "বন্ধ্যাত্ব",
+        "en": "Fertility"
+      },
+      {
+        "bn": "মেনোপজ",
+        "en": "Menopause"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-rokeya-sultana",
+      "alt": {
+        "bn": "ডা. রোকেয়া সুলতানা-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Rokeya Sultana (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-rokeya-sultana-fd8b48d1.webp"
+    }
+  },
+  {
+    "slug": "taslima-begum",
+    "name": {
+      "bn": "ডা. তাসলিমা বেগম",
+      "en": "Dr. Taslima Begum"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "gynaecology",
+    "branches": ["dhanmondi", "uttara"],
+    "qualifications": {
+      "bn": "MBBS, FCPS (গাইনি ও অবস)",
+      "en": "MBBS, FCPS (Obstetrics and Gynaecology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. তাসলিমা বেগম কেয়ারস্পেটের গাইনি ও অবস বিভাগের কনসালট্যান্ট। তাঁর ১১ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে উচ্চ ঝুঁকির গর্ভধারণ ও বন্ধ্যাত্ব বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Taslima Begum is a Consultant in Gynaecology and obstetrics at CareSpate with 11 years of clinical experience.",
+        "She sees patients mainly for high-risk pregnancy and fertility. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2009
+      },
+      {
+        "degree": {
+          "bn": "FCPS (গাইনি ও অবস)",
+          "en": "FCPS (Obstetrics and Gynaecology)"
+        },
+        "institution": {
+          "bn": "বাংলাদেশ কলেজ অব ফিজিশিয়ানস অ্যান্ড সার্জনস",
+          "en": "Bangladesh College of Physicians and Surgeons"
+        },
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2011,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "উচ্চ ঝুঁকির গর্ভধারণ",
+        "en": "High-risk pregnancy"
+      },
+      {
+        "bn": "বন্ধ্যাত্ব",
+        "en": "Fertility"
+      },
+      {
+        "bn": "মেনোপজ",
+        "en": "Menopause"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-taslima-begum",
+      "alt": {
+        "bn": "ডা. তাসলিমা বেগম-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Taslima Begum (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-taslima-begum-e4685402.webp"
+    }
+  },
+  {
+    "slug": "kamrul-hasan",
+    "name": {
+      "bn": "ডা. কামরুল হাসান",
+      "en": "Dr. Kamrul Hasan"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "medicine",
+    "branches": ["gulshan", "dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, FCPS (মেডিসিন)",
+      "en": "MBBS, FCPS (Medicine)"
+    },
+    "languages": ["bn", "en", "hi"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. কামরুল হাসান কেয়ারস্পেটের মেডিসিন বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ১৯ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে ডায়াবেটিস ও থাইরয়েড বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Kamrul Hasan is a Senior Consultant in Internal medicine at CareSpate with 19 years of clinical experience.",
+        "He sees patients mainly for diabetes and thyroid disorders. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2001
+      },
+      {
+        "degree": {
+          "bn": "FCPS (মেডিসিন)",
+          "en": "FCPS (Medicine)"
+        },
+        "institution": {
+          "bn": "বাংলাদেশ কলেজ অব ফিজিশিয়ানস অ্যান্ড সার্জনস",
+          "en": "Bangladesh College of Physicians and Surgeons"
+        },
+        "year": 2007
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2003,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "ডায়াবেটিস",
+        "en": "Diabetes"
+      },
+      {
+        "bn": "থাইরয়েড",
+        "en": "Thyroid disorders"
+      },
+      {
+        "bn": "জ্বর ও সংক্রমণ",
+        "en": "Fever and infections"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-kamrul-hasan",
+      "alt": {
+        "bn": "ডা. কামরুল হাসান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Kamrul Hasan (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-kamrul-hasan-246612e2.webp"
+    }
+  },
+  {
+    "slug": "laila-arjumand",
+    "name": {
+      "bn": "ডা. লায়লা আরজুমান্দ",
+      "en": "Dr. Laila Arjumand"
+    },
+    "title": {
+      "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+      "en": "Associate Consultant"
+    },
+    "department": "medicine",
+    "branches": ["uttara"],
+    "qualifications": {
+      "bn": "MBBS, FCPS (মেডিসিন)",
+      "en": "MBBS, FCPS (Medicine)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. লায়লা আরজুমান্দ কেয়ারস্পেটের মেডিসিন বিভাগের অ্যাসোসিয়েট কনসালট্যান্ট। তাঁর ৮ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে ডায়াবেটিস ও থাইরয়েড বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Laila Arjumand is a Associate Consultant in Internal medicine at CareSpate with 8 years of clinical experience.",
+        "She sees patients mainly for diabetes and thyroid disorders. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2012
+      },
+      {
+        "degree": {
+          "bn": "FCPS (মেডিসিন)",
+          "en": "FCPS (Medicine)"
+        },
+        "institution": {
+          "bn": "বাংলাদেশ কলেজ অব ফিজিশিয়ানস অ্যান্ড সার্জনস",
+          "en": "Bangladesh College of Physicians and Surgeons"
+        },
+        "year": 2018
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+          "en": "Associate Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2014,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "ডায়াবেটিস",
+        "en": "Diabetes"
+      },
+      {
+        "bn": "থাইরয়েড",
+        "en": "Thyroid disorders"
+      },
+      {
+        "bn": "জ্বর ও সংক্রমণ",
+        "en": "Fever and infections"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1000.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-laila-arjumand",
+      "alt": {
+        "bn": "ডা. লায়লা আরজুমান্দ-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Laila Arjumand (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-laila-arjumand-c92b3a6d.webp"
+    }
+  },
+  {
+    "slug": "anisur-rahman",
+    "name": {
+      "bn": "ডা. আনিসুর রহমান",
+      "en": "Dr. Anisur Rahman"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "ent",
+    "branches": ["gulshan", "uttara"],
+    "qualifications": {
+      "bn": "MBBS, MS (ENT)",
+      "en": "MBBS, MS (ENT)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. আনিসুর রহমান কেয়ারস্পেটের নাক, কান ও গলা (ENT) বিভাগের কনসালট্যান্ট। তাঁর ১১ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে সাইনাস ও কানে কম শোনা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Anisur Rahman is a Consultant in Ear, nose and throat at CareSpate with 11 years of clinical experience.",
+        "He sees patients mainly for sinus problems and hearing loss. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2009
+      },
+      {
+        "degree": {
+          "bn": "MS (ENT)",
+          "en": "MS (ENT)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2011,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "সাইনাস",
+        "en": "Sinus problems"
+      },
+      {
+        "bn": "কানে কম শোনা",
+        "en": "Hearing loss"
+      },
+      {
+        "bn": "টনসিল",
+        "en": "Tonsils"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-anisur-rahman",
+      "alt": {
+        "bn": "ডা. আনিসুর রহমান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Anisur Rahman (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-anisur-rahman-7633e532.webp"
+    }
+  },
+  {
+    "slug": "mehnaz-chowdhury",
+    "name": {
+      "bn": "ডা. মেহনাজ চৌধুরী",
+      "en": "Dr. Mehnaz Chowdhury"
+    },
+    "title": {
+      "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+      "en": "Associate Consultant"
+    },
+    "department": "ent",
+    "branches": ["dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, MS (ENT)",
+      "en": "MBBS, MS (ENT)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. মেহনাজ চৌধুরী কেয়ারস্পেটের নাক, কান ও গলা (ENT) বিভাগের অ্যাসোসিয়েট কনসালট্যান্ট। তাঁর ৭ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে সাইনাস ও কানে কম শোনা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Mehnaz Chowdhury is a Associate Consultant in Ear, nose and throat at CareSpate with 7 years of clinical experience.",
+        "She sees patients mainly for sinus problems and hearing loss. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2013
+      },
+      {
+        "degree": {
+          "bn": "MS (ENT)",
+          "en": "MS (ENT)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2019
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+          "en": "Associate Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2019
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2015,
+        "to": 2019
+      }
+    ],
+    "interests": [
+      {
+        "bn": "সাইনাস",
+        "en": "Sinus problems"
+      },
+      {
+        "bn": "কানে কম শোনা",
+        "en": "Hearing loss"
+      },
+      {
+        "bn": "টনসিল",
+        "en": "Tonsils"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1000.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-mehnaz-chowdhury",
+      "alt": {
+        "bn": "ডা. মেহনাজ চৌধুরী-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Mehnaz Chowdhury (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-mehnaz-chowdhury-e38cfdb7.webp"
+    }
+  },
+  {
+    "slug": "sharmin-haque",
+    "name": {
+      "bn": "ডা. শারমিন হক",
+      "en": "Dr. Sharmin Haque"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "ophthalmology",
+    "branches": ["gulshan", "dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, MS (চক্ষু)",
+      "en": "MBBS, MS (Ophthalmology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. শারমিন হক কেয়ারস্পেটের চক্ষু বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ২০ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে ছানি ও গ্লুকোমা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Sharmin Haque is a Senior Consultant in Eye care at CareSpate with 20 years of clinical experience.",
+        "She sees patients mainly for cataract and glaucoma. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2000
+      },
+      {
+        "degree": {
+          "bn": "MS (চক্ষু)",
+          "en": "MS (Ophthalmology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2006
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2002,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "ছানি",
+        "en": "Cataract"
+      },
+      {
+        "bn": "গ্লুকোমা",
+        "en": "Glaucoma"
+      },
+      {
+        "bn": "ডায়াবেটিক রেটিনোপ্যাথি",
+        "en": "Diabetic retinopathy"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-sharmin-haque",
+      "alt": {
+        "bn": "ডা. শারমিন হক-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Sharmin Haque (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-sharmin-haque-b208ed73.webp"
+    }
+  },
+  {
+    "slug": "zahid-hasan",
+    "name": {
+      "bn": "ডা. জাহিদ হাসান",
+      "en": "Dr. Zahid Hasan"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "ophthalmology",
+    "branches": ["uttara"],
+    "qualifications": {
+      "bn": "MBBS, MS (চক্ষু)",
+      "en": "MBBS, MS (Ophthalmology)"
+    },
+    "languages": ["bn", "en", "hi"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. জাহিদ হাসান কেয়ারস্পেটের চক্ষু বিভাগের কনসালট্যান্ট। তাঁর ১১ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে ছানি ও গ্লুকোমা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Zahid Hasan is a Consultant in Eye care at CareSpate with 11 years of clinical experience.",
+        "He sees patients mainly for cataract and glaucoma. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2009
+      },
+      {
+        "degree": {
+          "bn": "MS (চক্ষু)",
+          "en": "MS (Ophthalmology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2011,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "ছানি",
+        "en": "Cataract"
+      },
+      {
+        "bn": "গ্লুকোমা",
+        "en": "Glaucoma"
+      },
+      {
+        "bn": "ডায়াবেটিক রেটিনোপ্যাথি",
+        "en": "Diabetic retinopathy"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-zahid-hasan",
+      "alt": {
+        "bn": "ডা. জাহিদ হাসান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Zahid Hasan (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-zahid-hasan-5dcaab54.webp"
+    }
+  },
+  {
+    "slug": "nafisa-karim",
+    "name": {
+      "bn": "ডা. নাফিসা করিম",
+      "en": "Dr. Nafisa Karim"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "dental",
+    "branches": ["uttara"],
+    "qualifications": {
+      "bn": "BDS, MS (কনজারভেটিভ ডেন্টিস্ট্রি)",
+      "en": "BDS, MS (Conservative Dentistry)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. নাফিসা করিম কেয়ারস্পেটের দন্ত বিভাগের কনসালট্যান্ট। তাঁর ১২ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে রুট ক্যানেল ও শিশু দন্ত চিকিৎসা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Nafisa Karim is a Consultant in Dental care at CareSpate with 12 years of clinical experience.",
+        "She sees patients mainly for root canal treatment and children's dentistry. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "BDS",
+          "en": "BDS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল ডেন্টাল কলেজ, ঢাকা",
+          "en": "Sample Dental College, Dhaka"
+        },
+        "year": 2008
+      },
+      {
+        "degree": {
+          "bn": "MS (কনজারভেটিভ ডেন্টিস্ট্রি)",
+          "en": "MS (Conservative Dentistry)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2010,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "রুট ক্যানেল",
+        "en": "Root canal treatment"
+      },
+      {
+        "bn": "শিশু দন্ত চিকিৎসা",
+        "en": "Children's dentistry"
+      },
+      {
+        "bn": "মাড়ির রোগ",
+        "en": "Gum disease"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-nafisa-karim",
+      "alt": {
+        "bn": "ডা. নাফিসা করিম-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Nafisa Karim (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-nafisa-karim-2ea5ce04.webp"
+    }
+  },
+  {
+    "slug": "ashraful-alam",
+    "name": {
+      "bn": "ডা. আশরাফুল আলম",
+      "en": "Dr. Ashraful Alam"
+    },
+    "title": {
+      "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+      "en": "Associate Consultant"
+    },
+    "department": "dental",
+    "branches": ["uttara", "dhanmondi"],
+    "qualifications": {
+      "bn": "BDS, MS (কনজারভেটিভ ডেন্টিস্ট্রি)",
+      "en": "BDS, MS (Conservative Dentistry)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. আশরাফুল আলম কেয়ারস্পেটের দন্ত বিভাগের অ্যাসোসিয়েট কনসালট্যান্ট। তাঁর ৮ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে রুট ক্যানেল ও শিশু দন্ত চিকিৎসা বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Ashraful Alam is a Associate Consultant in Dental care at CareSpate with 8 years of clinical experience.",
+        "He sees patients mainly for root canal treatment and children's dentistry. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "BDS",
+          "en": "BDS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল ডেন্টাল কলেজ, ঢাকা",
+          "en": "Sample Dental College, Dhaka"
+        },
+        "year": 2012
+      },
+      {
+        "degree": {
+          "bn": "MS (কনজারভেটিভ ডেন্টিস্ট্রি)",
+          "en": "MS (Conservative Dentistry)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2018
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+          "en": "Associate Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2014,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "রুট ক্যানেল",
+        "en": "Root canal treatment"
+      },
+      {
+        "bn": "শিশু দন্ত চিকিৎসা",
+        "en": "Children's dentistry"
+      },
+      {
+        "bn": "মাড়ির রোগ",
+        "en": "Gum disease"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1000.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-ashraful-alam",
+      "alt": {
+        "bn": "ডা. আশরাফুল আলম-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Ashraful Alam (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-ashraful-alam-e0826a26.webp"
+    }
+  },
+  {
+    "slug": "monirul-islam",
+    "name": {
+      "bn": "ডা. মনিরুল ইসলাম",
+      "en": "Dr. Monirul Islam"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "nephrology",
+    "branches": ["gulshan"],
+    "qualifications": {
+      "bn": "MBBS, MD (নেফ্রোলজি)",
+      "en": "MBBS, MD (Nephrology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. মনিরুল ইসলাম কেয়ারস্পেটের কিডনি (নেফ্রোলজি) বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ১৮ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে দীর্ঘমেয়াদি কিডনি (নেফ্রোলজি) ও ডায়ালাইসিস বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Monirul Islam is a Senior Consultant in Nephrology at CareSpate with 18 years of clinical experience.",
+        "He sees patients mainly for chronic kidney disease and dialysis. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2002
+      },
+      {
+        "degree": {
+          "bn": "MD (নেফ্রোলজি)",
+          "en": "MD (Nephrology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2008
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2004,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "দীর্ঘমেয়াদি কিডনি (নেফ্রোলজি)",
+        "en": "Chronic kidney disease"
+      },
+      {
+        "bn": "ডায়ালাইসিস",
+        "en": "Dialysis"
+      },
+      {
+        "bn": "কিডনির পাথর",
+        "en": "Kidney stones"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-monirul-islam",
+      "alt": {
+        "bn": "ডা. মনিরুল ইসলাম-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Monirul Islam (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-monirul-islam-b106df43.webp"
+    }
+  },
+  {
+    "slug": "fahmida-khan",
+    "name": {
+      "bn": "ডা. ফাহমিদা খান",
+      "en": "Dr. Fahmida Khan"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "nephrology",
+    "branches": ["gulshan", "dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, MD (নেফ্রোলজি)",
+      "en": "MBBS, MD (Nephrology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. ফাহমিদা খান কেয়ারস্পেটের কিডনি (নেফ্রোলজি) বিভাগের কনসালট্যান্ট। তাঁর ১২ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে দীর্ঘমেয়াদি কিডনি (নেফ্রোলজি) ও ডায়ালাইসিস বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Fahmida Khan is a Consultant in Nephrology at CareSpate with 12 years of clinical experience.",
+        "She sees patients mainly for chronic kidney disease and dialysis. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2008
+      },
+      {
+        "degree": {
+          "bn": "MD (নেফ্রোলজি)",
+          "en": "MD (Nephrology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2010,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "দীর্ঘমেয়াদি কিডনি (নেফ্রোলজি)",
+        "en": "Chronic kidney disease"
+      },
+      {
+        "bn": "ডায়ালাইসিস",
+        "en": "Dialysis"
+      },
+      {
+        "bn": "কিডনির পাথর",
+        "en": "Kidney stones"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-fahmida-khan",
+      "alt": {
+        "bn": "ডা. ফাহমিদা খান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Fahmida Khan (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-fahmida-khan-9b7eb03b.webp"
+    }
+  },
+  {
+    "slug": "saiful-islam",
+    "name": {
+      "bn": "ডা. সাইফুল ইসলাম",
+      "en": "Dr. Saiful Islam"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "gastroenterology",
+    "branches": ["gulshan"],
+    "qualifications": {
+      "bn": "MBBS, MD (গ্যাস্ট্রোএন্টারোলজি)",
+      "en": "MBBS, MD (Gastroenterology)"
+    },
+    "languages": ["bn", "en", "hi"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. সাইফুল ইসলাম কেয়ারস্পেটের গ্যাস্ট্রোএন্টারোলজি বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ২০ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে লিভারের রোগ ও আলসার বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Saiful Islam is a Senior Consultant in Gastroenterology at CareSpate with 20 years of clinical experience.",
+        "He sees patients mainly for liver disease and ulcers. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2000
+      },
+      {
+        "degree": {
+          "bn": "MD (গ্যাস্ট্রোএন্টারোলজি)",
+          "en": "MD (Gastroenterology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2006
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2002,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "লিভারের রোগ",
+        "en": "Liver disease"
+      },
+      {
+        "bn": "আলসার",
+        "en": "Ulcers"
+      },
+      {
+        "bn": "এন্ডোস্কপি",
+        "en": "Endoscopy"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-saiful-islam",
+      "alt": {
+        "bn": "ডা. সাইফুল ইসলাম-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Saiful Islam (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-saiful-islam-afda1157.webp"
+    }
+  },
+  {
+    "slug": "rumana-afroz",
+    "name": {
+      "bn": "ডা. রুমানা আফরোজ",
+      "en": "Dr. Rumana Afroz"
+    },
+    "title": {
+      "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+      "en": "Associate Consultant"
+    },
+    "department": "gastroenterology",
+    "branches": ["dhanmondi"],
+    "qualifications": {
+      "bn": "MBBS, MD (গ্যাস্ট্রোএন্টারোলজি)",
+      "en": "MBBS, MD (Gastroenterology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. রুমানা আফরোজ কেয়ারস্পেটের গ্যাস্ট্রোএন্টারোলজি বিভাগের অ্যাসোসিয়েট কনসালট্যান্ট। তাঁর ৬ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে লিভারের রোগ ও আলসার বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Rumana Afroz is a Associate Consultant in Gastroenterology at CareSpate with 6 years of clinical experience.",
+        "She sees patients mainly for liver disease and ulcers. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2014
+      },
+      {
+        "degree": {
+          "bn": "MD (গ্যাস্ট্রোএন্টারোলজি)",
+          "en": "MD (Gastroenterology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2020
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "অ্যাসোসিয়েট কনসালট্যান্ট",
+          "en": "Associate Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2020
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2016,
+        "to": 2020
+      }
+    ],
+    "interests": [
+      {
+        "bn": "লিভারের রোগ",
+        "en": "Liver disease"
+      },
+      {
+        "bn": "আলসার",
+        "en": "Ulcers"
+      },
+      {
+        "bn": "এন্ডোস্কপি",
+        "en": "Endoscopy"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "mon",
+        "start": "17:00",
+        "end": "21:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "wed",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "dhanmondi",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1000.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-rumana-afroz",
+      "alt": {
+        "bn": "ডা. রুমানা আফরোজ-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Rumana Afroz (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-rumana-afroz-e428d768.webp"
+    }
+  },
+  {
+    "slug": "habibur-rahman",
+    "name": {
+      "bn": "ডা. হাবিবুর রহমান",
+      "en": "Dr. Habibur Rahman"
+    },
+    "title": {
+      "bn": "সিনিয়র কনসালট্যান্ট",
+      "en": "Senior Consultant"
+    },
+    "department": "oncology",
+    "branches": ["gulshan"],
+    "qualifications": {
+      "bn": "MBBS, MD (অনকোলজি)",
+      "en": "MBBS, MD (Oncology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "male",
+    "about": {
+      "bn": [
+        "ডা. হাবিবুর রহমান কেয়ারস্পেটের ক্যানসার (অনকোলজি) বিভাগের সিনিয়র কনসালট্যান্ট। তাঁর ১৯ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে স্তন ক্যানসার ও কেমোথেরাপি বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Habibur Rahman is a Senior Consultant in Oncology at CareSpate with 19 years of clinical experience.",
+        "He sees patients mainly for breast cancer and chemotherapy. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2001
+      },
+      {
+        "degree": {
+          "bn": "MD (অনকোলজি)",
+          "en": "MD (Oncology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2007
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "সিনিয়র কনসালট্যান্ট",
+          "en": "Senior Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2003,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "স্তন ক্যানসার",
+        "en": "Breast cancer"
+      },
+      {
+        "bn": "কেমোথেরাপি",
+        "en": "Chemotherapy"
+      },
+      {
+        "bn": "প্যালিয়েটিভ কেয়ার",
+        "en": "Palliative care"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sun",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "10:00",
+        "end": "14:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      }
+    ],
+    "slotMinutes": 20,
+    "fee": "1500.00",
+    "featured": true,
+    "leave": [],
+    "image": {
+      "slot": "doctor-habibur-rahman",
+      "alt": {
+        "bn": "ডা. হাবিবুর রহমান-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Habibur Rahman (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-habibur-rahman-a81745f0.webp"
+    }
+  },
+  {
+    "slug": "tahmina-akhter",
+    "name": {
+      "bn": "ডা. তাহমিনা আখতার",
+      "en": "Dr. Tahmina Akhter"
+    },
+    "title": {
+      "bn": "কনসালট্যান্ট",
+      "en": "Consultant"
+    },
+    "department": "oncology",
+    "branches": ["gulshan", "uttara"],
+    "qualifications": {
+      "bn": "MBBS, MD (অনকোলজি)",
+      "en": "MBBS, MD (Oncology)"
+    },
+    "languages": ["bn", "en"],
+    "gender": "female",
+    "about": {
+      "bn": [
+        "ডা. তাহমিনা আখতার কেয়ারস্পেটের ক্যানসার (অনকোলজি) বিভাগের কনসালট্যান্ট। তাঁর ১৩ বছরের চিকিৎসা অভিজ্ঞতা রয়েছে।",
+        "তিনি বিশেষভাবে স্তন ক্যানসার ও কেমোথেরাপি বিষয়ে রোগী দেখেন। এই প্রোফাইলের তথ্য নমুনা।"
+      ],
+      "en": [
+        "Dr. Tahmina Akhter is a Consultant in Oncology at CareSpate with 13 years of clinical experience.",
+        "She sees patients mainly for breast cancer and chemotherapy. The details on this profile are samples."
+      ]
+    },
+    "education": [
+      {
+        "degree": {
+          "bn": "MBBS",
+          "en": "MBBS"
+        },
+        "institution": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ, ঢাকা",
+          "en": "Sample Medical College, Dhaka"
+        },
+        "year": 2007
+      },
+      {
+        "degree": {
+          "bn": "MD (অনকোলজি)",
+          "en": "MD (Oncology)"
+        },
+        "institution": {
+          "bn": "স্যাম্পল পোস্টগ্র্যাজুয়েট মেডিকেল ইনস্টিটিউট, ঢাকা",
+          "en": "Sample Postgraduate Medical Institute, Dhaka"
+        },
+        "year": 2013
+      }
+    ],
+    "experience": [
+      {
+        "role": {
+          "bn": "কনসালট্যান্ট",
+          "en": "Consultant"
+        },
+        "place": {
+          "bn": "কেয়ারস্পেট হাসপাতাল",
+          "en": "CareSpate Hospital"
+        },
+        "from": 2018
+      },
+      {
+        "role": {
+          "bn": "রেজিস্ট্রার",
+          "en": "Registrar"
+        },
+        "place": {
+          "bn": "স্যাম্পল মেডিকেল কলেজ হাসপাতাল",
+          "en": "Sample Medical College Hospital"
+        },
+        "from": 2009,
+        "to": 2018
+      }
+    ],
+    "interests": [
+      {
+        "bn": "স্তন ক্যানসার",
+        "en": "Breast cancer"
+      },
+      {
+        "bn": "কেমোথেরাপি",
+        "en": "Chemotherapy"
+      },
+      {
+        "bn": "প্যালিয়েটিভ কেয়ার",
+        "en": "Palliative care"
+      }
+    ],
+    "schedule": [
+      {
+        "day": "sat",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "১ম তলা, রুম ১০৮",
+          "en": "Level 1, room 108"
+        }
+      },
+      {
+        "day": "tue",
+        "start": "09:00",
+        "end": "13:00",
+        "branch": "uttara",
+        "room": {
+          "bn": "৩য় তলা, রুম ৩০৫",
+          "en": "Level 3, room 305"
+        }
+      },
+      {
+        "day": "thu",
+        "start": "16:00",
+        "end": "20:00",
+        "branch": "gulshan",
+        "room": {
+          "bn": "২য় তলা, রুম ২১২",
+          "en": "Level 2, room 212"
+        }
+      }
+    ],
+    "slotMinutes": 15,
+    "fee": "1200.00",
+    "featured": false,
+    "leave": [],
+    "image": {
+      "slot": "doctor-tahmina-akhter",
+      "alt": {
+        "bn": "ডা. তাহমিনা আখতার-এর প্রতিকৃতি (চিত্র, আসল ছবি নয়)",
+        "en": "Portrait of Dr. Tahmina Akhter (illustration, not a real photo)"
+      },
+      "src": "/images/doctor-tahmina-akhter-0e2f7455.webp"
+    }
+  }
+]

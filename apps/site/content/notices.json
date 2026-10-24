@@ -1,0 +1,52 @@
+[
+  {
+    "id": "eid-opd-hours",
+    "title": {
+      "bn": "ঈদের ছুটিতে আউটডোরের সময়",
+      "en": "Outpatient hours during the Eid holidays"
+    },
+    "body": {
+      "bn": ["ঈদের ছুটিতে আউটডোর সীমিত সময়ে খোলা থাকবে। ইমার্জেন্সি ২৪ ঘণ্টা খোলা।"],
+      "en": [
+        "Outpatient clinics keep shorter hours during the Eid holidays. Emergency stays open 24 hours."
+      ]
+    },
+    "publishedOn": "2026-10-15"
+  },
+  {
+    "id": "new-dialysis-shift",
+    "title": {
+      "bn": "ডায়ালাইসিসে নতুন সন্ধ্যার শিফট",
+      "en": "New evening dialysis shift"
+    },
+    "body": {
+      "bn": ["গুলশান ব্রাঞ্চে সন্ধ্যা ৬টা থেকে নতুন ডায়ালাইসিস শিফট চালু হয়েছে।"],
+      "en": ["A new dialysis shift from 6 pm has started at the Gulshan branch."]
+    },
+    "publishedOn": "2026-10-01"
+  },
+  {
+    "id": "free-diabetes-camp",
+    "title": {
+      "bn": "বিনামূল্যে ডায়াবেটিস স্ক্রিনিং ক্যাম্প (নমুনা)",
+      "en": "Free diabetes screening camp (sample)"
+    },
+    "body": {
+      "bn": ["উত্তরা ব্রাঞ্চে শুক্রবার সকাল ৯টা থেকে দুপুর ১টা পর্যন্ত।"],
+      "en": ["At the Uttara branch on Friday from 9 am to 1 pm."]
+    },
+    "publishedOn": "2026-09-20"
+  },
+  {
+    "id": "parking-update",
+    "title": {
+      "bn": "গুলশান ব্রাঞ্চে পার্কিং",
+      "en": "Parking at the Gulshan branch"
+    },
+    "body": {
+      "bn": ["সংস্কারের জন্য পার্কিংয়ের প্রবেশপথ পূর্ব দিকে সরানো হয়েছে।"],
+      "en": ["The parking entrance has moved to the east side during renovation."]
+    },
+    "publishedOn": "2026-09-02"
+  }
+]
