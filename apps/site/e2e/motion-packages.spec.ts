@@ -3,8 +3,8 @@
 // (react-fast-marquee) gives screen readers one plain list; the success tick (Lottie) follows a sent form; the share
 // button copies the link and confirms with a toast (Sonner); the phone menu is a drawer (Vaul).
 // Implements: T-WEB-15, C-085.
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 test.describe('with motion allowed', () => {
   test.use({ contextOptions: { reducedMotion: 'no-preference' } });
@@ -84,7 +84,7 @@ test.describe('on a phone', () => {
     await page.getByRole('button', { name: 'Menu' }).click();
     const drawer = page.getByRole('dialog', { name: 'Menu' });
     await expect(drawer.getByRole('link', { name: 'Doctors' })).toBeVisible();
-    const results = await new AxeBuilder({ page }).include('[data-testid="mobile-menu"]').analyze();
+    const results = await scan(page, '[data-testid="mobile-menu"]');
     expect(results.violations).toEqual([]);
     await drawer.getByRole('button', { name: 'Close menu' }).click();
     await expect(drawer).toBeHidden();

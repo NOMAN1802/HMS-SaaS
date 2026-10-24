@@ -1,8 +1,8 @@
 // Booking wizard in a real browser. Implements: T-WEB-10 acceptance; AT-WEB-030 (preselection,
 // times from the schedule), AT-WEB-031 (validation, Bangla digits), AT-WEB-032 (no request sent),
 // AT-WEB-034 (keyboard).
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 test('a doctor from the profile is preselected and the booking sends nothing', async ({
   page,
@@ -52,7 +52,7 @@ test('without a doctor the wizard starts at step 1 and requires a choice', async
 
 test('the booking page has no accessibility violations', async ({ page }) => {
   await page.goto('/en/book-appointment?doctor=farhana-rahman');
-  const results = await new AxeBuilder({ page }).analyze();
+  const results = await scan(page);
   expect(results.violations).toEqual([]);
 });
 

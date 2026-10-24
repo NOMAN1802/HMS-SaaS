@@ -1,7 +1,7 @@
 // Departments and centres in a real browser. Implements: T-WEB-08 acceptance; AT-WEB-013,
 // AT-WEB-052, AT-WEB-054 (call-back form on a department page).
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 test('the departments page lists every department', async ({ page }) => {
   await page.goto('/en/departments');
@@ -48,7 +48,7 @@ test('a centre page links its departments and doctors', async ({ page }) => {
 for (const path of ['/bn/departments/cardiology', '/en/centres/heart-centre']) {
   test(`${path} has no accessibility violations`, async ({ page }) => {
     await page.goto(path);
-    const results = await new AxeBuilder({ page }).analyze();
+    const results = await scan(page);
     expect(results.violations).toEqual([]);
   });
 }
