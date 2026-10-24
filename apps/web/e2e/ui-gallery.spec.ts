@@ -7,7 +7,7 @@ import { expect, test } from '@playwright/test';
 const BANGLA_QUERY = '\u09B0\u09B9\u09BF';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/dev/ui');
+  await page.goto('/staff/dev/ui');
   await expect(page.getByRole('heading', { name: 'UI gallery', level: 1 })).toBeVisible();
 });
 
