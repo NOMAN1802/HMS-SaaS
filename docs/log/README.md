@@ -96,3 +96,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-22 | [T-WEB-15: hero slideshow, scroll reveal and five motion packages](2026-10-22-T-WEB-15-motion-packages.md)                       |
 | 2026-10-22 | [T-WEB-15: review fixes (carousel focus, language switch, filters, dates, field alignment)](2026-10-22-T-WEB-15-review-fixes.md) |
 | 2026-10-23 | [Docs: noman remote renamed to NOMAN1802/HMS-SaaS](2026-10-23-docs-noman-remote.md)                                              |
+| 2026-10-24 | [Docs: modules and 20-week development timeline](2026-10-24-modules-development-timeline.md)                                     |
