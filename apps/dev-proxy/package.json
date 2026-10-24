@@ -1,0 +1,10 @@
+{
+  "name": "@hms/dev-proxy",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Development only: one local origin for the public site and the staff app, like nginx on the shared host",
+  "type": "module",
+  "scripts": {
+    "dev": "node proxy.mjs"
+  }
+}

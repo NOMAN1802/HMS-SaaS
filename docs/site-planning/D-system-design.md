@@ -228,7 +228,7 @@ flowchart TD
 
 ### 13.4 Development and verification
 
-- Development keeps separate ports (P-044): site `http://localhost:3200/bn`, staff app `http://localhost:3100/staff`. `CORS_ORIGINS` and `NEXT_PUBLIC_API_URL` stay as they are.
+- Development joins both apps on `http://localhost:3000` through `apps/dev-proxy`, started by `pnpm dev` (P-044, revised 2026-10-24): `/staff` goes to the staff app, everything else to the site, as nginx does. Each app also answers on its own port (site `http://localhost:3200/bn`, staff app `http://localhost:3100/staff`). `CORS_ORIGINS` in `.env.example` lists `http://localhost:3000` as well; `NEXT_PUBLIC_API_URL` stays as it is.
 - The `apps/web` Playwright config uses the `/staff` base URL; `apps/site` e2e checks that its proxy leaves `/staff` paths alone.
 - The joined-host behavior (AT-WEB-060) is checked on staging by the project lead after the nginx change.
 

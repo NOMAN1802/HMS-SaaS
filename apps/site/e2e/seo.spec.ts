@@ -40,6 +40,14 @@ test('sitemap lists both languages; robots blocks indexing while demo (AT-WEB-04
   expect(robots).toContain('Sitemap: https://healthcare.bytespate.com/sitemap.xml');
 });
 
+test('old staff bookmarks redirect under /staff (FR-WEB-ROUTE-002)', async ({ request }) => {
+  for (const path of ['/login', '/choose-hospital']) {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status()).toBe(308);
+    expect(response.headers()['location']).toBe(`/staff${path}`);
+  }
+});
+
 test('the site leaves /staff paths alone (FR-WEB-ROUTE-006)', async ({ request }) => {
   const response = await request.get('/staff/login', { maxRedirects: 0 });
   expect(response.headers()['location'] ?? '').not.toContain('/bn/staff');
