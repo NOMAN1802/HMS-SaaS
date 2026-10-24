@@ -1,7 +1,7 @@
 // Locale routing, security headers and accessibility of the scaffold, in a real browser.
 // Implements: T-WEB-01 acceptance; AT-WEB-001 (partial), AT-WEB-006, AT-WEB-035 (partial).
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 test('the root redirects to the Bangla site', async ({ page }) => {
   await page.goto('/');
@@ -47,7 +47,7 @@ for (const path of ['/bn', '/en']) {
       }
     });
     await page.goto(path);
-    const results = await new AxeBuilder({ page }).analyze();
+    const results = await scan(page);
     expect(results.violations).toEqual([]);
     expect(cspErrors).toEqual([]);
   });

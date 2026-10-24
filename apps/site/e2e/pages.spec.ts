@@ -1,7 +1,7 @@
 // Information pages in a real browser. Implements: T-WEB-12 acceptance; AT-WEB-001 (routes in
 // both languages), AT-WEB-033 (contact form), AT-WEB-042, AT-WEB-055, AT-WEB-056, AT-WEB-057.
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 const ROUTES = [
   '/about',
@@ -77,7 +77,7 @@ for (const path of [
 ]) {
   test(`${path} has no accessibility violations`, async ({ page }) => {
     await page.goto(path);
-    const results = await new AxeBuilder({ page }).analyze();
+    const results = await scan(page);
     expect(results.violations).toEqual([]);
   });
 }

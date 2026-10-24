@@ -1,7 +1,7 @@
 // Doctor directory and profile in a real browser. Implements: T-WEB-07 acceptance; AT-WEB-010,
 // AT-WEB-011, AT-WEB-012, AT-WEB-014, AT-WEB-050 (leave notice), AT-WEB-051 (related doctors).
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 test('filters by department and branch together and keeps them in the URL', async ({ page }) => {
   await page.goto('/en/doctors');
@@ -77,7 +77,7 @@ test('related doctors exclude the doctor and start with the same department (AT-
 for (const path of ['/bn/doctors', '/en/doctors/farhana-rahman']) {
   test(`${path} has no accessibility violations`, async ({ page }) => {
     await page.goto(path);
-    const results = await new AxeBuilder({ page }).analyze();
+    const results = await scan(page);
     expect(results.violations).toEqual([]);
   });
 }

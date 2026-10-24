@@ -2,8 +2,8 @@
 // without console errors; every page type is axe clean in both languages; no page type shows the
 // same picture twice; and no page type scrolls sideways on a 360 px phone.
 // Implements: AT-WEB-001, AT-WEB-035, NFR-WEB-ACC-001, NFR-WEB-RESP-001.
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 const ORIGIN = 'https://healthcare.bytespate.com';
 
@@ -69,7 +69,7 @@ for (const prefix of ['/bn', '/en']) {
     test.setTimeout(180_000);
     for (const path of TEMPLATES) {
       await page.goto(`${prefix}${path}`);
-      const results = await new AxeBuilder({ page }).analyze();
+      const results = await scan(page);
       expect(results.violations, `${prefix}${path}`).toEqual([]);
     }
   });

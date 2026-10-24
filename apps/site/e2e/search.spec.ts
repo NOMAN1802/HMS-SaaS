@@ -1,6 +1,6 @@
 // Site-wide search in a real browser. Implements: T-WEB-17 acceptance; AT-WEB-058.
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 test('"card" finds doctors and departments, grouped (AT-WEB-058)', async ({ page }) => {
   await page.goto('/en/search?q=card');
@@ -55,12 +55,12 @@ test('the header search bar has no accessibility violations', async ({ page }) =
   await page.getByTestId('header-search-toggle').click();
   await page.getByTestId('header-search').getByRole('searchbox').fill('card');
   await expect(page.getByTestId('header-search').getByRole('region').first()).toBeVisible();
-  const results = await new AxeBuilder({ page }).include('[data-testid="header-search"]').analyze();
+  const results = await scan(page, '[data-testid="header-search"]');
   expect(results.violations).toEqual([]);
 });
 
 test('the search page has no accessibility violations', async ({ page }) => {
   await page.goto('/bn/search?q=কার্ড');
-  const results = await new AxeBuilder({ page }).analyze();
+  const results = await scan(page);
   expect(results.violations).toEqual([]);
 });
