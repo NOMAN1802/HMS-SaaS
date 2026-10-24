@@ -1,7 +1,7 @@
 // Patient service forms in a real browser: each validates, ends in the demo message and sends
 // nothing. Implements: T-WEB-11 acceptance; AT-WEB-033.
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
+import { scan } from './a11y';
 
 function watchRequests(page: Page): string[] {
   const requests: string[] = [];
@@ -70,7 +70,7 @@ test('feedback accepts an anonymous message', async ({ page }) => {
 for (const path of ['/bn/reports', '/en/sample-collection', '/bn/feedback']) {
   test(`${path} has no accessibility violations`, async ({ page }) => {
     await page.goto(path);
-    const results = await new AxeBuilder({ page }).analyze();
+    const results = await scan(page);
     expect(results.violations).toEqual([]);
   });
 }

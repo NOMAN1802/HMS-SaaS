@@ -3,28 +3,11 @@
 // motion nothing moves. The stats count-up is unit tested, as the stats section is hidden in the
 // current content. The other specs run with reduced motion (playwright.config.ts), so this file is
 // the one that sees motion.
-import AxeBuilder from '@axe-core/playwright';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+import { scan, settle } from './a11y';
 
 // At the top of the page the shadow is either absent or still fully transparent.
 const NO_SHADOW = /^(none|rgba\(0, 0, 0, 0\) 0px 0px 0px 0px, rgba\(0, 0, 0, 0\) 0px 0px 0px 0px)$/;
-
-/** Waits for every time-based animation to end; scroll-driven and repeating ones never end. A
- * cancelled animation (a photo fade replaced mid-way) counts as ended. */
-async function settle(page: Page) {
-  await page.evaluate(() =>
-    Promise.allSettled(
-      document
-        .getAnimations()
-        .filter(
-          (animation) =>
-            animation.timeline === document.timeline &&
-            animation.effect?.getTiming().iterations !== Infinity,
-        )
-        .map((animation) => animation.finished),
-    ),
-  );
-}
 
 test.describe('with motion allowed', () => {
   test.use({ contextOptions: { reducedMotion: 'no-preference' } });
@@ -73,8 +56,7 @@ test.describe('with motion allowed', () => {
     await settle(page);
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.evaluate(() => window.scrollTo(0, 0));
-    await settle(page);
-    const results = await new AxeBuilder({ page }).analyze();
+    const results = await scan(page);
     expect(results.violations).toEqual([]);
   });
 });

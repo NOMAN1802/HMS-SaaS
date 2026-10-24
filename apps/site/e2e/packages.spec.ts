@@ -1,7 +1,7 @@
 // Packages and test prices in a real browser. Implements: T-WEB-09 acceptance; AT-WEB-020,
 // AT-WEB-021, AT-WEB-022, AT-WEB-053.
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { scan } from './a11y';
 
 test('package prices use lakh grouping and the taka sign in both languages (AT-WEB-020)', async ({
   page,
@@ -42,7 +42,7 @@ test('test search works by code, Bangla name and Bangla digits (AT-WEB-022)', as
 for (const path of ['/bn/packages', '/en/packages/women-wellness', '/bn/tests']) {
   test(`${path} has no accessibility violations`, async ({ page }) => {
     await page.goto(path);
-    const results = await new AxeBuilder({ page }).analyze();
+    const results = await scan(page);
     expect(results.violations).toEqual([]);
   });
 }
