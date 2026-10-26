@@ -99,3 +99,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-24 | [T-WEB-15: accessibility scans wait for entrance animations](2026-10-24-T-WEB-15-axe-after-entrance.md)                          |
 | 2026-10-24 | [T-WEB-18: staff app under /staff, and one local origin for both apps](2026-10-24-T-WEB-18-staff-base-path.md)                   |
 | 2026-10-24 | [T-WEB-18: image import types for a fresh checkout](2026-10-24-T-WEB-18-image-types.md)                                          |
+| 2026-10-26 | [Docs: one installation per hospital, SaaS planning removed](2026-10-26-docs-single-installation.md)                             |
