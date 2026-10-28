@@ -1,14 +1,35 @@
 // Login settings. Defaults are the C-032 decisions; per-hospital overrides (CP-12) come with
-// policy versions (T-PLT-05).
+// policy versions (T-PLT-05). Lockout and login rate limits: T-ACC-03, NFR-SEC-005.
+import type { RateLimitRule } from '@hms/platform';
+import type { LockoutPolicy } from '../domain/lockout-policy.js';
 import type { SessionTimeouts } from '../domain/session-policy.js';
+
+export interface LoginRateLimits {
+  perIp: RateLimitRule;
+  perAccount: RateLimitRule;
+}
 
 export interface AuthConfig {
   timeouts: SessionTimeouts;
   csrfSecret: string;
+  lockout: LockoutPolicy;
+  loginRateLimits: LoginRateLimits;
 }
 
 export const AUTH_CONFIG = Symbol('AUTH_CONFIG');
 export const CLOCK = Symbol('CLOCK');
+
+const FIFTEEN_MINUTES = 15 * 60_000;
+
+/**
+ * Login rate limits (AT-ACC-007). Staff of one hospital often share one public IP behind the
+ * hospital router, so the IP limit is wide enough for a shift change; the account limit is
+ * tight, and the lockout (5 wrong passwords) normally stops a guesser first.
+ */
+export const DEFAULT_LOGIN_RATE_LIMITS: LoginRateLimits = {
+  perIp: { limit: 200, windowMs: FIFTEEN_MINUTES },
+  perAccount: { limit: 10, windowMs: FIFTEEN_MINUTES },
+};
 
 function positiveNumber(value: string | undefined, fallback: number, name: string): number {
   if (value === undefined || value === '') return fallback;
@@ -30,5 +51,10 @@ export function loadAuthConfig(env: NodeJS.ProcessEnv): AuthConfig {
         'SESSION_ABSOLUTE_TIMEOUT_H',
       ),
     },
+    lockout: {
+      maxFailedAttempts: positiveNumber(env.LOGIN_LOCKOUT_ATTEMPTS, 5, 'LOGIN_LOCKOUT_ATTEMPTS'),
+      lockMinutes: positiveNumber(env.LOGIN_LOCKOUT_MINUTES, 15, 'LOGIN_LOCKOUT_MINUTES'),
+    },
+    loginRateLimits: DEFAULT_LOGIN_RATE_LIMITS,
   };
 }

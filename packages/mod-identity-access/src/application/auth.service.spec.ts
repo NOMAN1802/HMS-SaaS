@@ -4,12 +4,20 @@ import { createPrismaClient, withTenant, type PrismaClient } from '@hms/database
 import { DomainError, fixedClock, type FixedClock } from '@hms/domain-kernel';
 import { seedMembership, seedTenant, seedUser } from '@hms/testkit';
 import { hashPassword } from '../infrastructure/password-hasher.js';
+import { DEFAULT_LOGIN_RATE_LIMITS, type AuthConfig } from './auth.config.js';
 import { AuthService } from './auth.service.js';
+import { LoginThrottle } from './login-throttle.js';
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) throw new Error('DATABASE_URL is required');
 
-const config = { timeouts: { idleMinutes: 60, absoluteHours: 12 }, csrfSecret: 'x'.repeat(32) };
+const config: AuthConfig = {
+  timeouts: { idleMinutes: 60, absoluteHours: 12 },
+  csrfSecret: 'x'.repeat(32),
+  lockout: { maxFailedAttempts: 5, lockMinutes: 15 },
+  // Every test logs in from the same address; the IP limit is not under test here.
+  loginRateLimits: { ...DEFAULT_LOGIN_RATE_LIMITS, perIp: { limit: 10_000, windowMs: 60_000 } },
+};
 const meta = { ipAddress: '127.0.0.1' };
 const PASSWORD = 'correct horse battery';
 
@@ -28,7 +36,12 @@ describe('AuthService', () => {
   beforeAll(async () => {
     prisma = createPrismaClient(databaseUrl);
     clock = fixedClock(new Date('2026-10-14T08:00:00.000Z'));
-    service = new AuthService(prisma, config, clock);
+    service = new AuthService(
+      prisma,
+      config,
+      clock,
+      LoginThrottle.inMemory(config.loginRateLimits),
+    );
     passwordHash = await hashPassword(PASSWORD);
   });
 
@@ -93,6 +106,83 @@ describe('AuthService', () => {
       lockedUntil: new Date(clock.now().getTime() + 15 * 60_000),
     });
     await expectCode(login(user.username), 'ACCOUNT_LOCKED');
+  });
+
+  describe('lockout (T-ACC-03, AT-ACC-006, C-032)', () => {
+    async function failTimes(username: string, times: number) {
+      for (let i = 0; i < times; i += 1) {
+        await expectCode(login(username, 'wrong'), 'INVALID_CREDENTIALS');
+      }
+    }
+
+    it('locks for 15 minutes after 5 wrong passwords and records why', async () => {
+      const user = await userWithHospitals(1);
+      await failTimes(user.username, 5);
+      const stored = await prisma.userAccount.findUniqueOrThrow({ where: { id: user.id } });
+      expect(stored).toMatchObject({
+        status: 'LOCKED_TEMPORARY',
+        failedAttempts: 5,
+        lockReason: 'FAILED_LOGINS',
+        lockedByUserId: null,
+      });
+      expect(stored.lockedUntil?.toISOString()).toBe('2026-10-14T08:15:00.000Z');
+      const events = await prisma.authEvent.findMany({ where: { userId: user.id } });
+      expect(events.map((e) => e.action)).toContain('auth.account.locked');
+    });
+
+    it('answers the correct password with ACCOUNT_LOCKED and the unlock time', async () => {
+      const user = await userWithHospitals(1);
+      await failTimes(user.username, 5);
+      await expect(login(user.username)).rejects.toSatisfy(
+        (error) =>
+          error instanceof DomainError &&
+          error.code === 'ACCOUNT_LOCKED' &&
+          error.details?.lockedUntil === '2026-10-14T08:15:00.000Z',
+      );
+    });
+
+    it('concurrent wrong passwords are all counted', async () => {
+      const user = await userWithHospitals(1);
+      await Promise.allSettled(Array.from({ length: 5 }, () => login(user.username, 'wrong')));
+      const stored = await prisma.userAccount.findUniqueOrThrow({ where: { id: user.id } });
+      expect(stored.status).toBe('LOCKED_TEMPORARY');
+    });
+
+    it('a correct password before the threshold clears the counter', async () => {
+      const user = await userWithHospitals(1);
+      await failTimes(user.username, 4);
+      await login(user.username);
+      const stored = await prisma.userAccount.findUniqueOrThrow({ where: { id: user.id } });
+      expect(stored.failedAttempts).toBe(0);
+    });
+
+    it('logs in again after the lock has expired (FR-ACC-005)', async () => {
+      const user = await seedUser(prisma, {
+        passwordHash,
+        status: 'LOCKED_TEMPORARY',
+        lockedUntil: new Date(clock.now().getTime() - 1),
+      });
+      await seedMembership(prisma, await seedTenant(prisma), user.id);
+      await login(user.username);
+      const stored = await prisma.userAccount.findUniqueOrThrow({ where: { id: user.id } });
+      expect(stored).toMatchObject({ status: 'ACTIVE', lockedUntil: null, lockReason: null });
+    });
+
+    it('refuses further attempts on one account with RATE_LIMITED', async () => {
+      const throttled = new AuthService(
+        prisma,
+        config,
+        clock,
+        LoginThrottle.inMemory({
+          perIp: { limit: 100, windowMs: 60_000 },
+          perAccount: { limit: 2, windowMs: 60_000 },
+        }),
+      );
+      const attempt = () => throttled.login({ username: 'rate-limit-probe', password: 'x' }, meta);
+      await expectCode(attempt(), 'INVALID_CREDENTIALS');
+      await expectCode(attempt(), 'INVALID_CREDENTIALS');
+      await expectCode(attempt(), 'RATE_LIMITED');
+    });
   });
 
   it('refuses a user with no active hospital', async () => {

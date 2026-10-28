@@ -111,6 +111,7 @@ Non-secret values go in `.env` ([`env.example`](../templates/docker/env.example)
 | `CSRF_SECRET` (`CSRF_SECRET_FILE` in production) | api | file/secret | at least 32 characters | Key for the CSRF token HMAC (T-ACC-01). Rotating it logs everyone's CSRF tokens out until they reload the session |
 | `FIELD_ENCRYPTION_KEY_FILE` | api, worker | file | — | NID field encryption (E §5.2) |
 | `SESSION_IDLE_TIMEOUT_MIN` / `SESSION_ABSOLUTE_TIMEOUT_H` | api | no | `60` / `12` (C-032) | Platform defaults; hospital configuration overrides (CP-12) |
+| `LOGIN_LOCKOUT_ATTEMPTS` / `LOGIN_LOCKOUT_MINUTES` | api | no | `5` / `15` (C-032) | Account lockout (T-ACC-03); hospital configuration overrides (CP-12) |
 | `LOGIN_LOCKOUT_THRESHOLD` / `LOGIN_LOCKOUT_MINUTES` | api | no | `5` / `15` (PROPOSED) | Defaults (CP-12) |
 | `COOKIE_DOMAIN` | api | no | **unset** | Leave unset: the session cookie is host-only on the API host. **Never** `bytespate.com`, which would send sessions to every subdomain, including the ecommerce site (ADR-021) |
 | `S3_ENDPOINT` / `S3_REGION` / `S3_BUCKET` / `S3_FORCE_PATH_STYLE` | api, worker | no | provider values | Object storage |

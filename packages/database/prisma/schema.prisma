@@ -123,7 +123,13 @@ model UserAccount {
   status         UserStatus    @default(ACTIVE)
   failedAttempts Int           @default(0) @map("failed_attempts")
   lockedUntil    DateTime?     @map("locked_until") @db.Timestamptz
+  // T-ACC-03 (FR-ACC-004): why, when and by whom the account was locked. lockReason is a code
+  // (FAILED_LOGINS, ADMIN_ACTION); lockNote is the administrator's reason; lockedByUserId is
+  // null when the system locked it after failed logins.
   lockReason     String?       @map("lock_reason")
+  lockedAt       DateTime?     @map("locked_at") @db.Timestamptz
+  lockNote       String?       @map("lock_note")
+  lockedByUserId String?       @map("locked_by_user_id") @db.Uuid
   preferredLang  PreferredLang @default(bn_BD) @map("preferred_lang")
   createdAt      DateTime      @default(now()) @map("created_at") @db.Timestamptz
   version        Int           @default(1)
