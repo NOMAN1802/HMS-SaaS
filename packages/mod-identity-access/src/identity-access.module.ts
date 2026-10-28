@@ -9,9 +9,13 @@ import { AUTH_CONFIG, CLOCK, type AuthConfig } from './application/auth.config.j
 import { AuthService } from './application/auth.service.js';
 import { LOGIN_THROTTLE, LoginThrottle } from './application/login-throttle.js';
 import { MfaService } from './application/mfa.service.js';
+import { RoleAdminService } from './application/role-admin.service.js';
+import { UserAdminService } from './application/user-admin.service.js';
 import { AccountLockController } from './http/account-lock.controller.js';
 import { AuthController } from './http/auth.controller.js';
 import { MfaController } from './http/mfa.controller.js';
+import { RoleAdminController } from './http/role-admin.controller.js';
+import { UserAdminController } from './http/user-admin.controller.js';
 import { ALLOWED_ORIGINS, CsrfGuard, SessionGuard, TenantGuard } from './http/guards.js';
 import { PermissionGuard } from './http/permission.guard.js';
 
@@ -30,11 +34,19 @@ export class IdentityAccessModule {
     const allowedOrigins = new Set(options.allowedOrigins ?? ['http://localhost:3100']);
     return {
       module: IdentityAccessModule,
-      controllers: [AuthController, MfaController, AccountLockController],
+      controllers: [
+        AuthController,
+        MfaController,
+        AccountLockController,
+        UserAdminController,
+        RoleAdminController,
+      ],
       providers: [
         AuthService,
         MfaService,
         AccountLockService,
+        UserAdminService,
+        RoleAdminService,
         { provide: AUTH_CONFIG, useValue: config },
         { provide: LOGIN_THROTTLE, useValue: LoginThrottle.inMemory(config.loginRateLimits) },
         { provide: CLOCK, useValue: clock },

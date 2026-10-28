@@ -16,9 +16,6 @@ import { UserMenu } from './user-menu';
 
 const ShellLink: ComponentType<ShellLinkProps> = (props) => <Link {...props} />;
 
-// Permission codes arrive with T-ACC-02; the session carries none yet.
-const GRANTED: ReadonlySet<string> = new Set();
-
 export function tenantName(session: SessionResponse, locale: string): string {
   const active = session.memberships.find((m) => m.id === session.activeMembershipId);
   if (!active) return '';
@@ -37,13 +34,13 @@ export function AppFrame({ session, children }: { session: SessionResponse; chil
 
   const nav: NavItem[] = useMemo(
     () =>
-      visibleNavigation(NAVIGATION, GRANTED).map((item) => ({
+      visibleNavigation(NAVIGATION, new Set(session.permissions)).map((item) => ({
         id: item.id,
         label: t(item.labelKey),
         href: item.href,
         icon: item.icon,
       })),
-    [t],
+    [t, session.permissions],
   );
 
   return (

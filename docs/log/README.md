@@ -102,3 +102,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-26 | [Docs: one installation per hospital, SaaS planning removed](2026-10-26-docs-single-installation.md)                             |
 | 2026-10-28 | [T-ACC-03: account lockout, login rate limit and lock diagnostics](2026-10-28-T-ACC-03-lockout.md)                               |
 | 2026-10-28 | [T-ACC-04: TOTP second factor for administrators and finance staff](2026-10-28-T-ACC-04-mfa.md)                                  |
+| 2026-10-28 | [T-ACC-05: user, membership and role administration, with temporary passwords](2026-10-28-T-ACC-05-user-admin.md)                |

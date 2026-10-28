@@ -2,3 +2,4 @@
 // Synthetic data only (AS-009).
 export * from './identity.js';
 export * from './totp.js';
+export * from './staff-client.js';

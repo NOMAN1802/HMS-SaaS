@@ -9,7 +9,17 @@ import {
   IdentityAccessModule,
 } from '@hms/mod-identity-access';
 import { DatabaseModule, RequestPipelineModule } from '@hms/platform';
-import { grantPermissions, seedMembership, seedTenant, seedUser, totpCode } from '@hms/testkit';
+import {
+  cookieOf,
+  grantPermissions,
+  seedMembership,
+  seedTenant,
+  seedUser,
+  staffClient,
+  totpCode,
+  type StaffClient,
+  type StaffSession,
+} from '@hms/testkit';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { configureApp } from './http/configure-app.js';
 
@@ -41,16 +51,11 @@ const clock = fixedClock(new Date());
 })
 class LockTestModule {}
 
-interface Session {
-  cookie: string;
-  csrfToken: string;
-}
-
 describe('account lock over HTTP', () => {
   let app: NestExpressApplication;
-  let base: string;
   let prisma: PrismaClient;
   let passwordHash: string;
+  let client: StaffClient;
 
   beforeAll(async () => {
     prisma = createPrismaClient(databaseUrl);
@@ -59,7 +64,7 @@ describe('account lock over HTTP', () => {
     app = moduleRef.createNestApplication<NestExpressApplication>();
     configureApp(app, WEB);
     await app.listen(0, '127.0.0.1');
-    base = `${await app.getUrl()}/api/v1`;
+    client = staffClient(`${await app.getUrl()}/api/v1`, WEB, () => clock.now());
   });
 
   afterAll(async () => {
@@ -67,35 +72,11 @@ describe('account lock over HTTP', () => {
     await prisma.$disconnect();
   });
 
-  function login(username: string, password = PASSWORD) {
-    return fetch(`${base}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Origin: WEB },
-      body: JSON.stringify({ username, password }),
-    });
-  }
-
-  function cookieOf(res: Response): string {
-    return (res.headers.get('set-cookie') ?? '').split(';')[0] ?? '';
-  }
-
+  const login = (username: string, password = PASSWORD) => client.login(username, password);
   /** Signs in; a privileged user also enrols the second factor, as the UI makes them (T-ACC-04). */
-  async function sessionOf(username: string): Promise<Session> {
-    const res = await login(username);
-    expect(res.status).toBe(200);
-    const body = (await res.json()) as { csrfToken: string; mfa: { required: boolean } };
-    const session = { cookie: cookieOf(res), csrfToken: body.csrfToken };
-    if (!body.mfa.required) return session;
-
-    const enrolment = await call(session, 'POST', '/auth/mfa/enrolment');
-    const { secret } = (await enrolment.json()) as { secret: string };
-    const confirmed = await call(session, 'POST', '/auth/mfa/enrolment/confirm', {
-      code: totpCode(secret, clock.now()),
-    });
-    expect(confirmed.status).toBe(200);
-    const result = (await confirmed.json()) as { session: { csrfToken: string } };
-    return { cookie: cookieOf(confirmed), csrfToken: result.session.csrfToken };
-  }
+  const sessionOf = (username: string) => client.sessionOf(username, PASSWORD);
+  const call = (session: StaffSession, method: string, path: string, body?: unknown) =>
+    client.call(session, method, path, body);
 
   /** One hospital with an administrator (admin.user.manage) and a staff member. */
   async function hospital() {
@@ -106,19 +87,6 @@ describe('account lock over HTTP', () => {
     const staff = await seedUser(prisma, { passwordHash });
     await seedMembership(prisma, tenantId, staff.id);
     return { tenantId, admin, staff };
-  }
-
-  function call(session: Session, method: 'GET' | 'POST', path: string, body?: unknown) {
-    return fetch(`${base}${path}`, {
-      method,
-      headers: {
-        Cookie: session.cookie,
-        Origin: WEB,
-        'X-CSRF-Token': session.csrfToken,
-        ...(body ? { 'Content-Type': 'application/json' } : {}),
-      },
-      ...(body ? { body: JSON.stringify(body) } : {}),
-    });
   }
 
   it('locks after 5 wrong passwords; the admin sees reason, time and source IP', async () => {

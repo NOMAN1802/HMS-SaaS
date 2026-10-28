@@ -347,6 +347,8 @@ Errors use RFC 9457 `application/problem+json` with the stable `code` from [C00 
 | `ACCOUNT_LOCKED` | 423 |
 | `MFA_REQUIRED` (T-ACC-04) | 403 |
 | `MFA_CODE_INVALID` (T-ACC-04) | 401 |
+| `PASSWORD_CHANGE_REQUIRED` (T-ACC-05) | 403 |
+| `USERNAME_TAKEN` (T-ACC-05) | 409 |
 | `PAYLOAD_TOO_LARGE` (proposed, T-PLT-07) | 413 |
 | `RATE_LIMITED` (login: T-ACC-03; per session: T-PLT-07) | 429, with `Retry-After` |
 | `INTERNAL_ERROR` | 500 |

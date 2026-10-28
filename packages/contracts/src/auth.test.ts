@@ -33,6 +33,8 @@ describe('sessionResponseSchema', () => {
       idleExpiresAt: '2026-10-14T10:00:00.000Z',
       absoluteExpiresAt: '2026-10-14T21:00:00.000Z',
       mfa: { required: false, enrolled: false, verified: false },
+      passwordChangeRequired: false,
+      permissions: [],
     });
     expect(parsed.activeMembershipId).toBeNull();
   });

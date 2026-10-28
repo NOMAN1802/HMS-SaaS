@@ -4,6 +4,7 @@
 // and by the manual smoke run recorded in the T-UI-02 log.
 import { sessionResponseSchema, type SessionResponse } from '@hms/contracts';
 import type { Page, Route } from '@playwright/test';
+import { createAdminStore } from './mock-admin';
 
 const WEB_ORIGIN = 'http://localhost:3100';
 
@@ -26,6 +27,9 @@ export interface MockWorld {
   /** T-ACC-04: the chosen hospital's roles need a second factor. */
   mfaRequired: boolean;
   mfaEnrolled: boolean;
+  /** T-ACC-05: permission codes of the chosen hospital's roles, and a forced password change. */
+  permissions: string[];
+  mustChangePassword: boolean;
 }
 
 export interface RecordedRequest {
@@ -68,6 +72,8 @@ export function newWorld(overrides: Partial<MockWorld> = {}): MockWorld {
     online: true,
     mfaRequired: false,
     mfaEnrolled: false,
+    permissions: [],
+    mustChangePassword: false,
     ...overrides,
   };
 }
@@ -86,6 +92,7 @@ export async function installMockApi(page: Page, world: MockWorld) {
   let csrf = 'csrf-token-1';
   let issued = 0;
   let mfaVerified = false;
+  const admin = createAdminStore();
 
   function session(): SessionResponse {
     const now = Date.now();
@@ -97,6 +104,8 @@ export async function installMockApi(page: Page, world: MockWorld) {
       idleExpiresAt: new Date(now + world.idleSeconds * 1000).toISOString(),
       absoluteExpiresAt: new Date(now + 12 * 3600 * 1000).toISOString(),
       mfa: { required: world.mfaRequired, enrolled: world.mfaEnrolled, verified: mfaVerified },
+      passwordChangeRequired: world.mustChangePassword,
+      permissions: activeMembershipId ? world.permissions : [],
     });
   }
 
@@ -108,7 +117,7 @@ export async function installMockApi(page: Page, world: MockWorld) {
         'Access-Control-Allow-Origin': WEB_ORIGIN,
         'Access-Control-Allow-Credentials': 'true',
         'Access-Control-Allow-Headers': 'Content-Type, X-CSRF-Token, Accept',
-        'Access-Control-Allow-Methods': 'GET, POST, PATCH, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, OPTIONS',
       },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
@@ -128,17 +137,7 @@ export async function installMockApi(page: Page, world: MockWorld) {
       body,
     });
 
-    if (path === '/auth/login') {
-      if (body?.username !== world.username || body?.password !== world.password) {
-        return reply(route, 401, PROBLEM(401, 'INVALID_CREDENTIALS'));
-      }
-      signedIn = true;
-      issued += 1;
-      csrf = `csrf-token-${issued}`;
-      activeMembershipId =
-        world.memberships.length === 1 ? (world.memberships[0]?.id ?? null) : null;
-      return reply(route, 200, session());
-    }
+    if (path === '/auth/login') return answerLogin(route, body);
     if (!signedIn) return reply(route, 401, PROBLEM(401, 'UNAUTHENTICATED'));
 
     if (path === '/auth/session' && request.method() === 'GET') return reply(route, 200, session());
@@ -157,8 +156,22 @@ export async function installMockApi(page: Page, world: MockWorld) {
       return reply(route, 204);
     }
     if (path.startsWith('/auth/mfa/')) return answerMfa(route, path, body);
+    if (path === '/auth/password') return answerPasswordChange(route, body);
+    const adminAnswer = admin.answer(request.method(), path, body as never);
+    if (adminAnswer) return reply(route, adminAnswer.status, adminAnswer.body);
     return reply(route, 404, PROBLEM(404, 'NOT_FOUND'));
   });
+
+  function answerLogin(route: Route, body: { username?: string; password?: string }) {
+    if (body.username !== world.username || body.password !== world.password) {
+      return reply(route, 401, PROBLEM(401, 'INVALID_CREDENTIALS'));
+    }
+    signedIn = true;
+    issued += 1;
+    csrf = `csrf-token-${issued}`;
+    activeMembershipId = world.memberships.length === 1 ? (world.memberships[0]?.id ?? null) : null;
+    return reply(route, 200, session());
+  }
 
   // T-ACC-04: the authenticator app "shows" MOCK_TOTP_CODE; recovery codes are MOCK_RECOVERY_CODES.
   function answerMfa(route: Route, path: string, body: { code?: string; recoveryCode?: string }) {
@@ -182,5 +195,20 @@ export async function installMockApi(page: Page, world: MockWorld) {
       : reply(route, 200, { session: session(), recoveryCodes: MOCK_RECOVERY_CODES });
   }
 
-  return { requests };
+  // T-ACC-05: own password change; a wrong current password is a field error (422).
+  function answerPasswordChange(
+    route: Route,
+    body: { currentPassword?: string; newPassword?: string },
+  ) {
+    if (body.currentPassword !== world.password) {
+      return reply(route, 422, PROBLEM(422, 'VALIDATION_FAILED'));
+    }
+    world.password = body.newPassword ?? '';
+    world.mustChangePassword = false;
+    issued += 1;
+    csrf = `csrf-token-${issued}`;
+    return reply(route, 200, session());
+  }
+
+  return { requests, admin };
 }

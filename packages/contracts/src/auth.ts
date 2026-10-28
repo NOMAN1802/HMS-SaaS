@@ -41,6 +41,11 @@ export const sessionResponseSchema = z.object({
   idleExpiresAt: z.iso.datetime(),
   absoluteExpiresAt: z.iso.datetime(),
   mfa: mfaStatusSchema,
+  // T-ACC-05: an administrator set the password; it must be changed before anything else.
+  passwordChangeRequired: z.boolean(),
+  // Permission codes of the chosen hospital's roles, for showing only usable navigation
+  // (UC-ACC-01 step 4). The API still checks every request.
+  permissions: z.array(z.string()),
 });
 export type SessionResponse = z.infer<typeof sessionResponseSchema>;
 

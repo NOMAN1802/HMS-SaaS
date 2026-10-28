@@ -2,7 +2,12 @@
 // Session state for the app: one cached query (the session read) and the actions that change it.
 // The cache holds the only copy of what the UI knows about the user, so logout and expiry clear
 // it completely (ADR-002 evidence: logout clears client caches). Implements: T-UI-02, ADR-004.
-import type { LoginRequest, MfaVerifyRequest, SessionResponse } from '@hms/contracts';
+import type {
+  ChangePasswordRequest,
+  LoginRequest,
+  MfaVerifyRequest,
+  SessionResponse,
+} from '@hms/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { authApi } from '../api/auth';
 import { setCsrfToken } from '../api/client';
@@ -85,10 +90,25 @@ export function useSessionActions() {
     mutationFn: (code: string) => authApi.confirmMfaEnrolment(code),
     onSuccess: (result) => setCsrfToken(result.session.csrfToken),
   });
+  // T-ACC-05 (FR-ACC-007): own password change; the new session replaces the old one.
+  const changePassword = useMutation({
+    mutationFn: (body: ChangePasswordRequest) => authApi.changePassword(body),
+    onSuccess: keep,
+  });
   const verifyMfa = useMutation({
     mutationFn: (body: MfaVerifyRequest) => authApi.verifyMfa(body),
     onSuccess: keep,
   });
 
-  return { login, selectMembership, updateLanguage, logout, forget, keep, confirmMfa, verifyMfa };
+  return {
+    login,
+    selectMembership,
+    updateLanguage,
+    logout,
+    forget,
+    keep,
+    confirmMfa,
+    verifyMfa,
+    changePassword,
+  };
 }

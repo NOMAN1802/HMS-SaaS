@@ -5,6 +5,7 @@ import { redirectTarget } from './use-access';
 function session(
   activeMembershipId: string | null,
   mfa: SessionResponse['mfa'] = { required: false, enrolled: false, verified: false },
+  passwordChangeRequired = false,
 ): SessionResponse {
   return {
     user: { id: '0199e0a0-0000-7000-8000-000000000001', displayName: 'A', preferredLang: 'en' },
@@ -14,6 +15,8 @@ function session(
     idleExpiresAt: '2026-10-15T10:00:00.000Z',
     absoluteExpiresAt: '2026-10-15T20:00:00.000Z',
     mfa,
+    passwordChangeRequired,
+    permissions: [],
   };
 }
 
@@ -56,5 +59,14 @@ describe('redirectTarget: second factor (T-ACC-04, FR-ACC-006)', () => {
 
   it('asks for a hospital before the second factor', () => {
     expect(redirectTarget('second-factor', session(null, PENDING))).toBe('/choose-hospital');
+  });
+});
+
+describe('redirectTarget: temporary password (T-ACC-05, FR-ACC-007)', () => {
+  it('sends a session with a temporary password to the change screen first', () => {
+    expect(redirectTarget('hospital', session(HOSPITAL, PENDING, true))).toBe('/change-password');
+    expect(redirectTarget('second-factor', session(HOSPITAL, PENDING, true))).toBe(
+      '/change-password',
+    );
   });
 });
