@@ -1,11 +1,14 @@
-// /api/v1/auth endpoints (UC-ACC-01). The session token only ever travels in the HttpOnly
-// cookie; the response body carries the CSRF token and what the UI needs to render.
+// /api/v1/auth endpoints (UC-ACC-01; own password change T-ACC-05). The session token only
+// ever travels in the HttpOnly cookie; the response body carries the CSRF token and what the UI
+// needs to render.
 import { Body, Controller, Get, HttpCode, Patch, Post, Req, Res } from '@nestjs/common';
 import type { Response } from 'express';
 import {
+  changePasswordRequestSchema,
   loginRequestSchema,
   selectMembershipRequestSchema,
   updatePreferencesRequestSchema,
+  type ChangePasswordRequest,
   type LoginRequest,
   type SelectMembershipRequest,
   type SessionResponse,
@@ -68,6 +71,19 @@ export class AuthController {
     @Req() request: AuthenticatedRequest,
   ): Promise<SessionResponse> {
     return this.auth.updatePreferences(getAuthContext(request), body, getSessionToken(request));
+  }
+
+  // T-ACC-05 (FR-ACC-007): the user's own password change, also the way out of a forced change.
+  @AllowWithoutTenant()
+  @Post('password')
+  @HttpCode(200)
+  async changePassword(
+    @Body(new ZodBodyPipe(changePasswordRequestSchema)) body: ChangePasswordRequest,
+    @Req() request: AuthenticatedRequest,
+    @Res({ passthrough: true }) response: Response,
+  ): Promise<SessionResponse> {
+    const issued = await this.auth.changePassword(getAuthContext(request), body, metaOf(request));
+    return this.issue(response, issued);
   }
 
   @AllowWithoutTenant()

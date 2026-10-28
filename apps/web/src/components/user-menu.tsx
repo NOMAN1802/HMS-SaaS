@@ -26,6 +26,12 @@ export function UserMenu({ session }: { session: SessionResponse }) {
           },
         ]
       : []),
+    // T-ACC-05 (FR-ACC-007): anyone may change their own password at any time.
+    {
+      id: 'change-password',
+      label: t('changePassword.title'),
+      onSelect: () => router.push('/change-password'),
+    },
     {
       id: 'sign-out',
       label: t('common.signOut'),

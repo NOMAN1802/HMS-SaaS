@@ -45,6 +45,12 @@ export class PermissionGuard implements CanActivate {
       throw new DomainError('PERMISSION_DENIED', DENIED);
     }
 
+    // T-ACC-05 (FR-ACC-007, UC-ACC-01 A1): a password set by an administrator is known to
+    // someone else, so it opens nothing until the user has chosen their own.
+    if (auth.passwordChangeRequired) {
+      await this.deny(ref, route, 'PASSWORD_CHANGE_REQUIRED', marker.codes, []);
+      throw new DomainError('PASSWORD_CHANGE_REQUIRED', 'Choose a new password first');
+    }
     const access = await loadMembershipAccess(this.prisma, ref);
     // T-ACC-04 (FR-ACC-006, C-032): a privileged membership may do nothing behind a permission
     // until this session has passed the second factor; hiding screens is not a control.

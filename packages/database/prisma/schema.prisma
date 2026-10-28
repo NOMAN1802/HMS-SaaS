@@ -116,23 +116,26 @@ enum EventOutcome {
 // Global login identity: one person may belong to several hospitals (E section 6, ADR-004).
 // Not tenant-scoped, so no RLS. Usernames are stored lower-case (CHECK in the migration).
 model UserAccount {
-  id             String        @id @default(uuid(7)) @db.Uuid
-  username       String        @unique
-  displayName    String        @map("display_name")
-  passwordHash   String        @map("password_hash")
-  status         UserStatus    @default(ACTIVE)
-  failedAttempts Int           @default(0) @map("failed_attempts")
-  lockedUntil    DateTime?     @map("locked_until") @db.Timestamptz
+  id                 String        @id @default(uuid(7)) @db.Uuid
+  username           String        @unique
+  displayName        String        @map("display_name")
+  passwordHash       String        @map("password_hash")
+  status             UserStatus    @default(ACTIVE)
+  failedAttempts     Int           @default(0) @map("failed_attempts")
+  lockedUntil        DateTime?     @map("locked_until") @db.Timestamptz
   // T-ACC-03 (FR-ACC-004): why, when and by whom the account was locked. lockReason is a code
   // (FAILED_LOGINS, ADMIN_ACTION); lockNote is the administrator's reason; lockedByUserId is
   // null when the system locked it after failed logins.
-  lockReason     String?       @map("lock_reason")
-  lockedAt       DateTime?     @map("locked_at") @db.Timestamptz
-  lockNote       String?       @map("lock_note")
-  lockedByUserId String?       @map("locked_by_user_id") @db.Uuid
-  preferredLang  PreferredLang @default(bn_BD) @map("preferred_lang")
-  createdAt      DateTime      @default(now()) @map("created_at") @db.Timestamptz
-  version        Int           @default(1)
+  lockReason         String?       @map("lock_reason")
+  lockedAt           DateTime?     @map("locked_at") @db.Timestamptz
+  lockNote           String?       @map("lock_note")
+  lockedByUserId     String?       @map("locked_by_user_id") @db.Uuid
+  // T-ACC-05 (FR-ACC-007): a password set by an administrator must be changed at next login.
+  mustChangePassword Boolean       @default(false) @map("must_change_password")
+  passwordChangedAt  DateTime?     @map("password_changed_at") @db.Timestamptz
+  preferredLang      PreferredLang @default(bn_BD) @map("preferred_lang")
+  createdAt          DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  version            Int           @default(1)
 
   memberships   Membership[]
   sessions      UserSession[]

@@ -6,6 +6,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { requiresSecondFactor } from '@hms/authz';
 import type {
+  ChangePasswordRequest,
   LoginRequest,
   MembershipSummary,
   MfaStatus,
@@ -27,11 +28,16 @@ import {
   shouldTouch,
   slideIdleExpiry,
 } from '../domain/session-policy.js';
-import { loadMembershipAccess } from '../infrastructure/access.repository.js';
+import {
+  loadMembershipAccess,
+  type MembershipAccess,
+} from '../infrastructure/access.repository.js';
 import { csrfTokenFor } from '../infrastructure/csrf-token.js';
 import { stateAfterFailedLogin } from '../domain/lockout-policy.js';
+import { assertPasswordAcceptable } from '../domain/user-admin-policy.js';
 import {
   appendAuthEvent,
+  changeOwnPassword,
   applyFailedLogin,
   clearFailedLogins,
   findSessionByTokenHash,
@@ -41,6 +47,7 @@ import {
   isMembershipActive,
   listMembershipsForUser,
   replaceSession,
+  revokeSessionsOfUser,
   revokeSession,
   setPreferredLang,
   touchSession,
@@ -48,7 +55,11 @@ import {
   type UserRecord,
 } from '../infrastructure/identity.repository.js';
 import { findMfa } from '../infrastructure/mfa.repository.js';
-import { verifyAgainstDummy, verifyPassword } from '../infrastructure/password-hasher.js';
+import {
+  hashPassword,
+  verifyAgainstDummy,
+  verifyPassword,
+} from '../infrastructure/password-hasher.js';
 import { hashSessionToken, newSessionToken } from '../infrastructure/session-token.js';
 import { AUTH_CONFIG, CLOCK, type AuthConfig } from './auth.config.js';
 import { LOGIN_THROTTLE, type LoginThrottle } from './login-throttle.js';
@@ -61,6 +72,8 @@ export interface AuthContext {
   absoluteExpiresAt: Date;
   /** When this session passed the second factor (T-ACC-04); null if it has not. */
   mfaVerifiedAt: Date | null;
+  /** An administrator set the password; it must be changed first (T-ACC-05, FR-ACC-007). */
+  passwordChangeRequired: boolean;
 }
 
 export interface RequestMeta {
@@ -181,7 +194,7 @@ export class AuthService {
   async recordFailedAttempt(
     userId: string,
     meta: RequestMeta,
-    action: 'auth.login.failed' | 'auth.mfa.failed',
+    action: 'auth.login.failed' | 'auth.mfa.failed' | 'auth.password.change_failed',
     reason: string,
   ): Promise<void> {
     const now = this.clock.now();
@@ -232,7 +245,43 @@ export class AuthService {
       tokenHash,
       absoluteExpiresAt: session.absoluteExpiresAt,
       mfaVerifiedAt: session.mfaVerifiedAt,
+      // accessOk above guarantees the account was found.
+      passwordChangeRequired: user?.mustChangePassword ?? false,
     };
+  }
+
+  /**
+   * The user's own password change (T-ACC-05, FR-ACC-007; UC-ACC-01 A1). A wrong current
+   * password counts towards the lock. Other sessions end; this one is replaced (new ID).
+   */
+  async changePassword(
+    ctx: AuthContext,
+    input: ChangePasswordRequest,
+    meta: RequestMeta,
+  ): Promise<IssuedSession> {
+    const user = await this.requireUser(ctx.userId);
+    if (!(await verifyPassword(user.passwordHash, input.currentPassword))) {
+      await this.recordFailedAttempt(user.id, meta, 'auth.password.change_failed', 'BAD_PASSWORD');
+      // Not INVALID_CREDENTIALS (401): the session is fine, only this field is wrong.
+      throw new DomainError('VALIDATION_FAILED', 'Current password is not correct', {
+        fields: [{ path: 'currentPassword', message: 'Not correct' }],
+      });
+    }
+    assertPasswordAcceptable(input.newPassword, user.username, input.currentPassword);
+    const now = this.clock.now();
+    await changeOwnPassword(this.prisma, user.id, await hashPassword(input.newPassword), now);
+    await revokeSessionsOfUser(this.prisma, user.id, now, ctx.tokenHash);
+    await this.authEvent('auth.password.changed', 'SUCCEEDED', meta, { userId: user.id });
+
+    const updated = await this.requireUser(user.id);
+    const memberships = await this.activeMemberships(user.id);
+    const bound = memberships.find((m) => m.id === ctx.membershipId) ?? null;
+    return this.startSession(updated, memberships, bound, meta, {
+      absoluteLimit: ctx.absoluteExpiresAt,
+      replacing: ctx.tokenHash,
+      mfaVerifiedAt: ctx.mfaVerifiedAt,
+      auditLogin: false,
+    });
   }
 
   async describeSession(ctx: AuthContext, token: string): Promise<SessionResponse> {
@@ -317,6 +366,14 @@ export class AuthService {
     token: string,
     times: { idleExpiresAt: Date; absoluteExpiresAt: Date; mfaVerifiedAt: Date | null },
   ): Promise<SessionResponse> {
+    // Before a hospital is chosen the roles are unknown: no permissions, no MFA requirement.
+    const access = bound
+      ? await loadMembershipAccess(this.prisma, {
+          tenantId: bound.tenantId,
+          userId: user.id,
+          membershipId: bound.id,
+        })
+      : null;
     return {
       user: {
         id: user.id,
@@ -328,26 +385,19 @@ export class AuthService {
       csrfToken: csrfTokenFor(token, this.config.csrfSecret),
       idleExpiresAt: times.idleExpiresAt.toISOString(),
       absoluteExpiresAt: times.absoluteExpiresAt.toISOString(),
-      mfa: await this.mfaStatus(user.id, bound, times.mfaVerifiedAt),
+      mfa: await this.mfaStatus(user.id, access, times.mfaVerifiedAt),
+      passwordChangeRequired: user.mustChangePassword,
+      permissions: access ? [...access.granted].sort() : [],
     };
   }
 
   /** What the UI needs to route to the MFA screen; the API enforces it in PermissionGuard. */
   private async mfaStatus(
     userId: string,
-    bound: MembershipRecord | null,
+    access: MembershipAccess | null,
     verifiedAt: Date | null,
   ): Promise<MfaStatus> {
-    // Before a hospital is chosen the roles are unknown; the requirement applies once one is.
-    const required = bound
-      ? requiresSecondFactor(
-          await loadMembershipAccess(this.prisma, {
-            tenantId: bound.tenantId,
-            userId,
-            membershipId: bound.id,
-          }),
-        )
-      : false;
+    const required = access ? requiresSecondFactor(access) : false;
     const mfa = await findMfa(this.prisma, userId);
     return { required, enrolled: mfa?.enabledAt != null, verified: verifiedAt !== null };
   }

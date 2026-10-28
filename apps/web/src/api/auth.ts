@@ -1,6 +1,7 @@
-// The auth endpoints the web app uses (UC-ACC-01, FR-I18N-001; second factor T-ACC-04). Each
-// answer is validated against the shared contract.
+// The auth endpoints the web app uses (UC-ACC-01, FR-I18N-001; second factor T-ACC-04; own
+// password change T-ACC-05). Each answer is validated against the shared contract.
 import {
+  type ChangePasswordRequest,
   type LoginRequest,
   type MfaVerifyRequest,
   mfaConfirmResponseSchema,
@@ -31,6 +32,8 @@ export const authApi = {
       body: { code },
       parse: (data) => mfaConfirmResponseSchema.parse(data),
     }),
+  changePassword: (body: ChangePasswordRequest) =>
+    apiRequest('/auth/password', { method: 'POST', body, parse }),
   verifyMfa: (body: MfaVerifyRequest) =>
     apiRequest('/auth/mfa/verify', { method: 'POST', body, parse }),
 };

@@ -19,6 +19,8 @@ export interface UserRecord {
   lockedUntil: Date | null;
   failedAttempts: number;
   preferredLang: 'bn_BD' | 'en';
+  /** T-ACC-05: set by an administrator's password reset; cleared by the user's own change. */
+  mustChangePassword: boolean;
 }
 
 export interface MembershipRecord {
@@ -107,6 +109,40 @@ export async function clearFailedLogins(prisma: PrismaClient, userId: string): P
   await prisma.userAccount.updateMany({
     where: { id: userId, status: { in: ['ACTIVE', 'LOCKED_TEMPORARY'] } },
     data: unlockedState(),
+  });
+}
+
+/** The user's own new password (T-ACC-05, FR-ACC-007); clears the forced change. */
+export async function changeOwnPassword(
+  prisma: PrismaClient,
+  userId: string,
+  passwordHash: string,
+  now: Date,
+): Promise<void> {
+  await prisma.userAccount.update({
+    where: { id: userId },
+    data: {
+      passwordHash,
+      mustChangePassword: false,
+      passwordChangedAt: now,
+      version: { increment: 1 },
+    },
+  });
+}
+
+/**
+ * Ends every open session of a user except, optionally, the one making the change: after a
+ * password change or reset an old cookie elsewhere must not keep working.
+ */
+export async function revokeSessionsOfUser(
+  prisma: PrismaClient,
+  userId: string,
+  at: Date,
+  except?: Uint8Array<ArrayBuffer>,
+): Promise<void> {
+  await prisma.userSession.updateMany({
+    where: { userId, revokedAt: null, ...(except ? { NOT: { tokenHash: except } } : {}) },
+    data: { revokedAt: at },
   });
 }
 

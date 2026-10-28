@@ -1,12 +1,12 @@
 // The navigation model of the staff app (F section 2.1). Each entry names the permission code
 // it needs; entries are filtered before they reach the shell, so a user never sees a link to
-// something the server would refuse (FR-ACC-006). Permission codes arrive with T-ACC-02; until
-// then the session carries none and only entries without a requirement are shown.
-// Implements: T-UI-02.
+// something the server would refuse (FR-ACC-009). The session carries the permission codes of the
+// chosen hospital's roles (T-ACC-05); the API still checks every request.
+// Implements: T-UI-02, T-ACC-05.
 import type { IconName } from '@hms/ui';
 
 // Full catalog keys, so the unused-key check can see them as literals.
-export type NavLabelKey = 'nav.home';
+export type NavLabelKey = 'nav.home' | 'nav.users' | 'nav.roles';
 
 export interface NavDefinition {
   id: string;
@@ -19,6 +19,21 @@ export interface NavDefinition {
 
 export const NAVIGATION: readonly NavDefinition[] = [
   { id: 'home', labelKey: 'nav.home', href: '/', icon: 'home' },
+  // T-ACC-05 (SCR-22): hospital administration.
+  {
+    id: 'users',
+    labelKey: 'nav.users',
+    href: '/admin/users',
+    icon: 'users',
+    requires: 'admin.user.manage',
+  },
+  {
+    id: 'roles',
+    labelKey: 'nav.roles',
+    href: '/admin/roles',
+    icon: 'shield-check',
+    requires: 'admin.role.manage',
+  },
 ];
 
 export function visibleNavigation(
