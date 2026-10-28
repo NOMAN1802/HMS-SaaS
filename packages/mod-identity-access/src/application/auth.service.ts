@@ -1,6 +1,7 @@
 // Login, hospital selection, session resolution and logout (UC-ACC-01, FR-ACC-001/002/005,
 // ADR-004). Pre-hospital events go to auth_event; once a hospital is bound, the hospital's own
-// audit trail also records the login (decision 1 of the T-ACC-01 plan).
+// audit trail also records the login (decision 1 of the T-ACC-01 plan). T-ACC-03 adds the login
+// rate limit and the lock after repeated wrong passwords (FR-ACC-004, NFR-SEC-005, C-032).
 import { Inject, Injectable } from '@nestjs/common';
 import type {
   LoginRequest,
@@ -24,8 +25,11 @@ import {
   slideIdleExpiry,
 } from '../domain/session-policy.js';
 import { csrfTokenFor } from '../infrastructure/csrf-token.js';
+import { stateAfterFailedLogin } from '../domain/lockout-policy.js';
 import {
   appendAuthEvent,
+  applyFailedLogin,
+  clearFailedLogins,
   findSessionByTokenHash,
   findUserById,
   findUserByUsername,
@@ -33,8 +37,6 @@ import {
   isMembershipActive,
   listMembershipsForUser,
   replaceSession,
-  recordFailedLogin,
-  resetFailedLogins,
   revokeSession,
   setPreferredLang,
   touchSession,
@@ -44,6 +46,7 @@ import {
 import { verifyAgainstDummy, verifyPassword } from '../infrastructure/password-hasher.js';
 import { hashSessionToken, newSessionToken } from '../infrastructure/session-token.js';
 import { AUTH_CONFIG, CLOCK, type AuthConfig } from './auth.config.js';
+import { LOGIN_THROTTLE, type LoginThrottle } from './login-throttle.js';
 
 export interface AuthContext {
   userId: string;
@@ -73,10 +76,12 @@ export class AuthService {
     @Inject(PRISMA) private readonly prisma: PrismaClient,
     @Inject(AUTH_CONFIG) private readonly config: AuthConfig,
     @Inject(CLOCK) private readonly clock: Clock,
+    @Inject(LOGIN_THROTTLE) private readonly throttle: LoginThrottle,
   ) {}
 
   async login(input: LoginRequest, meta: RequestMeta): Promise<IssuedSession> {
     const username = normalizeUsername(input.username);
+    await this.throttle.assertAllowed(meta.ipAddress, username, this.clock.now());
     const user = await findUserByUsername(this.prisma, username);
     if (!user) {
       await verifyAgainstDummy(input.password);
@@ -91,11 +96,23 @@ export class AuthService {
     // The password is checked first, so lock and disabled states are only revealed to someone
     // who knows the password (otherwise status would leak to anyone who guesses a username).
     if (!(await verifyPassword(user.passwordHash, input.password))) {
-      await recordFailedLogin(this.prisma, user.id);
+      const now = this.clock.now();
+      const next = await applyFailedLogin(this.prisma, user.id, (current) =>
+        stateAfterFailedLogin(current, now, this.config.lockout),
+      );
       await this.authEvent('auth.login.failed', 'FAILED', meta, {
         userId: user.id,
         reason: 'BAD_PASSWORD',
       });
+      // FR-ACC-004: the lock itself is an event, so support can see when and from where the
+      // last failure came. The caller still gets INVALID_CREDENTIALS (status only after a
+      // correct password, see above).
+      if (next?.status === 'LOCKED_TEMPORARY') {
+        await this.authEvent('auth.account.locked', 'SUCCEEDED', meta, {
+          userId: user.id,
+          reason: 'FAILED_LOGINS',
+        });
+      }
       throw new DomainError('INVALID_CREDENTIALS', INVALID);
     }
 
@@ -116,7 +133,7 @@ export class AuthService {
       throw new DomainError('MEMBERSHIP_NOT_ACTIVE', 'Access to this hospital is not active');
     }
 
-    await resetFailedLogins(this.prisma, user.id);
+    await clearFailedLogins(this.prisma, user.id);
     // FR-ACC-002: with exactly one hospital the choice is automatic (UC-ACC-01 A1).
     const bound = memberships.length === 1 ? (memberships[0] ?? null) : null;
     const issued = await this.startSession(user, memberships, bound, meta);

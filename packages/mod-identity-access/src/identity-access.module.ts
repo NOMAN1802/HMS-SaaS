@@ -4,8 +4,11 @@
 import { Module, type DynamicModule } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { systemClock, type Clock } from '@hms/domain-kernel';
+import { AccountLockService } from './application/account-lock.service.js';
 import { AUTH_CONFIG, CLOCK, type AuthConfig } from './application/auth.config.js';
 import { AuthService } from './application/auth.service.js';
+import { LOGIN_THROTTLE, LoginThrottle } from './application/login-throttle.js';
+import { AccountLockController } from './http/account-lock.controller.js';
 import { AuthController } from './http/auth.controller.js';
 import { ALLOWED_ORIGINS, CsrfGuard, SessionGuard, TenantGuard } from './http/guards.js';
 import { PermissionGuard } from './http/permission.guard.js';
@@ -25,10 +28,12 @@ export class IdentityAccessModule {
     const allowedOrigins = new Set(options.allowedOrigins ?? ['http://localhost:3100']);
     return {
       module: IdentityAccessModule,
-      controllers: [AuthController],
+      controllers: [AuthController, AccountLockController],
       providers: [
         AuthService,
+        AccountLockService,
         { provide: AUTH_CONFIG, useValue: config },
+        { provide: LOGIN_THROTTLE, useValue: LoginThrottle.inMemory(config.loginRateLimits) },
         { provide: CLOCK, useValue: clock },
         { provide: ALLOWED_ORIGINS, useValue: allowedOrigins },
         // Order matters: session first, then CSRF (needs the session token), then tenant,

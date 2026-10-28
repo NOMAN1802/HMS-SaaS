@@ -346,7 +346,7 @@ Errors use RFC 9457 `application/problem+json` with the stable `code` from [C00 
 | missing `If-Match` | 428 |
 | `ACCOUNT_LOCKED` | 423 |
 | `PAYLOAD_TOO_LARGE` (proposed, T-PLT-07) | 413 |
-| `RATE_LIMITED` (proposed, T-PLT-07) | 429 |
+| `RATE_LIMITED` (login: T-ACC-03; per session: T-PLT-07) | 429, with `Retry-After` |
 | `INTERNAL_ERROR` | 500 |
 | `SERVICE_UNAVAILABLE` | 503 |
 

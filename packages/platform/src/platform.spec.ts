@@ -23,6 +23,11 @@ class ProbeController {
     throw new DomainError('ACCOUNT_LOCKED', 'Account locked', { status: 200, code: 'FAKE' });
   }
 
+  @Get('limited')
+  limited(): never {
+    throw new DomainError('RATE_LIMITED', 'Too many attempts', { retryAfterSeconds: 42 });
+  }
+
   @Get('crash')
   crash(): never {
     throw new Error('database password is secret');
@@ -60,6 +65,13 @@ describe('platform HTTP pieces', () => {
       status: 423,
       lockedUntil: '2026-10-14T10:15:00.000Z',
     });
+  });
+
+  it('answers RATE_LIMITED with 429 and a Retry-After header', async () => {
+    const res = await fetch(`${base}/probe/limited`);
+    expect(res.status).toBe(429);
+    expect(res.headers.get('retry-after')).toBe('42');
+    expect(await res.json()).toMatchObject({ code: 'RATE_LIMITED', retryAfterSeconds: 42 });
   });
 
   it('hides the message of an unexpected error', async () => {
