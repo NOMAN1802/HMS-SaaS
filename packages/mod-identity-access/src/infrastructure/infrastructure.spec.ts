@@ -1,13 +1,15 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createPrismaClient, type PrismaClient } from '@hms/database';
 import { seedMembership, seedTenant, seedUser } from '@hms/testkit';
+import { unlockedState } from '../domain/lockout-policy.js';
 import { csrfTokenFor, isValidCsrfToken } from './csrf-token.js';
 import {
+  applyFailedLogin,
+  clearFailedLogins,
   findSessionByTokenHash,
   findUserByUsername,
   insertSession,
   listMembershipsForUser,
-  recordFailedLogin,
   revokeSession,
 } from './identity.repository.js';
 import { hashPassword, verifyPassword } from './password-hasher.js';
@@ -57,11 +59,17 @@ describe('identity repository', () => {
     await prisma.$disconnect();
   });
 
-  it('finds a user by username and counts failed logins', async () => {
+  it('finds a user by username and applies a failed login under a row lock', async () => {
     const { id, username } = await seedUser(prisma, { passwordHash: 'x' });
-    await recordFailedLogin(prisma, id);
+    const seen = await applyFailedLogin(prisma, id, (current) => {
+      expect(current).toEqual({ status: 'ACTIVE', failedAttempts: 0, lockedUntil: null });
+      return unlockedState(current.failedAttempts + 1);
+    });
+    expect(seen?.failedAttempts).toBe(1);
     const user = await findUserByUsername(prisma, username);
     expect(user?.failedAttempts).toBe(1);
+    await clearFailedLogins(prisma, id);
+    expect((await findUserByUsername(prisma, username))?.failedAttempts).toBe(0);
   });
 
   it("lists the user's memberships with hospital names", async () => {
@@ -89,6 +97,7 @@ describe('identity repository', () => {
       userId,
       tenantId: null,
       membershipId: null,
+      mfaVerifiedAt: null,
       createdAt: now,
       idleExpiresAt: new Date(now.getTime() + 60_000),
       absoluteExpiresAt: new Date(now.getTime() + 120_000),

@@ -116,20 +116,31 @@ enum EventOutcome {
 // Global login identity: one person may belong to several hospitals (E section 6, ADR-004).
 // Not tenant-scoped, so no RLS. Usernames are stored lower-case (CHECK in the migration).
 model UserAccount {
-  id             String        @id @default(uuid(7)) @db.Uuid
-  username       String        @unique
-  displayName    String        @map("display_name")
-  passwordHash   String        @map("password_hash")
-  status         UserStatus    @default(ACTIVE)
-  failedAttempts Int           @default(0) @map("failed_attempts")
-  lockedUntil    DateTime?     @map("locked_until") @db.Timestamptz
-  lockReason     String?       @map("lock_reason")
-  preferredLang  PreferredLang @default(bn_BD) @map("preferred_lang")
-  createdAt      DateTime      @default(now()) @map("created_at") @db.Timestamptz
-  version        Int           @default(1)
+  id                 String        @id @default(uuid(7)) @db.Uuid
+  username           String        @unique
+  displayName        String        @map("display_name")
+  passwordHash       String        @map("password_hash")
+  status             UserStatus    @default(ACTIVE)
+  failedAttempts     Int           @default(0) @map("failed_attempts")
+  lockedUntil        DateTime?     @map("locked_until") @db.Timestamptz
+  // T-ACC-03 (FR-ACC-004): why, when and by whom the account was locked. lockReason is a code
+  // (FAILED_LOGINS, ADMIN_ACTION); lockNote is the administrator's reason; lockedByUserId is
+  // null when the system locked it after failed logins.
+  lockReason         String?       @map("lock_reason")
+  lockedAt           DateTime?     @map("locked_at") @db.Timestamptz
+  lockNote           String?       @map("lock_note")
+  lockedByUserId     String?       @map("locked_by_user_id") @db.Uuid
+  // T-ACC-05 (FR-ACC-007): a password set by an administrator must be changed at next login.
+  mustChangePassword Boolean       @default(false) @map("must_change_password")
+  passwordChangedAt  DateTime?     @map("password_changed_at") @db.Timestamptz
+  preferredLang      PreferredLang @default(bn_BD) @map("preferred_lang")
+  createdAt          DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  version            Int           @default(1)
 
-  memberships Membership[]
-  sessions    UserSession[]
+  memberships   Membership[]
+  sessions      UserSession[]
+  mfa           UserMfa?
+  recoveryCodes UserMfaRecoveryCode[]
 
   @@map("user_account")
   @@schema("hms")
@@ -231,12 +242,45 @@ model UserSession {
   idleExpiresAt     DateTime  @map("idle_expires_at") @db.Timestamptz
   absoluteExpiresAt DateTime  @map("absolute_expires_at") @db.Timestamptz
   revokedAt         DateTime? @map("revoked_at") @db.Timestamptz
+  // T-ACC-04 (FR-ACC-006): when this session passed the second factor; null until then.
+  mfaVerifiedAt     DateTime? @map("mfa_verified_at") @db.Timestamptz
 
   user       UserAccount @relation(fields: [userId], references: [id])
   membership Membership? @relation(fields: [tenantId, membershipId], references: [tenantId, id])
 
   @@index([userId])
   @@map("user_session")
+  @@schema("hms")
+}
+
+// A user's TOTP second factor (T-ACC-04, FR-ACC-006, ADR-004). The secret is encrypted with
+// MFA_ENCRYPTION_KEY (AES-256-GCM). enabledAt stays null until the first code confirms the
+// enrolment. lastUsedStep refuses a code whose time step was already used (replay, AT-ACC-010).
+model UserMfa {
+  userId           String    @id @map("user_id") @db.Uuid
+  secretCiphertext Bytes     @map("secret_ciphertext")
+  enabledAt        DateTime? @map("enabled_at") @db.Timestamptz
+  lastUsedStep     BigInt?   @map("last_used_step")
+  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz
+
+  user UserAccount @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_mfa")
+  @@schema("hms")
+}
+
+// Single-use recovery codes, stored as SHA-256 hashes (T-ACC-04, D section 7.1).
+model UserMfaRecoveryCode {
+  id        String    @id @default(uuid(7)) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  codeHash  Bytes     @map("code_hash")
+  usedAt    DateTime? @map("used_at") @db.Timestamptz
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
+
+  user UserAccount @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, codeHash])
+  @@map("user_mfa_recovery_code")
   @@schema("hms")
 }
 

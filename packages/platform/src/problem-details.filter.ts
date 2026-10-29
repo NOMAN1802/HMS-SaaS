@@ -14,6 +14,7 @@ import { DomainError } from '@hms/domain-kernel';
 import type { CorrelatedRequest } from './request-id.middleware.js';
 
 interface HttpResponseLike {
+  setHeader(name: string, value: string): void;
   status(code: number): HttpResponseLike;
   type(contentType: string): HttpResponseLike;
   send(body: string): void;
@@ -26,6 +27,7 @@ const statusToCode: Record<number, ErrorCode> = {
   404: 'NOT_FOUND',
   413: 'PAYLOAD_TOO_LARGE',
   422: 'VALIDATION_FAILED',
+  429: 'RATE_LIMITED',
   503: 'SERVICE_UNAVAILABLE',
 };
 
@@ -37,6 +39,7 @@ const statusTitles: Record<number, string> = {
   404: 'Not found',
   413: 'Request too large',
   422: 'Request is invalid',
+  429: 'Too many requests',
   503: 'Service unavailable',
 };
 
@@ -62,6 +65,9 @@ export class ProblemDetailsFilter implements ExceptionFilter {
     }
     // Added last, so DomainError details can never replace the ID.
     const problem = { ...toProblem(exception), ...(correlationId ? { correlationId } : {}) };
+    // RFC 9110: a 429 (or 503) says when to come back; the body keeps the same number.
+    const retryAfter = (problem as { retryAfterSeconds?: unknown }).retryAfterSeconds;
+    if (typeof retryAfter === 'number') response.setHeader('Retry-After', String(retryAfter));
     response.status(problem.status).type('application/problem+json').send(JSON.stringify(problem));
   }
 }

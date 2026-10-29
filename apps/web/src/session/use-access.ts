@@ -6,8 +6,12 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { type SessionData, useSession } from './use-session';
 
-/** anonymous: login screen. account: signed in, hospital not required. hospital: the shell. */
-export type AccessLevel = 'anonymous' | 'account' | 'hospital';
+/**
+ * anonymous: login screen. account: signed in, hospital not required (also the password
+ * change screen, T-ACC-05). second-factor: the MFA screen, for a session that still needs it
+ * (T-ACC-04). hospital: the shell.
+ */
+export type AccessLevel = 'anonymous' | 'account' | 'second-factor' | 'hospital';
 
 export type AccessStatus = 'loading' | 'ready' | 'redirecting' | 'unreachable';
 
@@ -20,9 +24,17 @@ export interface Access {
 
 export function redirectTarget(required: AccessLevel, session: SessionData): string | null {
   if (session === null) return required === 'anonymous' ? null : '/login';
-  if (required === 'anonymous') return session.activeMembershipId ? '/' : '/choose-hospital';
-  if (required === 'hospital' && session.activeMembershipId === null) return '/choose-hospital';
-  return null;
+  // FR-ACC-006: a privileged role needs the second factor before the shell (the API refuses
+  // every guarded route with MFA_REQUIRED until then).
+  const needsSecondFactor = session.mfa.required && !session.mfa.verified;
+  if (required === 'account') return null;
+  // FR-ACC-007: a temporary password set by an administrator is replaced before anything else,
+  // even before choosing a hospital (the API refuses guarded routes until then).
+  if (session.passwordChangeRequired) return '/change-password';
+  if (session.activeMembershipId === null) return '/choose-hospital';
+  if (required === 'second-factor') return needsSecondFactor ? null : '/';
+  if (needsSecondFactor) return '/mfa';
+  return required === 'anonymous' ? '/' : null;
 }
 
 export function useAccess(required: AccessLevel): Access {

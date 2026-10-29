@@ -5,6 +5,7 @@ import { createPrismaClient, withTenant, type PrismaClient } from '@hms/database
 import { fixedClock } from '@hms/domain-kernel';
 import {
   createRolesFromTemplates,
+  DEFAULT_LOGIN_RATE_LIMITS,
   hashPassword,
   IdentityAccessModule,
   RequirePermission,
@@ -61,7 +62,13 @@ class GuardedProbeController {
     RequestPipelineModule.forRoot({ level: 'silent' }),
     DatabaseModule.forRoot(databaseUrl),
     IdentityAccessModule.forRoot(
-      { timeouts: { idleMinutes: 60, absoluteHours: 12 }, csrfSecret: 'z'.repeat(32) },
+      {
+        timeouts: { idleMinutes: 60, absoluteHours: 12 },
+        csrfSecret: 'z'.repeat(32),
+        lockout: { maxFailedAttempts: 5, lockMinutes: 15 },
+        loginRateLimits: DEFAULT_LOGIN_RATE_LIMITS,
+        mfa: { encryptionKey: Buffer.alloc(32, 7), issuer: 'HMS test' },
+      },
       fixedClock(new Date()),
       { allowedOrigins: [WEB] },
     ),

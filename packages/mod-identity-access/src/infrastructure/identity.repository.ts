@@ -1,16 +1,26 @@
 // Prisma access for login and sessions. user_account and user_session are not tenant-scoped
 // (looked up before a hospital is known); memberships are read with the user context (RLS).
 import { withUserContext, type PrismaClient } from '@hms/database';
+import type { AccountStatus } from '../domain/account-policy.js';
+import { unlockedState, type LockState } from '../domain/lockout-policy.js';
+
+export interface CurrentLockRow {
+  status: AccountStatus;
+  failedAttempts: number;
+  lockedUntil: Date | null;
+}
 
 export interface UserRecord {
   id: string;
   username: string;
   displayName: string;
   passwordHash: string;
-  status: 'ACTIVE' | 'LOCKED_TEMPORARY' | 'LOCKED_ADMIN' | 'DISABLED';
+  status: AccountStatus;
   lockedUntil: Date | null;
   failedAttempts: number;
   preferredLang: 'bn_BD' | 'en';
+  /** T-ACC-05: set by an administrator's password reset; cleared by the user's own change. */
+  mustChangePassword: boolean;
 }
 
 export interface MembershipRecord {
@@ -30,6 +40,7 @@ export interface SessionRecord {
   idleExpiresAt: Date;
   absoluteExpiresAt: Date;
   revokedAt: Date | null;
+  mfaVerifiedAt: Date | null;
 }
 
 export interface NewSession {
@@ -40,6 +51,8 @@ export interface NewSession {
   createdAt: Date;
   idleExpiresAt: Date;
   absoluteExpiresAt: Date;
+  /** Set when the user already passed the second factor in this login (T-ACC-04). */
+  mfaVerifiedAt: Date | null;
 }
 
 export interface AuthEventInput {
@@ -63,15 +76,74 @@ export function findUserById(prisma: PrismaClient, id: string): Promise<UserReco
   return prisma.userAccount.findUnique({ where: { id } });
 }
 
-export async function recordFailedLogin(prisma: PrismaClient, userId: string): Promise<void> {
-  await prisma.userAccount.update({
-    where: { id: userId },
-    data: { failedAttempts: { increment: 1 } },
+/**
+ * Applies a failed login under a row lock (T-ACC-03). Concurrent wrong passwords queue on the
+ * lock, so none of them is lost and an attacker cannot get extra tries by sending them in
+ * parallel. `decide` is the domain rule (stateAfterFailedLogin); null means no change.
+ */
+export async function applyFailedLogin(
+  prisma: PrismaClient,
+  userId: string,
+  decide: (current: CurrentLockRow) => LockState | null,
+): Promise<LockState | null> {
+  return prisma.$transaction(
+    async (tx) => {
+      const rows = await tx.$queryRaw<CurrentLockRow[]>`
+        SELECT status::text AS status, failed_attempts AS "failedAttempts",
+               locked_until AS "lockedUntil"
+          FROM hms.user_account WHERE id = ${userId}::uuid FOR UPDATE`;
+      const current = rows[0];
+      const next = current ? decide(current) : null;
+      if (next) await tx.userAccount.update({ where: { id: userId }, data: next });
+      return next;
+    },
+    { maxWait: 5_000, timeout: 5_000 },
+  );
+}
+
+/**
+ * After a correct password: clears the failure counter and an expired temporary lock. An
+ * administrator's lock or a disabled account is never touched here.
+ */
+export async function clearFailedLogins(prisma: PrismaClient, userId: string): Promise<void> {
+  await prisma.userAccount.updateMany({
+    where: { id: userId, status: { in: ['ACTIVE', 'LOCKED_TEMPORARY'] } },
+    data: unlockedState(),
   });
 }
 
-export async function resetFailedLogins(prisma: PrismaClient, userId: string): Promise<void> {
-  await prisma.userAccount.update({ where: { id: userId }, data: { failedAttempts: 0 } });
+/** The user's own new password (T-ACC-05, FR-ACC-007); clears the forced change. */
+export async function changeOwnPassword(
+  prisma: PrismaClient,
+  userId: string,
+  passwordHash: string,
+  now: Date,
+): Promise<void> {
+  await prisma.userAccount.update({
+    where: { id: userId },
+    data: {
+      passwordHash,
+      mustChangePassword: false,
+      passwordChangedAt: now,
+      version: { increment: 1 },
+    },
+  });
+}
+
+/**
+ * Ends every open session of a user except, optionally, the one making the change: after a
+ * password change or reset an old cookie elsewhere must not keep working.
+ */
+export async function revokeSessionsOfUser(
+  prisma: PrismaClient,
+  userId: string,
+  at: Date,
+  except?: Uint8Array<ArrayBuffer>,
+): Promise<void> {
+  await prisma.userSession.updateMany({
+    where: { userId, revokedAt: null, ...(except ? { NOT: { tokenHash: except } } : {}) },
+    data: { revokedAt: at },
+  });
 }
 
 /** `bn-BD` is stored as the enum value `bn_BD` (Prisma enum names cannot contain a hyphen). */

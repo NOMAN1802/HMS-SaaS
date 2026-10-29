@@ -3,7 +3,12 @@ import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import { createPrismaClient, type PrismaClient } from '@hms/database';
 import { fixedClock } from '@hms/domain-kernel';
-import { IdentityAccessModule, RequirePermission, hashPassword } from '@hms/mod-identity-access';
+import {
+  DEFAULT_LOGIN_RATE_LIMITS,
+  IdentityAccessModule,
+  RequirePermission,
+  hashPassword,
+} from '@hms/mod-identity-access';
 import { DatabaseModule } from '@hms/platform';
 import { grantPermissions, seedMembership, seedTenant, seedUser } from '@hms/testkit';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -37,7 +42,13 @@ class ProbeController {
   imports: [
     DatabaseModule.forRoot(databaseUrl),
     IdentityAccessModule.forRoot(
-      { timeouts: { idleMinutes: 60, absoluteHours: 12 }, csrfSecret: 'y'.repeat(32) },
+      {
+        timeouts: { idleMinutes: 60, absoluteHours: 12 },
+        csrfSecret: 'y'.repeat(32),
+        lockout: { maxFailedAttempts: 5, lockMinutes: 15 },
+        loginRateLimits: DEFAULT_LOGIN_RATE_LIMITS,
+        mfa: { encryptionKey: Buffer.alloc(32, 7), issuer: 'HMS test' },
+      },
       clock,
       { allowedOrigins: [WEB] },
     ),

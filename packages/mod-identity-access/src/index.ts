@@ -1,6 +1,12 @@
 // Public entry of the identity and access module (D section 5 rule 3): other packages and apps
 // import only from here.
-export { AUTH_CONFIG, CLOCK, loadAuthConfig, type AuthConfig } from './application/auth.config.js';
+export {
+  AUTH_CONFIG,
+  CLOCK,
+  DEFAULT_LOGIN_RATE_LIMITS,
+  loadAuthConfig,
+  type AuthConfig,
+} from './application/auth.config.js';
 export { AuthService, type AuthContext, type RequestMeta } from './application/auth.service.js';
 export { AllowWithoutTenant, Public, RequirePermission } from './http/decorators.js';
 export { getAuthContext, type AuthenticatedRequest } from './http/request-context.js';

@@ -1,9 +1,10 @@
 // Global route permission guard, after SessionGuard, CsrfGuard and TenantGuard (D section 7.2
-// steps 3 and 4). T-ACC-02, FR-ACC-009, FR-SAA-004. Default deny: a handler without a marker
-// is refused, so a forgotten decorator can never open a route. Every refusal is audited.
+// steps 3 and 4). T-ACC-02, FR-ACC-009, FR-SAA-004; the second factor is T-ACC-04. Default deny:
+// a handler without a marker is refused, so a forgotten decorator can never open a route.
+// Every refusal is audited.
 import { Inject, Injectable, type CanActivate, type ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { evaluateAccess } from '@hms/authz';
+import { evaluateAccess, requiresSecondFactor } from '@hms/authz';
 import type { PermissionCode } from '@hms/contracts';
 import type { PrismaClient } from '@hms/database';
 import { DomainError } from '@hms/domain-kernel';
@@ -44,7 +45,19 @@ export class PermissionGuard implements CanActivate {
       throw new DomainError('PERMISSION_DENIED', DENIED);
     }
 
+    // T-ACC-05 (FR-ACC-007, UC-ACC-01 A1): a password set by an administrator is known to
+    // someone else, so it opens nothing until the user has chosen their own.
+    if (auth.passwordChangeRequired) {
+      await this.deny(ref, route, 'PASSWORD_CHANGE_REQUIRED', marker.codes, []);
+      throw new DomainError('PASSWORD_CHANGE_REQUIRED', 'Choose a new password first');
+    }
     const access = await loadMembershipAccess(this.prisma, ref);
+    // T-ACC-04 (FR-ACC-006, C-032): a privileged membership may do nothing behind a permission
+    // until this session has passed the second factor; hiding screens is not a control.
+    if (requiresSecondFactor(access) && auth.mfaVerifiedAt === null) {
+      await this.deny(ref, route, 'MFA_REQUIRED', marker.codes, []);
+      throw new DomainError('MFA_REQUIRED', 'Confirm the second factor first');
+    }
     const decision = evaluateAccess({ required: marker.codes, ...access });
     if (decision.allowed) return true;
     if (decision.code === 'ENTITLEMENT_MISSING') {

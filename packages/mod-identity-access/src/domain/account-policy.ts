@@ -1,5 +1,5 @@
-// Account rules checked at login (UC-ACC-01 D1/D2). Setting locks after repeated failures is
-// T-ACC-03; this only respects a lock that already exists.
+// Account rules checked at login (UC-ACC-01 D1/D2). Locks are set by lockout-policy.ts
+// (T-ACC-03); these functions decide what an existing lock means for a login or a session.
 import { DomainError } from '@hms/domain-kernel';
 
 export type AccountStatus = 'ACTIVE' | 'LOCKED_TEMPORARY' | 'LOCKED_ADMIN' | 'DISABLED';
