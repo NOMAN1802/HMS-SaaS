@@ -1,0 +1,77 @@
+# T-ACC-05: role permissions on their own page, users and roles as tables
+
+- **Date:** 2026-10-29
+- **Commit:** this commit
+- **Implements:** T-ACC-05; SCR-22; FR-ACC-008; C-045 (owner request 2026-10-29, from manual testing)
+
+## What was built
+
+The role permission editor no longer opens in a dialog; with 61 permissions in a scrolling dialog it was hard to work with. Built with the existing `@hms/ui` pieces and tokens only (`PageLayout`, `Button`, `Checkbox`, `Field`, `Alert`, `buttonClassName`).
+
+| Route                     | Screen                                                                                              |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| `/staff/admin/roles`      | Table: role name and code, template, members, permissions, "Edit permissions" link; "New role" link |
+| `/staff/admin/roles/[id]` | Role permissions: role card with back link, "x of 61 selected" with select all, one card per module |
+| `/staff/admin/roles/new`  | New role: template, code and names in the top card, then the same permission sections               |
+
+The **Users** list is a table too (owner request, same day), styled after the owner's reference with the project tokens: small upper-case column heads, compact rows at text-sm, an initial avatar, the username under the name, roles as upper-case code chips (full name on hover), status badges, and an icon button ("...") that opens the existing Manage dialog. The Roles table uses the same styles (shared in admin-table.ts). Both tables keep a minimum width and scroll sideways inside their card on a phone. The reference also showed email, mobile and joined date; the user record has none of these, so they are not shown.
+
+The users Actions column has two icon buttons (owner choice: no Manage button in the table): **view details** (eye) opens a read-only dialog with username, name, roles, access, account lock, second factor and password state, whose footer Manage button opens the existing Manage dialog; **remove** (trash) is the table's delete. Nothing is deleted: removing revokes the membership for good after a confirmation with a required reason, which ends the person's sessions here and keeps the account and the audit trail (ADR-009). The trash button is disabled for a person already removed.
+
+The roles table edits a role from a pencil icon link. Both tables use smaller text than the body (owner choice): rows 12 px, names 13 px, heads and chips 11 px, and the small `StatusBadge` size. Added to `@hms/ui`: `trash` and `pencil` icons, and `StatusBadge size="sm"` (12 px text, 12 px icon) for dense tables.
+
+Each module card shows its count (`2/2`) and its own Select all / Clear all; permissions sit in a 1 to 4 column grid by screen width. Save is disabled until something changes; after saving the app returns to the list and shows "Saved."
+
+## Files
+
+| File                                                                                          | Purpose                                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| apps/web/app/(app)/admin/roles/page.tsx                                                       | Roles table                                                                                               |
+| apps/web/app/(app)/admin/users/page.tsx                                                       | Users table                                                                                               |
+| apps/web/src/components/admin/admin-table.ts                                                  | Shared table classes for the two admin tables                                                             |
+| apps/web/src/components/admin/user-details-dialog.tsx, user-remove-dialog.tsx, user-status.ts | Details dialog, remove confirmation, shared badge mapping and avatar initial                              |
+| packages/ui/src/icons/icon-names.ts, Icon.tsx                                                 | `trash` and `pencil` icons (Phosphor Trash, PencilSimple)                                                 |
+| packages/ui/src/primitives/StatusBadge.tsx (+ test)                                           | Optional `size` (`sm` for dense tables, default `md`)                                                     |
+| apps/web/app/(app)/admin/roles/[roleId]/page.tsx, new/page.tsx                                | The two role pages (loading, error, not found)                                                            |
+| apps/web/src/components/admin/role-editor.tsx                                                 | Shared page body: header card, fields for a new role, save and cancel; `useRoles`                         |
+| apps/web/src/components/admin/permission-sections.tsx                                         | Summary bar and module cards with counts and select all                                                   |
+| apps/web/src/components/admin/role-dialog.tsx, permission-checklist.tsx                       | Removed (replaced by the two files above)                                                                 |
+| packages/i18n/src/messages/en.ts, bn-BD.ts                                                    | 17 texts for the pages and the two tables                                                                 |
+| apps/web/e2e/admin.spec.ts, e2e/support/mock-admin.ts                                         | New-role test on the page; new edit-page test with axe; users-table row check; mock `PUT .../permissions` |
+
+## Decisions applied
+
+- **FR-ACC-008:** unchanged rules; the API still refuses removing user or role administration from a role the administrator holds, and the page shows that error above the sections.
+- **Chosen in this task:**
+  - The role is read from the existing list query (no new endpoint); an unknown ID shows "This role was not found in this hospital."
+  - Links stay links (`Link` styled with `buttonClassName`), so the pages open in a new tab and work with the browser's back button.
+  - The back arrow sits in the role card, not in the `<h1>`, so the page heading keeps a clean accessible name.
+  - Each module's Select all button has an accessible name with the module ("Select all in scheduling"), because several buttons share the visible text.
+  - Permission names are still the catalogue codes; localized names per permission are not written yet.
+
+## Verification
+
+| Command                                                               | Result                                                                          |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `vitest run` in `@hms/i18n` / `@hms/web`                              | 29 / 22 passed (catalog parity, no unused keys)                                 |
+| `tsc --noEmit`, `eslint` in `@hms/web`; `pnpm boundaries:check`       | clean; no violations                                                            |
+| `playwright test` admin, mfa, auth-shell, staff-path                  | 21 passed; "two hospitals" failed once under load, passed alone                 |
+| Screenshots at 1440 px and 400 px (mock API)                          | Both tables, permission page and new-role page render; tables scroll on a phone |
+| `playwright test e2e/admin.spec.ts` after the users table and actions | 7 passed (new: view details with axe, remove with required reason)              |
+
+## Known limitations
+
+- No warning when leaving the page with unsaved changes.
+- A removed person stays in the users list with the Revoked badge; there is no filter to hide them yet. Adding them back needs a new account, since usernames are unique and revoking is final.
+- Permission names are codes; the new Bangla texts are proposals until reviewed (Q-050).
+- On the dev server the first visit to a new route compiles it, which can exceed a 5 s test timeout once; CI uses a production build.
+
+## Deploy impact
+
+None.
+
+## How to debug
+
+- **"Edit permissions" opens a not-found message:** the ID in the URL is not a role of this hospital; `GET /api/v1/admin/roles` lists them.
+- **Save stays disabled:** nothing differs from the saved permissions.
+- **Save fails with 403:** the change would remove `admin.user.manage` or `admin.role.manage` from a role you hold.

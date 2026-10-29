@@ -52,7 +52,12 @@ test('an administrator adds a user with a temporary password', async ({ page }) 
 
   await page.getByRole('link', { name: bn.nav.users }).first().click();
   await expect(page.getByRole('heading', { name: bn.admin.usersTitle, level: 1 })).toBeVisible();
-  await expect(page.getByText('Karim Hossain')).toBeVisible();
+  const karim = page.getByRole('row', { name: /Karim Hossain/ });
+  await expect(karim.getByRole('cell').nth(1)).toHaveText('CSH');
+  await expect(
+    karim.getByRole('button', { name: `${bn.admin.viewDetails}: Karim Hossain` }),
+  ).toBeVisible();
+  await expect(karim.getByRole('button', { name: bn.admin.manage })).toHaveCount(0);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 
   await page.getByRole('button', { name: bn.admin.addUser }).click();
@@ -66,18 +71,76 @@ test('an administrator adds a user with a temporary password', async ({ page }) 
   await expect(page.getByText(bn.admin.mustChange)).toBeVisible();
 });
 
+test('an administrator views a user and removes them from the hospital', async ({ page }) => {
+  const world = newWorld({ permissions: ADMIN_PERMISSIONS });
+  await installMockApi(page, world);
+  await signIn(page, world);
+  await page.getByRole('link', { name: bn.nav.users }).first().click();
+  const karim = page.getByRole('row', { name: /Karim Hossain/ });
+
+  await karim.getByRole('button', { name: `${bn.admin.viewDetails}: Karim Hossain` }).click();
+  const details = page.getByRole('dialog', { name: bn.admin.detailsTitle });
+  await expect(details.getByText('karim').first()).toBeVisible();
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+  await details.getByRole('button', { name: bn.admin.manage }).click();
+  const manage = page.getByRole('dialog', {
+    name: bn.admin.manageTitle.replace('{name}', 'Karim Hossain'),
+  });
+  await expect(manage).toBeVisible();
+  await manage.getByRole('button', { name: bn.common.close }).click();
+
+  await karim.getByRole('button', { name: `${bn.admin.remove}: Karim Hossain` }).click();
+  const confirm = page.getByRole('dialog');
+  await confirm.getByRole('button', { name: bn.admin.removeConfirm }).click();
+  await expect(confirm.getByText(bn.validation.required)).toBeVisible();
+  await confirm.getByLabel(bn.admin.reason).fill('Left the hospital');
+  await confirm.getByRole('button', { name: bn.admin.removeConfirm }).click();
+
+  await expect(karim.getByText(bn.admin.membershipRevoked)).toBeVisible();
+  await expect(
+    karim.getByRole('button', { name: `${bn.admin.remove}: Karim Hossain` }),
+  ).toBeDisabled();
+});
+
 test('an administrator creates a role from a template', async ({ page }) => {
   const world = newWorld({ permissions: ADMIN_PERMISSIONS });
   await installMockApi(page, world);
   await signIn(page, world);
 
   await page.getByRole('link', { name: bn.nav.roles }).first().click();
-  await page.getByRole('button', { name: bn.admin.addRole }).click();
+  await page.getByRole('link', { name: bn.admin.addRole }).click();
+  await expect(page).toHaveURL(/\/staff\/admin\/roles\/new$/);
   await page.getByLabel(bn.admin.fromTemplate).selectOption('ADM');
   await page.getByLabel(bn.admin.roleCode).fill('DEPUTY_ADMIN');
   await page.getByRole('button', { name: bn.admin.create }).click();
 
+  await expect(page).toHaveURL(/\/staff\/admin\/roles$/);
   await expect(page.getByText('DEPUTY_ADMIN')).toBeVisible();
+});
+
+test("an administrator edits a role's permissions on its own page", async ({ page }) => {
+  const world = newWorld({ permissions: ADMIN_PERMISSIONS });
+  await installMockApi(page, world);
+  await signIn(page, world);
+
+  await page.getByRole('link', { name: bn.nav.roles }).first().click();
+  await page.getByRole('link', { name: `${bn.admin.editPermissions}: Cashier` }).click();
+  await expect(page).toHaveURL(/\/staff\/admin\/roles\/[0-9a-f-]+$/);
+  await expect(
+    page.getByRole('heading', { name: bn.admin.rolePermissionsTitle, level: 1 }),
+  ).toBeVisible();
+  const save = page.getByRole('button', { name: bn.admin.savePermissions });
+  await expect(save).toBeDisabled();
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+
+  const scheduling = page.getByRole('region', { name: /scheduling/ });
+  await scheduling.getByRole('button', { name: /scheduling/ }).click();
+  await expect(scheduling.getByRole('checkbox', { checked: false })).toHaveCount(0);
+  await save.click();
+
+  await expect(page).toHaveURL(/\/staff\/admin\/roles$/);
+  const cashier = page.getByRole('row', { name: /Cashier/ });
+  await expect(cashier.getByRole('cell').nth(3)).not.toHaveText('1');
 });
 
 test('staff without administration permissions see no admin links', async ({ page }) => {

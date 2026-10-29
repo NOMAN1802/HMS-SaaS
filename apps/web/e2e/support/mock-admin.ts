@@ -91,6 +91,23 @@ export function createAdminStore() {
     return role;
   }
 
+  function setMembership(
+    userId: string,
+    body: { status: AdminUser['membershipStatus'] },
+  ): AdminAnswer {
+    const user = users.find((item) => item.userId === userId);
+    if (!user) return { status: 404 };
+    user.membershipStatus = body.status;
+    return { status: 200, body: adminUserSchema.parse(user) };
+  }
+
+  function setPermissions(roleId: string, body: { permissions: PermissionCode[] }): AdminAnswer {
+    const role = roles.find((item) => item.id === roleId);
+    if (!role) return { status: 404 };
+    role.permissions = [...body.permissions];
+    return { status: 200, body: adminRoleSchema.parse(role) };
+  }
+
   /** Null when the path is not an admin endpoint this mock knows. */
   function answer(method: string, path: string, body: never): AdminAnswer | null {
     if (path === '/admin/users' && method === 'GET') {
@@ -103,6 +120,10 @@ export function createAdminStore() {
     }
     if (path === '/admin/roles' && method === 'POST')
       return { status: 201, body: createRole(body) };
+    const membershipPath = /^\/admin\/users\/([^/]+)\/membership$/.exec(path);
+    if (membershipPath?.[1] && method === 'POST') return setMembership(membershipPath[1], body);
+    const permissionsPath = /^\/admin\/roles\/([^/]+)\/permissions$/.exec(path);
+    if (permissionsPath?.[1] && method === 'PUT') return setPermissions(permissionsPath[1], body);
     return null;
   }
 
