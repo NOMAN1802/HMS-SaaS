@@ -112,3 +112,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-10-29 | [T-ACC-05: role permissions on their own page, users and roles as tables](2026-10-29-T-ACC-05-role-pages.md)                     |
 | 2026-11-01 | [Hotfix: Next.js remote code execution and Express denial-of-service advisories](2026-11-01-hotfix-next-nest-security.md)        |
 | 2026-11-01 | [T-FND-04 follow-up: column-level UPDATE on the identity tables](2026-11-01-T-FND-04-identity-column-grants.md)                  |
+| 2026-11-01 | [T-FND-05 and T-FND-03: application images, image CI and dependency audit](2026-11-01-T-FND-05-docker-images.md)                 |
