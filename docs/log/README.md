@@ -113,3 +113,4 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-11-01 | [Hotfix: Next.js remote code execution and Express denial-of-service advisories](2026-11-01-hotfix-next-nest-security.md)        |
 | 2026-11-01 | [T-FND-04 follow-up: column-level UPDATE on the identity tables](2026-11-01-T-FND-04-identity-column-grants.md)                  |
 | 2026-11-01 | [T-FND-05 and T-FND-03: application images, image CI and dependency audit](2026-11-01-T-FND-05-docker-images.md)                 |
+| 2026-11-01 | [T-ACC-05: show password button and forgotten password requests](2026-11-01-T-ACC-05-forgot-password.md)                         |
