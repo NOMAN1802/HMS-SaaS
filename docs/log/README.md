@@ -122,4 +122,5 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-11-02 | [T-PLT-03: outbox, relay, inbox and background jobs](2026-11-02-T-PLT-03-outbox-jobs.md)                                                |
 | 2026-11-02 | [T-PLT-07 part 2: per-session rate limit and shared limits](2026-11-02-T-PLT-07-session-rate-limit.md)                                  |
 | 2026-11-02 | [T-PLT-05: policy versions](2026-11-02-T-PLT-05-policy-versions.md)                                                                     |
+| 2026-11-02 | [T-PLT-06: observability baseline](2026-11-02-T-PLT-06-observability.md)                                                                |
 | 2026-11-02 | [T-ACC-05 follow-up: administrators cannot change an account shared with another hospital](2026-11-02-T-ACC-05-shared-account-guard.md) |
