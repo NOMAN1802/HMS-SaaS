@@ -1,4 +1,4 @@
-import { createRateLimiterFactory } from '@hms/platform';
+import { createRateLimiterFactory, openSecret } from '@hms/platform';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createPrismaClient, type PrismaClient } from '@hms/database';
 import { DomainError, fixedClock, type FixedClock } from '@hms/domain-kernel';
@@ -11,7 +11,6 @@ import {
 } from '@hms/testkit';
 import { findMfa } from '../infrastructure/mfa.repository.js';
 import { hashPassword } from '../infrastructure/password-hasher.js';
-import { openSecret } from '../infrastructure/secret-box.js';
 import { timeStep, totpAt } from '../infrastructure/totp.js';
 import { DEFAULT_LOGIN_RATE_LIMITS, type AuthConfig } from './auth.config.js';
 import { AuthService, type AuthContext } from './auth.service.js';
@@ -191,12 +190,14 @@ describe('MfaService', () => {
       meta,
     );
     const ctx = (await auth.resolveSession(token))!;
-    const { memberships } = await auth.describeSession(ctx, token);
-    const first = await auth.selectMembership(ctx, memberships[0]!.id, meta);
-    const firstCtx = (await auth.resolveSession(first.token))!;
-    const { issued } = await enrolled(user.id, firstCtx);
+    const { issued } = await enrolled(user.id, ctx);
     const verifiedCtx = (await auth.resolveSession(issued.token))!;
-    const switched = await auth.selectMembership(verifiedCtx, memberships[0]!.id, meta);
-    expect((await auth.resolveSession(switched.token))?.mfaVerifiedAt).not.toBeNull();
+    // A password change rotates the session; the second factor passed stays passed.
+    const rotated = await auth.changePassword(
+      verifiedCtx,
+      { currentPassword: PASSWORD, newPassword: 'a brand new passphrase 2026' },
+      meta,
+    );
+    expect((await auth.resolveSession(rotated.token))?.mfaVerifiedAt).not.toBeNull();
   });
 });

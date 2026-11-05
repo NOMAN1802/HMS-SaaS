@@ -5,6 +5,7 @@
 import { auditEventSchema, sessionResponseSchema, type SessionResponse } from '@hms/contracts';
 import type { Page, Route } from '@playwright/test';
 import { createAdminStore } from './mock-admin';
+import { createPatientStore } from './mock-patients';
 
 const WEB_ORIGIN = 'http://localhost:3100';
 
@@ -37,6 +38,8 @@ export interface RecordedRequest {
   path: string;
   query: string;
   csrf: string | null;
+  /** T-PLT-01: commands carry one; null on reads. */
+  idempotencyKey: string | null;
   body: unknown;
 }
 
@@ -54,13 +57,6 @@ export const MOCK_TOTP_CODE = '123456';
 export const MOCK_RECOVERY_CODES = Array.from({ length: 10 }, (_, index) =>
   `abcd${index}-efgh${index}`.replace(/[01]/g, 'z'),
 );
-
-export const HOSPITAL_TWO: MockMembership = {
-  id: ID(12),
-  tenantId: ID(22),
-  tenantNameEn: 'Green Crescent Clinic',
-  tenantNameBn: null,
-};
 
 export function newWorld(overrides: Partial<MockWorld> = {}): MockWorld {
   return {
@@ -116,6 +112,7 @@ export async function installMockApi(page: Page, world: MockWorld) {
   let issued = 0;
   let mfaVerified = false;
   const admin = createAdminStore();
+  const patients = createPatientStore();
 
   function session(): SessionResponse {
     const now = Date.now();
@@ -167,6 +164,7 @@ export async function installMockApi(page: Page, world: MockWorld) {
       path,
       query: new URL(request.url()).search,
       csrf: request.headers()['x-csrf-token'] ?? null,
+      idempotencyKey: request.headers()['idempotency-key'] ?? null,
       body,
     });
 
@@ -179,10 +177,6 @@ export async function installMockApi(page: Page, world: MockWorld) {
     if (!signedIn) return reply(route, 401, PROBLEM(401, 'UNAUTHENTICATED'));
 
     if (path === '/auth/session' && request.method() === 'GET') return reply(route, 200, session());
-    if (path === '/auth/session/membership') {
-      activeMembershipId = body.membershipId;
-      return reply(route, 200, session());
-    }
     if (path === '/auth/preferences') {
       world.preferredLang = body.preferredLang;
       return reply(route, 200, session());
@@ -195,8 +189,10 @@ export async function installMockApi(page: Page, world: MockWorld) {
     }
     if (path.startsWith('/auth/mfa/')) return answerMfa(route, path, body);
     if (path === '/auth/password') return answerPasswordChange(route, body);
-    const adminAnswer = admin.answer(request.method(), path, body as never);
-    if (adminAnswer) return reply(route, adminAnswer.status, adminAnswer.body);
+    const moduleAnswer =
+      admin.answer(request.method(), path, body as never) ??
+      patients.answer(request.method(), path, body as never);
+    if (moduleAnswer) return reply(route, moduleAnswer.status, moduleAnswer.body);
     return reply(route, 404, PROBLEM(404, 'NOT_FOUND'));
   });
 
@@ -248,5 +244,5 @@ export async function installMockApi(page: Page, world: MockWorld) {
     return reply(route, 200, session());
   }
 
-  return { requests, admin };
+  return { requests, admin, patients };
 }

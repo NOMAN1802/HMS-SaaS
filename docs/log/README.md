@@ -126,3 +126,10 @@ Where it can fail, which logs or queries to check, and how to reproduce locally.
 | 2026-11-02 | [T-PRN-01: print and PDF spike](2026-11-02-T-PRN-01-print-pdf.md)                                                                       |
 | 2026-11-02 | [T-ACC-05 follow-up: administrators cannot change an account shared with another hospital](2026-11-02-T-ACC-05-shared-account-guard.md) |
 | 2026-11-02 | [T-ACC-06: one account per hospital](2026-11-02-T-ACC-06-per-hospital-accounts.md)                                                      |
+| 2026-11-04 | [Docs: one pull request per full feature](2026-11-04-docs-pr-per-feature.md)                                                            |
+| 2026-11-04 | [T-PAT-01: register a patient after reviewing duplicates](2026-11-04-T-PAT-01-register-patient.md)                                      |
+| 2026-11-04 | [T-PAT-02: patient search](2026-11-04-T-PAT-02-patient-search.md)                                                                       |
+| 2026-11-04 | [T-PAT-03: NID storage, masking and audited reveal](2026-11-04-T-PAT-03-nid-storage.md)                                                 |
+| 2026-11-04 | [T-PAT-04: identity correction with history](2026-11-04-T-PAT-04-identity-correction.md)                                                |
+| 2026-11-04 | [T-UI-03 (patient part): front desk and patient record screens](2026-11-04-T-UI-03-patient-screens.md)                                  |
+| 2026-11-04 | [T-ACC-06 follow-up: remove the hospital choice](2026-11-04-T-ACC-06-remove-hospital-choice.md)                                         |

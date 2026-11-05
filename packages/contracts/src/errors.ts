@@ -16,6 +16,7 @@ export const errorCodes = {
   NOT_FOUND: 404,
   PAYLOAD_TOO_LARGE: 413,
   INVALID_TRANSITION: 409,
+  STALE_RECORD: 409,
   USERNAME_TAKEN: 409,
   IDEMPOTENCY_KEY_REUSED: 409,
   VALIDATION_FAILED: 422,
@@ -35,6 +36,10 @@ export const problemSchema = z.object({
   detail: z.string().optional(),
   correlationId: z.string().optional(),
   fields: z.array(z.object({ path: z.string(), message: z.string() })).optional(),
+  /** A finer cause inside a code, e.g. DUPLICATE_CANDIDATES_PRESENT (T-PAT-01). */
+  reason: z.string().optional(),
+  /** The patients a registration must confirm against (DUPLICATE_CANDIDATES_PRESENT). */
+  candidateIds: z.array(z.string()).optional(),
 });
 
 export type Problem = z.infer<typeof problemSchema>;
