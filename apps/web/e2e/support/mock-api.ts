@@ -5,7 +5,11 @@
 import { auditEventSchema, sessionResponseSchema, type SessionResponse } from '@hms/contracts';
 import type { Page, Route } from '@playwright/test';
 import { createAdminStore } from './mock-admin';
+import { createAppointmentStore } from './mock-appointments';
 import { createPatientStore } from './mock-patients';
+import { createDepartmentStore } from './mock-departments';
+import { createPractitionerStore } from './mock-practitioners';
+import { createScheduleSessionStore } from './mock-schedule-sessions';
 
 const WEB_ORIGIN = 'http://localhost:3100';
 
@@ -113,6 +117,10 @@ export async function installMockApi(page: Page, world: MockWorld) {
   let mfaVerified = false;
   const admin = createAdminStore();
   const patients = createPatientStore();
+  const practitioners = createPractitionerStore();
+  const departments = createDepartmentStore();
+  const scheduleSessions = createScheduleSessionStore();
+  const appointments = createAppointmentStore(scheduleSessions.sessions, patients.patients);
 
   function session(): SessionResponse {
     const now = Date.now();
@@ -191,7 +199,11 @@ export async function installMockApi(page: Page, world: MockWorld) {
     if (path === '/auth/password') return answerPasswordChange(route, body);
     const moduleAnswer =
       admin.answer(request.method(), path, body as never) ??
-      patients.answer(request.method(), path, body as never);
+      patients.answer(request.method(), path, body as never) ??
+      practitioners.answer(request.method(), path, body) ??
+      departments.answer(request.method(), path, body) ??
+      scheduleSessions.answer(request.method(), path, body, new URL(request.url()).searchParams) ??
+      appointments.answer(request.method(), path, body, new URL(request.url()).searchParams);
     if (moduleAnswer) return reply(route, moduleAnswer.status, moduleAnswer.body);
     return reply(route, 404, PROBLEM(404, 'NOT_FOUND'));
   });
@@ -244,5 +256,13 @@ export async function installMockApi(page: Page, world: MockWorld) {
     return reply(route, 200, session());
   }
 
-  return { requests, admin, patients };
+  return {
+    requests,
+    admin,
+    patients,
+    practitioners,
+    departments,
+    scheduleSessions,
+    appointments,
+  };
 }
