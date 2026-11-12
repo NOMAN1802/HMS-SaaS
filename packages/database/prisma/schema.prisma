@@ -54,6 +54,12 @@ model Tenant {
 
   visits Visit[]
 
+  cashierSessions      CashierSession[]
+  cashierSessionCounts CashierSessionCount[]
+  payments             Payment[]
+  paymentAllocations   PaymentAllocation[]
+  receiptPrints        ReceiptPrint[]
+
   @@map("tenant")
   @@schema("hms")
 }
@@ -76,6 +82,8 @@ model Facility {
   scheduleSessions ScheduleSession[]
 
   visits Visit[]
+
+  cashierSessions CashierSession[]
 
   @@unique([tenantId, id])
   @@unique([tenantId, code])
@@ -475,6 +483,7 @@ model Patient {
 
   invoices Invoice[]
   charges  Charge[]
+  payments Payment[]
 
   visits Visit[]
 
@@ -733,9 +742,10 @@ model Invoice {
   updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz
   version   Int      @default(1)
 
-  tenant  Tenant        @relation(fields: [tenantId], references: [id])
-  patient Patient       @relation(fields: [tenantId, patientId], references: [tenantId, id])
-  lines   InvoiceLine[]
+  tenant      Tenant              @relation(fields: [tenantId], references: [id])
+  patient     Patient             @relation(fields: [tenantId, patientId], references: [tenantId, id])
+  lines       InvoiceLine[]
+  allocations PaymentAllocation[]
 
   visit Visit @relation(fields: [tenantId, visitId], references: [tenantId, id])
 
@@ -785,22 +795,27 @@ model Charge {
 // One line of an invoice, exactly one per charge (T-BIL-02; E section 3.2). Amount allocation and
 // payment eligibility come with payments (T-BIL-04).
 model InvoiceLine {
-  tenantId  String   @map("tenant_id") @db.Uuid
-  id        String   @id @default(uuid(7)) @db.Uuid
-  invoiceId String   @map("invoice_id") @db.Uuid
-  chargeId  String   @map("charge_id") @db.Uuid
-  lineNo    Int      @map("line_no")
+  tenantId        String   @map("tenant_id") @db.Uuid
+  id              String   @id @default(uuid(7)) @db.Uuid
+  invoiceId       String   @map("invoice_id") @db.Uuid
+  chargeId        String   @map("charge_id") @db.Uuid
+  lineNo          Int      @map("line_no")
   /// MEDICINE or NON_MEDICINE (SRC-B03; CHECK in the migration).
-  category  String
-  netAmount Decimal  @map("net_amount") @db.Decimal(18, 2)
+  category        String
+  netAmount       Decimal  @map("net_amount") @db.Decimal(18, 2)
   /// ACTIVE, CANCELLED or REVERSED (CHECK in the migration).
-  status    String   @default("ACTIVE")
-  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz
-  version   Int      @default(1)
+  status          String   @default("ACTIVE")
+  /// T-BIL-04: paid so far; never more than netAmount (CHECK in the migration).
+  allocatedAmount Decimal  @default(0) @map("allocated_amount") @db.Decimal(18, 2)
+  /// ELIGIBLE when fully paid (C-040 FULL_PAYMENT), else NOT_ELIGIBLE.
+  eligibility     String   @default("NOT_ELIGIBLE")
+  updatedAt       DateTime @default(now()) @map("updated_at") @db.Timestamptz
+  version         Int      @default(1)
 
-  tenant  Tenant  @relation(fields: [tenantId], references: [id])
-  invoice Invoice @relation(fields: [tenantId, invoiceId], references: [tenantId, id])
-  charge  Charge  @relation(fields: [tenantId, chargeId], references: [tenantId, id])
+  tenant      Tenant              @relation(fields: [tenantId], references: [id])
+  invoice     Invoice             @relation(fields: [tenantId, invoiceId], references: [tenantId, id])
+  charge      Charge              @relation(fields: [tenantId, chargeId], references: [tenantId, id])
+  allocations PaymentAllocation[]
 
   @@unique([tenantId, id])
   @@unique([tenantId, chargeId])
@@ -845,5 +860,132 @@ model Visit {
   @@unique([tenantId, appointmentId])
   @@index([tenantId, patientId, arrivedAt(sort: Desc)], map: "visit_patient_idx")
   @@map("visit")
+  @@schema("hms")
+}
+
+// A cashier's working session (T-BIL-03; FR-BIL-026; UC-BIL-04; mod-billing). OPEN until the
+// cashier closes it with the counted amounts, then CLOSED_PENDING_REVIEW until a finance user
+// other than the cashier reviews it. State, time and segregation CHECKs are in the migration.
+model CashierSession {
+  tenantId     String    @map("tenant_id") @db.Uuid
+  id           String    @id @default(uuid(7)) @db.Uuid
+  facilityId   String    @map("facility_id") @db.Uuid
+  cashierId    String    @map("cashier_id") @db.Uuid
+  /// OPEN, CLOSED_PENDING_REVIEW or REVIEWED (CHECK in the migration).
+  status       String    @default("OPEN")
+  openingFloat Decimal   @default(0) @map("opening_float") @db.Decimal(18, 2)
+  openedAt     DateTime  @default(now()) @map("opened_at") @db.Timestamptz
+  closedAt     DateTime? @map("closed_at") @db.Timestamptz
+  reviewedBy   String?   @map("reviewed_by") @db.Uuid
+  reviewedAt   DateTime? @map("reviewed_at") @db.Timestamptz
+  reviewNote   String?   @map("review_note")
+  updatedAt    DateTime  @default(now()) @map("updated_at") @db.Timestamptz
+  version      Int       @default(1)
+
+  tenant   Tenant                @relation(fields: [tenantId], references: [id])
+  facility Facility              @relation(fields: [tenantId, facilityId], references: [tenantId, id])
+  counts   CashierSessionCount[]
+  payments Payment[]
+
+  @@unique([tenantId, id])
+  @@index([tenantId, cashierId, openedAt(sort: Desc)], map: "cashier_session_cashier_idx")
+  @@map("cashier_session")
+  @@schema("hms")
+}
+
+// The amounts of one payment method at closing: expected from the payments, counted by the
+// cashier, and the variance (counted - expected, CHECK in the migration). Written once.
+model CashierSessionCount {
+  tenantId  String  @map("tenant_id") @db.Uuid
+  id        String  @id @default(uuid(7)) @db.Uuid
+  sessionId String  @map("session_id") @db.Uuid
+  /// CASH, CARD, MOBILE or BANK_TRANSFER (CHECK in the migration).
+  method    String
+  expected  Decimal @db.Decimal(18, 2)
+  counted   Decimal @db.Decimal(18, 2)
+  variance  Decimal @db.Decimal(18, 2)
+
+  tenant  Tenant         @relation(fields: [tenantId], references: [id])
+  session CashierSession @relation(fields: [tenantId, sessionId], references: [tenantId, id])
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, sessionId, method], map: "cashier_session_count_session_method_key")
+  @@map("cashier_session_count")
+  @@schema("hms")
+}
+
+// Money a cashier received in an open session (T-BIL-04; FR-BIL-004, FR-BIL-011; C-010, C-039).
+// Append-only; method, amount and status CHECKs are in the migration.
+model Payment {
+  tenantId          String   @map("tenant_id") @db.Uuid
+  id                String   @id @default(uuid(7)) @db.Uuid
+  receiptNumber     String   @map("receipt_number")
+  patientId         String   @map("patient_id") @db.Uuid
+  cashierSessionId  String   @map("cashier_session_id") @db.Uuid
+  /// CASH, CARD, MOBILE or BANK_TRANSFER (CHECK in the migration).
+  method            String
+  providerLabel     String?  @map("provider_label")
+  externalReference String?  @map("external_reference")
+  amount            Decimal  @db.Decimal(18, 2)
+  status            String   @default("RECORDED")
+  receivedAt        DateTime @default(now()) @map("received_at") @db.Timestamptz
+  receivedBy        String   @map("received_by") @db.Uuid
+
+  tenant         Tenant              @relation(fields: [tenantId], references: [id])
+  patient        Patient             @relation(fields: [tenantId, patientId], references: [tenantId, id])
+  cashierSession CashierSession      @relation(fields: [tenantId, cashierSessionId], references: [tenantId, id])
+  allocations    PaymentAllocation[]
+  prints         ReceiptPrint[]
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, receiptNumber])
+  @@index([tenantId, receivedAt], map: "payment_day_idx")
+  @@index([tenantId, cashierSessionId], map: "payment_session_idx")
+  @@index([tenantId, patientId], map: "payment_patient_idx")
+  @@map("payment")
+  @@schema("hms")
+}
+
+// The part of a payment that pays one invoice line (T-BIL-04; P-020, ADR-016). Append-only.
+model PaymentAllocation {
+  tenantId            String  @map("tenant_id") @db.Uuid
+  id                  String  @id @default(uuid(7)) @db.Uuid
+  paymentId           String  @map("payment_id") @db.Uuid
+  invoiceId           String  @map("invoice_id") @db.Uuid
+  invoiceLineId       String  @map("invoice_line_id") @db.Uuid
+  amount              Decimal @db.Decimal(18, 2)
+  /// The invoice's balance right after the payment, for receipts and reprints (FR-BIL-027).
+  invoiceBalanceAfter Decimal @map("invoice_balance_after") @db.Decimal(18, 2)
+
+  tenant      Tenant      @relation(fields: [tenantId], references: [id])
+  payment     Payment     @relation(fields: [tenantId, paymentId], references: [tenantId, id])
+  invoice     Invoice     @relation(fields: [tenantId, invoiceId], references: [tenantId, id])
+  invoiceLine InvoiceLine @relation(fields: [tenantId, invoiceLineId], references: [tenantId, id])
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, paymentId, invoiceLineId], map: "payment_allocation_payment_line_key")
+  @@index([tenantId, invoiceLineId], map: "payment_allocation_line_idx")
+  @@index([tenantId, invoiceId], map: "payment_allocation_invoice_idx")
+  @@map("payment_allocation")
+  @@schema("hms")
+}
+
+// One print of a receipt (T-BIL-04; FR-BIL-027); copy 2 and later are reprints. Append-only.
+model ReceiptPrint {
+  tenantId  String   @map("tenant_id") @db.Uuid
+  id        String   @id @default(uuid(7)) @db.Uuid
+  paymentId String   @map("payment_id") @db.Uuid
+  copyNo    Int      @map("copy_no")
+  /// en, bn-BD or bilingual (CHECK in the migration).
+  language  String
+  printedAt DateTime @default(now()) @map("printed_at") @db.Timestamptz
+  printedBy String   @map("printed_by") @db.Uuid
+
+  tenant  Tenant  @relation(fields: [tenantId], references: [id])
+  payment Payment @relation(fields: [tenantId, paymentId], references: [tenantId, id])
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, paymentId, copyNo], map: "receipt_print_payment_copy_key")
+  @@map("receipt_print")
   @@schema("hms")
 }
