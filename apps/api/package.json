@@ -16,6 +16,8 @@
     "@hms/contracts": "workspace:*",
     "@hms/database": "workspace:*",
     "@hms/domain-kernel": "workspace:*",
+    "@hms/mod-billing": "workspace:*",
+    "@hms/mod-clinical": "workspace:*",
     "@hms/mod-identity-access": "workspace:*",
     "@hms/mod-patients": "workspace:*",
     "@hms/mod-scheduling": "workspace:*",

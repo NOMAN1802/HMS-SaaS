@@ -3,11 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { ApiError } from '../../api/errors';
 import {
   canChange,
+  canCheckIn,
   canMarkNoShow,
   hasCancelReason,
   isCapacityFull,
   placesLeft,
-  wasRefused,
 } from './appointment-rules';
 
 // The appointment screens' rules (T-SCH-02; FR-SCH-002..005; C-035). IDs and names are synthetic.
@@ -71,6 +71,12 @@ describe('appointment rules', () => {
     expect(canMarkNoShow({ ...appointment, status: 'CHECKED_IN' }, after)).toBe(false);
   });
 
+  it('UC-VIS-01: checks in a booked appointment on its session date only', () => {
+    expect(canCheckIn(appointment, before)).toBe(true);
+    expect(canCheckIn(appointment, new Date('2026-11-13T04:00:00Z'))).toBe(false);
+    expect(canCheckIn({ ...appointment, status: 'CHECKED_IN' }, before)).toBe(false);
+  });
+
   it('needs a cancellation reason of at least three characters', () => {
     expect(hasCancelReason('  no ')).toBe(false);
     expect(hasCancelReason('Patient called')).toBe(true);
@@ -80,13 +86,5 @@ describe('appointment rules', () => {
     expect(isCapacityFull(new ApiError('CAPACITY_FULL', 409))).toBe(true);
     expect(isCapacityFull(new ApiError('STALE_RECORD', 409))).toBe(false);
     expect(isCapacityFull(null)).toBe(false);
-  });
-
-  it('treats only a 4xx answer as a refusal; a timeout or a server error may have booked', () => {
-    expect(wasRefused(new ApiError('CAPACITY_FULL', 409))).toBe(true);
-    expect(wasRefused(new ApiError('VALIDATION_FAILED', 422))).toBe(true);
-    expect(wasRefused(new ApiError('NETWORK', 0))).toBe(false);
-    expect(wasRefused(new ApiError('UNKNOWN', 504))).toBe(false);
-    expect(wasRefused(new Error('boom'))).toBe(false);
   });
 });

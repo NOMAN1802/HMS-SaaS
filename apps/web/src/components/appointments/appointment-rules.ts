@@ -2,6 +2,7 @@
 // tested without rendering. They mirror the API's rules, which still decide every request.
 import type { Appointment, ScheduleSession } from '@hms/contracts';
 import { ApiError } from '../../api/errors';
+import { hospitalToday } from '../schedules/session-form';
 
 /** C-035: a session never takes more than its capacity. */
 export function placesLeft(session: ScheduleSession): number {
@@ -21,18 +22,14 @@ export function canMarkNoShow(appointment: Appointment, now: Date): boolean {
   return appointment.status === 'BOOKED' && ended(appointment, now);
 }
 
+/** UC-VIS-01: a booked appointment is checked in on its session's hospital date (T-VIS-01). */
+export function canCheckIn(appointment: Appointment, now: Date): boolean {
+  return appointment.status === 'BOOKED' && appointment.session.sessionDate === hospitalToday(now);
+}
+
 /** The same minimum as the contract: three characters after trimming. */
 export function hasCancelReason(reason: string): boolean {
   return reason.trim().length >= 3;
-}
-
-/**
- * The API answered and refused (4xx), so nothing was written and a new attempt needs a new
- * Idempotency-Key. A timeout, a lost connection or a 5xx from a proxy may come after the server
- * committed, so the retry keeps the key and the server replays the first answer.
- */
-export function wasRefused(error: unknown): boolean {
-  return error instanceof ApiError && error.status >= 400 && error.status < 500;
 }
 
 /** The API refused a booking because the last place was taken. */

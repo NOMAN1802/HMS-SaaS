@@ -32,18 +32,27 @@ model Tenant {
   createdAt DateTime     @default(now()) @map("created_at") @db.Timestamptz
   version   Int          @default(1)
 
-  facilities      Facility[]
-  memberships     Membership[]
-  auditEvents     AuditEvent[]
-  roles           Role[]
-  entitlements    TenantEntitlement[]
-  numberSequences NumberSequence[]
-  policyVersions  PolicyVersion[]
-  userAccounts    UserAccount[]
-  patients        Patient[]
+  facilities       Facility[]
+  memberships      Membership[]
+  auditEvents      AuditEvent[]
+  roles            Role[]
+  entitlements     TenantEntitlement[]
+  numberSequences  NumberSequence[]
+  policyVersions   PolicyVersion[]
+  userAccounts     UserAccount[]
+  patients         Patient[]
   practitioners    Practitioner[]
   scheduleSessions ScheduleSession[]
   appointments     Appointment[]
+  serviceItems     ServiceItem[]
+  priceLists       PriceListVersion[]
+  priceListItems   PriceListItem[]
+
+  invoices     Invoice[]
+  charges      Charge[]
+  invoiceLines InvoiceLine[]
+
+  visits Visit[]
 
   @@map("tenant")
   @@schema("hms")
@@ -65,6 +74,8 @@ model Facility {
   tenant           Tenant            @relation(fields: [tenantId], references: [id])
   departments      Department[]
   scheduleSessions ScheduleSession[]
+
+  visits Visit[]
 
   @@unique([tenantId, id])
   @@unique([tenantId, code])
@@ -90,6 +101,8 @@ model Department {
 
   facility      Facility       @relation(fields: [tenantId, facilityId], references: [tenantId, id])
   practitioners Practitioner[]
+
+  visits Visit[]
 
   @@unique([tenantId, id])
   @@unique([tenantId, facilityId, code])
@@ -460,6 +473,11 @@ model Patient {
   patientIdentityHistories PatientIdentityHistory[]
   appointments             Appointment[]
 
+  invoices Invoice[]
+  charges  Charge[]
+
+  visits Visit[]
+
   @@unique([tenantId, id])
   @@unique([tenantId, mrn])
   @@index([tenantId, phoneNormalized])
@@ -491,6 +509,11 @@ model Practitioner {
   tenant           Tenant            @relation(fields: [tenantId], references: [id])
   department       Department?       @relation(fields: [tenantId, departmentId], references: [tenantId, id])
   scheduleSessions ScheduleSession[]
+  priceListItems   PriceListItem[]
+
+  charges Charge[]
+
+  visits Visit[]
 
   @@unique([tenantId, id])
   @@index([tenantId, departmentId])
@@ -502,27 +525,30 @@ model Practitioner {
 // Fixed capacity, no overbooking: the booked_count CHECK, the status CHECK and the column UPDATE
 // grant are in the migration. No delete: a session is cancelled.
 model ScheduleSession {
-  tenantId       String   @map("tenant_id") @db.Uuid
-  id             String   @id @default(uuid(7)) @db.Uuid
-  practitionerId String   @map("practitioner_id") @db.Uuid
-  facilityId     String   @map("facility_id") @db.Uuid
-  sessionDate    DateTime @map("session_date") @db.Date
-  startsAt       DateTime @map("starts_at") @db.Timestamptz
-  endsAt         DateTime @map("ends_at") @db.Timestamptz
-  capacity       Int
-  bookedCount    Int      @default(0) @map("booked_count")
+  tenantId        String   @map("tenant_id") @db.Uuid
+  id              String   @id @default(uuid(7)) @db.Uuid
+  practitionerId  String   @map("practitioner_id") @db.Uuid
+  facilityId      String   @map("facility_id") @db.Uuid
+  sessionDate     DateTime @map("session_date") @db.Date
+  startsAt        DateTime @map("starts_at") @db.Timestamptz
+  endsAt          DateTime @map("ends_at") @db.Timestamptz
+  capacity        Int
+  bookedCount     Int      @default(0) @map("booked_count")
+  lastQueueNumber Int      @default(0) @map("last_queue_number")
   /// DRAFT, PUBLISHED or CANCELLED (CHECK in the migration).
-  status         String   @default("DRAFT")
-  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
-  createdBy      String   @map("created_by") @db.Uuid
-  updatedAt      DateTime @default(now()) @map("updated_at") @db.Timestamptz
-  updatedBy      String   @map("updated_by") @db.Uuid
-  version        Int      @default(1)
+  status          String   @default("DRAFT")
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz
+  createdBy       String   @map("created_by") @db.Uuid
+  updatedAt       DateTime @default(now()) @map("updated_at") @db.Timestamptz
+  updatedBy       String   @map("updated_by") @db.Uuid
+  version         Int      @default(1)
 
   tenant       Tenant        @relation(fields: [tenantId], references: [id])
   practitioner Practitioner  @relation(fields: [tenantId, practitionerId], references: [tenantId, id])
   facility     Facility      @relation(fields: [tenantId, facilityId], references: [tenantId, id])
   appointments Appointment[]
+
+  visits Visit[]
 
   @@unique([tenantId, id])
   @@index([tenantId, sessionDate])
@@ -554,6 +580,8 @@ model Appointment {
   scheduleSession ScheduleSession @relation(fields: [tenantId, scheduleSessionId], references: [tenantId, id])
   rescheduledFrom Appointment?    @relation("Rescheduled", fields: [tenantId, rescheduledFromId], references: [tenantId, id])
   rescheduledTo   Appointment?    @relation("Rescheduled")
+
+  visit Visit?
 
   @@unique([tenantId, id])
   @@unique([tenantId, rescheduledFromId])
@@ -603,5 +631,219 @@ model PatientIdentityHistory {
 
   @@unique([tenantId, patientId, version])
   @@map("patient_identity_history")
+  @@schema("hms")
+}
+
+// A billable thing of the hospital's catalogue (T-BIL-01; E section 4, mod-billing). For now only
+// the two system items of doctor fees exist (DOCTOR_FEE_NEW, DOCTOR_FEE_FOLLOW_UP; C-041); the
+// rest of the catalogue comes with orders (T-ORD-01). Their names are in the i18n catalogs by
+// code. Category values are a CHECK in the migration.
+model ServiceItem {
+  tenantId  String   @map("tenant_id") @db.Uuid
+  id        String   @id @default(uuid(7)) @db.Uuid
+  code      String
+  nameEn    String?  @map("name_en")
+  nameBn    String?  @map("name_bn")
+  category  String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  tenant         Tenant          @relation(fields: [tenantId], references: [id])
+  priceListItems PriceListItem[]
+
+  charges Charge[]
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, code])
+  @@map("service_item")
+  @@schema("hms")
+}
+
+// A version of the hospital's price list (T-BIL-01; FR-CFG-002; FR-BIL-007). Edited as a DRAFT,
+// then PUBLISHED with an effective time; the version in force at a moment is the published one
+// with the latest effective time not after it. One draft at a time, and a published version's
+// items never change (partial unique index and trigger in the migration).
+model PriceListVersion {
+  tenantId      String    @map("tenant_id") @db.Uuid
+  id            String    @id @default(uuid(7)) @db.Uuid
+  versionNo     Int       @map("version_no")
+  /// DRAFT or PUBLISHED (CHECK in the migration).
+  status        String    @default("DRAFT")
+  effectiveFrom DateTime? @map("effective_from") @db.Timestamptz
+  publishedAt   DateTime? @map("published_at") @db.Timestamptz
+  publishedBy   String?   @map("published_by") @db.Uuid
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  createdBy     String    @map("created_by") @db.Uuid
+  updatedAt     DateTime  @default(now()) @map("updated_at") @db.Timestamptz
+  updatedBy     String    @map("updated_by") @db.Uuid
+  version       Int       @default(1)
+
+  tenant Tenant          @relation(fields: [tenantId], references: [id])
+  items  PriceListItem[]
+
+  charges Charge[]
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, versionNo])
+  @@map("price_list_version")
+  @@schema("hms")
+}
+
+// One price of a price list version (T-BIL-01; C-041). A doctor fee is two rows per practitioner:
+// the new-patient fee and the follow-up fee, which also carries the follow-up window in days.
+model PriceListItem {
+  tenantId           String  @map("tenant_id") @db.Uuid
+  id                 String  @id @default(uuid(7)) @db.Uuid
+  priceListVersionId String  @map("price_list_version_id") @db.Uuid
+  serviceItemId      String  @map("service_item_id") @db.Uuid
+  practitionerId     String? @map("practitioner_id") @db.Uuid
+  unitPrice          Decimal @map("unit_price") @db.Decimal(18, 2)
+  followUpDays       Int?    @map("follow_up_days")
+
+  tenant           Tenant           @relation(fields: [tenantId], references: [id])
+  priceListVersion PriceListVersion @relation(fields: [tenantId, priceListVersionId], references: [tenantId, id])
+  serviceItem      ServiceItem      @relation(fields: [tenantId, serviceItemId], references: [tenantId, id])
+  practitioner     Practitioner?    @relation(fields: [tenantId, practitionerId], references: [tenantId, id])
+
+  @@unique([tenantId, id])
+  @@index([tenantId, priceListVersionId])
+  @@map("price_list_item")
+  @@schema("hms")
+}
+
+// An invoice of a visit (T-BIL-02; FR-BIL-001, FR-BIL-008; C-008; E section 5.4): the doctor's fee
+// on a DOCTOR_FEE invoice, services on the visit's SERVICE invoice. total and paid are projections
+// kept in the transaction that changes the lines; status is derived from them. visit_id gets its
+// foreign key with the visit table (T-VIS-01). CHECKs and partial unique indexes are in SQL.
+model Invoice {
+  tenantId  String   @map("tenant_id") @db.Uuid
+  id        String   @id @default(uuid(7)) @db.Uuid
+  number    String
+  /// DOCTOR_FEE or SERVICE (CHECK in the migration).
+  type      String
+  patientId String   @map("patient_id") @db.Uuid
+  visitId   String   @map("visit_id") @db.Uuid
+  currency  String   @default("BDT") @db.Char(3)
+  /// ISSUED, PARTIALLY_PAID, PAID or CANCELLED (CHECK in the migration).
+  status    String   @default("ISSUED")
+  total     Decimal  @default(0) @db.Decimal(18, 2)
+  paid      Decimal  @default(0) @db.Decimal(18, 2)
+  issuedAt  DateTime @default(now()) @map("issued_at") @db.Timestamptz
+  issuedBy  String   @map("issued_by") @db.Uuid
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz
+  version   Int      @default(1)
+
+  tenant  Tenant        @relation(fields: [tenantId], references: [id])
+  patient Patient       @relation(fields: [tenantId, patientId], references: [tenantId, id])
+  lines   InvoiceLine[]
+
+  visit Visit @relation(fields: [tenantId, visitId], references: [tenantId, id])
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, number])
+  @@index([tenantId, patientId])
+  @@map("invoice")
+  @@schema("hms")
+}
+
+// One priced posting from another module (T-BIL-02; FR-BIL-006, FR-BIL-033; FPR-09; ADR-009):
+// unique by its source reference, append-only, and keeping the price list version that priced it.
+model Charge {
+  tenantId           String   @map("tenant_id") @db.Uuid
+  id                 String   @id @default(uuid(7)) @db.Uuid
+  patientId          String   @map("patient_id") @db.Uuid
+  visitId            String   @map("visit_id") @db.Uuid
+  serviceItemId      String   @map("service_item_id") @db.Uuid
+  practitionerId     String?  @map("practitioner_id") @db.Uuid
+  sourceModule       String   @map("source_module")
+  sourceType         String   @map("source_type")
+  sourceId           String   @map("source_id")
+  sourceEvent        String   @map("source_event")
+  quantity           Decimal  @db.Decimal(14, 3)
+  unitPrice          Decimal  @map("unit_price") @db.Decimal(18, 2)
+  amount             Decimal  @db.Decimal(18, 2)
+  priceListVersionId String   @map("price_list_version_id") @db.Uuid
+  serviceTime        DateTime @map("service_time") @db.Timestamptz
+  postedAt           DateTime @default(now()) @map("posted_at") @db.Timestamptz
+  postedBy           String   @map("posted_by") @db.Uuid
+
+  tenant           Tenant           @relation(fields: [tenantId], references: [id])
+  patient          Patient          @relation(fields: [tenantId, patientId], references: [tenantId, id])
+  serviceItem      ServiceItem      @relation(fields: [tenantId, serviceItemId], references: [tenantId, id])
+  practitioner     Practitioner?    @relation(fields: [tenantId, practitionerId], references: [tenantId, id])
+  priceListVersion PriceListVersion @relation(fields: [tenantId, priceListVersionId], references: [tenantId, id])
+  line             InvoiceLine?
+
+  visit Visit @relation(fields: [tenantId, visitId], references: [tenantId, id])
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, sourceModule, sourceType, sourceId, sourceEvent], map: "charge_source_reference_key")
+  @@map("charge")
+  @@schema("hms")
+}
+
+// One line of an invoice, exactly one per charge (T-BIL-02; E section 3.2). Amount allocation and
+// payment eligibility come with payments (T-BIL-04).
+model InvoiceLine {
+  tenantId  String   @map("tenant_id") @db.Uuid
+  id        String   @id @default(uuid(7)) @db.Uuid
+  invoiceId String   @map("invoice_id") @db.Uuid
+  chargeId  String   @map("charge_id") @db.Uuid
+  lineNo    Int      @map("line_no")
+  /// MEDICINE or NON_MEDICINE (SRC-B03; CHECK in the migration).
+  category  String
+  netAmount Decimal  @map("net_amount") @db.Decimal(18, 2)
+  /// ACTIVE, CANCELLED or REVERSED (CHECK in the migration).
+  status    String   @default("ACTIVE")
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz
+  version   Int      @default(1)
+
+  tenant  Tenant  @relation(fields: [tenantId], references: [id])
+  invoice Invoice @relation(fields: [tenantId, invoiceId], references: [tenantId, id])
+  charge  Charge  @relation(fields: [tenantId, chargeId], references: [tenantId, id])
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, chargeId])
+  @@unique([tenantId, invoiceId, lineNo])
+  @@map("invoice_line")
+  @@schema("hms")
+}
+
+// A patient's attendance (T-VIS-01; FR-VIS-001..004; C-006, C-007; E section 5.3; mod-clinical).
+// Check-in of an appointment creates exactly one OPD_CONSULTATION visit with the session's next
+// serial number (C-035). Kind, status and serial-number CHECKs are in the migration.
+model Visit {
+  tenantId                String   @map("tenant_id") @db.Uuid
+  id                      String   @id @default(uuid(7)) @db.Uuid
+  facilityId              String   @map("facility_id") @db.Uuid
+  departmentId            String?  @map("department_id") @db.Uuid
+  patientId               String   @map("patient_id") @db.Uuid
+  /// OPD_CONSULTATION, DIAGNOSTIC or EMERGENCY (CHECK in the migration).
+  kind                    String
+  /// OPEN, COMPLETED or CANCELLED (CHECK in the migration).
+  status                  String   @default("OPEN")
+  attendingPractitionerId String?  @map("attending_practitioner_id") @db.Uuid
+  appointmentId           String?  @map("appointment_id") @db.Uuid
+  scheduleSessionId       String?  @map("schedule_session_id") @db.Uuid
+  queueNumber             Int?     @map("queue_number")
+  arrivedAt               DateTime @default(now()) @map("arrived_at") @db.Timestamptz
+  createdBy               String   @map("created_by") @db.Uuid
+  updatedAt               DateTime @default(now()) @map("updated_at") @db.Timestamptz
+  version                 Int      @default(1)
+
+  tenant                Tenant           @relation(fields: [tenantId], references: [id])
+  facility              Facility         @relation(fields: [tenantId, facilityId], references: [tenantId, id])
+  department            Department?      @relation(fields: [tenantId, departmentId], references: [tenantId, id])
+  patient               Patient          @relation(fields: [tenantId, patientId], references: [tenantId, id])
+  attendingPractitioner Practitioner?    @relation(fields: [tenantId, attendingPractitionerId], references: [tenantId, id])
+  appointment           Appointment?     @relation(fields: [tenantId, appointmentId], references: [tenantId, id])
+  scheduleSession       ScheduleSession? @relation(fields: [tenantId, scheduleSessionId], references: [tenantId, id])
+  invoices              Invoice[]
+  charges               Charge[]
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, appointmentId])
+  @@index([tenantId, patientId, arrivedAt(sort: Desc)], map: "visit_patient_idx")
+  @@map("visit")
   @@schema("hms")
 }
