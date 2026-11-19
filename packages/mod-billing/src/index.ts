@@ -2,6 +2,7 @@
 // from here.
 export { BillingModule, type BillingModuleOptions } from './billing.module.js';
 export { invoiceSummaryOf } from './application/invoice.service.js';
+export { orderableServicesInForce } from './application/orderable-services.js';
 export {
   postCharge,
   type PostChargeRequest,
@@ -10,3 +11,5 @@ export {
 } from './application/post-charge.js';
 export { issueDoctorFee, type DoctorFeeRequest } from './application/doctor-fee.js';
 export { doctorFeeEligibilityOf } from './application/doctor-fee-eligibility.js';
+export { findLineStates, type LineState } from './infrastructure/invoice.repository.js';
+export { cancelUnpaidLine } from './application/line-cancellation.js';
